@@ -24,7 +24,7 @@ const signIn = async (req, res) => {
           email: user.email,
           role: user.role,
         };
-        const expiresIn = "1h";
+        const expiresIn = process.env.JWT_EXPIRES_IN;
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
         res.status(200).json({ token: token, userId: user._id });
@@ -49,9 +49,14 @@ const signUp = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
+    let profilePic = req.body.profilePic;
+    if (!profilePic) {
+      profilePic = `https://avatar.iran.liara.run/public/boy?username=${req.body.username}`;
+    }
 
     const newUser = {
       ...req.body,
+      profilePic,
       password: hashedPassword,
     };
 
@@ -62,7 +67,7 @@ const signUp = async (req, res) => {
       email: createdUser.email,
       role: createdUser.role,
     };
-    const expiresIn = "1d";
+    const expiresIn = process.env.JWT_EXPIRES_IN;
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
     res.json({ token, userId });
@@ -71,5 +76,22 @@ const signUp = async (req, res) => {
     res.status(500).send({ message: "Something went wrong", error });
   }
 };
+const getUsersForSidebar = async (req, res) => {
+  try {
+    const loggedInUserId = req.user._id;
 
-module.exports.userController = { signIn, signUp };
+    const filteredUsers = await userModel
+      .find({
+        _id: { $ne: loggedInUserId },
+      })
+      .select("-password");
+
+    res.status(200).json(filteredUsers);
+  } catch (error) {
+    console.error("Error in getUsersForSidebar: ", error.message);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error, success: false });
+  }
+};
+module.exports.userController = { signIn, signUp, getUsersForSidebar };

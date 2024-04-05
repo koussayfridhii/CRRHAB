@@ -18,7 +18,8 @@ const documentsRouter = require("./routes/document.route");
 const linksRouter = require("./routes/link.route");
 const faqsRouter = require("./routes/faq.route");
 const contactUsRouter = require("./routes/contactUs.route");
-const surveyRouter = require("./routes/survey.route");
+const surveysRouter = require("./routes/survey.route");
+const messagesRouter = require("./routes/message.route");
 
 //initializing app(express)
 var app = express();
@@ -57,6 +58,7 @@ app.use("/api", [
   linksRouter,
   contactUsRouter,
   faqsRouter,
-  surveyRouter,
+  surveysRouter,
+  messagesRouter,
 ]);
 module.exports = app;

@@ -7,6 +7,7 @@ const addPage = async (req, res) => {
   try {
     const { path } = req.body; // Extract path from request body
     // Check if page with the same path already exists
+    // console.log(req.user);
     const existingPage = await pageModel.findOne({ path });
 
     if (existingPage) {
