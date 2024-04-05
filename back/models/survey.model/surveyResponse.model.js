@@ -1,0 +1,31 @@
+const mongoose = require("mongoose");
+
+const responseSchema = new mongoose.Schema({
+  survey: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Survey",
+    required: true,
+  },
+  respondentIp: String, // Optional for anonymous surveys
+  submittedAt: {
+    type: Date,
+    default: Date.now,
+  },
+  answerData: [
+    {
+      question: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+        required: true,
+      },
+      answer: {
+        // Handle both predefined answer (ObjectId) and open ended answer (text)
+        type: String,
+        default: null,
+      },
+      answerText: String, // Optional for open ended answers
+    },
+  ],
+});
+
+module.exports.surveyResponseModel = mongoose.model("response", responseSchema);
