@@ -1,7 +1,9 @@
+import "./App.scss";
+
 function App() {
   return (
     <>
-      <h1></h1>
+      <h1>hello everyone i hate crrhab</h1>
     </>
   );
 }
