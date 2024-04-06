@@ -27,9 +27,13 @@ const signIn = async (req, res) => {
         const expiresIn = process.env.JWT_EXPIRES_IN;
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
-        res.status(200).json({ token: token, userId: user._id });
+        res
+          .status(200)
+          .json({ token: token, userId: user._id, role: user.role });
       } else {
-        res.status(401).send({ message: "Invalid password." });
+        res
+          .status(401)
+          .json({ message: "Invalid password.", error: true, success: false });
       }
     }
   } catch (error) {
