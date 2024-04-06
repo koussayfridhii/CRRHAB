@@ -1,4 +1,5 @@
 import { Box, WrapItem, Avatar } from "@chakra-ui/react";
+import ConnectedUsers from "../../components/chat/ConnectedUsers";
 function Chat() {
   return (
     <>
@@ -11,9 +12,7 @@ function Chat() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <WrapItem>
-          <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-        </WrapItem>
+        <ConnectedUsers />
       </Box>
     </>
   );
