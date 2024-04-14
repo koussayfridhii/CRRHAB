@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoggedIn: localStorage.getItem("user"),
-  user: localStorage.getItem("user"),
-  role: localStorage.getItem("role"),
+  user: null,
+  role: null,
 };
 
 const userSlice = createSlice({
@@ -16,8 +16,6 @@ const userSlice = createSlice({
     login(state, action) {
       state.isLoggedIn = true;
       state.user = action.payload;
-      localStorage.setItem("user", state.user.token);
-      localStorage.setItem("role", state.user.role);
     },
     // loginFailure(state, action) {
     //   state.loading = false;
@@ -26,8 +24,6 @@ const userSlice = createSlice({
     logout(state) {
       state.isLoggedIn = false;
       state.user = null;
-      localStorage.removeItem("user");
-      localStorage.removeItem("role");
     },
   },
 });

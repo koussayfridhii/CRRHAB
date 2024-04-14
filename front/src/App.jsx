@@ -12,6 +12,7 @@ import Chat from "./pages/chat/Chat";
 import Footer from "./components/footer/Footer.tsx";
 import { useEffect } from "react";
 import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 
 const Layout = () => {
   return (
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: "/chat",
         element: <Chat />,
       },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
     ],
   },
   {
@@ -41,6 +46,7 @@ const router = createBrowserRouter([
 function App() {
   let usedTheme = useSelector((state) => state.colorMode.theme);
   let theme = extendTheme(usedTheme);
+  // console.log(theme);
   return (
     <>
       <ColorModeProvider>

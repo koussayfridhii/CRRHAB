@@ -14,7 +14,6 @@ const ThemeToggle = () => {
         toggleColorMode();
         dispatch(colorModeReducer());
         dispatch(themeReducer());
-        dispatch(languageReducer("ar"));
       }}
       color={"primary"}
     >

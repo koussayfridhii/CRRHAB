@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // theming
 import {
@@ -44,7 +45,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response?.data);
         setLoading(false);
       });
   };
@@ -76,7 +77,7 @@ const Login = () => {
           name="password"
           onChange={dataHandler}
         />
-        <Button
+        {/* <Button
           bg="primary"
           color="text"
           _hover={{
@@ -89,7 +90,33 @@ const Login = () => {
           rightIcon={<LoginIcon />}
         >
           Log In
-        </Button>
+        </Button> */}
+        <Flex gap={5} align={"center"} justify={"center"}>
+          <Button
+            bg="primary"
+            color="text"
+            _hover={{
+              bg: "primaryHover",
+            }}
+            mb={8}
+            type="submit"
+            onClick={submitHandler}
+            isLoading={loading}
+            rightIcon={<LoginIcon />}
+          >
+            Log In
+          </Button>
+          <Button
+            color="text"
+            _hover={{
+              bg: "primaryHover",
+            }}
+            mb={8}
+            rightIcon={<LoginIcon />}
+          >
+            <Link to="/signup">Sign Up</Link>
+          </Button>
+        </Flex>
         <FormControl display="flex" alignItems="center">
           <FormLabel htmlFor="dark_mode" mb="0">
             Enable Dark Mode?

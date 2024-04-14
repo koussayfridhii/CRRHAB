@@ -23,6 +23,7 @@ const lightTheme = {
     primary: "#307EF3", // Blue for primary elements
     primaryHover: "#269bf2",
     secondary: "#03DAC5", // Green for secondary elements
+    bgGray: "#E0E1DD", //gray background
   },
   fontSizes: {
     xs: initialSize * 0.75 + "rem",
@@ -49,6 +50,7 @@ const darkTheme = {
     primary: "#609bf2", // Blue for primary elements
     primaryHover: "#2f7fef",
     secondary: "#03DAC5", // Green for secondary elements
+    bgGray: "#2D3748", //gray background
   },
   fontSizes: {
     xs: initialSize * 0.75 + "rem",

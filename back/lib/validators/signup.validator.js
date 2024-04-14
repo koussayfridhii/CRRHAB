@@ -44,7 +44,7 @@ module.exports.signupValidation = {
 const Joi = require("joi");
 
 const schema = Joi.object({
-  fullName: Joi.string().alphanum().min(3).max(30).required(),
+  fullName: Joi.string().min(3).max(30).required(),
 
   password: Joi.string().pattern(
     new RegExp(
@@ -65,7 +65,7 @@ const schema = Joi.object({
   news: Joi.boolean(),
   gender: Joi.string().required(),
   username: Joi.string().required(),
-  profilePic: Joi.string(),
+  profilePic: Joi.any(),
   additional: Joi.any(),
   additional2: Joi.any(),
   additional3: Joi.any(),

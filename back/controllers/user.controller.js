@@ -27,9 +27,13 @@ const signIn = async (req, res) => {
         const expiresIn = process.env.JWT_EXPIRES_IN;
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
-        res
-          .status(200)
-          .json({ token: token, userId: user._id, role: user.role });
+        res.status(200).json({
+          token: token,
+          userId: user._id,
+          role: user.role,
+          fullName: user.fullName,
+          expiresIn,
+        });
       } else {
         res
           .status(401)
@@ -49,7 +53,9 @@ const signUp = async (req, res) => {
     const user = await userModel.findOne({ email: req.body.email });
 
     if (user) {
-      return res.status(400).send({ message: "User already exists!" });
+      return res
+        .status(400)
+        .send({ message: "User already exists!", success: false, error: true });
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
@@ -74,16 +80,23 @@ const signUp = async (req, res) => {
     const expiresIn = process.env.JWT_EXPIRES_IN;
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
-    res.json({ token, userId });
+    res.json({
+      token: token,
+      userId: createdUser._id,
+      role: createdUser.role,
+      fullName: createdUser.fullName,
+      expiresIn,
+    });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: "Something went wrong", error });
+    res
+      .status(500)
+      .send({ message: "Something went wrong", error, success: false });
   }
 };
 const getUsersForSidebar = async (req, res) => {
   try {
-    const loggedInUserId = req.user._id;
-
+    const loggedInUserId = req.params.id;
     const filteredUsers = await userModel
       .find({
         _id: { $ne: loggedInUserId },
