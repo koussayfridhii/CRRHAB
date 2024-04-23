@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,16 +18,18 @@ import {
 import LoginIcon from "@mui/icons-material/Login";
 // firebase
 
-import { storage } from "../../firebase";
+// import { storage } from "../../firebase";
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import imageCompression from "browser-image-compression";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+//custom hooks
+import useUploadImage from "../../hooks/useUploadImage";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let usedTheme = useSelector((state) => state.colorMode.theme);
-  const [image, setImage] = useState();
-  const [percent, setPercent] = useState();
+  const [url, setUrl] = useState("");
   const [data, setData] = useState({
     fullName: "",
     username: "",
@@ -48,60 +50,63 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const storageRef = ref(
-    storage,
-    `/images/${image?.name}${getRandomInt(10000000000)}`
-  );
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
+  // const storageRef = ref(
+  //   storage,
+  //   `/images/${image?.name}${getRandomInt(10000000000)}`
+  // );
+  // function getRandomInt(max) {
+  //   return Math.floor(Math.random() * max);
+  // }
 
-  const upload = async () => {
-    if (!image) {
-      alert("Please upload a file first!");
-      return;
-    } // progress can be paused and resumed. It also exposes progress updates. // Receives the storage reference and the file to upload.
-    const uploadTask = uploadBytesResumable(storageRef, image);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const percent = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        ); // update progress
-        setLoading(true);
-        setPercent(percent);
-      },
-      (err) => console.log(err),
-      () => {
-        // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setData({ ...data, profilePic: url });
-        });
-        setLoading(false);
-      }
-    );
-  };
+  // const upload = async () => {
+  //   if (!image) {
+  //     alert("Please upload a file first!");
+  //     return;
+  //   } // progress can be paused and resumed. It also exposes progress updates. // Receives the storage reference and the file to upload.
+  //   const uploadTask = uploadBytesResumable(storageRef, image);
+  //   uploadTask.on(
+  //     "state_changed",
+  //     (snapshot) => {
+  //       const percent = Math.round(
+  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+  //       ); // update progress
+  //       setLoading(true);
+  //       setPercent(percent);
+  //     },
+  //     (err) => console.log(err),
+  //     () => {
+  //       // download url
+  //       getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+  //         setData({ ...data, profilePic: url });
+  //       });
+  //       setLoading(false);
+  //     }
+  //   );
+  // };
+  useEffect(() => {
+    setData({ ...data, profilePic: url });
+  }, [url]);
   const fileChangeHandler = async (e) => {
     e.preventDefault();
     const imageFile = e.target.files[0];
-
-    const options = {
-      maxSizeMB: 1,
-      maxWidthOrHeight: 1920,
-    };
-    let compressedFile;
-    if (imageFile.type.includes("pdf")) {
-      setImage(imageFile);
-      return;
-    }
-    try {
-      compressedFile = await imageCompression(imageFile, options);
-      alert("compression done", compressedFile.size / 1024 / 1024);
-      setImage(compressedFile);
-      upload();
-    } catch (error) {
-      alert(error);
-    }
+    await useUploadImage("profilePictures", imageFile, setUrl, setLoading);
+    // const options = {
+    //   maxSizeMB: 1,
+    //   maxWidthOrHeight: 1920,
+    // };
+    // let compressedFile;
+    // if (imageFile.type.includes("pdf")) {
+    //   setImage(imageFile);
+    //   return;
+    // }
+    // try {
+    //   compressedFile = await imageCompression(imageFile, options);
+    //   alert("compression done", compressedFile.size / 1024 / 1024);
+    //   setImage(compressedFile);
+    //   upload();
+    // } catch (error) {
+    //   alert(error);
+    // }
   };
   const submitHandler = async (e) => {
     e.preventDefault();

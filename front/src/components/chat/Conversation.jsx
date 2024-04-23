@@ -20,13 +20,22 @@ import EmojiPicker from "emoji-picker-react";
 import InfoIcon from "@mui/icons-material/Info";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
+// firebase
+import { storage } from "../../firebase";
+import imageCompression from "browser-image-compression";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 const Conversation = ({ currentConversationId }) => {
   const [text, setText] = useState("");
+  const [image, setImage] = useState();
+  const [percent, setPercent] = useState();
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
+
+  //check if the message is empty
   const validateName = (value) => {
     let error;
-    if (!value) {
+    if (!value || !image) {
       error = "message is required";
     }
     return error;
@@ -35,12 +44,16 @@ const Conversation = ({ currentConversationId }) => {
     setText((prev) => prev + e.emoji);
     setOpen((prev) => !prev);
   };
-
+  //ref for the last message
   const endRef = useRef();
-  const { token, userId, fullName, profilePic } = useSelector(
-    (state) => state.user.user
-  );
+
+  //get the token , userId , fullName from the redux store
+  const { token, userId, fullName } = useSelector((state) => state.user.user);
+
+  //create the auth token to send with the req
   const headers = { Authorization: `Bearer ${token}` };
+
+  // function to send the msg
   const sendMsg = async () => {
     try {
       const response = await axios.post(
