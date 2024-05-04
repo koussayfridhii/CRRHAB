@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
 import {
-  Box,
+  Flex,
   WrapItem,
   Avatar,
-  Wrap,
+  AvatarBadge,
   Text,
   Button,
   FormControl,
@@ -14,19 +14,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-
+import io from "socket.io-client";
 const ConnectedUsers = ({ setCurrentConversationId }) => {
   const [users, setUsers] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [socket, setSocket] = useState([]);
   const [text, setText] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  function validateName(value) {
-    let error;
-    if (!value) {
-      error = "Name is required";
-    }
-    return error;
-  }
   const token = useSelector((state) => state.user.user?.token);
   const userId = useSelector((state) => state.user.user?.userId);
   const headers = { Authorization: `Bearer ${token}` };
@@ -43,33 +38,86 @@ const ConnectedUsers = ({ setCurrentConversationId }) => {
         console.log(err);
       });
   };
+  function sortUsersByConnectionsInPlace(users, connectedIds) {
+    // console.log(connectedIds);
+    // Create a map for efficient lookup of connected user IDs
+    const connectedMap = new Map();
+    for (const id of connectedIds) {
+      connectedMap.set(id, true);
+    }
+
+    users.sort((userA, userB) => {
+      // Check if userA is connected and userB is not
+      const isAConnected = connectedMap.has(userA._id);
+      const isBConnected = connectedMap.has(userB._id);
+
+      if (isAConnected && !isBConnected) {
+        return -1; // Move A before B
+      } else if (!isAConnected && isBConnected) {
+        return 1; // Move B before A
+      } else {
+        // If both are connected or not connected, no change in order
+        return 0;
+      }
+    });
+  }
   useEffect(() => {
     fun();
+    sortUsersByConnectionsInPlace(users, onlineUsers);
     return () => {
       setUsers([]);
     };
   }, []);
+  useEffect(() => {
+    if (token) {
+      const socket = io("http://localhost:5000", {
+        query: {
+          userId,
+        },
+      });
+
+      setSocket(socket);
+
+      // socket.on() is used to listen to the events. can be used both on client and server side
+      socket.on("getOnlineUsers", (users) => {
+        setOnlineUsers([...users]);
+      });
+
+      return () => socket.close();
+    } else {
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
+    }
+  }, [token]);
+  useEffect(() => {
+    sortUsersByConnectionsInPlace(users, onlineUsers);
+  }, [users, onlineUsers]);
   return (
     <>
-      <Box
+      <Flex
         bg="text"
         color="text"
         height={"75dvh"}
         width={"22%"}
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        flexDirection={"column"}
+        justify={"center"}
+        align={"center"}
+        direction={"column"}
         border="4px"
         borderColor="primary"
         borderLeftRadius={"20px"}
-        overflowY={"scroll"}
         padding={"10px"}
       >
         <Formik
           initialValues={{ name: text }}
           onSubmit={() => {
             setIsSubmitting(true);
+            if (!text) {
+              setUsers(allUsers);
+              setIsSubmitting(false);
+              return;
+            }
             const aux = allUsers.filter((e) => {
               return e.fullName.toLowerCase().includes(text.toLowerCase());
             });
@@ -88,13 +136,10 @@ const ConnectedUsers = ({ setCurrentConversationId }) => {
                 padding: "1rem",
               }}
             >
-              <Field name="name" validate={() => validateName(text)}>
+              <Field name="name">
                 {({ field, form }) => (
-                  <FormControl
-                    color={"background"}
-                    isInvalid={form.errors.name && form.touched.name}
-                  >
-                    <FormLabel>Enter Your Message</FormLabel>
+                  <FormControl color={"background"}>
+                    <FormLabel>Search A Name</FormLabel>
                     <Input
                       border={"1px solid #609bf2"}
                       placeholder="Your message"
@@ -122,37 +167,51 @@ const ConnectedUsers = ({ setCurrentConversationId }) => {
             </Form>
           )}
         </Formik>
-        {users.map((user) => {
-          return (
-            <WrapItem
-              // shadow={"xl"}
-              width={"100%"}
-              mx={"auto"}
-              height={"5rem"}
-              padding={"7px"}
-              display={"flex"}
-              justifyContent={"start"}
-              gap={10}
-              alignItems={"center"}
-              key={user._id}
-              cursor={"pointer"}
-              onClick={() => setCurrentConversationId(user)}
-              borderBottom={"2px"}
-              borderColor={"primary"}
-            >
-              <Avatar
-                name={user.fullName}
-                src={user.profilePic}
+        <Flex
+          direction={"column"}
+          w={"100%"}
+          alignSelf={"start"}
+          height={"70dvh"}
+          overflowY={"scroll"}
+        >
+          {users.map((user) => {
+            return (
+              <WrapItem
+                // shadow={"xl"}
+                width={"100%"}
+                mx={"auto"}
+                height={"5rem"}
+                padding={"7px"}
+                display={"flex"}
+                justifyContent={"start"}
+                gap={10}
+                alignItems={"center"}
+                key={user._id}
+                cursor={"pointer"}
+                onClick={() => setCurrentConversationId(user)}
+                borderBottom={"2px"}
                 borderColor={"primary"}
-                border={"1px"}
-              />
-              <Text color="background" fontWeight={"bold"}>
-                {user.fullName}
-              </Text>
-            </WrapItem>
-          );
-        })}
-      </Box>
+              >
+                <Avatar
+                  name={user.fullName}
+                  src={user.profilePic}
+                  borderColor={"primary"}
+                  border={"1px"}
+                >
+                  {onlineUsers?.includes(user._id) ? (
+                    <AvatarBadge boxSize="0.8em" bg="green.500" />
+                  ) : (
+                    <AvatarBadge boxSize="0.8em" bg="red.500" />
+                  )}
+                </Avatar>
+                <Text color="background" fontWeight={"bold"}>
+                  {user.fullName}
+                </Text>
+              </WrapItem>
+            );
+          })}
+        </Flex>
+      </Flex>
     </>
   );
 };

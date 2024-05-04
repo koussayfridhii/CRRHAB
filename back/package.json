@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "node --watch --env-file=.env.development ./bin/www",
-    "start": "node --env-file=.env.production ./bin/www"
+    "dev": "node --watch --env-file=.env.development ./app.js",
+    "start": "node --env-file=.env.production ./app.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

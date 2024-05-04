@@ -2,8 +2,7 @@ import { Button, useColorMode } from "@chakra-ui/react";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import { useDispatch } from "react-redux";
-import { colorModeReducer, themeReducer } from "../colorModeSlice";
-import { languageReducer } from "../languageSlice";
+import { colorModeReducer, themeReducer } from "../redux/colorModeSlice";
 
 const ThemeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();

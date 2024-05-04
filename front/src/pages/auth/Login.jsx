@@ -16,7 +16,7 @@ import {
 import LoginIcon from "@mui/icons-material/Login";
 // written by me
 import ThemeToggle from "../../components/ThemeToggle";
-import { login } from "../../userSlice";
+import { login } from "../../redux/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.response?.data);
+        console.log(err);
         setLoading(false);
       });
   };

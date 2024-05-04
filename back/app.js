@@ -4,7 +4,7 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cors = require("cors");
-
+const { app, server } = require("./socket/socket");
 //routes
 const pagesRouter = require("./routes/pages.route");
 const userRouter = require("./routes/user.route");
@@ -23,7 +23,7 @@ const surveysRouter = require("./routes/survey.route");
 const messagesRouter = require("./routes/message.route");
 
 //initializing app(express)
-var app = express();
+// var app = express();
 
 //middlewares
 app.use(logger("dev"));
@@ -36,16 +36,21 @@ app.use(cors());
 require("./middlewares/passport")(passport);
 
 //db Connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("DB Connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 //routes usage
+
+server.listen(process.env.Port, () => {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log("DB Connected");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log(`Server Running on port ${process.env.PORT}`);
+});
+// module.exports = app;
 app.use("/api", [
   pagesRouter,
   userRouter,
@@ -63,4 +68,3 @@ app.use("/api", [
   surveysRouter,
   messagesRouter,
 ]);
-module.exports = app;

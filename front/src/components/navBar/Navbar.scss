@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.Ministere {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  // animation: animate 3s infinite ease;
+  img {
+    height: 5.5rem;
+    // aspect-ratio: 1;
+  }
+  .logoFlex {
+    display: flex;
+    gap: 0.7rem;
+    font-weight: bold;
+  }
+  .CRRHABLogo {
+    width: 12rem;
+  }
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+}
+//animation
+// @keyframes animate {
+//   9% {
+//     background-image: linear-gradient(
+//       to right,
+//       #fff,
+//       #eef1ff,
+//       #fff,
+//       #eef1ff,
+//       #fff
+//     );
+//   }
+//   50% {
+//     background-image: linear-gradient(
+//       to right,
+//       #fff,
+//       #eef1ff,
+//       #fff,
+//       #eef1ff,
+//       #fff
+//     );
+//   }
+//   75% {
+//     background-image: linear-gradient(
+//       to right,
+//       #eef1ff,
+//       white,
+//       #eef1ff,
+//       white,
+//       #eef1ff
+//     );
+//   }
+//   100% {
+//     background-image: linear-gradient(
+//       to right,
+//       #fff,
+//       #eef1ff,
+//       #fff,
+//       #eef1ff,
+//       #fff
+//     );
+//   }
+// }
+//MediaQueries
+@media screen and (max-width: 768px) {
+  .Ministere {
+    flex-direction: column;
+    gap: 0.5rem;
+    img {
+      height: 3rem;
+    }
+    .logoFlex {
+      span {
+        font-size: 0.7rem !important;
+      }
+    }
+    .CRRHABLogo {
+      height: 4rem;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.5rem !important;
+    }
+  }
+}

@@ -16,11 +16,14 @@ function Chat() {
         width={"100%"}
         display={"flex"}
         justifyContent={"center"}
-        alignItems={"center"}
+        alignItems={"start"}
         flexDirection={language === "ar" ? "row-reverse" : "row"}
       >
         <ConnectedUsers setCurrentConversationId={setCurrentConversationId} />
-        <Conversation currentConversationId={currentConversationId} />
+        <Conversation
+          setCurrentConversationId={setCurrentConversationId}
+          currentConversationId={currentConversationId}
+        />
       </Box>
     </>
   );

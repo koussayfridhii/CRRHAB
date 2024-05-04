@@ -19,23 +19,25 @@ import { useSelector } from "react-redux";
 import EmojiPicker from "emoji-picker-react";
 import InfoIcon from "@mui/icons-material/Info";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import io from "socket.io-client";
 
-// firebase
-import { storage } from "../../firebase";
-import imageCompression from "browser-image-compression";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// custom hooks
+// import useUploadImage from "../../hooks/useUploadImage";
 
-const Conversation = ({ currentConversationId }) => {
+import notificationSound from "../../assets/sounds/notification.mp3";
+import ConnectedUsers from "./ConnectedUsers";
+
+const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
   const [text, setText] = useState("");
   const [image, setImage] = useState();
-  const [percent, setPercent] = useState();
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
-
+  const [socket, setSocket] = useState(null);
   //check if the message is empty
   const validateName = (value) => {
     let error;
-    if (!value || !image) {
+    if (!value && !image) {
       error = "message is required";
     }
     return error;
@@ -70,6 +72,7 @@ const Conversation = ({ currentConversationId }) => {
       console.log(error);
     }
   };
+  //fetch all conversation messages
   const fun = async () => {
     if (!currentConversationId._id) return;
     await axios
@@ -88,9 +91,56 @@ const Conversation = ({ currentConversationId }) => {
         console.log(err);
       });
   };
+
+  //TODO: implement the file sending feature
+  // const fileChangeHandler = async (e) => {
+  //   e.preventDefault();
+  //   const imageFile = e.target.files[0];
+  //   await useUploadImage("profilePictures", imageFile, setImage, setLoading);
+  // };
+
+  //fetch the messages when the conversation changes
   useEffect(() => {
     fun();
+    return () => {
+      setCurrentConversationId;
+    };
   }, [currentConversationId._id]);
+
+  //Socket IO
+
+  useEffect(() => {
+    if (token) {
+      const socket = io("http://localhost:5000", {
+        query: {
+          userId,
+        },
+      });
+
+      setSocket(socket);
+
+      return () => socket.close();
+    } else {
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
+    }
+  }, [token]);
+  const useListenMessages = () => {
+    useEffect(() => {
+      socket?.on("newMessage", (newMessage) => {
+        newMessage.shouldShake = true;
+        const sound = new Audio(notificationSound);
+        sound.play();
+        setData([...data, newMessage]);
+        endRef.current?.scrollIntoView({ behavior: "smooth" });
+      });
+
+      return () => socket?.off("newMessage");
+    }, [socket, setData, data]);
+  };
+  useListenMessages();
 
   const { colorMode } = useColorMode();
   return (

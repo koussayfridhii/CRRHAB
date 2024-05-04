@@ -10,9 +10,10 @@ import "./App.scss";
 import NavBar from "./components/navBar/NavBar";
 import Chat from "./pages/chat/Chat";
 import Footer from "./components/footer/Footer.tsx";
-import { useEffect } from "react";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
+import CreatePage from "./pages/page/createPage.jsx";
+import Landing from "./pages/Landing.jsx";
 
 const Layout = () => {
   return (
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        path: "/",
+        element: <Landing />,
+      },
+      {
         path: "/chat",
         element: <Chat />,
       },
@@ -41,6 +46,16 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin",
+    element: <Layout />,
+    children: [
+      {
+        path: "/admin/addPage",
+        element: <CreatePage />,
+      },
+    ],
   },
 ]);
 function App() {
