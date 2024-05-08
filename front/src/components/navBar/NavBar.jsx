@@ -90,7 +90,7 @@
 // // const MenuToggle = ({ toggle, isOpen }) => {
 // //   return (
 // //     <Box
-// //       color={"text"}
+// //       color={"white"}
 // //       display={{ base: "block", md: "none" }}
 // //       onClick={toggle}
 // //     >
@@ -256,6 +256,7 @@ import { logout } from "../../redux/userSlice";
 import { languageReducer } from "../../redux/languageSlice";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
+import ThemeToggle from "../ThemeToggle";
 const languages = ["fr", "ar", "en"];
 export default function WithSubnavigation() {
   const language = useSelector((state) => state.language.language);
@@ -268,14 +269,18 @@ export default function WithSubnavigation() {
       <Tunisie />
       <Box>
         <Flex
-          bg={"background"}
-          color={"text"}
+          bg={"primary"}
+          _dark={{
+            bg: "secondary",
+            borderColor: "primary",
+          }}
+          color={"white"}
           minH={"8vh"}
           py={{ base: 2 }}
           px={{ base: 4 }}
-          borderBottom={2}
+          borderBottom={4}
           borderStyle={"solid"}
-          borderColor="primary"
+          borderColor="secondary"
           align={"center"}
           style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
         >
@@ -318,14 +323,18 @@ export default function WithSubnavigation() {
             spacing={6}
           >
             <FormControl id="search">
-              <InputGroup borderColor="secondary">
+              <InputGroup
+                borderColor="secondary"
+                bg={"background"}
+                borderRadius={"lg"}
+              >
                 <InputLeftElement pointerEvents="none">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width={20}
                     height={20}
-                    color={usedTheme.colors.primary}
+                    color={usedTheme.colors.text}
                     fill={"none"}
                   >
                     <path
@@ -348,25 +357,34 @@ export default function WithSubnavigation() {
                   size="xl"
                   w={"10vw"}
                   minW={"15rem"}
-                  _placeholder={"Search"}
+                  _placeholder={"Search ..."}
+                  color={"text"}
                 />
               </InputGroup>
             </FormControl>
-            <Box display={{ base: "none", md: "block" }}>
-              <Popover trigger={"hover"} placement={"bottom-start"}>
+            <Box display={{ base: "none", md: "block" }} bg={"primary"}>
+              <Popover
+                trigger={"hover"}
+                placement={"bottom-start"}
+                bg={"primary"}
+              >
                 <PopoverTrigger>
                   <Button
                     as="a"
                     p={2}
-                    fontSize={"lg"}
-                    color={"text"}
+                    fontSize={"sm"}
+                    color={"white"}
                     _hover={{
                       textDecoration: "none",
-                      color: "white",
+                      color: "text",
                       bg: "primary",
                     }}
                     align="center"
                     cursor={"pointer"}
+                    bg={"primary"}
+                    _dark={{
+                      bg: "secondary",
+                    }}
                   >
                     {language === "fr"
                       ? "Français"
@@ -379,10 +397,10 @@ export default function WithSubnavigation() {
                 <PopoverContent
                   border={0}
                   boxShadow={"xl"}
-                  bg={"white"}
                   p={4}
                   rounded={"xl"}
                   minW={"sm"}
+                  bg={"primary"}
                 >
                   <Stack>
                     {languages
@@ -394,7 +412,7 @@ export default function WithSubnavigation() {
                           display={"block"}
                           p={2}
                           rounded={"md"}
-                          _hover={{ color: "secondary" }}
+                          _hover={{ color: "white" }}
                           onClick={() => dispatch(languageReducer(lan))}
                           cursor={"pointer"}
                         >
@@ -402,7 +420,7 @@ export default function WithSubnavigation() {
                             <Box>
                               <Text
                                 transition={"all .3s ease"}
-                                _groupHover={{ color: "secondary" }}
+                                _groupHover={{ color: "whiteHover" }}
                                 fontWeight={500}
                                 cursor={"pointer"}
                               >
@@ -427,7 +445,7 @@ export default function WithSubnavigation() {
                               flex={1}
                             >
                               <Icon
-                                color={"secondary"}
+                                color={"whiteHover"}
                                 w={5}
                                 h={5}
                                 as={ChevronRightIcon}
@@ -467,6 +485,9 @@ export default function WithSubnavigation() {
                     fontWeight={600}
                     color={"white"}
                     bg={"primary"}
+                    _dark={{
+                      bg: "secondary",
+                    }}
                     _hover={{
                       bg: "primaryHover",
                     }}
@@ -481,6 +502,7 @@ export default function WithSubnavigation() {
               </>
             )}
             <Box display={{ base: "none", md: "flex" }} gap="1">
+              <ThemeToggle />
               <Button onClick={() => dispatch(sizeUpReducer())}>
                 <ZoomInIcon />
               </Button>
@@ -500,9 +522,9 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("text", "gray.200");
-  const linkHoverColor = useColorModeValue("secondary", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const linkColor = useColorModeValue("white", "gray.200");
+  const linkHoverColor = useColorModeValue("whiteHover", "white");
+  const popoverContentBgColor = useColorModeValue("primary", "gray.800");
   const language = useSelector((state) => state.language.language);
   return (
     <Stack direction={"row"} spacing={4}>
@@ -511,9 +533,9 @@ const DesktopNav = () => {
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Box
-                as="a"
+                as={Link}
                 p={2}
-                href={navItem.href ?? "#"}
+                to={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -554,19 +576,19 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   const language = useSelector((state) => state.language.language);
   return (
     <Box
-      as="a"
-      href={href}
+      as={Link}
+      to={href}
       role={"group"}
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ color: "secondary" }}
+      _hover={{ color: "whiteHover" }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
-            _groupHover={{ color: "secondary" }}
+            _groupHover={{ color: "whiteHover" }}
             fontWeight={500}
           >
             {label[language]}
@@ -582,7 +604,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           align={"center"}
           flex={1}
         >
-          <Icon color={"secondary"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={"whiteHover"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Box>
@@ -594,7 +616,14 @@ const MobileNav = () => {
   const language = useSelector((state) => state.language.language);
   const user = useSelector((state) => state.user.user);
   return (
-    <Stack bg={"background"} p={4} display={{ md: "none" }}>
+    <Stack
+      bg={"primary"}
+      borderBottom={4}
+      borderStyle={"solid"}
+      borderColor="secondary"
+      p={4}
+      display={{ md: "none" }}
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
           key={navItem.children?.[0]?.href || navItem.href}
@@ -607,8 +636,9 @@ const MobileNav = () => {
             <Button
               as="a"
               p={2}
-              fontSize={"lg"}
-              color={"text"}
+              fontSize={"sm"}
+              color={"white"}
+              bg={"primary"}
               _hover={{
                 textDecoration: "none",
                 color: "white",
@@ -712,11 +742,12 @@ const MobileNav = () => {
         <>
           <ChakraLink as={Link} to="/login">
             <Button
-              display={{ base: "none", md: "inline-flex" }}
+              display={{ base: "inline-flex", md: "none" }}
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
               bg={"primary"}
+              mb={4}
               _hover={{
                 bg: "primaryHover",
               }}
@@ -731,6 +762,7 @@ const MobileNav = () => {
         </>
       )}
       <Box display={{ base: "flex", md: "none" }} gap="1">
+        <ThemeToggle />
         <Button onClick={() => dispatch(sizeUpReducer())}>
           <ZoomInIcon />
         </Button>
@@ -748,15 +780,15 @@ const MobileNavItem = ({ label, children, href }) => {
     <Stack spacing={4} onClick={children && onToggle} fontSize={"sm"}>
       <Box
         py={2}
-        as="a"
-        href={href ?? "#"}
+        as={Link}
+        to={href ?? "#"}
         justifyContent="space-between"
         alignItems="center"
         _hover={{
           textDecoration: "none",
         }}
       >
-        <Text fontWeight={600} color={"text"}>
+        <Text fontWeight={600} color={"white"}>
           {label[language]}
         </Text>
         {children && (
@@ -776,7 +808,7 @@ const MobileNavItem = ({ label, children, href }) => {
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
-          borderColor={"text"}
+          borderColor={"white"}
           align={"start"}
         >
           {children &&
@@ -863,7 +895,7 @@ const NAV_ITEMS = [
           en: "Research Team",
           ar: "فريق البحث",
         },
-        href: "/signup",
+        href: "/researchteam",
       },
       {
         label: {
@@ -889,7 +921,7 @@ const NAV_ITEMS = [
           en: "Scientific Productions",
           ar: "الانتاجات العلمية",
         },
-        href: "/signup",
+        href: "/scientificproductions",
       },
       {
         label: {
@@ -942,6 +974,6 @@ const NAV_ITEMS = [
   },
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
-    href: "/",
+    href: "#contact",
   },
 ];

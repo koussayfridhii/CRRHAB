@@ -7,9 +7,11 @@ import {
   Heading,
   Text,
   Container,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // Settings for the slider
 const settings = {
   dots: true,
@@ -34,148 +36,181 @@ const NewsCarrousel = () => {
   // This can be static or loaded from a server
   const cards = [
     {
-      title: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
-      description: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
+      title: { fr: "Actulité n1", ar: "اخبار", en: "News" },
+      description: {
+        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
+        ar: "اخبار",
+        en: "News",
+      },
       image:
-        "https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+        "https://plus.unsplash.com/premium_photo-1661632638463-9c2eb5586809?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      title: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
-      description: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
+      title: { fr: "Actulité n2", ar: "اخبار", en: "News" },
+      description: {
+        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
+        ar: "اخبار",
+        en: "News",
+      },
       image:
-        "https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80",
+        "https://images.unsplash.com/photo-1708255562611-1e6a003b4ca8?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      title: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
-      description: { fr: "Design Projects 1", ar: "اخبار", en: "News" },
+      title: { fr: "Actulité 3", ar: "اخبار", en: "News" },
+      description: {
+        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
+        ar: "اخبار",
+        en: "News",
+      },
       image:
-        "https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+        "https://images.unsplash.com/photo-1459802243250-97792e921da4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 
   return (
-    <Box
-      position={"relative"}
-      height={"80dvh"}
-      width={"full"}
-      overflow={"hidden"}
-    >
-      {/* CSS files for react-slick */}
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-      />
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-      />
-      {/* Left Icon */}
-      <IconButton
-        aria-label="left-arrow"
-        variant="ghost"
-        position="absolute"
-        left={side}
-        top={top}
-        transform={"translate(0%, -50%)"}
-        zIndex={2}
-        onClick={() => slider?.slickPrev()}
+    <>
+      <Box
+        position={"relative"}
+        height={"70dvh"}
+        width={"full"}
+        overflow={"hidden"}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width={60}
-          height={60}
-          color={"#ffffff"}
-          fill={"none"}
+        {/* CSS files for react-slick */}
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        {/* Left Icon */}
+        <IconButton
+          aria-label="left-arrow"
+          variant="ghost"
+          position="absolute"
+          left={side}
+          top={top}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => slider?.slickPrev()}
         >
-          <path
-            d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </IconButton>
-      {/* Right Icon */}
-      <IconButton
-        aria-label="right-arrow"
-        variant="ghost"
-        position="absolute"
-        right={side}
-        top={top}
-        transform={"translate(0%, -50%)"}
-        zIndex={2}
-        onClick={() => slider?.slickNext()}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width={60}
-          height={60}
-          color={"#ffffff"}
-          fill={"none"}
-        >
-          <path
-            d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </IconButton>
-      {/* Slider */}
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((card, index) => (
-          <Box
-            key={index}
-            height={"6xl"}
-            position="relative"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(117, 19, 93, 0.35)), url(${card.image})`}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width={60}
+            height={60}
+            color={"#ffffff"}
+            fill={"none"}
           >
-            {/* This is the block you need to change, to customize the caption */}
-            <Container
-              size="container.lg"
-              height="600px"
+            <path
+              d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </IconButton>
+        {/* Right Icon */}
+        <IconButton
+          aria-label="right-arrow"
+          variant="ghost"
+          position="absolute"
+          right={side}
+          top={top}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => slider?.slickNext()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width={60}
+            height={60}
+            color={"#ffffff"}
+            fill={"none"}
+          >
+            <path
+              d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </IconButton>
+        {/* Slider */}
+        <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          {cards.map((card, index) => (
+            <Box
+              key={index}
+              height={"6xl"}
               position="relative"
-              zIndex={99}
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="cover"
+              backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${card.image})`}
             >
-              <Stack
-                spacing={6}
-                w={"full"}
-                maxW={"lg"}
-                position="absolute"
-                top="75%"
-                right={language === "ar" ? "7vw" : ""}
-                transform="translate(0, -50%)"
-                zIndex={1000}
+              {/* This is the block you need to change, to customize the caption */}
+              <Container
+                size="container.lg"
+                height="600px"
+                position="relative"
+                zIndex={99}
               >
-                <Heading
-                  fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                  color={"white"}
-                  dir={`${language === "ar" ? "rtl" : "ltr"}`}
+                <Stack
+                  spacing={6}
+                  w={"full"}
+                  maxW={"xl"}
+                  position="absolute"
+                  top="80%"
+                  right={language === "ar" ? "7vw" : ""}
+                  transform="translate(0, -50%)"
+                  zIndex={1000}
                 >
-                  {card.title?.[language]}
-                </Heading>
-                <Text
-                  fontSize={{ base: "md", lg: "lg" }}
-                  color="white"
-                  dir={`${language === "ar" ? "rtl" : "ltr"}`}
-                >
-                  {card.description?.[language]}
-                </Text>
-              </Stack>
-            </Container>
-          </Box>
-        ))}
-      </Slider>
-    </Box>
+                  <Heading
+                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                    color={"white"}
+                    dir={`${language === "ar" ? "rtl" : "ltr"}`}
+                  >
+                    {card.title?.[language]}
+                  </Heading>
+                  <Text
+                    fontSize={{ base: "md", lg: "lg" }}
+                    color="white"
+                    style={{ width: "100%" }}
+                    dir={`${language === "ar" ? "rtl" : "ltr"}`}
+                  >
+                    {card.description?.[language]}
+                  </Text>
+                </Stack>
+              </Container>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
+      <Heading
+        fontSize={"lg"}
+        fontFamily={"body"}
+        color={"primary"}
+        px={5}
+        py={2}
+        fontWeight={400}
+        borderRadius={"sm"}
+        mt={3}
+      >
+        <ChakraLink as={Link} to="/">
+          {language === "fr"
+            ? "toutes les actulités"
+            : language === "en"
+            ? "All News"
+            : "كل المستجدات"}
+        </ChakraLink>
+      </Heading>
+    </>
   );
 };
 

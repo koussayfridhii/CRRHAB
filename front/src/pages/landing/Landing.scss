@@ -1,0 +1,7 @@
+.landing {
+  scroll-snap-type: y mandatory;
+
+  section {
+    scroll-snap-align: center;
+  }
+}

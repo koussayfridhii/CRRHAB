@@ -13,7 +13,10 @@ import Footer from "./components/footer/Footer.tsx";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import CreatePage from "./pages/page/createPage.jsx";
-import Landing from "./pages/Landing.jsx";
+import Landing from "./pages/landing/Landing.jsx";
+import ResearchTeam from "./pages/researchStructures/ResearchTeam.jsx";
+import ScientificProductionsV1 from "./pages/researchStructures/scientificProductions/v1/ScientificProductions.jsx";
+import ScientificProductionsV2 from "./pages/researchStructures/scientificProductions/v2/ScientificProductions.jsx";
 
 const Layout = () => {
   return (
@@ -40,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/researchteam",
+        element: <ResearchTeam />,
+      },
+      {
+        path: "/scientificproductions",
+        element: <ScientificProductionsV1 />,
       },
     ],
   },

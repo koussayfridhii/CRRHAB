@@ -14,7 +14,7 @@ const ThemeToggle = () => {
         dispatch(colorModeReducer());
         dispatch(themeReducer());
       }}
-      color={"primary"}
+      color={"text"}
     >
       {colorMode === "light" ? <ModeNightIcon /> : <WbTwilightIcon />}
     </Button>

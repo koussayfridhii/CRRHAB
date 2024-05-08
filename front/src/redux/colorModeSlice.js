@@ -18,6 +18,7 @@ const initialSize = localStorage.getItem("size") || 1;
 const lightTheme = {
   colors: {
     white: "#DFF1FF",
+    whiteHover: "#F9F871",
     background: "#f8f8f8", // Light background color
     text: "#222222", // Dark text color
     textSecondary: "#718096",
@@ -46,6 +47,7 @@ const lightTheme = {
 const darkTheme = {
   colors: {
     white: "#DFF1FF",
+    whiteHover: "#F9F871",
     background: "#1A202C", // Light background color
     text: "#f8f8f8", // Dark text
     textSecondary: "#c3dbe9 ",

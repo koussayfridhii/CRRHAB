@@ -1,0 +1,8 @@
+.sideBar {
+  width: 25dvw;
+}
+@media screen and (max-width: 768px) {
+  .sideBar {
+    width: 100dvw;
+  }
+}

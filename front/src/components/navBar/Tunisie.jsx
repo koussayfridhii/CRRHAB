@@ -1,7 +1,9 @@
+import { useColorMode } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 const Tunisie = () => {
   const usedTheme = useSelector((state) => state.colorMode.theme);
   const language = useSelector((state) => state.language.language);
+  const { colorMode } = useColorMode();
   return (
     <div
       className="Ministere"
@@ -43,7 +45,11 @@ const Tunisie = () => {
       </div>
       <h1
         style={{
-          color: usedTheme.colors.primary,
+          color: `${
+            colorMode === "light"
+              ? usedTheme.colors.primary
+              : usedTheme.colors.secondary
+          }`,
           fontSize: usedTheme.fontSizes?.xxxxl,
         }}
       >
