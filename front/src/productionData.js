@@ -232,7 +232,7 @@ const data = [
         "HAMOUDA, A. B.",
         "BNINA, E.B.",
         "CHAIEB, I.",
-        "LAARIF, A.",
+        "LAARIF, Asma",
         "JANNET, H. B.",
       ],
       en: [
