@@ -91,7 +91,7 @@
 // //   return (
 // //     <Box
 // //       color={"white"}
-// //       display={{ base: "block", md: "none" }}
+// //       display={{ base: "block", '2xl': "none" }}
 // //       onClick={toggle}
 // //     >
 // //       {isOpen ? <CloseIcon /> : <MenuIcon />}
@@ -116,8 +116,8 @@
 // //   const dispatch = useDispatch();
 // //   return (
 // //     <Box
-// //       display={{ base: isOpen ? "block" : "none", md: "block" }}
-// //       flexBasis={{ base: "100%", md: "auto" }}
+// //       display={{ base: isOpen ? "block" : "none", '2xl': "block" }}
+// //       flexBasis={{ base: "100%", '2xl': "auto" }}
 // //     >
 // //       <Stack
 // //         spacing={8}
@@ -285,9 +285,9 @@ export default function WithSubnavigation() {
           style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
         >
           <Flex
-            flex={{ base: 1, md: "auto" }}
+            flex={{ base: 1, '2xl': "auto" }}
             ml={{ base: -2 }}
-            display={{ base: "flex", md: "none" }}
+            display={{ base: "flex", '2xl': "none" }}
             align={"center"}
           >
             <IconButton
@@ -307,17 +307,17 @@ export default function WithSubnavigation() {
             flex={{ base: 1 }}
             justify={{
               base: "center",
-              md: "start",
+              '2xl': "start",
             }}
             gap={"1rem"}
           >
-            <Flex display={{ base: "none", md: "flex" }} ml={10}>
+            <Flex display={{ base: "none", '2xl': "flex" }} ml={10}>
               <DesktopNav />
             </Flex>
           </Flex>
 
           <Stack
-            flex={{ base: 1, md: 0 }}
+            flex={{ base: 1, '2xl': 0 }}
             justify={"flex-end"}
             direction={"row"}
             spacing={6}
@@ -355,14 +355,14 @@ export default function WithSubnavigation() {
                 <Input
                   type="text"
                   size="xl"
-                  w={"10vw"}
+                  w={"100%"}
                   minW={"15rem"}
                   _placeholder={"Search ..."}
                   color={"text"}
                 />
               </InputGroup>
             </FormControl>
-            <Box display={{ base: "none", md: "block" }} bg={"primary"}>
+            <Box display={{ base: "none", '2xl': "block" }} bg={"primary"}>
               <Popover
                 trigger={"hover"}
                 placement={"bottom-start"}
@@ -460,7 +460,7 @@ export default function WithSubnavigation() {
             </Box>
             {user ? (
               <Button
-                display={{ base: "none", md: "inline-flex" }}
+                display={{ base: "none", '2xl': "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
                 color={"white"}
@@ -480,7 +480,7 @@ export default function WithSubnavigation() {
               <>
                 <ChakraLink as={Link} to="/login">
                   <Button
-                    display={{ base: "none", md: "inline-flex" }}
+                    display={{ base: "none", '2xl': "inline-flex" }}
                     fontSize={"sm"}
                     fontWeight={600}
                     color={"white"}
@@ -501,7 +501,7 @@ export default function WithSubnavigation() {
                 </ChakraLink>
               </>
             )}
-            <Box display={{ base: "none", md: "flex" }} gap="1">
+            <Box display={{ base: "none", '2xl': "flex" }} gap="1">
               <ThemeToggle />
               <Button onClick={() => dispatch(sizeUpReducer())}>
                 <ZoomInIcon />
@@ -622,7 +622,7 @@ const MobileNav = () => {
       borderStyle={"solid"}
       borderColor="secondary"
       p={4}
-      display={{ md: "none" }}
+      display={{ '2xl': "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
@@ -722,7 +722,7 @@ const MobileNav = () => {
       </Box>
       {user ? (
         <Button
-          display={{ base: "inline-flex", md: "none" }}
+          display={{ base: "inline-flex", '2xl': "none" }}
           fontSize={"sm"}
           fontWeight={600}
           color={"white"}
@@ -742,7 +742,7 @@ const MobileNav = () => {
         <>
           <ChakraLink as={Link} to="/login">
             <Button
-              display={{ base: "inline-flex", md: "none" }}
+              display={{ base: "inline-flex", '2xl': "none" }}
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
@@ -761,7 +761,7 @@ const MobileNav = () => {
           </ChakraLink>
         </>
       )}
-      <Box display={{ base: "flex", md: "none" }} gap="1">
+      <Box display={{ base: "flex", '2xl': "none" }} gap="1">
         <ThemeToggle />
         <Button onClick={() => dispatch(sizeUpReducer())}>
           <ZoomInIcon />
@@ -971,6 +971,10 @@ const NAV_ITEMS = [
       ar: "فرق مختصة",
     },
     href: "/",
+  },
+  {
+    label: { fr: "Gallerie", en: "Gallery", ar: "مكتبة الوسائط" },
+    href: "/gallery/imgs",
   },
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },

@@ -407,7 +407,7 @@ export default function ScientificProductionsV1() {
                   _dark={{
                     borderColor: "secondary",
                   }}
-                  px={40}
+                  px={{base:10  , '2xl':40}}
                 >
                   <Image
                     src="https://images.pexels.com/photos/19959461/pexels-photo-19959461/free-photo-of-ete-arbuste-jaune-agriculture.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

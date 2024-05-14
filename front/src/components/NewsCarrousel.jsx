@@ -147,7 +147,7 @@ const NewsCarrousel = () => {
           {cards.map((card, index) => (
             <Box
               key={index}
-              height={"6xl"}
+              height={'70dvh'}
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
@@ -157,7 +157,7 @@ const NewsCarrousel = () => {
               {/* This is the block you need to change, to customize the caption */}
               <Container
                 size="container.lg"
-                height="600px"
+                height="100%"
                 position="relative"
                 zIndex={99}
               >
@@ -166,7 +166,7 @@ const NewsCarrousel = () => {
                   w={"full"}
                   maxW={"xl"}
                   position="absolute"
-                  top="80%"
+                  top="50%"
                   right={language === "ar" ? "7vw" : ""}
                   transform="translate(0, -50%)"
                   zIndex={1000}

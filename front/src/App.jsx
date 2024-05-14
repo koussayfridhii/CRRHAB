@@ -17,13 +17,24 @@ import Landing from "./pages/landing/Landing.jsx";
 import ResearchTeam from "./pages/researchStructures/ResearchTeam.jsx";
 import ScientificProductionsV1 from "./pages/researchStructures/scientificProductions/v1/ScientificProductions.jsx";
 import ScientificProductionsV2 from "./pages/researchStructures/scientificProductions/v2/ScientificProductions.jsx";
+import ImageGallery from "./pages/media/ImageGallery.jsx";
+import AdminSideBar from "./components/adminSideBar/AdminSideBar.jsx";
+import DashBoard from "./pages/admin/DashBoard.jsx";
 
 const Layout = () => {
   return (
     <div className="app">
-      <NavBar />
+  <NavBar />
       <Outlet />
       <Footer />
+    </div>
+  );
+};
+const LayoutAdmin = () => {
+  return (
+    <div className="app">
+<AdminSideBar />  
+      <Outlet />
     </div>
   );
 };
@@ -52,6 +63,10 @@ const router = createBrowserRouter([
         path: "/scientificproductions",
         element: <ScientificProductionsV1 />,
       },
+      ,{
+        path: "/gallery/imgs",
+        element: <ImageGallery />
+      }
     ],
   },
   {
@@ -60,8 +75,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Layout />,
+    element: <LayoutAdmin />,
     children: [
+      {
+        path: "/admin",
+        element: <DashBoard />
+      },
       {
         path: "/admin/addPage",
         element: <CreatePage />,
@@ -77,6 +96,7 @@ function App() {
     <>
       <ColorModeProvider>
         <ChakraProvider theme={theme}>
+
           <RouterProvider router={router} />
         </ChakraProvider>
       </ColorModeProvider>
