@@ -1,53 +1,50 @@
+import React from "react";
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
-  HStack,
-  VStack,
   Icon,
   useColorModeValue,
-  Link,
+  Link as ChakrLink,
   Drawer,
   DrawerContent,
   Text,
   useDisclosure,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react';
+  Button,
+} from "@chakra-ui/react";
 import {
-  FiHome,
   FiTrendingUp,
   FiCompass,
   FiStar,
   FiSettings,
   FiMenu,
-  FiBell,
-  FiChevronDown,
-} from 'react-icons/fi';
+} from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
+import ThemeToggle from "../ThemeToggle";
 const LinkItems = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
+  { name: "Trending", icon: FiTrendingUp, href: "#" },
+  { name: "Explore", icon: FiCompass, href: "#" },
+  { name: "Favourites", icon: FiStar, href: "#" },
+  { name: "Settings", icon: FiSettings, href: "#" },
 ];
 
-export default function SidebarWithHeader({
-  children,
-}) {
+export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-        bg='primary'
-        overflowY='scroll'
+        display={{ base: "none", md: "block" }}
+        bg="primary"
+        color="white"
+        w="15dvw"
+        borderRight="4px"
+        borderRightColor={useColorModeValue("secondary", "blue.700")}
+        boxShadow="lg"
       />
       <Drawer
         autoFocus={false}
@@ -56,47 +53,76 @@ export default function SidebarWithHeader({
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+        bg="green.500"
+      >
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
+      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+      {/* <Box ml={{ base: 0, md: 60 }} p="4" bg={"green.500"}>
+        {children}
+      </Box> */}
     </>
   );
 }
 
-
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      transition="3s ease"
-      bg={useColorModeValue('background'     , 'gray.900')}
+      bg={useColorModeValue("background", "gray.900")}
       borderRight="1px"
-      borderRightColor={useColorModeValue('primary', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
+      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
-      {...rest}>
+      {...rest}
+    >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="xxxxl" fontFamily="monospace" fontWeight="bold" color={'whiteHover'} textAlign={'center'}>
-          CRRHAB
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          CRRHAB Admin
         </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem color='white' borderBottomColor='secondary' borderBottom='2px' key={link.name} icon={link.icon}>
+        <NavItem key={link.name} href={link.href} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
+      <Flex justify={"center"} align={"center"} mt={5}>
+        <ThemeToggle />
+      </Flex>
+      <Flex
+        justify={"center"}
+        align={"center"}
+        pos={"absolute"}
+        bottom={"10px"}
+        left={"50%"}
+        transform={"translateX(-50%)"}
+      >
+        <Button
+          bg={"red.500"}
+          color={"white"}
+          _hover={{ bg: "red.300" }}
+          boxShadow={"lg"}
+        >
+          Logout
+        </Button>
+      </Flex>
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, href, children, ...rest }) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <ChakrLink
+      as={Link}
+      to={href}
+      style={{ textDecoration: "none" }}
+      _focus={{ boxShadow: "none" }}
+    >
       <Flex
         align="center"
         p="4"
@@ -105,23 +131,24 @@ const NavItem = ({ icon, children, ...rest }) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
-          color: 'white',
+          bg: "cyan.400",
+          color: "white",
         }}
-        {...rest}>
+        {...rest}
+      >
         {icon && (
           <Icon
             mr="4"
             fontSize="16"
             _groupHover={{
-              color: 'white',
+              color: "white",
             }}
             as={icon}
           />
         )}
         {children}
       </Flex>
-    </Link>
+    </ChakrLink>
   );
 };
 
@@ -129,79 +156,26 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
+      px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('primary', 'gray.900')}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      {...rest} 
-      >
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent="flex-start"
+      {...rest}
+      w={"full"}
+      bg="background"
+    >
       <IconButton
-        display={{ base: 'flex', md: 'none' }}
-        onClick={onOpen}
         variant="outline"
+        onClick={onOpen}
         aria-label="open menu"
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        color={'secondary'}
-        fontFamily="monospace"
-        fontWeight="bold">
-        CRRHAB
+      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
+        Logo
       </Text>
-
-      <HStack spacing={{ base: '0', md: '6' }}  color={'white'}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-          color={'white'}
-        />
-        <Flex alignItems={'center'}>
-          <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: 'none' }}>
-              <HStack>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
-                <VStack
-                  display={{ base: 'none', md: 'flex' }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="white">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: 'none', md: 'flex' }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-            <MenuList
-              bg={useColorModeValue('background', 'gray.900')}
-              borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
-      </HStack>
     </Flex>
   );
 };

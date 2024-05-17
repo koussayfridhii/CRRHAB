@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../components/tables/tableV1/Table";
-import { Box, chakra } from "@chakra-ui/react";
+import { Box, Button, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import StatsV1 from "../../components/stats/statsV1/Stats";
 import AutoComplete from "../../components/AutoComplete";
-const ResearchTeam = () => {
+import { Link } from "react-router-dom";
+const ResearchTeam = ({ add = false, statsHeader = true }) => {
   const language = useSelector((state) => state.language.language);
   const [filtredData, setFiltredData] = useState([]);
   const data = [
@@ -148,55 +149,62 @@ const ResearchTeam = () => {
   }, []);
   return (
     <Box py={50}>
-      <Box
-        maxW="7xl"
-        mx="auto"
-        px={{
-          base: 4,
-          lg: 8,
-        }}
-        mb={5}
-      >
-        <Box textAlign="center">
-          <chakra.h2
-            mt={2}
-            fontSize={{
-              base: "3xl",
-              sm: "4xl",
-            }}
-            lineHeight="8"
-            fontWeight="extrabold"
-            letterSpacing="tight"
-            textTransform={"capitalize"}
-            color="text"
-            _dark={{
-              color: "white",
-            }}
-          >
-            {language === "en"
-              ? "See How We're Making a Difference!!"
-              : language === "ar"
-              ? "!!انظر كيف نحدث فرقًا"
-              : "Découvrez comment nous faisons la différence!!"}
-          </chakra.h2>
-          <chakra.p
-            mt={4}
-            maxW="2xl"
-            fontSize="xl"
-            mx={{
-              lg: "auto",
-            }}
-            color="textSecondary"
-          >
-            {language === "en"
-              ? " Embark on a journey of transformative impact and discover how we are making a tangible difference in the world."
-              : language === "ar"
-              ? ".انطلق في رحلة ذات تأثير تحويلي واكتشف كيف نحدث فرقًا ملموسًا في العالم"
-              : "Embarquez pour un voyage à impact transformateur et découvrez comment nous faisons une différence tangible dans le monde."}
-          </chakra.p>
+      {statsHeader && (
+        <Box
+          maxW="7xl"
+          mx="auto"
+          px={{
+            base: 4,
+            lg: 8,
+          }}
+          mb={5}
+        >
+          <Box textAlign="center">
+            <chakra.h2
+              mt={2}
+              fontSize={{
+                base: "3xl",
+                sm: "4xl",
+              }}
+              lineHeight="8"
+              fontWeight="extrabold"
+              letterSpacing="tight"
+              textTransform={"capitalize"}
+              color="text"
+              _dark={{
+                color: "white",
+              }}
+            >
+              {language === "en"
+                ? "See How We're Making a Difference!!"
+                : language === "ar"
+                ? "!!انظر كيف نحدث فرقًا"
+                : "Découvrez comment nous faisons la différence!!"}
+            </chakra.h2>
+            <chakra.p
+              mt={4}
+              maxW="2xl"
+              fontSize="xl"
+              mx={{
+                lg: "auto",
+              }}
+              color="textSecondary"
+            >
+              {language === "en"
+                ? " Embark on a journey of transformative impact and discover how we are making a tangible difference in the world."
+                : language === "ar"
+                ? ".انطلق في رحلة ذات تأثير تحويلي واكتشف كيف نحدث فرقًا ملموسًا في العالم"
+                : "Embarquez pour un voyage à impact transformateur et découvrez comment nous faisons une différence tangible dans le monde."}
+            </chakra.p>
+          </Box>
         </Box>
-      </Box>
+      )}
       <StatsV1 header={false} />
+      {add && (
+        <Button as={Link} mb={5} ml={"95%"} to="/admin/create/research_Team">
+          Add
+        </Button>
+      )}
       <AutoComplete
         options={data}
         language={language}

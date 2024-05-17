@@ -20,11 +20,14 @@ import ScientificProductionsV2 from "./pages/researchStructures/scientificProduc
 import ImageGallery from "./pages/media/ImageGallery.jsx";
 import AdminSideBar from "./components/adminSideBar/AdminSideBar.jsx";
 import DashBoard from "./pages/admin/DashBoard.jsx";
+import Create from "./pages/admin/Create.jsx";
+import Actualities from "./pages/Actualities.jsx";
+import Actuality from "./pages/Actuality.jsx";
 
 const Layout = () => {
   return (
     <div className="app">
-  <NavBar />
+      <NavBar />
       <Outlet />
       <Footer />
     </div>
@@ -33,7 +36,7 @@ const Layout = () => {
 const LayoutAdmin = () => {
   return (
     <div className="app">
-<AdminSideBar />  
+      <AdminSideBar />
       <Outlet />
     </div>
   );
@@ -46,6 +49,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Landing />,
+      },
+      {
+        path: "/actualities",
+        children: [
+          {
+            path: "/actualities",
+            element: <Actualities />,
+          },
+          {
+            path: "/actualities/:id",
+            element: <Actuality />,
+          },
+        ],
       },
       {
         path: "/chat",
@@ -63,10 +79,11 @@ const router = createBrowserRouter([
         path: "/scientificproductions",
         element: <ScientificProductionsV1 />,
       },
-      ,{
+      ,
+      {
         path: "/gallery/imgs",
-        element: <ImageGallery />
-      }
+        element: <ImageGallery />,
+      },
     ],
   },
   {
@@ -75,15 +92,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <LayoutAdmin />,
     children: [
       {
         path: "/admin",
-        element: <DashBoard />
+        element: <DashBoard />,
       },
       {
-        path: "/admin/addPage",
-        element: <CreatePage />,
+        path: "/admin/research_team",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/create/:name",
+        element: <Create />,
       },
     ],
   },
@@ -96,7 +116,6 @@ function App() {
     <>
       <ColorModeProvider>
         <ChakraProvider theme={theme}>
-
           <RouterProvider router={router} />
         </ChakraProvider>
       </ColorModeProvider>

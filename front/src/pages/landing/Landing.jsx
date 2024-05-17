@@ -3,7 +3,7 @@ import NewsCarrousel from "../../components/NewsCarrousel";
 import SideBar from "../../components/sideBar/SideBar";
 import { useSelector } from "react-redux";
 import Content from "../Content/Content";
-import { Divider, Wrap, WrapItem } from "@chakra-ui/react";
+import { Divider, Wrap, WrapItem, chakra } from "@chakra-ui/react";
 import Testimonial from "../../components/Testimonials";
 import Contact from "../../components/Contact";
 import "./Landing.scss";
@@ -26,10 +26,10 @@ const Landing = () => {
         mx={"auto"}
         borderColor={"primary"}
       />
-      <main dir={language === "ar" ? "rtl" : "ltr"} style={{ display: "flex" }}>
+      <Wrap dir={language === "ar" ? "rtl" : "ltr"} style={{ display: "flex" }}>
         <SideBar />
         <Content />
-      </main>
+      </Wrap>
       <Divider
         _dark={{
           bg: "secondary",

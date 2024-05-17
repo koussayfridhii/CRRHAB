@@ -285,9 +285,9 @@ export default function WithSubnavigation() {
           style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
         >
           <Flex
-            flex={{ base: 1, '2xl': "auto" }}
+            flex={{ base: 1, "2xl": "auto" }}
             ml={{ base: -2 }}
-            display={{ base: "flex", '2xl': "none" }}
+            display={{ base: "flex", "2xl": "none" }}
             align={"center"}
           >
             <IconButton
@@ -307,17 +307,17 @@ export default function WithSubnavigation() {
             flex={{ base: 1 }}
             justify={{
               base: "center",
-              '2xl': "start",
+              "2xl": "start",
             }}
             gap={"1rem"}
           >
-            <Flex display={{ base: "none", '2xl': "flex" }} ml={10}>
+            <Flex display={{ base: "none", "2xl": "flex" }} ml={10}>
               <DesktopNav />
             </Flex>
           </Flex>
 
           <Stack
-            flex={{ base: 1, '2xl': 0 }}
+            flex={{ base: 1, "2xl": 0 }}
             justify={"flex-end"}
             direction={"row"}
             spacing={6}
@@ -362,7 +362,7 @@ export default function WithSubnavigation() {
                 />
               </InputGroup>
             </FormControl>
-            <Box display={{ base: "none", '2xl': "block" }} bg={"primary"}>
+            <Box display={{ base: "none", "2xl": "block" }} bg={"primary"}>
               <Popover
                 trigger={"hover"}
                 placement={"bottom-start"}
@@ -460,7 +460,7 @@ export default function WithSubnavigation() {
             </Box>
             {user ? (
               <Button
-                display={{ base: "none", '2xl': "inline-flex" }}
+                display={{ base: "none", "2xl": "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
                 color={"white"}
@@ -480,7 +480,7 @@ export default function WithSubnavigation() {
               <>
                 <ChakraLink as={Link} to="/login">
                   <Button
-                    display={{ base: "none", '2xl': "inline-flex" }}
+                    display={{ base: "none", "2xl": "inline-flex" }}
                     fontSize={"sm"}
                     fontWeight={600}
                     color={"white"}
@@ -501,7 +501,7 @@ export default function WithSubnavigation() {
                 </ChakraLink>
               </>
             )}
-            <Box display={{ base: "none", '2xl': "flex" }} gap="1">
+            <Box display={{ base: "none", "2xl": "flex" }} gap="1">
               <ThemeToggle />
               <Button onClick={() => dispatch(sizeUpReducer())}>
                 <ZoomInIcon />
@@ -622,7 +622,7 @@ const MobileNav = () => {
       borderStyle={"solid"}
       borderColor="secondary"
       p={4}
-      display={{ '2xl': "none" }}
+      display={{ "2xl": "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
@@ -722,7 +722,7 @@ const MobileNav = () => {
       </Box>
       {user ? (
         <Button
-          display={{ base: "inline-flex", '2xl': "none" }}
+          display={{ base: "inline-flex", "2xl": "none" }}
           fontSize={"sm"}
           fontWeight={600}
           color={"white"}
@@ -742,7 +742,7 @@ const MobileNav = () => {
         <>
           <ChakraLink as={Link} to="/login">
             <Button
-              display={{ base: "inline-flex", '2xl': "none" }}
+              display={{ base: "inline-flex", "2xl": "none" }}
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
@@ -761,7 +761,7 @@ const MobileNav = () => {
           </ChakraLink>
         </>
       )}
-      <Box display={{ base: "flex", '2xl': "none" }} gap="1">
+      <Box display={{ base: "flex", "2xl": "none" }} gap="1">
         <ThemeToggle />
         <Button onClick={() => dispatch(sizeUpReducer())}>
           <ZoomInIcon />
@@ -827,55 +827,55 @@ const NAV_ITEMS = [
     label: { fr: "Accueil", en: "Home", ar: "الاستقبال" },
     href: "/",
   },
-  {
-    label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
-    children: [
-      {
-        label: { fr: "Carte", en: "Map", ar: "الخريطة" },
-        subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
-        href: "/login",
-      },
-      {
-        label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-        subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-        href: "/signup",
-      },
-      {
-        label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-        subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-        href: "/signup",
-      },
-      {
-        label: {
-          fr: "Organisation Scientifique du Centre",
-          en: "Scientific Organization of the Center",
-          ar: "التنظيم العلمي للمركز",
-        },
-        subLabel: {
-          fr: "Organisation Scientifique du Centre",
-          en: "Scientific Organization of the Center",
-          ar: "التنظيم العلمي للمركز",
-        },
-        href: "/signup",
-      },
-      {
-        label: {
-          fr: "Personnels",
-          en: "Team",
-          ar: "الفريق",
-        },
-        subLabel: {
-          fr: "Personnels",
-          en: "Team",
-          ar: "الفريق",
-        },
-        href: "/signup",
-      },
-    ],
-  },
+  // {
+  //   label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
+  //   children: [
+  //     {
+  //       label: { fr: "Carte", en: "Map", ar: "الخريطة" },
+  //       subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
+  //       href: "/login",
+  //     },
+  //     {
+  //       label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+  //       subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+  //       href: "/signup",
+  //     },
+  //     {
+  //       label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+  //       subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+  //       href: "/signup",
+  //     },
+  //     {
+  //       label: {
+  //         fr: "Organisation Scientifique du Centre",
+  //         en: "Scientific Organization of the Center",
+  //         ar: "التنظيم العلمي للمركز",
+  //       },
+  //       subLabel: {
+  //         fr: "Organisation Scientifique du Centre",
+  //         en: "Scientific Organization of the Center",
+  //         ar: "التنظيم العلمي للمركز",
+  //       },
+  //       href: "/signup",
+  //     },
+  //     {
+  //       label: {
+  //         fr: "Personnels",
+  //         en: "Team",
+  //         ar: "الفريق",
+  //       },
+  //       subLabel: {
+  //         fr: "Personnels",
+  //         en: "Team",
+  //         ar: "الفريق",
+  //       },
+  //       href: "/signup",
+  //     },
+  //   ],
+  // },
   {
     label: { fr: "Actualité", en: "News", ar: "المستجدات" },
-    href: "/",
+    href: "/actualities",
   },
   {
     label: {

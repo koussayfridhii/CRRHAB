@@ -127,7 +127,13 @@ const FaqV2 = () => {
       alignItems="center"
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <Box py={12} bg={"background"} rounded="xl" shadow="base" w="100%">
+      <Box
+        py={12}
+        bg={"background"}
+        rounded="xl"
+        shadow="base"
+        w={{ base: "100dvw", "2xl": "100%" }}
+      >
         <Box
           maxW="7xl"
           mx="auto"
