@@ -10,7 +10,6 @@ import {
 import VideoPlayer from "../../videoPlayer/VideoPlayer";
 import { useSelector } from "react-redux";
 const Card = () => {
-  const VideoLink = "../src/assets/videos/landingSidebarVideo.mp4";
   const posterImg =
     "https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
   const title = { fr: "Video", en: "Video", ar: "فيديو" };
@@ -54,7 +53,7 @@ const Card = () => {
             }}
           >
             <Box rounded={"lg"} height={230} width={282} objectFit={"cover"}>
-              <VideoPlayer source={VideoLink} posterImg={posterImg} />
+              <VideoPlayer />
             </Box>
           </Box>
           <Stack pt={10} align={"center"}>

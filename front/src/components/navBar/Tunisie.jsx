@@ -14,7 +14,7 @@ const Tunisie = () => {
       }}
     >
       <div className="logoFlex">
-        <img className="TunisieLogo" src="../src/assets/images/tunisie.png" />
+        <img className="TunisieLogo" src="/assets/images/tunisie.png" />
         <span style={{ fontSize: usedTheme.fontSizes.sm }}>
           {language === "fr" ? (
             <>
@@ -70,10 +70,7 @@ const Tunisie = () => {
           </>
         )}
       </h1>
-      <img
-        className="CRRHABLogo"
-        src="../src/assets/images/logoCRRHABWithName.jpg"
-      />
+      <img className="CRRHABLogo" src="/assets/images/logoCRRHABWithName.jpg" />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import { Icon, InputGroup, InputRightElement } from "@chakra-ui/react";
 
 export default function AutoCompleteMade({
   options,
-  language,
+  language = "fr",
   setFiltredData,
 }) {
   //   const options = ["apple", "appoint", "zap", "cap", "japan"];

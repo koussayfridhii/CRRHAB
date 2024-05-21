@@ -15,7 +15,9 @@ const Create = () => {
         minH={"100dvh"}
         ml={"auto"}
       >
-        <Heading mb={5}>Create {name.replaceAll("_", " ")}</Heading>
+        <Heading mb={5} textTransform={"capitalize"}>
+          Create {name.replaceAll("_", " ")}
+        </Heading>
         <Flex h="85dvh" w={"100%"} justify={"center"} align={"center"}>
           <CreatePage />
         </Flex>

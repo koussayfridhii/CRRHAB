@@ -73,7 +73,7 @@ const Milestones = ({ language, data }) => {
   );
 };
 
-const Card = ({ id, title, language, description }) => {
+const Card = ({ id, title, grade, language, description }) => {
   // For even id show card on left side
   // For odd id show card on right side
   const isEvenId = id % 2 == 0;
@@ -115,7 +115,7 @@ const Card = ({ id, title, language, description }) => {
     >
       <Box>
         <Text fontSize="lg" color={isEvenId ? "teal.400" : "blue.400"}>
-          {title?.[language]}
+          {grade?.[language] || ""}
         </Text>
 
         <VStack spacing={2} mb={3} textAlign="left">

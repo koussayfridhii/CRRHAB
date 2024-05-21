@@ -13,22 +13,74 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
+import { FiSettings, FiMenu } from "react-icons/fi";
+import { FaRegUser, FaImages, FaUserCheck, FaQuestion } from "react-icons/fa";
+import { FaRegNewspaper } from "react-icons/fa6";
+import { BiStats } from "react-icons/bi";
+import { CiTextAlignJustify } from "react-icons/ci";
+import { GiTeamUpgrade, GiMaterialsScience } from "react-icons/gi";
 import {
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-} from "react-icons/fi";
-import { FaRegUser } from "react-icons/fa";
+  MdOutlinePersonSearch,
+  MdOutlineSupervisorAccount,
+} from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
-  { name: "Trending", icon: FiTrendingUp, href: "#" },
-  { name: "Explore", icon: FiCompass, href: "#" },
-  { name: "Favourites", icon: FiStar, href: "#" },
+  { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
+  { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
+  { name: "Stats", icon: BiStats, href: "/admin/stats" },
+  {
+    name: "Scientific Council",
+    icon: MdOutlinePersonSearch,
+    href: "/admin/scientific_council",
+  },
+  {
+    name: "Heads of RDI Structures",
+    icon: MdOutlineSupervisorAccount,
+    href: "/admin/heads_of_rdi_structures",
+  },
+  {
+    name: "Representatives of Researchers",
+    icon: FaUserCheck,
+    href: "/admin/representatives_of_researchers",
+  },
+  {
+    name: "Representative of IRESA",
+    icon: FaUserCheck,
+    href: "/admin/representative_of_IRESA",
+  },
+  {
+    name: "Representatives of agricultural research and higher education establishments",
+    icon: FaUserCheck,
+    href: "/admin/representatives_of_agricultural_research_and_higher_education_establishments",
+  },
+  {
+    name: "Scientific personalities from the academic and scientific research world",
+    icon: FaUserCheck,
+    href: "/admin/scientific_personalities_from_the_academic_and_scientific_research_world",
+  },
+  {
+    name: "Staff",
+    icon: GiTeamUpgrade,
+    href: "/admin/scientific_personalities_from_the_academic_and_scientific_research_world",
+  },
+  {
+    name: "CV",
+    icon: CiTextAlignJustify,
+    href: "/admin/cvs",
+  },
+  {
+    name: "Scientific Productions",
+    icon: GiMaterialsScience,
+    href: "/admin/scientific_productions",
+  },
+  {
+    name: "Frequently Asked Questions",
+    icon: FaQuestion,
+    href: "/admin/frequently_asked_questions",
+  },
   { name: "Settings", icon: FiSettings, href: "#" },
 ];
 
@@ -45,6 +97,7 @@ export default function SimpleSidebar({ children }) {
         borderRight="4px"
         borderRightColor={useColorModeValue("secondary", "blue.700")}
         boxShadow="lg"
+        overflowY="scroll"
       />
       <Drawer
         autoFocus={false}
@@ -91,10 +144,18 @@ const SidebarContent = ({ onClose, ...rest }) => {
           {link.name}
         </NavItem>
       ))}
-      <Flex justify={"center"} align={"center"} mt={5}>
+      <Flex justify={"center"} align={"center"} gap={5} my={5}>
+        <Button
+          bg={"red.500"}
+          color={"white"}
+          _hover={{ bg: "red.300" }}
+          boxShadow={"lg"}
+        >
+          Logout
+        </Button>
         <ThemeToggle />
       </Flex>
-      <Flex
+      {/* <Flex
         justify={"center"}
         align={"center"}
         pos={"absolute"}
@@ -110,7 +171,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           Logout
         </Button>
-      </Flex>
+      </Flex> */}
     </Box>
   );
 };

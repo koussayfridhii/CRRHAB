@@ -576,7 +576,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   const language = useSelector((state) => state.language.language);
   return (
     <Box
-      as={Link}
+      as={href.startsWith("#") ? "a" : Link}
       to={href}
       role={"group"}
       display={"block"}

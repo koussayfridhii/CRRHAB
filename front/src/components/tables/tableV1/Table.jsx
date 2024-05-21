@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export default function Table({ data, headers, language }) {
+export default function Table({ data, headers, language = "fr" }) {
   const dataColor = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("background", "gray.700");
 

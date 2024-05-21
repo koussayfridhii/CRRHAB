@@ -15,10 +15,11 @@ import {
   Tab,
   TabList,
   Tabs,
+  Wrap,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import Faq from "../../components/Faq";
-import FaqV2 from "../../components/FaqV2";
+// import Faq from "../../components/Faq";
+// import FaqV2 from "../../components/FaqV2";
 import StatsV1 from "../../components/stats/statsV1/Stats";
 import { FaCheck } from "react-icons/fa";
 import { LiaDiscourse } from "react-icons/lia";
@@ -30,6 +31,7 @@ import { MdOutlineEditCalendar, MdPersonSearch } from "react-icons/md";
 import { GoPersonFill, GoPerson } from "react-icons/go";
 import { BsPersonCircle } from "react-icons/bs";
 import Milestones from "../../components/Timeline";
+import ProfileCard from "../../components/cards/profileCard/Card";
 
 const Content = () => {
   const language = useSelector((state) => state.language.language);
@@ -119,8 +121,8 @@ const Content = () => {
   const representativesOfResearchersData = [
     {
       title: {
-        fr: "Pr Mohamed BRAHAM",
-        en: "Pr Mohamed BRAHAM",
+        fr: "Mohamed BRAHAM",
+        en: "Mohamed BRAHAM",
         ar: "الأستاذ محمد براهم",
       },
       description: {
@@ -128,12 +130,22 @@ const Content = () => {
         en: "Body A",
         ar: "القسم 1",
       },
+      grade: {
+        fr: "Professeur",
+        en: "Professor",
+        ar: "أستاذ",
+      },
     },
     {
       title: {
-        fr: "MA Hela CHIKH ROUHOU",
-        en: "MA Hela CHIKH ROUHOU",
-        ar: "الأستاذة المساعدة هلا شيخ روحو",
+        fr: "Hela CHIKH ROUHOU",
+        en: "Hela CHIKH ROUHOU",
+        ar: "هلا شيخ روحو",
+      },
+      grade: {
+        fr: "Maitre Assistant",
+        en: "Assistant Professor",
+        ar: "أستاذة مساعدة",
       },
       description: {
         fr: "Corps B",
@@ -143,15 +155,133 @@ const Content = () => {
     },
     {
       title: {
-        fr: "MA Chokri BAYOUDH",
-        en: "MA Chokri BAYOUDH",
-        ar: "الأستاذ المساعد شكري بيوض",
+        fr: "Chokri BAYOUDH",
+        en: "Chokri BAYOUDH",
+        ar: "شكري بيوض",
+      },
+      grade: {
+        fr: "Maitre Assistant",
+        en: "Assistant Professor",
+        ar: "أستاذ مساعد",
       },
       description: {
         fr: "Corps B",
         en: "Body B",
         ar: "القسم 2",
       },
+    },
+  ];
+  const representativeOfIresa = {
+    name: {
+      fr: "Rajouene MAJDOUD",
+      en: "Rajouene MAJDOUD",
+      ar: "رجوان مجدود",
+    },
+    grade: {
+      fr: "Professeur",
+      en: "Professor",
+      ar: "أستاذ",
+    },
+    description: {
+      fr: "Directeur de L'université de Sousse",
+      en: "Director of the University of Sousse",
+      ar: "مدير جامعة سوسة",
+    },
+    socialMedia: "https://www.researchgate.net/profile/Rajouene-Majdoub",
+    profilePic:
+      "https://i1.rgstatic.net/ii/profile.image/1131109517672449-1646688932811_Q128/Rajouene-Majdoub.jpg",
+  };
+  const representativesOfAgriculturalResearchAndHigherEducationEstablishments =
+    [
+      {
+        title: {
+          fr: "Walid HAMADA",
+          en: "Walid Hamada",
+          ar: "وليد حمادة",
+        },
+        grade: {
+          fr: "Professeur",
+          en: "Professor",
+          ar: "أستاذ",
+        },
+        description: {
+          fr: "INAT",
+          en: "INAT",
+          ar: "INAT",
+        },
+      },
+      {
+        title: {
+          fr: "Thouraya RHIM",
+          en: "Thouraya Rhim",
+          ar: "ثريا ريم",
+        },
+        grade: {
+          fr: "Docteur",
+          en: "Doctor",
+          ar: "دكتور",
+        },
+        description: {
+          fr: "INRAT",
+          en: "INRAT",
+          ar: "INRAT",
+        },
+      },
+      {
+        title: {
+          fr: "Lamia HAMROUNI",
+          en: "Lamia Hamrouni",
+          ar: "لاميا الحمروني",
+        },
+        grade: {
+          fr: "Professeur",
+          en: "Professor",
+          ar: "أستاذ",
+        },
+        description: {
+          fr: "INRGREF",
+          en: "INRGREF",
+          ar: "INRGREF",
+        },
+      },
+      {
+        title: {
+          fr: "Khaled Hibar",
+          en: "Khaled Hibar",
+          ar: "خالد حبار",
+        },
+        grade: {
+          fr: "Docteur",
+          en: "Doctor",
+          ar: "دكتور",
+        },
+        description: {
+          fr: "IO",
+          en: "IO",
+          ar: "IO",
+        },
+      },
+    ];
+  const scientificPersonalitiesFromTheAcademicAndScientificResearchWorld = [
+    {
+      name: {
+        fr: "Olfa AYARI",
+        en: "Olfa AYARI",
+        ar: "ألفة عياري",
+      },
+      grade: {
+        fr: "Docteur",
+        en: "Doctor",
+        ar: "دكتورة",
+      },
+      description: {
+        fr: `maître assistante en Biologie Végétale à l'Institut Supérieur de Biotechnologie de Monastir. Je fais partie du Département des Sciences du Vivant et Biotechnologie. Je suis également la coordinatrice de la "Licence co-construite en Biotechnologie Végétale et Valorisation (BVV)" et responsable du groupe pédagogique Biologie Végétale.`,
+        en: `Assistant Professor in Plant Biology at the Higher Institute of Biotechnology of Monastir. I am part of the Department of Life Sciences and Biotechnology. I am also the coordinator of the "Joint Degree in Plant Biotechnology and Valorization (BVV)" and responsible for the Plant Biology teaching group.`,
+        ar: `أستاذة مساعدة في علم الأحياء النباتية في المعهد العالي للتكنولوجيا الحيوية بالمنستير. أنا جزء من قسم علوم الحياة والتكنولوجيا الحيوية. أنا أيضًا منسقة "الإجازة المشتركة في التكنولوجيا الحيوية النباتية والتثمين (BVV)" ومسؤولة عن مجموعة تدريس علم الأحياء النباتية.`,
+      },
+      socialMedia: "https://www.linkedin.com/in/olfa-ayari-2bb76b208/",
+      profilePic:
+        "https://media.licdn.com/dms/image/C5603AQFjeSGmsCyadQ/profile-displayphoto-shrink_800_800/0/1614810607828?e=1721260800&v=beta&t=jnpPQmXDUcJWqb2LpSDlKba7jnVBqyYe15MWRwwa5WA",
     },
   ];
   return (
@@ -240,50 +370,52 @@ const Content = () => {
             ? "ORGANISATION SCIENTIFIQUE DU CENTRE"
             : "التنظيم العلمي للمركز"}
         </Heading>
-        <Tabs colorScheme="green" _dark={{ colorScheme: "blue" }}>
+        <Tabs isFitted colorScheme="green" _dark={{ colorScheme: "blue" }}>
           <TabList>
-            <Tab>
-              {language === "en"
-                ? "Scientific Council"
-                : language === "fr"
-                ? "Conseil Scientifique"
-                : "المجلس العلمي"}
-            </Tab>
-            <Tab>
-              {language === "en"
-                ? "Managers of specialized units"
-                : language === "fr"
-                ? "Responsables des unités spécialisées"
-                : "مدراء الوحدات المتخصصة"}
-            </Tab>
-            <Tab>
-              {language === "en"
-                ? "Representatives of Researchers (elected members)"
-                : language === "fr"
-                ? "Représentants des Chercheurs (Membres élus)"
-                : "ممثلو الباحثين (أعضاء منتخبون)"}
-            </Tab>
-            <Tab>
-              {language === "en"
-                ? "Representative of IRESA"
-                : language === "fr"
-                ? "Représentant de l’IRESA"
-                : "ممثل إيريزا"}
-            </Tab>
-            <Tab>
-              {language === "en"
-                ? "Representatives of agricultural research and higher education establishments"
-                : language === "fr"
-                ? "Représentants des établissements de la recherche et l’enseignement supérieur agricoles"
-                : "ممثلو مؤسسات البحث الزراعي والتعليم العالي"}
-            </Tab>
-            <Tab>
-              {language === "en"
-                ? "Representatives of agricultural research and higher education establishments"
-                : language === "fr"
-                ? "Personnalités scientifiques du monde universitaire et de la recherche scientifique"
-                : "ممثلو مؤسسات البحث الزراعي والتعليم العالي"}
-            </Tab>
+            <Wrap>
+              <Tab>
+                {language === "en"
+                  ? "Scientific Council"
+                  : language === "fr"
+                  ? "Conseil Scientifique"
+                  : "المجلس العلمي"}
+              </Tab>
+              <Tab>
+                {language === "en"
+                  ? "Managers of specialized units"
+                  : language === "fr"
+                  ? "Responsables des unités spécialisées"
+                  : "مدراء الوحدات المتخصصة"}
+              </Tab>
+              <Tab>
+                {language === "en"
+                  ? "Representatives of Researchers (elected members)"
+                  : language === "fr"
+                  ? "Représentants des Chercheurs (Membres élus)"
+                  : "ممثلو الباحثين (أعضاء منتخبون)"}
+              </Tab>
+              <Tab>
+                {language === "en"
+                  ? "Representative of IRESA"
+                  : language === "fr"
+                  ? "Représentant de l’IRESA"
+                  : "ممثل إيريزا"}
+              </Tab>
+              <Tab>
+                {language === "en"
+                  ? "Representatives of agricultural research and higher education establishments"
+                  : language === "fr"
+                  ? "Représentants des établissements de la recherche et l’enseignement supérieur agricoles"
+                  : "ممثلو مؤسسات البحث الزراعي والتعليم العالي"}
+              </Tab>
+              <Tab>
+                {language === "en"
+                  ? "Scientific personalities from the academic and scientific research world"
+                  : language === "fr"
+                  ? "Personnalités scientifiques du monde universitaire et de la recherche scientifique"
+                  : "الشخصيات العلمية من العالم الجامعي والبحث العلمي"}
+              </Tab>
+            </Wrap>
           </TabList>
 
           <TabPanels>
@@ -757,18 +889,63 @@ const Content = () => {
               />
             </TabPanel>
             <TabPanel>
-              <p>four!</p>
+              <chakra.h2
+                fontSize={"xxxl"}
+                color={"primary"}
+                fontWeight={"bold"}
+                my={5}
+              >
+                {language === "en"
+                  ? "Representative of IRESA"
+                  : language === "fr"
+                  ? "Représentant de l’IRESA"
+                  : "ممثل إيريزا"}
+              </chakra.h2>
+              <ProfileCard data={representativeOfIresa} language={language} />
             </TabPanel>
             <TabPanel>
-              <p>five!</p>
+              <chakra.h2
+                fontSize={"xxxl"}
+                color={"primary"}
+                fontWeight={"bold"}
+                my={5}
+              >
+                {language === "en"
+                  ? "Representatives of agricultural research and higher education establishments"
+                  : language === "fr"
+                  ? "Représentants des établissements de la recherche et l’enseignement supérieur agricoles"
+                  : "ممثلو مؤسسات البحث الزراعي والتعليم العالي"}
+              </chakra.h2>
+              <Milestones
+                data={
+                  representativesOfAgriculturalResearchAndHigherEducationEstablishments
+                }
+                language={language}
+              />
             </TabPanel>
             <TabPanel>
-              <p>six!</p>
+              <chakra.h2
+                fontSize={"xxxl"}
+                color={"primary"}
+                fontWeight={"bold"}
+                my={5}
+              >
+                {language === "en"
+                  ? "Scientific personalities from the academic and scientific research world"
+                  : language === "fr"
+                  ? "Personnalités scientifiques du monde universitaire et de la recherche scientifique"
+                  : "الشخصيات العلمية من العالم الجامعي والبحث العلمي"}
+              </chakra.h2>
+              {scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
+                (item, index) => (
+                  <ProfileCard key={index} data={item} language={language} />
+                )
+              )}
             </TabPanel>
           </TabPanels>
         </Tabs>
       </section>
-      <section>
+      {/* <section>
         <Heading
           _dark={{
             bg: "secondary",
@@ -785,9 +962,8 @@ const Content = () => {
         >
           {sectionHeaders[2]?.title?.[language]}
         </Heading>
-        {/* <Faq /> */}
         <FaqV2 />
-      </section>
+      </section> */}
     </Box>
   );
 };

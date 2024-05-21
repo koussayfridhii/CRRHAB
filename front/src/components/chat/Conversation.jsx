@@ -24,7 +24,7 @@ import io from "socket.io-client";
 // custom hooks
 // import useUploadImage from "../../hooks/useUploadImage";
 
-import notificationSound from "../../assets/sounds/notification.mp3";
+import notificationSound from "/assets/sounds/notification.mp3";
 import ConnectedUsers from "./ConnectedUsers";
 
 const Conversation = ({ currentConversationId, setCurrentConversationId }) => {

@@ -102,6 +102,54 @@ const router = createBrowserRouter([
         element: <DashBoard />,
       },
       {
+        path: "/admin/gallery",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/stats",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/scientific_council",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/heads_of_rdi_structures",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/representatives_of_researchers",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/representative_of_IRESA",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/representatives_of_agricultural_research_and_higher_education_establishments",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/scientific_personalities_from_the_academic_and_scientific_research_world",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/staff",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/cvs",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/scientific_productions",
+        element: <DashBoard />,
+      },
+      {
+        path: "/admin/actualities",
+        element: <DashBoard />,
+      },
+      {
         path: "/admin/create/:name",
         element: <Create />,
       },

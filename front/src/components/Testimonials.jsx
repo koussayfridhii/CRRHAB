@@ -10,7 +10,7 @@ export default function Testimonial() {
       align={"center"}
       direction={"column"}
       flex={1}
-      maxW={"600px"}
+      maxW={"500px"}
     >
       <Text
         fontSize={{ base: "xl", md: "2xl" }}
