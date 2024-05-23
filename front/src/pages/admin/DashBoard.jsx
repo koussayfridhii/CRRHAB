@@ -142,7 +142,12 @@ const DashBoard = () => {
         </Heading>
         {/* <ResearchTeam statsHeader={false} add={true} /> */}
         {/* <AutoCompleteMade options={data} setFiltredData={setFiltredData} /> */}
-        <Button as={Link} mb={5} ml={"95%"} to="/admin/create/research_Team">
+        <Button
+          as={Link}
+          mb={5}
+          ml={"95%"}
+          to={`/admin/create/${pathname.replace("/admin/", "")}`}
+        >
           Add
         </Button>
         <Table data={data} headers={pageData.dataHeaders} />

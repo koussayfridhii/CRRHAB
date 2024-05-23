@@ -21,6 +21,7 @@ const faqsRouter = require("./routes/faq.route");
 const contactUsRouter = require("./routes/contactUs.route");
 const surveysRouter = require("./routes/survey.route");
 const messagesRouter = require("./routes/message.route");
+const searchAllRouter = require("./routes/search.route");
 
 //initializing app(express)
 // var app = express();
@@ -67,4 +68,5 @@ app.use("/api", [
   faqsRouter,
   surveysRouter,
   messagesRouter,
+  searchAllRouter,
 ]);

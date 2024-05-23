@@ -73,7 +73,7 @@ const darkTheme = {
   },
 };
 const initialState = {
-  colorMode: localStorage.getItem("chakra-ui-color-mode"), // Initial color mode
+  colorMode: localStorage.getItem("chakra-ui-color-mode") || "light", // Initial color mode
   theme:
     localStorage.getItem("chakra-ui-color-mode") === "dark"
       ? darkTheme

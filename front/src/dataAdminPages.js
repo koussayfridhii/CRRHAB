@@ -4,33 +4,33 @@ const pages = [
     dataHeaders: [
       {
         title: {
-          ar: "",
+          ar: "الدرجة",
           fr: "Grade",
-          en: "",
+          en: "Grade",
         },
         format: "text", //text, date, file ...
       },
       {
         title: {
-          ar: "",
+          ar: "الاسم",
           fr: "name",
-          en: "",
+          en: "Name",
         },
         format: "text", //text, date, file ...
       },
       {
         title: {
-          ar: "",
+          ar: "البريد الإلكتروني",
           fr: "email",
-          en: "",
+          en: "Email",
         },
         format: "email", //text, date, file ...
       },
       {
         title: {
-          ar: "",
+          ar: "Orcid",
           fr: "Orcid",
-          en: "",
+          en: "Orcid",
         },
         format: "text", //text, date, file ...
       },
@@ -38,9 +38,9 @@ const pages = [
     stats: [
       {
         title: {
-          ar: "",
+          ar: "عدد المنشورات",
           fr: "Nombre de publications",
-          en: "",
+          en: "Number of publications",
         },
       },
     ],

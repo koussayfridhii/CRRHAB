@@ -14,6 +14,8 @@ const postFaq = async (req, res) => {
     return res.status(201).json({
       message: "faq added successfully!",
       faqId: createdFaq._id,
+      success: true,
+      error: false,
     });
   } catch (error) {
     res
@@ -27,7 +29,7 @@ const getFaq = async (req, res) => {
     const faq = await faqModel.find();
     return res
       .status(201)
-      .json({ message: "all found faq!", faq, success: true });
+      .json({ message: "all found faq!", faq, success: true, error: false });
   } catch (error) {
     res
       .status(500)
