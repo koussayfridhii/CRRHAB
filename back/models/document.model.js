@@ -2,8 +2,13 @@ const mongoose = require("mongoose");
 
 const documentSchema = mongoose.Schema({
   name: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   type: {
     type: String,
@@ -13,8 +18,13 @@ const documentSchema = mongoose.Schema({
     required: true,
   },
   category: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   createdAt: {
     type: Date,

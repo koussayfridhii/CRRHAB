@@ -2,20 +2,40 @@ const mongoose = require("mongoose");
 
 const searchStationSchema = mongoose.Schema({
   name: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   address: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   city: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   zip: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   phone: {
     type: String,

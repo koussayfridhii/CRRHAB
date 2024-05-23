@@ -3,12 +3,22 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
     fullName: {
-      type: String,
+      type: Object,
       required: true,
+      properties: {
+        fr: { type: String },
+        ar: { type: String },
+        en: { type: String },
+      },
     },
     username: {
-      type: String,
+      type: Object,
       required: true,
+      properties: {
+        fr: { type: String },
+        ar: { type: String },
+        en: { type: String },
+      },
     },
     email: {
       type: String,
@@ -40,35 +50,39 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
-    additional: {
-      type: mongoose.Schema.Types.Mixed,
+    grade: {
+      type: Object,
+      required: false,
+      properties: {
+        fr: { type: String },
+        ar: { type: String },
+        en: { type: String },
+      },
     },
-    additional2: {
-      type: mongoose.Schema.Types.Mixed,
+    socialMedia: {
+      type: String,
+      required: false,
     },
-    additional3: {
-      type: mongoose.Schema.Types.Mixed,
+    description: {
+      type: Object,
+      required: false,
+      properties: {
+        fr: { type: String },
+        ar: { type: String },
+        en: { type: String },
+      },
     },
-    additional4: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-    additional5: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-    additional6: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-    additional7: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-    additional8: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-    additional9: {
-      type: mongoose.Schema.Types.Mixed,
+    affiliation: {
+      type: Object,
+      required: true,
+      properties: {
+        fr: { type: String },
+        ar: { type: String },
+        en: { type: String },
+      },
     },
   },
   { timestamps: true }
 );
 
-module.exports.userModel = mongoose.model("users", userSchema); // Export both schemas
+module.exports.userModel = mongoose.model("users", userSchema);

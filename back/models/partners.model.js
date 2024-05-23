@@ -2,8 +2,13 @@ const mongoose = require("mongoose");
 
 const partnersSchema = mongoose.Schema({
   name: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   link: {
     type: String,

@@ -2,12 +2,22 @@ const mongoose = require("mongoose");
 
 const eventSchema = new mongoose.Schema({
   title: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   description: {
-    type: String,
-    required: false,
+    type: Object,
+    required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   link: {
     type: String,
@@ -18,9 +28,13 @@ const eventSchema = new mongoose.Schema({
     required: false,
   },
   type: {
-    type: String,
+    type: Object,
     required: true,
-    default: "text",
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
   date: {
     type: Date,

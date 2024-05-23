@@ -20,10 +20,23 @@ const responseSchema = new mongoose.Schema({
       },
       answer: {
         // Handle both predefined answer (ObjectId) and open ended answer (text)
-        type: String,
-        default: null,
+        type: Object,
+        required: true,
+        properties: {
+          fr: { type: String },
+          ar: { type: String },
+          en: { type: String },
+        },
       },
-      answerText: String, // Optional for open ended answers
+      answerText: {
+        type: Object,
+        required: true,
+        properties: {
+          fr: { type: String },
+          ar: { type: String },
+          en: { type: String },
+        },
+      }, // Optional for open ended answers
     },
   ],
 });

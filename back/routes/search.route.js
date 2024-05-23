@@ -49,7 +49,13 @@ router.get("/search", async (req, res) => {
 
   try {
     // Create a query object to search in all string fields of the documents
-    const query = { $text: { $search: searchTerm } };
+    const query = {
+      $or: [
+        { $text: { $search: searchTerm } },
+        { question: { $regex: searchTerm, $options: "i" } },
+        { answer: { $regex: searchTerm, $options: "i" } },
+      ],
+    };
 
     // Search all collections using the query
     const results = await searchAllCollections(query);

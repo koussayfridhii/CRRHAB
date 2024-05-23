@@ -6,11 +6,31 @@ const mediaSchema = new mongoose.Schema({
     required: true,
   },
   title: {
-    type: String,
-    required: true,
+    // Object containing fields for different languages
+    fr: {
+      type: String,
+      required: true,
+    },
+    ar: {
+      type: String,
+      required: true,
+    },
+    en: {
+      type: String,
+      required: true,
+    },
   },
   description: {
-    type: String,
+    // Object containing fields for different languages
+    fr: {
+      type: String,
+    },
+    ar: {
+      type: String,
+    },
+    en: {
+      type: String,
+    },
   },
 });
 module.exports.mediaModel = mongoose.model("media", mediaSchema);

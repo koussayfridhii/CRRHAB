@@ -6,8 +6,13 @@ const answerSchema = new mongoose.Schema({
     required: true,
   },
   answerText: {
-    type: String,
+    type: Object,
     required: true,
+    properties: {
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
+    },
   },
 });
 
