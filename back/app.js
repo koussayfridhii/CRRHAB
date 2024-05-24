@@ -54,26 +54,7 @@ server.listen(process.env.Port, () => {
   console.log(`Server Running on port ${process.env.PORT}`);
 });
 // module.exports = app;
-app.use("/api", [
-  pagesRouter,
-  userRouter,
-  formRouter,
-  mediaRouter,
-  newsRouter,
-  eventsRouter,
-  searchStationsRouter,
-  searchStructuresRouter,
-  partnersRouter,
-  documentsRouter,
-  linksRouter,
-  contactUsRouter,
-  faqsRouter,
-  surveysRouter,
-  messagesRouter,
-  searchAllRouter,
-  ScientificCouncilMembersRouter,
-  statsRouter,
-]);
+app.use("/api", [pagesRouter]);
 app.get("/", (req, res) => {
   res.json("this is working");
 });
