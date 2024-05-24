@@ -1,7 +1,8 @@
 const { pageModel } = require("../models/pages.model");
 const getPages = async (req, res) => {
-  const pages = await pageModel.find(); // Find all documents in the 'Page' collection
-  await res.status(200).json(pages);
+  await res.json("pages");
+  // const pages = await pageModel.find(); // Find all documents in the 'Page' collection
+  // await res.status(200).json(pages);
 };
 const addPage = async (req, res) => {
   try {
