@@ -1,4 +1,17 @@
 {
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+
+  "routes": [
+    {
+      "src": "/(.*).html",
+      "dest": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).(html|js|css)",
@@ -8,12 +21,6 @@
           "value": "no-store"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*).html",
-      "dest": "/index.html"
     }
   ]
 }
