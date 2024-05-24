@@ -4,7 +4,9 @@ const { pagesController } = require("../controllers/pages.controller");
 const passport = require("passport");
 const { rolesMiddleware } = require("../middlewares/role");
 /* GET users listing. */
-router.get("/pages", pagesController.getPages);
+router.get("/pages", (req, res) => {
+  res.json("hello pages");
+});
 router.post(
   "/pages",
   passport.authenticate("jwt", { session: false }),
