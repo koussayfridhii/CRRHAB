@@ -43,14 +43,6 @@ require("./middlewares/passport")(passport);
 //routes usage
 
 server.listen(process.env.Port, () => {
-  mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-      console.log("DB Connected");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   console.log(`Server Running on port ${process.env.PORT}`);
 });
 // module.exports = app;
@@ -75,5 +67,12 @@ app.use("/api", [
   statsRouter,
 ]);
 app.get("/", (req, res) => {
-  res.json("this is working");
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      res.json("DB Connected");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
