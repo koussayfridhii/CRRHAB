@@ -4,3 +4,4 @@ package-lock.json
 
 # Optional: IDE-specific temporary files
 *.idea/
+.vercel

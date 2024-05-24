@@ -74,6 +74,6 @@ app.use("/api", [
   ScientificCouncilMembersRouter,
   statsRouter,
 ]);
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json("this is working");
 });
