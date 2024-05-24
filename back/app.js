@@ -23,6 +23,7 @@ const surveysRouter = require("./routes/survey.route");
 const messagesRouter = require("./routes/message.route");
 const searchAllRouter = require("./routes/search.route");
 const ScientificCouncilMembersRouter = require("./routes/scientificCounciMembers.route");
+const statsRouter = require("./routes/stats.route");
 
 //initializing app(express)
 // var app = express();
@@ -71,6 +72,7 @@ app.use("/api", [
   messagesRouter,
   searchAllRouter,
   ScientificCouncilMembersRouter,
+  statsRouter,
 ]);
 app.get("/", (req, res) => {
   res.json("this is working");
