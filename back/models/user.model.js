@@ -1,24 +1,16 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     fullName: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      ar: { type: String },
+      fr: { type: String },
+      en: { type: String },
     },
     username: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      ar: { type: String },
+      fr: { type: String },
+      en: { type: String },
     },
     email: {
       type: String,
@@ -51,35 +43,22 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
     grade: {
-      type: Object,
-      required: false,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      ar: { type: String },
+      fr: { type: String },
+      en: { type: String },
     },
     socialMedia: {
       type: String,
-      required: false,
     },
     description: {
-      type: Object,
-      required: false,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      ar: { type: String },
+      fr: { type: String },
+      en: { type: String },
     },
     affiliation: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      ar: { type: String },
+      fr: { type: String },
+      en: { type: String },
     },
   },
   { timestamps: true }

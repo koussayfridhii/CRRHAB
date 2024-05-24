@@ -13,6 +13,9 @@ import {
   Button,
   Select,
   Checkbox,
+  FormControl,
+  FormLabel,
+  Wrap,
 } from "@chakra-ui/react";
 // icons
 import LoginIcon from "@mui/icons-material/Login";
@@ -25,25 +28,63 @@ const Login = () => {
   let usedTheme = useSelector((state) => state.colorMode.theme);
   const [url, setUrl] = useState("");
   const [data, setData] = useState({
-    fullName: "",
-    username: "",
+    fullName: {
+      ar: "",
+      fr: "",
+      en: "",
+    },
+    username: {
+      ar: "",
+      fr: "",
+      en: "",
+    },
     email: "",
+    gender: "",
+    birthDate: "",
     password: "",
     repeat_password: "",
     role: "user",
-    birthDate: "",
-    gender: "",
-    news: true,
     profilePic: "",
+    news: true,
+    grade: {
+      ar: "",
+      fr: "",
+      en: "",
+    },
+    socialMedia: "",
+    description: {
+      ar: "",
+      fr: "",
+      en: "",
+    },
+    affiliation: {
+      ar: "",
+      fr: "",
+      en: "",
+    },
   });
   const [loading, setLoading] = useState(false);
   const dataHandler = (e) => {
     e.preventDefault();
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    if (name.includes(".")) {
+      const [parent, child] = name.split(".");
+      setData((prevData) => ({
+        ...prevData,
+        [parent]: {
+          ...prevData[parent],
+          [child]: value,
+        },
+      }));
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+    console.log(data);
   };
+
   useEffect(() => {
     setData({ ...data, profilePic: url });
   }, [url]);
@@ -56,7 +97,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     await axios
-      .post(`http://localhost:5000/api/users/signup`, data)
+      .post(`https://crrhab-3ofe.vercel.app/api/users/signup`, data)
       .then((res) => {
         setLoading(false);
         dispatch(login(res.data));
@@ -68,7 +109,7 @@ const Login = () => {
       });
   };
   return (
-    <Flex h="100vh" alignItems="center" justifyContent="center">
+    <Flex minH="100vh" p={15} alignItems="center" justifyContent="center">
       <Flex
         flexDirection="column"
         bg="background"
@@ -77,25 +118,164 @@ const Login = () => {
         boxShadow="dark-lg"
         border="2px"
         borderColor="secondary"
-        width={"30vw"}
+        width={{ base: "full", "2xl": "50vw" }}
       >
         <Heading mb={6}>Sign Up</Heading>
-        <Input
-          placeholder="Full Name"
-          type="string"
-          variant="filled"
-          mb={3}
-          name="fullName"
-          onChange={dataHandler}
-        />
-        <Input
-          placeholder="userName"
-          type="string"
-          variant="filled"
-          mb={3}
-          name="username"
-          onChange={dataHandler}
-        />
+        <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="nomComplet"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Nom Complet
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="fullName.fr"
+              id="nomComplet"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="fullName.en"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Full Name
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="fullName.en"
+              id="fullName"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"} dir="rtl">
+            <FormLabel
+              htmlFor="fullNameAr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              الاسم كامل
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="fullName.ar"
+              id="fullNameAr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+        </Wrap>
+        <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="userNameFr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              nom d'utilisateur
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="username.fr"
+              id="userNameFr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="userName"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              userName
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="username.en"
+              id="userName"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"} dir="rtl">
+            <FormLabel
+              htmlFor="userNameAr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              اسم المستخدم
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="username.ar"
+              id="userNameAr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+              my={2}
+            />
+          </FormControl>
+        </Wrap>
         <Input
           placeholder="johndoe@gmail.com"
           type="email"
@@ -152,6 +332,170 @@ const Login = () => {
           name="repeat_password"
           onChange={dataHandler}
         />
+        <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="gradeFr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Grade
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="grade.fr"
+              id="gradeFr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="Grade"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Grade
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="grade.en"
+              id="Grade"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"} dir="rtl">
+            <FormLabel
+              htmlFor="gradeAr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              الرتبة
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="grade.ar"
+              id="gradeAr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+              my={2}
+            />
+          </FormControl>
+        </Wrap>
+        <Input
+          placeholder=""
+          type="text"
+          variant="filled"
+          mb={3}
+          name="socialMedia"
+          onChange={dataHandler}
+        />
+        <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="descriptionFr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Description
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="description.fr"
+              id="descriptionFr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"}>
+            <FormLabel
+              htmlFor="description"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              description
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="description.en"
+              id="description"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          <FormControl maxW={"250px"} dir="rtl">
+            <FormLabel
+              htmlFor="descriptionAr"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              الوصف
+            </FormLabel>
+            <Input
+              onChange={dataHandler}
+              type="text"
+              name="description.ar"
+              id="descriptionAr"
+              mt={1}
+              focusBorderColor="secondary"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+              my={2}
+            />
+          </FormControl>
+        </Wrap>
         <Checkbox
           onChange={() => {
             setData({
@@ -165,7 +509,7 @@ const Login = () => {
         >
           News
         </Checkbox>
-        <Flex gap={5} align={"center"} justify={"center"}>
+        <Wrap gap={5} align={"center"} justify={"center"}>
           <Button
             bg="primary"
             color="text"
@@ -190,7 +534,7 @@ const Login = () => {
           >
             <Link to="/login">Login</Link>
           </Button>
-        </Flex>
+        </Wrap>
       </Flex>
     </Flex>
   );

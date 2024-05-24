@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { userModel } = require("../models/user.model");
-const { signupValidation } = require("../lib/validators/signup.validator");
+// const { signupValidation } = require("../lib/validators/signup.validator");
 // TODO: add account restoration
 // TODO: add account update
 // TODO: add account deactivation
@@ -48,8 +48,7 @@ const signIn = async (req, res) => {
 //signUp Controller
 const signUp = async (req, res) => {
   try {
-    const values = await signupValidation.schema.validateAsync(req.body);
-    console.log(values);
+    // const values = await signupValidation.schema.validateAsync(req.body);
     const user = await userModel.findOne({ email: req.body.email });
 
     if (user) {
