@@ -77,3 +77,6 @@ app.use("/api", [
 app.get("/", (req, res) => {
   res.json("this is working");
 });
+app.get("/test", (req, res) => {
+  res.json("this is working");
+});
