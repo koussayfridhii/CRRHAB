@@ -59,7 +59,7 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
   const sendMsg = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/messages/send/${currentConversationId._id}`,
+        `https://crrhab-3ofe.vercel.app/api/messages/send/${currentConversationId._id}`,
         {
           message: text,
         },
@@ -76,9 +76,12 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
   const fun = async () => {
     if (!currentConversationId._id) return;
     await axios
-      .get(`http://localhost:5000/api/messages/${currentConversationId._id}`, {
-        headers,
-      })
+      .get(
+        `https://crrhab-3ofe.vercel.app/api/messages/${currentConversationId._id}`,
+        {
+          headers,
+        }
+      )
       .then((res) => {
         if (res.data.success) {
           setData(res.data.messages);
@@ -111,7 +114,7 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
 
   useEffect(() => {
     if (token) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://crrhab-3ofe.vercel.app", {
         query: {
           userId,
         },
