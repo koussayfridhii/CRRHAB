@@ -45,7 +45,7 @@ export default function Table({ data, headers, language = "fr" }) {
             >
               <SimpleGrid
                 spacingY={3}
-                columns={{ base: 1, md: 4 }}
+                columns={{ base: 1, md: 5 }}
                 w={{ base: 120, md: "full" }}
                 textTransform="uppercase"
                 bg={bg2}
@@ -58,6 +58,7 @@ export default function Table({ data, headers, language = "fr" }) {
               >
                 <chakra.span>{headers.grade[language]}</chakra.span>
                 <chakra.span>{headers.name[language]}</chakra.span>
+                <chakra.span>{headers.speciality[language]}</chakra.span>
                 <chakra.span>{headers.email[language]}</chakra.span>
                 <chakra.span textAlign={{ md: "right" }}>
                   {headers.orcid[language]}
@@ -65,7 +66,7 @@ export default function Table({ data, headers, language = "fr" }) {
               </SimpleGrid>
               <SimpleGrid
                 spacingY={3}
-                columns={{ base: 1, md: 4 }}
+                columns={{ base: 1, md: 5 }}
                 w="full"
                 py={2}
                 px={10}
@@ -74,6 +75,7 @@ export default function Table({ data, headers, language = "fr" }) {
                 <chakra.span>{element.grade[language]}</chakra.span>
 
                 <chakra.span>{element.name[language]}</chakra.span>
+                <chakra.span>{element.speciality[language]}</chakra.span>
                 <chakra.span
                   textOverflow="ellipsis"
                   overflow="hidden"

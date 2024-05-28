@@ -19,6 +19,7 @@ export default function AutoCompleteMade({
   let data = [];
   options.forEach((option) => {
     data.push(option.name?.[language]);
+    data.push(option.speciality?.[language]);
     data.push(option.email);
     data.push(option.grade?.[language]);
     data.push(option.orcid);
@@ -34,6 +35,9 @@ export default function AutoCompleteMade({
         option.name?.[language].toLowerCase().includes(text.toLowerCase()) ||
         option.email.toLowerCase().includes(text.toLowerCase()) ||
         option.grade?.[language].toLowerCase().includes(text.toLowerCase()) ||
+        option.speciality?.[language]
+          .toLowerCase()
+          .includes(text.toLowerCase()) ||
         option.orcid.toLowerCase().includes(text.toLowerCase())
       );
     });

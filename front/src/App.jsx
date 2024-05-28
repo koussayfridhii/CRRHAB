@@ -23,6 +23,10 @@ import DashBoard from "./pages/admin/DashBoard.jsx";
 import Create from "./pages/admin/Create.jsx";
 import Actualities from "./pages/Actualities.jsx";
 import Actuality from "./pages/Actuality.jsx";
+import Map from "./pages/Map.jsx";
+import History from "./pages/History.jsx";
+import Missions from "./pages/Missions.jsx";
+import ScientificOrganization from "./pages/ScientificOrganization.jsx";
 
 const Layout = () => {
   return (
@@ -83,6 +87,27 @@ const router = createBrowserRouter([
       {
         path: "/gallery/imgs",
         element: <ImageGallery />,
+      },
+      {
+        path: "/presentation",
+        children: [
+          {
+            path: "/presentation/map",
+            element: <Map />,
+          },
+          {
+            path: "/presentation/history",
+            element: <History />,
+          },
+          {
+            path: "/presentation/missions",
+            element: <Missions />,
+          },
+          {
+            path: "/presentation/scientific_organization",
+            element: <ScientificOrganization />,
+          },
+        ],
       },
     ],
   },

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const ResearchTeam = ({ add = false, statsHeader = true }) => {
   const language = useSelector((state) => state.language.language);
   const [filtredData, setFiltredData] = useState([]);
+  // Define an array of faculty data with information in multiple languages
   const data = [
     {
       grade: {
@@ -22,6 +23,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "mejda.daami@gmail.com",
       orcid: "0000-0003-2239-5624",
+      speciality: {
+        fr: "Biologie",
+        ar: "علم الأحياء",
+        en: "Biology",
+      },
     },
     {
       grade: {
@@ -36,6 +42,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "braham.mohamed@gmail.com",
       orcid: "0000-0003-3913-5175",
+      speciality: {
+        fr: "Agriculture",
+        ar: "الزراعة",
+        en: "Agriculture",
+      },
     },
     {
       grade: {
@@ -50,6 +61,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "laarif.asma@iresa.agrinet.tn",
       orcid: "0000-0003-2792-9904",
+      speciality: {
+        fr: "Horticulture",
+        ar: "البستنة",
+        en: "Horticulture",
+      },
     },
     {
       grade: {
@@ -64,6 +80,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "ikbal_c@yahoo.fr",
       orcid: "0000-0002-7556-7197",
+      speciality: {
+        fr: "Agronomy",
+        ar: "الزراعة",
+        en: "Agronomy",
+      },
     },
     {
       grade: {
@@ -78,6 +99,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "mounira_elbaz@yahoo.com",
       orcid: "0000-0001-9993-6260",
+      speciality: {
+        fr: "Genetics",
+        ar: "الوراثة",
+        en: "Genetics",
+      },
     },
     {
       grade: {
@@ -92,6 +118,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "hela.chikh.rouhou@gmail.com",
       orcid: "0000-0003-3631-5680",
+      speciality: {
+        fr: "Agricultural Economics",
+        ar: "الاقتصاد الزراعي",
+        en: "Agricultural Economics",
+      },
     },
     {
       grade: {
@@ -106,6 +137,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "mensimen@hotmail.fr",
       orcid: "0000-0002-8604-0569",
+      speciality: {
+        fr: "Plant Physiology",
+        ar: "فسيولوجيا النبات",
+        en: "Plant Physiology",
+      },
     },
     {
       grade: {
@@ -120,6 +156,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "imedsam@gmail.com",
       orcid: "0000-0002-8990-7746",
+      speciality: {
+        fr: "Biotechnology",
+        ar: "التقانة الحيوية",
+        en: "Biotechnology",
+      },
     },
   ];
   const headers = {
@@ -142,6 +183,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       fr: "grade",
       en: "grade",
       ar: "المرحلة",
+    },
+    speciality: {
+      fr: "Spécialité",
+      en: "Specialty",
+      ar: "التخصص",
     },
   };
   useEffect(() => {

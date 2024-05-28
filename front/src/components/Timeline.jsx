@@ -44,9 +44,10 @@ const Milestones = ({ language, data }) => {
           {/* Desktop view(left card) */}
           {isDesktop && (i + 1) % 2 === 0 && (
             <>
-              <EmptyCard />
-              <LineWithDot />
               <Card {...milestone} language={language} id={i + 1} />
+
+              <LineWithDot />
+              <EmptyCard />
             </>
           )}
 

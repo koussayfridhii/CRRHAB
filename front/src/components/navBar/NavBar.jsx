@@ -827,76 +827,63 @@ const NAV_ITEMS = [
     label: { fr: "Accueil", en: "Home", ar: "الاستقبال" },
     href: "/",
   },
-  // {
-  //   label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
-  //   children: [
-  //     {
-  //       label: { fr: "Carte", en: "Map", ar: "الخريطة" },
-  //       subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
-  //       href: "/login",
-  //     },
-  //     {
-  //       label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-  //       subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-  //       href: "/signup",
-  //     },
-  //     {
-  //       label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-  //       subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-  //       href: "/signup",
-  //     },
-  //     {
-  //       label: {
-  //         fr: "Organisation Scientifique du Centre",
-  //         en: "Scientific Organization of the Center",
-  //         ar: "التنظيم العلمي للمركز",
-  //       },
-  //       subLabel: {
-  //         fr: "Organisation Scientifique du Centre",
-  //         en: "Scientific Organization of the Center",
-  //         ar: "التنظيم العلمي للمركز",
-  //       },
-  //       href: "/signup",
-  //     },
-  //     {
-  //       label: {
-  //         fr: "Personnels",
-  //         en: "Team",
-  //         ar: "الفريق",
-  //       },
-  //       subLabel: {
-  //         fr: "Personnels",
-  //         en: "Team",
-  //         ar: "الفريق",
-  //       },
-  //       href: "/signup",
-  //     },
-  //   ],
-  // },
   {
-    label: { fr: "Actualité", en: "News", ar: "المستجدات" },
+    label: { fr: "Actualités", en: "News", ar: "المستجدات" },
     href: "/actualities",
   },
   {
-    label: {
-      fr: "Structures de Recherche",
-      en: "Research Structures",
-      ar: "هياكل البحث",
-    },
+    label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
     children: [
       {
+        label: { fr: "Carte", en: "Map", ar: "الخريطة" },
+        subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
+        href: "/presentation/map",
+      },
+      {
+        label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+        subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+        href: "/presentation/history",
+      },
+      {
+        label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+        subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+        href: "/presentation/missions",
+      },
+      {
         label: {
-          fr: "Equipe de Recherche",
-          en: "Research Team",
-          ar: "فريق البحث",
+          fr: "Organisation Scientifique du Centre",
+          en: "Scientific Organization of the Center",
+          ar: "التنظيم العلمي للمركز",
         },
         subLabel: {
-          fr: "Equipe de Recherche",
-          en: "Research Team",
-          ar: "فريق البحث",
+          fr: "Organisation Scientifique du Centre",
+          en: "Scientific Organization of the Center",
+          ar: "التنظيم العلمي للمركز",
         },
-        href: "/researchteam",
+        href: "/presentation/scientific_organization",
       },
+    ],
+  },
+  {
+    label: {
+      fr: "Réseau Chercheurs",
+      en: "Research Network",
+      ar: "شبكة الباحثين",
+    },
+    href: "/researchteam",
+  },
+  {
+    label: {
+      fr: "Laboratoire",
+      en: "Laboratory",
+      ar: "مختبر",
+    },
+    subLabel: {
+      fr: "Production et Protection pour une Horticulture Durable (2PHD) (LR21AGR03, Université de Sousse)", // French sub-label
+      en: "Production and Protection for Sustainable Horticulture (2PHD) (LR21AGR03, University of Sousse)", // English sub-label
+      ar: "الإنتاج والحماية لهندسة البستنة المستدامة (2PHD) (LR21AGR03، جامعة سوسة)", // Arabic sub-label
+    },
+    children: [
       {
         label: {
           fr: "Thématiques de Recherches",
