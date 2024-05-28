@@ -27,6 +27,12 @@ import Map from "./pages/Map.jsx";
 import History from "./pages/History.jsx";
 import Missions from "./pages/Missions.jsx";
 import ScientificOrganization from "./pages/ScientificOrganization.jsx";
+import ResearchTopics from "./pages/ResearchTopics.jsx";
+import DiplomaCourse from "./pages/DiplomaCourse.jsx";
+import ResearchProjects from "./pages/ResearchProjects.jsx";
+import Collabs from "./pages/Collabs.jsx";
+import SpecializedUnits from "./pages/page/SpecializedUnits.jsx";
+import ContactPage from "./pages/Contact.jsx";
 
 const Layout = () => {
   return (
@@ -81,12 +87,36 @@ const router = createBrowserRouter([
       },
       {
         path: "/scientificproductions",
-        element: <ScientificProductionsV1 />,
+        element: <ScientificProductionsV2 />,
+      },
+      {
+        path: "/research_topics",
+        element: <ResearchTopics />,
+      },
+      {
+        path: "/research_projects",
+        element: <ResearchProjects />,
+      },
+      {
+        path: "/diploma_course",
+        element: <DiplomaCourse />,
+      },
+      {
+        path: "/collabs",
+        element: <Collabs />,
+      },
+      {
+        path: "/specialized_units",
+        element: <SpecializedUnits />,
       },
       ,
       {
         path: "/gallery/imgs",
         element: <ImageGallery />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "/presentation",

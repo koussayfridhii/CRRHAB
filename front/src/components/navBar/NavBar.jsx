@@ -415,6 +415,7 @@ export default function WithSubnavigation() {
                           _hover={{ color: "white" }}
                           onClick={() => dispatch(languageReducer(lan))}
                           cursor={"pointer"}
+                          key={lan}
                         >
                           <Stack direction={"row"} align={"center"}>
                             <Box>
@@ -677,6 +678,7 @@ const MobileNav = () => {
                     _hover={{ color: "secondary" }}
                     onClick={() => dispatch(languageReducer(lan))}
                     cursor={"pointer"}
+                    key={lan}
                   >
                     <Stack direction={"row"} align={"center"}>
                       <Box>
@@ -895,7 +897,7 @@ const NAV_ITEMS = [
           en: "Research Topics",
           ar: "فريق البحث",
         },
-        href: "/signup",
+        href: "/research_topics",
       },
       {
         label: {
@@ -913,7 +915,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Formation Diplômante",
-          en: "Training Qualification",
+          en: "Training Diploma",
           ar: "تدريب مؤهل",
         },
         subLabel: {
@@ -921,7 +923,7 @@ const NAV_ITEMS = [
           en: "Training Qualification",
           ar: "تدريب مؤهل",
         },
-        href: "/signup",
+        href: "/diploma_course",
       },
       {
         label: {
@@ -934,7 +936,7 @@ const NAV_ITEMS = [
           en: "Research Projects",
           ar: "مشاريع البحث",
         },
-        href: "/signup",
+        href: "/research_projects",
       },
       {
         label: {
@@ -947,7 +949,7 @@ const NAV_ITEMS = [
           en: "National and International Collaboration",
           ar: "تعاون وطني ودولي ",
         },
-        href: "/signup",
+        href: "/collabs",
       },
     ],
   },
@@ -957,7 +959,7 @@ const NAV_ITEMS = [
       en: "Specialized Units",
       ar: "فرق مختصة",
     },
-    href: "/",
+    href: "/specialized_units",
   },
   {
     label: { fr: "Gallerie", en: "Gallery", ar: "مكتبة الوسائط" },
@@ -965,6 +967,6 @@ const NAV_ITEMS = [
   },
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
-    href: "#contact",
+    href: "/contact",
   },
 ];
