@@ -140,8 +140,6 @@ const DashBoard = () => {
         <Heading mb={5} textTransform={"capitalize"}>
           {pageName}
         </Heading>
-        {/* <ResearchTeam statsHeader={false} add={true} /> */}
-        {/* <AutoCompleteMade options={data} setFiltredData={setFiltredData} /> */}
         <Button
           as={Link}
           mb={5}

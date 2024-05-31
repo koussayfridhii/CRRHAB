@@ -19,13 +19,14 @@ export default function StatsCard({ title, stat, icon }) {
       _dark={{
         borderColor: "secondary",
       }}
+      bg={"background"}
     >
       <Flex justifyContent={"space-between"}>
-        <Box pl={{ base: 2, md: 4 }}>
+        <Box pl={{ base: 0, md: 4 }}>
           <StatLabel
             fontWeight={"lighter"}
             isTruncated
-            fontSize={"xxxl"}
+            fontSize={{ base: "xl", xl: "xxxl" }}
             color={"textSecondary"}
             _dark={{
               color: "secondary",
@@ -46,7 +47,9 @@ export default function StatsCard({ title, stat, icon }) {
         </Box>
         <Box
           my={"auto"}
-          color={useColorModeValue("gray.800", "gray.200")}
+          color={useColorModeValue("primary", "gray.200")}
+          _dark={{ color: "secondary" }}
+          fontSize={{ base: "xxxxl", xl: "5xl" }}
           alignContent={"center"}
         >
           {icon}

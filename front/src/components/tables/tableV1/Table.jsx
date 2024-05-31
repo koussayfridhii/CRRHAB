@@ -84,12 +84,13 @@ export default function Table({ data, headers, language = "fr" }) {
                   {element.email}
                 </chakra.span>
                 <Flex justify={{ md: "end" }}>
-                  <a
+                  <chakra.a
                     href={`https://orcid.org/${element.orcid}`}
                     target="_blank"
+                    color="primary"
                   >
                     {element.orcid}
-                  </a>
+                  </chakra.a>
                 </Flex>
               </SimpleGrid>
             </Flex>

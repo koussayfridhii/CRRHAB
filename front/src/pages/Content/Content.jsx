@@ -1,6 +1,6 @@
 import React from "react";
 import "./Content.scss";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, chakra, Heading, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Organisation from "../../components/Organigram";
 import StatsV1 from "../../components/stats/statsV1/Stats";
@@ -39,9 +39,9 @@ const Content = () => {
       borderRadius={"lg"}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <section>
+      <chakra.section>
         <StatsV1 />
-      </section>
+      </chakra.section>
       <section>
         <Box
           w="full"
