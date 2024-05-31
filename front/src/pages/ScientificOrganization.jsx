@@ -702,150 +702,181 @@ const ScientificOrganization = () => {
           borderColor={"primary"}
         />
         <Box>
-          <chakra.h2
-            mx={"auto"}
-            fontSize={"xxxl"}
-            color={"primary"}
-            fontWeight={"bold"}
-            my={5}
-          >
-            {language === "en"
-              ? "Managers of Specialized Units"
-              : language === "fr"
-              ? "Responsables des Unités Specialisées"
-              : "مدراء الوحدات المتخصصة"}
-          </chakra.h2>
-          <Milestones
-            data={managersOfSpecializedUnitsData}
-            language={language}
-          />
-        </Box>
-        <Divider
-          my={5}
-          _dark={{
-            bg: "secondary",
-            borderColor: "secondary",
-          }}
-          orientation="horizontal"
-          bg={"primary"}
-          // borderWidth={1}
-          w={"90%"}
-          mx={"auto"}
-          borderColor={"primary"}
-        />
-        <Box>
-          <chakra.h2
-            mx={"auto"}
-            fontSize={"xxxl"}
-            color={"primary"}
-            fontWeight={"bold"}
-            my={5}
-          >
-            {language === "en"
-              ? "Representatives of Researchers (elected members)"
-              : language === "fr"
-              ? "Représentants des Chercheurs (Membres élus)"
-              : "ممثلو الباحثين (أعضاء منتخبون)"}
-          </chakra.h2>
-          <Milestones
-            data={representativesOfResearchersData}
-            language={language}
-          />
-        </Box>
-        <Divider
-          my={5}
-          _dark={{
-            bg: "secondary",
-            borderColor: "secondary",
-          }}
-          orientation="horizontal"
-          bg={"primary"}
-          // borderWidth={1}
-          w={"90%"}
-          mx={"auto"}
-          borderColor={"primary"}
-        />
-        <Box>
-          <chakra.h2
-            mx={"auto"}
-            fontSize={"xxxl"}
-            color={"primary"}
-            fontWeight={"bold"}
-            my={5}
-          >
-            {language === "en"
-              ? "Representative of IRESA"
-              : language === "fr"
-              ? "Représentant de l’IRESA"
-              : "ممثل إيريزا"}
-          </chakra.h2>
-          <ProfileCard data={representativeOfIresa} language={language} />
-        </Box>
-        <Divider
-          my={5}
-          _dark={{
-            bg: "secondary",
-            borderColor: "secondary",
-          }}
-          orientation="horizontal"
-          bg={"primary"}
-          // borderWidth={1}
-          w={"90%"}
-          mx={"auto"}
-          borderColor={"primary"}
-        />
-        <Box>
-          <chakra.h2
-            mx={"auto"}
-            fontSize={"xxxl"}
-            color={"primary"}
-            fontWeight={"bold"}
-            my={5}
-          >
-            {language === "en"
-              ? "Representatives of agricultural research and higher education establishments"
-              : language === "fr"
-              ? "Représentants des établissements de la recherche et l’enseignement supérieur agricoles"
-              : "ممثلو مؤسسات البحث الزراعي والتعليم العالي"}
-          </chakra.h2>
-          <Milestones
-            data={
-              representativesOfAgriculturalResearchAndHigherEducationEstablishments
-            }
-            language={language}
-          />
-        </Box>
-        <Divider
-          my={5}
-          _dark={{
-            bg: "secondary",
-            borderColor: "secondary",
-          }}
-          orientation="horizontal"
-          bg={"primary"}
-          // borderWidth={1}
-          w={"90%"}
-          mx={"auto"}
-          borderColor={"primary"}
-        />
-        <Box>
-          <chakra.h2
-            mx={"auto"}
-            fontSize={"xxxl"}
-            color={"primary"}
-            fontWeight={"bold"}
-            my={5}
-          >
-            {language === "en"
-              ? "Scientific personalities from the academic and scientific research world"
-              : language === "fr"
-              ? "Personnalités scientifiques du monde universitaire et de la recherche scientifique"
-              : "الشخصيات العلمية من العالم الجامعي والبحث العلمي"}
-          </chakra.h2>
-          {scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
-            (item, index) => (
-              <ProfileCard key={index} data={item} language={language} />
-            )
+          {language && (
+            <>
+              <chakra.h2
+                mx="auto"
+                fontSize="xxxl"
+                color="primary"
+                fontWeight="bold"
+              >
+                {language === "en"
+                  ? "Managers of Specialized Units"
+                  : language === "fr"
+                  ? "Responsables des Unités Spécialisées"
+                  : "مدراء الوحدات المتخصصة"}
+              </chakra.h2>
+              <List spacing={4} mb={5}>
+                {managersOfSpecializedUnitsData.map((unit, index) => (
+                  <ListItem key={index} mx={5}>
+                    <ListIcon
+                      fontSize="xl"
+                      as={GoPerson}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    {unit.title?.[language]}
+                  </ListItem>
+                ))}
+              </List>
+              <Divider
+                my={5}
+                _dark={{ bg: "secondary", borderColor: "secondary" }}
+                orientation="horizontal"
+                bg="primary"
+                w="90%"
+                mx="auto"
+                borderColor="primary"
+              />
+
+              <chakra.h2
+                mx="auto"
+                fontSize="xxxl"
+                color="primary"
+                fontWeight="bold"
+              >
+                {language === "en"
+                  ? "Representatives of Researchers"
+                  : language === "fr"
+                  ? "Représentants des Chercheurs"
+                  : "ممثلو الباحثين"}
+              </chakra.h2>
+              <List spacing={4} mb={5}>
+                {representativesOfResearchersData.map((rep, index) => (
+                  <ListItem key={index} mx={5}>
+                    <ListIcon
+                      fontSize="xl"
+                      as={GoPerson}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    {rep.title?.[language]} - {rep.grade?.[language]} (
+                    {rep.description?.[language]})
+                  </ListItem>
+                ))}
+              </List>
+              <Divider
+                my={5}
+                _dark={{ bg: "secondary", borderColor: "secondary" }}
+                orientation="horizontal"
+                bg="primary"
+                w="90%"
+                mx="auto"
+                borderColor="primary"
+              />
+
+              <chakra.h2
+                mx="auto"
+                fontSize="xxxl"
+                color="primary"
+                fontWeight="bold"
+              >
+                {language === "en"
+                  ? "Representative of Iresa"
+                  : language === "fr"
+                  ? "Représentant de l'Iresa"
+                  : "ممثل Iresa"}
+              </chakra.h2>
+              <List spacing={4} mb={5}>
+                <ListItem mx={5}>
+                  <ListIcon
+                    fontSize="xl"
+                    as={GoPerson}
+                    color="primary"
+                    _dark={{ color: "secondary" }}
+                  />
+                  {representativeOfIresa.name?.[language]} -{" "}
+                  {representativeOfIresa.grade?.[language]} (
+                  {representativeOfIresa.description?.[language]})
+                </ListItem>
+              </List>
+              <Divider
+                my={5}
+                _dark={{ bg: "secondary", borderColor: "secondary" }}
+                orientation="horizontal"
+                bg="primary"
+                w="90%"
+                mx="auto"
+                borderColor="primary"
+              />
+
+              <chakra.h2
+                mx="auto"
+                fontSize="xxxl"
+                color="primary"
+                fontWeight="bold"
+              >
+                {language === "en"
+                  ? "Representatives of Agricultural Research and Higher Education Establishments"
+                  : language === "fr"
+                  ? "Représentants des Établissements de Recherche et d'Enseignement Supérieur Agricoles"
+                  : "ممثلو مؤسسات البحث والتعليم العالي الزراعي"}
+              </chakra.h2>
+              <List spacing={4} mb={5}>
+                {representativesOfAgriculturalResearchAndHigherEducationEstablishments.map(
+                  (rep, index) => (
+                    <ListItem key={index} mx={5}>
+                      <ListIcon
+                        fontSize="xl"
+                        as={GoPerson}
+                        color="primary"
+                        _dark={{ color: "secondary" }}
+                      />
+                      {rep.title?.[language]} - {rep.grade?.[language]} (
+                      {rep.description?.[language]})
+                    </ListItem>
+                  )
+                )}
+              </List>
+              <Divider
+                my={5}
+                _dark={{ bg: "secondary", borderColor: "secondary" }}
+                orientation="horizontal"
+                bg="primary"
+                w="90%"
+                mx="auto"
+                borderColor="primary"
+              />
+
+              <chakra.h2
+                mx="auto"
+                fontSize="xxxl"
+                color="primary"
+                fontWeight="bold"
+              >
+                {language === "en"
+                  ? "Scientific Personalities from the Academic and Scientific Research World"
+                  : language === "fr"
+                  ? "Personnalités Scientifiques du Monde Académique et de la Recherche Scientifique"
+                  : "الشخصيات العلمية من العالم الأكاديمي والبحث العلمي"}
+              </chakra.h2>
+              <List spacing={4} mb={5}>
+                {scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
+                  (person, index) => (
+                    <ListItem key={index} mx={5}>
+                      <ListIcon
+                        fontSize="xl"
+                        as={GoPerson}
+                        color="primary"
+                        _dark={{ color: "secondary" }}
+                      />
+                      {person.name?.[language]} - {person.grade?.[language]}
+                      <br />
+                    </ListItem>
+                  )
+                )}
+              </List>
+            </>
           )}
         </Box>
       </Flex>
