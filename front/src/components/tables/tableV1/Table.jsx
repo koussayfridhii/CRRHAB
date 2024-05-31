@@ -60,7 +60,7 @@ export default function Table({ data, headers, language = "fr" }) {
                 <chakra.span>{headers.name[language]}</chakra.span>
                 <chakra.span>{headers.speciality[language]}</chakra.span>
                 <chakra.span>{headers.email[language]}</chakra.span>
-                <chakra.span textAlign={{ md: "right" }}>
+                <chakra.span textAlign={{ md: "end" }}>
                   {headers.orcid[language]}
                 </chakra.span>
               </SimpleGrid>
@@ -83,7 +83,14 @@ export default function Table({ data, headers, language = "fr" }) {
                 >
                   {element.email}
                 </chakra.span>
-                <Flex justify={{ md: "start" }}>{element.orcid}</Flex>
+                <Flex justify={{ md: "end" }}>
+                  <a
+                    href={`https://orcid.org/${element.orcid}`}
+                    target="_blank"
+                  >
+                    {element.orcid}
+                  </a>
+                </Flex>
               </SimpleGrid>
             </Flex>
           );
