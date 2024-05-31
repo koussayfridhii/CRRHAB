@@ -33,7 +33,7 @@ const Landing = () => {
         <SideBar />
         <Content />
       </Wrap>
-      <Divider
+      {/* <Divider
         my={5}
         _dark={{
           bg: "secondary",
@@ -48,7 +48,7 @@ const Landing = () => {
       />
       <chakra.section px={10}>
         <Personnels />
-      </chakra.section>
+      </chakra.section> */}
       <Divider
         my={5}
         _dark={{
