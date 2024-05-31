@@ -21,7 +21,6 @@ export default function AutoCompleteMade({
     data.push(option.name?.[language]);
     data.push(option.speciality?.[language]);
     data.push(option.email);
-    data.push(option.grade?.[language]);
     data.push(option.orcid);
   });
   data = [...new Set(data)];
@@ -34,7 +33,6 @@ export default function AutoCompleteMade({
       return (
         option.name?.[language].toLowerCase().includes(text.toLowerCase()) ||
         option.email.toLowerCase().includes(text.toLowerCase()) ||
-        option.grade?.[language].toLowerCase().includes(text.toLowerCase()) ||
         option.speciality?.[language]
           .toLowerCase()
           .includes(text.toLowerCase()) ||

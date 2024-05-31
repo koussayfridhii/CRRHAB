@@ -62,7 +62,7 @@ const Landing = () => {
         mx={"auto"}
         borderColor={"primary"}
       />
-      <chakra.section px={10}>
+      {/* <chakra.section px={10}>
         <Heading
           _dark={{
             bg: "secondary",
@@ -107,8 +107,8 @@ const Landing = () => {
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
-      />
-      <chakra.section px={10}>
+      /> */}
+      {/* <chakra.section px={10}>
         <Heading
           _dark={{
             bg: "secondary",
@@ -143,7 +143,7 @@ const Landing = () => {
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
-      />
+      /> */}
       <chakra.section px={10} id="contact">
         <Contact />
       </chakra.section>

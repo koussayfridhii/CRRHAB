@@ -2,11 +2,13 @@ import React from "react";
 import {
   Button,
   Flex,
+  IconButton,
   SimpleGrid,
   Stack,
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 export default function Table({ data, headers, language = "fr" }) {
   const dataColor = useColorModeValue("white", "gray.800");
@@ -56,12 +58,14 @@ export default function Table({ data, headers, language = "fr" }) {
                 fontWeight="hairline"
                 borderRadius={"xl"}
               >
-                <chakra.span>{headers.grade[language]}</chakra.span>
                 <chakra.span>{headers.name[language]}</chakra.span>
                 <chakra.span>{headers.speciality[language]}</chakra.span>
                 <chakra.span>{headers.email[language]}</chakra.span>
                 <chakra.span textAlign={{ md: "end" }}>
                   {headers.orcid[language]}
+                </chakra.span>
+                <chakra.span textAlign={{ md: "end" }}>
+                  {headers.cv[language]}
                 </chakra.span>
               </SimpleGrid>
               <SimpleGrid
@@ -72,8 +76,6 @@ export default function Table({ data, headers, language = "fr" }) {
                 px={10}
                 fontWeight="hairline"
               >
-                <chakra.span>{element.grade[language]}</chakra.span>
-
                 <chakra.span>{element.name[language]}</chakra.span>
                 <chakra.span>{element.speciality[language]}</chakra.span>
                 <chakra.span
@@ -91,6 +93,19 @@ export default function Table({ data, headers, language = "fr" }) {
                   >
                     {element.orcid}
                   </chakra.a>
+                </Flex>
+                <Flex justify={{ md: "end" }}>
+                  {element.cv !== "" ? (
+                    <chakra.a href={element.cv} target="_blank" color="primary">
+                      <IconButton
+                        colorScheme="blue"
+                        icon={<BsBoxArrowUpRight />}
+                        aria-label="Up"
+                      />
+                    </chakra.a>
+                  ) : (
+                    "-"
+                  )}
                 </Flex>
               </SimpleGrid>
             </Flex>

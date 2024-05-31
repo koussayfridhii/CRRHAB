@@ -8,59 +8,91 @@ import { Link } from "react-router-dom";
 const ResearchTeam = ({ add = false, statsHeader = true }) => {
   const language = useSelector((state) => state.language.language);
   const [filtredData, setFiltredData] = useState([]);
-  // Define an array of faculty data with information in multiple languages
   const data = [
     {
-      grade: {
-        fr: "Prof",
-        ar: "أستاذ",
-        en: "Prof",
+      name: {
+        fr: "BETTAIEB Taoufik",
+        ar: "توفيق بالطيبي",
+        en: "BETTAIEB Taoufik",
       },
+      email: "tbettaieb@yahoo.fr",
+      orcid: "0000-0002-0053-848X",
+      cv: "./assets/cv/CV Taoufik BETTAIEB.pdf",
+      speciality: {
+        fr: "Sciences Horticoles",
+        ar: "علوم البستنة",
+        en: "Sciences Horticoles",
+      },
+    },
+    {
       name: {
         fr: "DAAMI-remadi Majda",
-        ar: "مجدة دامي رمادي",
+        ar: "مجدى دعامي-رمادي",
         en: "DAAMI-remadi Majda",
       },
       email: "mejda.daami@gmail.com",
       orcid: "0000-0003-2239-5624",
+      cv: "./assets/cv/CV-Daami-Remadi.pdf",
       speciality: {
-        fr: "Biologie",
-        ar: "علم الأحياء",
-        en: "Biology",
+        fr: "Phytomycologie",
+        ar: "علم الفطريات النباتية",
+        en: "Phytomycologie",
       },
     },
     {
-      grade: {
-        fr: "Prof",
-        ar: "أستاذ",
-        en: "Prof",
-      },
       name: {
         fr: "BRAHAM Mohamed",
-        ar: "محمد ابراهيم",
+        ar: "محمد براهم",
         en: "BRAHAM Mohamed",
       },
       email: "braham.mohamed@gmail.com",
       orcid: "0000-0003-3913-5175",
+      cv: "./assets/cv/CV  Mohamed BRAHAM.pdf",
       speciality: {
-        fr: "Agriculture",
-        ar: "الزراعة",
-        en: "Agriculture",
+        fr: "Entomologie",
+        ar: "علم الحشرات",
+        en: "Entomologie",
       },
     },
     {
-      grade: {
-        fr: "Prof",
-        ar: "أستاذ",
-        en: "Prof",
-      },
       name: {
         fr: "LAARIF Asma",
-        ar: "أسماء العارف",
+        ar: "أسماء العريف",
         en: "LAARIF Asma",
       },
       email: "laarif.asma@iresa.agrinet.tn",
       orcid: "0000-0003-2792-9904",
+      cv: "./assets/cv/CV Asma laarif.pdf",
+      speciality: {
+        fr: "Entomologie",
+        ar: "علم الحشرات",
+        en: "Entomologie",
+      },
+    },
+    {
+      name: {
+        fr: "CHAIEB Ikbal",
+        ar: "اقبال الشايب",
+        en: "CHAIEB Ikbal",
+      },
+      email: "ikbal_c@yahoo.fr",
+      orcid: "0000-0002-7556-7197",
+      cv: "./assets/cv/CV Ikbal Chaieb.pdf",
+      speciality: {
+        fr: "Entomologie",
+        ar: "علم الحشرات",
+        en: "Entomologie",
+      },
+    },
+    {
+      name: {
+        fr: "DBARA Soumaya",
+        ar: "سمية دبارة",
+        en: "DBARA Soumaya",
+      },
+      email: "soumayadbara@yahoo.fr",
+      orcid: "0000-0002-0095-9604",
+      cv: "./assets/cv/CV Dbara Soumaya.pdf",
       speciality: {
         fr: "Horticulture",
         ar: "البستنة",
@@ -68,30 +100,21 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
     },
     {
-      grade: {
-        fr: "MCs",
-        ar: "ماجستير",
-        en: "MCs",
-      },
       name: {
-        fr: "CHAIEB Ikbal",
-        ar: "اقبال شايب",
-        en: "CHAIEB Ikbal",
+        fr: "HATTAB Sabrine",
+        ar: "سابرين حطاب",
+        en: "HATTAB Sabrine",
       },
-      email: "ikbal_c@yahoo.fr",
-      orcid: "0000-0002-7556-7197",
+      email: "sabrine_hattab1@yahoo.fr",
+      orcid: "0000-0003-1180-5253",
+      cv: "./assets/cv/CV Hattab Sabrine.pdf",
       speciality: {
-        fr: "Agronomy",
-        ar: "الزراعة",
-        en: "Agronomy",
+        fr: "Sciences du sol",
+        ar: "علوم التربة",
+        en: "Sciences du sol",
       },
     },
     {
-      grade: {
-        fr: "MA",
-        ar: "ماجستير",
-        en: "MA",
-      },
       name: {
         fr: "ELBAZ Mounira",
         ar: "منيرة الباز",
@@ -99,67 +122,161 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       },
       email: "mounira_elbaz@yahoo.com",
       orcid: "0000-0001-9993-6260",
+      cv: "",
       speciality: {
-        fr: "Genetics",
-        ar: "الوراثة",
-        en: "Genetics",
+        fr: "Sélection et amélioration des plantes",
+        ar: "اختيار وتحسين النباتات",
+        en: "Sélection et amélioration des plantes",
       },
     },
     {
-      grade: {
-        fr: "MA",
-        ar: "ماجستير",
-        en: "MA",
-      },
       name: {
         fr: "CHIKH ROUHOU Hela",
-        ar: "هالة شيخ روحو",
+        ar: "حلة شيخ روحو",
         en: "CHIKH ROUHOU Hela",
       },
       email: "hela.chikh.rouhou@gmail.com",
       orcid: "0000-0003-3631-5680",
+      cv: "./assets/cv/CV Hela ChikhRouhou.pdf",
       speciality: {
-        fr: "Agricultural Economics",
+        fr: "Cultures maraîchères",
+        ar: "زراعة الخضروات",
+        en: "Cultures maraîchères",
+      },
+    },
+    {
+      name: {
+        fr: "MANSOUR Mohsen",
+        ar: "محسن منصور",
+        en: "MANSOUR Mohsen",
+      },
+      email: "mansourmohsen@gmail.com",
+      orcid: "0000-0002-7526-4540",
+      cv: "./assets/cv/CV-Mohsen Mansour .pdf",
+      speciality: {
+        fr: "Bioclimatologie",
+        ar: "البيوكلماتولوجيا",
+        en: "Bioclimatologie",
+      },
+    },
+    {
+      name: {
+        fr: "BAYOUDH Chokri",
+        ar: "شكري بايوض",
+        en: "BAYOUDH Chokri",
+      },
+      email: "chokribayoudh@gmail.com",
+      orcid: "0000-0002-7531-2979",
+      cv: "./assets/cv/CV  Chokri Bayoudh.pdf",
+      speciality: {
+        fr: "Biotechnologie végétale",
+        ar: "التكنولوجيا الحيوية النباتية",
+        en: "Biotechnologie végétale",
+      },
+    },
+    {
+      name: {
+        fr: "JABNOUN-KHIAREDDINE Hayfa",
+        ar: "هيفاء جابنون-خيرالدين",
+        en: "JABNOUN-KHIAREDDINE Hayfa",
+      },
+      email: "jkhayfa@yahoo.fr",
+      orcid: "0000-0002-0849-3167",
+      cv: "./assets/cv/CV Hayfa Jabnoun-Khiareddine.pdf",
+      speciality: {
+        fr: "Phytomycologie",
+        ar: "علم الفطريات النباتية",
+        en: "Phytomycologie",
+      },
+    },
+    {
+      name: {
+        fr: "JEDER Houcine",
+        ar: "حسين جيدر",
+        en: "JEDER Houcine",
+      },
+      email: "djederhoucine@yahoo.fr",
+      orcid: "0000-0003-1953-8209",
+      cv: "./assets/cv/CV_Houcine Jeder.pdf",
+      speciality: {
+        fr: "Economie Agricole",
         ar: "الاقتصاد الزراعي",
-        en: "Agricultural Economics",
+        en: "Economie Agricole",
       },
     },
     {
-      grade: {
-        fr: "MA",
-        ar: "ماجستير",
-        en: "MA",
-      },
       name: {
-        fr: "MENSI Imène",
-        ar: "ايمن المنسي",
-        en: "MENSI Imène",
+        fr: "AYDI BEN ABDALLAH Rania",
+        ar: "رانية عايضي بن عبد الله",
+        en: "AYDI BEN ABDALLAH Rania",
       },
-      email: "mensimen@hotmail.fr",
-      orcid: "0000-0002-8604-0569",
+      email: "raniaaydi@yahoo.fr",
+      orcid: "0000-0001-7875-4652",
+      cv: "./assets/cv/CV AYDI-ABDALLAH Rania.pdf",
       speciality: {
-        fr: "Plant Physiology",
-        ar: "فسيولوجيا النبات",
-        en: "Plant Physiology",
+        fr: "Microbiologie du sol",
+        ar: "علم الجراثيم التربوية",
+        en: "Microbiologie du sol",
       },
     },
     {
-      grade: {
-        fr: "Assis.",
-        ar: "مساعد",
-        en: "Assist.",
-      },
       name: {
-        fr: "BEN AÏSSA Imed",
-        ar: "عمر بن عيسى",
-        en: "BEN AÏSSA Imed",
+        fr: "CHAIEB Nadia",
+        ar: "نادية الشايب",
+        en: "CHAIEB Nadia",
+      },
+      email: "chaiebnadiat@yahoo.fr",
+      orcid: "0000-0002-9497-8346",
+      cv: "./assets/cv/CV NADIA Chaieb.pdf",
+      speciality: {
+        fr: "Agriculture de Conservation",
+        ar: "زراعة المحافظة",
+        en: "Agriculture de Conservation",
+      },
+    },
+    {
+      name: {
+        fr: "TRAD Mehdi",
+        ar: "مهدي التراد",
+        en: "TRAD Mehdi",
+      },
+      email: "mh.trad@yahoo.com",
+      orcid: "0000-0003-4887-5212",
+      cv: "./assets/cv/CV Mehdi Trad.pdf",
+      speciality: {
+        fr: "Qualité et Physiologie Post-récolte des Fruits",
+        ar: "جودة وفسيولوجيا ما بعد الحصاد للفواكه",
+        en: "Qualité et Physiologie Post-récolte des Fruits",
+      },
+    },
+    {
+      name: {
+        fr: "LACHKAR Amel",
+        ar: "آمال لشكر",
+        en: "LACHKAR Amel",
+      },
+      email: "amel.lachkar@yahoo.com",
+      orcid: "amelchet00@gmail.com",
+      cv: "./assets/cv/CV Amel Lachkar.pdf",
+      speciality: {
+        fr: "Arboriculture Fruitière",
+        ar: "زراعة الفواكه",
+        en: "Arboriculture Fruitière",
+      },
+    },
+    {
+      name: {
+        fr: "BEN AISSA Imed",
+        ar: "عماد بن عيسى",
+        en: "BEN AISSA Imed",
       },
       email: "imedsam@gmail.com",
       orcid: "0000-0002-8990-7746",
+      cv: "./assets/cv/CV Imed Ben AISSA.pdf",
       speciality: {
-        fr: "Biotechnology",
-        ar: "التقانة الحيوية",
-        en: "Biotechnology",
+        fr: "Irrigation agricole",
+        ar: "الري الزراعي",
+        en: "Irrigation agricole",
       },
     },
   ];
@@ -188,6 +305,11 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
       fr: "Spécialité",
       en: "Specialty",
       ar: "التخصص",
+    },
+    cv: {
+      fr: "CV",
+      en: "CV",
+      ar: "CV",
     },
   };
   useEffect(() => {

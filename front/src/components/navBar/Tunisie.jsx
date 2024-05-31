@@ -15,7 +15,24 @@ const Tunisie = () => {
     >
       <div className="logoFlex">
         <img className="TunisieLogo" src="/assets/images/tunisie.png" />
-        <span style={{ fontSize: usedTheme.fontSizes.sm }}>
+        <a href="http://www.agriculture.tn/" target="_blank">
+          <img
+            className="TunisieLogo"
+            src="/assets/images/Logo_Ministère_de_l'Agriculture_(Tunisie).png"
+          />
+        </a>
+        <a
+          href={`http://iresa.agrinet.tn/index.php/${
+            language === "ar" ? "ar" : "fr"
+          }/`}
+          target="_blank"
+        >
+          <img
+            className="TunisieLogo"
+            src="/assets/images/logoIRESA_couleur_fr.png"
+          />
+        </a>
+        {/* <span style={{ fontSize: usedTheme.fontSizes.sm }}>
           {language === "fr" ? (
             <>
               République Tunisienne <br />
@@ -41,7 +58,7 @@ const Tunisie = () => {
               and fishing
             </>
           )}
-        </span>
+        </span> */}
       </div>
       <h1
         style={{

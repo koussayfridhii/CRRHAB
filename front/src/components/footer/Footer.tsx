@@ -11,7 +11,10 @@ import {
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useLocation } from "react-router-dom";
 const Footer = () => {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <Box
       as="footer"
@@ -31,27 +34,30 @@ const Footer = () => {
         borderColor="primary"
       >
         <Flex flexWrap="wrap" alignItems="start" justifyContent="space-between">
+          {pathname === "/" && (
+            <Box mb={{ base: "1.5rem", lg: "0" }}>
+              <Heading
+                as="h5"
+                color="primary"
+                mb="0.5rem"
+                fontSize="lg"
+                fontWeight="600"
+              >
+                CRRHAB
+              </Heading>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
+                width={300}
+                height={300}
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Box>
+          )}
           <Box mb={{ base: "1.5rem", lg: "0" }}>
-            <Heading
-              as="h5"
-              color="primary"
-              mb="0.5rem"
-              fontSize="lg"
-              fontWeight="600"
-            >
-              CRRHAB
-            </Heading>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
-              width={300}
-              height={300}
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </Box>
-          <Box mb={{ base: "1.5rem", lg: "0" }}>
+            {/* Heading for contact information */}
             <Heading
               as="h5"
               color="primary"
@@ -61,33 +67,42 @@ const Footer = () => {
             >
               Contact Information
             </Heading>
+            {/* List to display contact details */}
             <List lineHeight="2" justifyContent="center">
+              {/* Box to display Adresse */}
               <Box display="flex" gap={"10px"}>
                 <Text fontSize="md" fontWeight="bold">
                   Adresse:
                 </Text>
+                {/* Updated Adresse */}
                 <Text fontSize="md">
                   {" "}
-                  B.P.54 - Chott Mariem 4042 Sousse-Tunisie
+                  B.P.57 - Chott Mariem 4042 Sousse-Tunisie
                 </Text>
               </Box>
+              {/* Box to display Téléphone */}
               <Box display="flex" gap={"10px"}>
                 <Text fontSize="md" fontWeight="bold">
                   Téléphone:
                 </Text>
-                <Text fontSize="md"> (+ 216) 73 327 278</Text>
+                {/* Updated Téléphone */}
+                <Text fontSize="md"> (+ 216) 73 327 543</Text>
               </Box>
+              {/* Box to display Fax */}
               <Box display="flex" gap={"10px"}>
                 <Text fontSize="md" fontWeight="bold">
                   Fax:
                 </Text>
-                <Text fontSize="md">(+ 216) 73 327 277</Text>
+                {/* Updated Fax */}
+                <Text fontSize="md">(+ 216) 73 327 070</Text>
               </Box>
+              {/* Box to display Email */}
               <Box display="flex" gap={"10px"}>
                 <Text fontSize="md" fontWeight="bold">
                   Email:
                 </Text>
-                <Text fontSize="md">contact@ctab.tn</Text>
+                {/* Updated Email */}
+                <Text fontSize="md">crrhab@iresa.agrinet.tn</Text>
               </Box>
             </List>
           </Box>
