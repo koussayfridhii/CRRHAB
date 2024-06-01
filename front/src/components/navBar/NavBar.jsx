@@ -936,6 +936,19 @@ const NAV_ITEMS = [
       },
       {
         label: {
+          fr: "Personnels",
+          en: "Staff",
+          ar: "طاقم العمل",
+        },
+        subLabel: {
+          fr: "Projets de Recherche",
+          en: "Research Projects",
+          ar: "مشاريع البحث",
+        },
+        href: "/staff",
+      },
+      {
+        label: {
           fr: "Projets de Recherche",
           en: "Research Projects",
           ar: "مشاريع البحث",

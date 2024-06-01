@@ -34,6 +34,7 @@ import Collabs from "./pages/Collabs.jsx";
 import SpecializedUnits from "./pages/page/SpecializedUnits.jsx";
 import ContactPage from "./pages/Contact.jsx";
 import OpenData from "./pages/OpenData.jsx";
+import Personnels from "./pages/Content/Personnels.jsx";
 
 const Layout = () => {
   return (
@@ -143,6 +144,10 @@ const router = createBrowserRouter([
       {
         path: "/open_data",
         element: <OpenData />,
+      },
+      {
+        path: "/staff",
+        element: <Personnels />,
       },
     ],
   },

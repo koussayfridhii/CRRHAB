@@ -92,7 +92,7 @@ const Personnels = () => {
           : "طاقم العاملين"}
       </Heading>
       <StatsV2 language={language} data={personnelsData} />
-      <Slider3D />
+      {/* <Slider3D /> */}
     </Box>
   );
 };
