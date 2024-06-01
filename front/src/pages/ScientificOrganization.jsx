@@ -381,15 +381,17 @@ const ScientificOrganization = () => {
                   />
                   Mr. Atef MOUGOU - General Secretary (Reporter)
                 </ListItem>
-                <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={BsPersonCircle}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Heads of RDI Structures:
-                </ListItem>
+              </List>
+              <chakra.h3
+                mx={5}
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
+              >
+                Heads of RDI Structures:
+              </chakra.h3>
+              <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <ListIcon
                     fontSize={"xl"}
@@ -527,15 +529,17 @@ const ScientificOrganization = () => {
                   />
                   M. Atef MOUGOU - Secrétaire Général (Rapporteur)
                 </ListItem>
-                <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={BsPersonCircle}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Chefs des Structures RDI :
-                </ListItem>
+              </List>
+              <chakra.h3
+                mx={5}
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
+              >
+                Chefs des Structures RDI :
+              </chakra.h3>
+              <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <ListIcon
                     fontSize={"xl"}
@@ -666,15 +670,17 @@ const ScientificOrganization = () => {
                   />
                   السيد عاطف موغو - السكرتير العام (المقرر)
                 </ListItem>
-                <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={BsPersonCircle}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  رؤساء هياكل البحث والتطوير:
-                </ListItem>
+              </List>
+              <chakra.h3
+                mx={5}
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
+              >
+                رؤساء هياكل البحث والتطوير:
+              </chakra.h3>
+              <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <ListIcon
                     fontSize={"xl"}
@@ -705,10 +711,10 @@ const ScientificOrganization = () => {
           {language && (
             <>
               <chakra.h2
-                mx="auto"
-                fontSize="xxxl"
-                color="primary"
-                fontWeight="bold"
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
               >
                 {language === "en"
                   ? "Managers of Specialized Units"
@@ -740,10 +746,10 @@ const ScientificOrganization = () => {
               />
 
               <chakra.h2
-                mx="auto"
-                fontSize="xxxl"
-                color="primary"
-                fontWeight="bold"
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
               >
                 {language === "en"
                   ? "Representatives of Researchers"
@@ -776,10 +782,10 @@ const ScientificOrganization = () => {
               />
 
               <chakra.h2
-                mx="auto"
-                fontSize="xxxl"
-                color="primary"
-                fontWeight="bold"
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
               >
                 {language === "en"
                   ? "Representative of Iresa"
@@ -811,10 +817,10 @@ const ScientificOrganization = () => {
               />
 
               <chakra.h2
-                mx="auto"
-                fontSize="xxxl"
-                color="primary"
-                fontWeight="bold"
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
               >
                 {language === "en"
                   ? "Representatives of Agricultural Research and Higher Education Establishments"
@@ -849,10 +855,10 @@ const ScientificOrganization = () => {
               />
 
               <chakra.h2
-                mx="auto"
-                fontSize="xxxl"
-                color="primary"
-                fontWeight="bold"
+                fontSize={"xxl"}
+                color={"primary"}
+                _dark={{ color: "secondary" }}
+                mb={4}
               >
                 {language === "en"
                   ? "Scientific Personalities from the Academic and Scientific Research World"

@@ -33,6 +33,7 @@ import ResearchProjects from "./pages/ResearchProjects.jsx";
 import Collabs from "./pages/Collabs.jsx";
 import SpecializedUnits from "./pages/page/SpecializedUnits.jsx";
 import ContactPage from "./pages/Contact.jsx";
+import OpenData from "./pages/OpenData.jsx";
 
 const Layout = () => {
   return (
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
             element: <ScientificOrganization />,
           },
         ],
+      },
+      {
+        path: "/open_data",
+        element: <OpenData />,
       },
     ],
   },

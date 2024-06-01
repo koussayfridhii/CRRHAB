@@ -267,7 +267,16 @@ export default function WithSubnavigation() {
   return (
     <>
       <Tunisie />
-      <Box>
+      <Box
+        position="sticky"
+        top="0"
+        zIndex="10"
+        w="100%"
+        bg="red.500"
+        color="text"
+        shadow={"lg"}
+        style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
+      >
         <Flex
           bg={"primary"}
           _dark={{
@@ -964,6 +973,14 @@ const NAV_ITEMS = [
   {
     label: { fr: "Gallerie", en: "Gallery", ar: "مكتبة الوسائط" },
     href: "/gallery/imgs",
+  },
+  {
+    label: {
+      fr: "Accés à l’information",
+      en: "Open Data",
+      ar: "النفاذ للمعلومة",
+    },
+    href: "/open_data",
   },
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },

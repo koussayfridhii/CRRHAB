@@ -50,7 +50,14 @@ export default function AutoCompleteMade({
         {({ isOpen }) => (
           <>
             <InputGroup onChange={changInputHandler}>
-              <AutoCompleteInput variant="filled" placeholder="Search..." />
+              <AutoCompleteInput
+                variant="filled"
+                bg="textHover"
+                border="2px"
+                borderColor="primary"
+                _dark={{ borderColor: "secondary" }}
+                placeholder="Search..."
+              />
               <InputRightElement>
                 <Icon as={isOpen ? ChevronRightIcon : ChevronDownIcon} />
               </InputRightElement>

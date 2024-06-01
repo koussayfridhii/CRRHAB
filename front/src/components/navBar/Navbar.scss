@@ -5,14 +5,30 @@
   align-items: center;
   padding: 2rem;
   // animation: animate 3s infinite ease;
-  img {
-    height: 5rem;
-    // aspect-ratio: 1;
-  }
   .logoFlex {
     display: flex;
-    gap: 0.7rem;
-    font-weight: bold;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 5rem;
+      // aspect-ratio: 1;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      .link {
+        width: fit-content;
+        text-align: center;
+        height: 5rem;
+      }
+      span {
+        height: 2rem;
+      }
+    }
   }
   .CRRHABLogo {
     width: 12rem;
@@ -21,6 +37,9 @@
     font-weight: bold;
     text-align: center;
     font-family: "Poppins", sans-serif;
+    flex: 2;
+    text-align: center;
+    padding-right: 10vw;
   }
 }
 //animation
@@ -77,6 +96,7 @@
     .logoFlex {
       span {
         font-size: 0.7rem !important;
+        margin-bottom: 3rem;
       }
     }
     .CRRHABLogo {

@@ -17,7 +17,7 @@ export default function Table({ data, headers, language = "fr" }) {
   return (
     <Flex
       w="full"
-      bg="white"
+      bg="background"
       p={50}
       alignItems="center"
       justifyContent="center"

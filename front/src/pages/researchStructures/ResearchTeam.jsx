@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../components/tables/tableV1/Table";
-import { Box, Button, chakra } from "@chakra-ui/react";
+import { Box, Button, Heading, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import StatsV1 from "../../components/stats/statsV1/Stats";
 import AutoComplete from "../../components/AutoComplete";
@@ -316,58 +316,35 @@ const ResearchTeam = ({ add = false, statsHeader = true }) => {
     filtredData.length < 1 && setFiltredData([...data]);
   }, []);
   return (
-    <Box py={50}>
-      {statsHeader && (
-        <Box
-          maxW="7xl"
-          mx="auto"
-          px={{
-            base: 4,
-            lg: 8,
-          }}
-          mb={5}
-        >
-          <Box textAlign="center">
-            <chakra.h2
-              mt={2}
-              fontSize={{
-                base: "3xl",
-                sm: "4xl",
-              }}
-              lineHeight="8"
-              fontWeight="extrabold"
-              letterSpacing="tight"
-              textTransform={"capitalize"}
-              color="text"
-              _dark={{
-                color: "white",
-              }}
-            >
-              {language === "en"
-                ? "See How We're Making a Difference!!"
-                : language === "ar"
-                ? "!!انظر كيف نحدث فرقًا"
-                : "Découvrez comment nous faisons la différence!!"}
-            </chakra.h2>
-            <chakra.p
-              mt={4}
-              maxW="2xl"
-              fontSize="xl"
-              mx={{
-                lg: "auto",
-              }}
-              color="textSecondary"
-            >
-              {language === "en"
-                ? " Embark on a journey of transformative impact and discover how we are making a tangible difference in the world."
-                : language === "ar"
-                ? ".انطلق في رحلة ذات تأثير تحويلي واكتشف كيف نحدث فرقًا ملموسًا في العالم"
-                : "Embarquez pour un voyage à impact transformateur et découvrez comment nous faisons une différence tangible dans le monde."}
-            </chakra.p>
-          </Box>
-        </Box>
-      )}
-      <StatsV1 header={false} />
+    <Box
+      w={{ base: "full", xl: "80dvw" }}
+      bg={"background"}
+      mx={"auto"}
+      my={10}
+      py={50}
+      px={10}
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
+      <Heading
+        _dark={{
+          bg: "secondary",
+        }}
+        fontSize={"xxl"}
+        fontFamily={"body"}
+        color={"white"}
+        bg={"primary"}
+        px={5}
+        py={2}
+        fontWeight={400}
+        borderRadius={"lg"}
+        mb={6}
+      >
+        {language === "en"
+          ? "Research Network"
+          : language === "fr"
+          ? "Réseau Chercheurs"
+          : "شبكة الباحثين"}
+      </Heading>
       {add && (
         <Button as={Link} mb={5} ml={"95%"} to="/admin/create/research_Team">
           Add
