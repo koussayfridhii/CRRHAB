@@ -77,9 +77,9 @@ const Content = () => {
             px={10}
             gap={10}
           >
-            {data[language].split("/n").map((text) => {
+            {data[language].split("/n").map((text, i) => {
               return (
-                <Text color={"text"} fontSize={"xl"}>
+                <Text color={"text"} fontSize={"xl"} key={text + i}>
                   {text}
                 </Text>
               );

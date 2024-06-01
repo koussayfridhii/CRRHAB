@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import StatsV1 from "../../components/stats/statsV1/Stats";
 import AutoComplete from "../../components/AutoComplete";
 import { Link } from "react-router-dom";
-const ResearchTeam = ({ add = false, statsHeader = true }) => {
+const ResearchTeam = ({ add = false }) => {
   const language = useSelector((state) => state.language.language);
   const [filtredData, setFiltredData] = useState([]);
   const data = [

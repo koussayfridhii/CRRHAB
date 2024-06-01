@@ -5,7 +5,6 @@ import { Box, Flex, Image, SimpleGrid, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 const Actuality = () => {
   const { id } = useParams();
-  console.log(data);
   const actuality = data.find((actuality) => actuality.link == id);
   const language = useSelector((state) => state.language.language);
   return (

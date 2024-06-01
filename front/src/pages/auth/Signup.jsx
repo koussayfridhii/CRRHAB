@@ -82,7 +82,6 @@ const Login = () => {
         [name]: value,
       }));
     }
-    console.log(data);
   };
 
   useEffect(() => {
@@ -104,7 +103,6 @@ const Login = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.response?.data);
         setLoading(false);
       });
   };

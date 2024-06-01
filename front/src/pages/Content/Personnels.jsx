@@ -51,13 +51,11 @@ const Personnels = () => {
       }, 0);
       return [key, sum];
     });
-    console.log(total);
     setPersonnelsData([
       personnelsData[0],
       personnelsData[1],
       Object.fromEntries(total),
     ]);
-    console.log(personnelsData);
   }, []);
   return (
     <Box

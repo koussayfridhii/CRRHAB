@@ -14,7 +14,6 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <Box
       as="footer"

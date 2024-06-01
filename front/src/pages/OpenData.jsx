@@ -125,6 +125,7 @@ const OpenData = () => {
                 color="primary"
                 _dark={{ color: "text" }}
                 fontSize={"lg"}
+                key={doc.link + doc.title.fr}
               >
                 <ListIcon as={MdCheckCircle} />
                 <chakra.a
