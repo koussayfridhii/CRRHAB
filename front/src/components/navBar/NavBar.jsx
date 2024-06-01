@@ -941,9 +941,9 @@ const NAV_ITEMS = [
           ar: "طاقم العمل",
         },
         subLabel: {
-          fr: "Projets de Recherche",
-          en: "Research Projects",
-          ar: "مشاريع البحث",
+          fr: "Personnels",
+          en: "Staff",
+          ar: "طاقم العمل",
         },
         href: "/staff",
       },

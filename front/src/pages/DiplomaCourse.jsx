@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
+  Box,
   Flex,
+  Heading,
   Icon,
   InputGroup,
   InputRightElement,
@@ -383,185 +385,216 @@ const DiplomaCourse = () => {
   const dataColor = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("background", "gray.700");
   return (
-    <Flex
-      w="full"
-      bg="background"
-      p={50}
-      alignItems="center"
-      justifyContent="center"
-      direction={"column"}
-      gap={10}
-      _dark={{
-        bg: "background",
-      }}
+    <Box
+      w={{ base: "full", xl: "80dvw" }}
+      mx={"auto"}
+      bg={"background"}
+      my={10}
+      p={5}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <AutoCompleteMade
-        options={data}
-        language={language}
-        setFiltredData={setFiltredData}
-      />
-      <Stack
-        direction={{ base: "column" }}
-        w="full"
-        bg={{ md: "primaryHover" }}
-        shadow="lg"
-        borderRadius={"lg"}
-        p={3}
-        _dark={{
-          bg: "secondary",
-        }}
+      <Flex
+        justify={"start"}
+        align={"center"}
+        py={3}
+        px={10}
+        bg="primary"
+        _dark={{ bg: "secondary" }}
+        borderRadius={10}
       >
-        {filtredData.map((element) => {
-          return (
-            <Flex
-              direction={{ base: "row", md: "column" }}
-              bg={dataColor}
-              borderRadius={"xl"}
-              key={element.date + "-" + element.titre.fr}
-            >
-              <SimpleGrid
-                spacingY={3}
-                columns={{ base: 1, md: Object.values(headers).length }}
-                w={{ base: 120, md: "full" }}
-                textTransform="uppercase"
-                bg={bg2}
-                color={"gray.500"}
-                py={{ base: 1, md: 4 }}
-                px={{ base: 2, md: 10 }}
-                fontSize="md"
-                fontWeight="hairline"
+        <Heading
+          color={"white"}
+          _dark={{ color: "#fff" }}
+          fontSize={"xxl"}
+          mb={0}
+        >
+          {language === "en"
+            ? "Training Qualification"
+            : language === "fr"
+            ? "Formation Diplômante"
+            : "تدريب مؤهل"}
+        </Heading>
+      </Flex>
+      <Flex
+        w="full"
+        bg="background"
+        p={50}
+        alignItems="center"
+        justifyContent="center"
+        direction={"column"}
+        gap={10}
+        _dark={{
+          bg: "background",
+        }}
+        dir={language === "ar" ? "rtl" : "ltr"}
+      >
+        <AutoCompleteMade
+          options={data}
+          language={language}
+          setFiltredData={setFiltredData}
+        />
+        <Stack
+          direction={{ base: "column" }}
+          w="full"
+          bg={{ md: "primaryHover" }}
+          shadow="lg"
+          borderRadius={"lg"}
+          p={3}
+          _dark={{
+            bg: "secondary",
+          }}
+        >
+          {filtredData.map((element) => {
+            return (
+              <Flex
+                direction={{ base: "row", md: "column" }}
+                bg={dataColor}
                 borderRadius={"xl"}
+                key={element.date + "-" + element.titre.fr}
               >
-                <chakra.span maxW={"fit-content"}>
-                  {headers.auteur[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"}>
-                  {headers.year[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"}>
-                  {headers.titre[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"}>
-                  {headers.type[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"}>
-                  {headers.specialite[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"}>
-                  {headers.etablissement[language]}
-                </chakra.span>
-                <chakra.span maxW={"fit-content"} textAlign={{ md: "end" }}>
-                  {headers.directeur[language]}
-                </chakra.span>
-              </SimpleGrid>
-              <SimpleGrid
-                spacingY={3}
-                columns={{ base: 1, md: Object.values(headers).length }}
-                w="full"
-                py={2}
-                px={10}
-                fontWeight="hairline"
-                columnGap="1rem" // Ajout d'un espace entre les colonnes
-              >
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                <SimpleGrid
+                  spacingY={3}
+                  columns={{ base: 1, md: Object.values(headers).length }}
+                  w={{ base: 120, md: "full" }}
+                  textTransform="uppercase"
+                  bg={bg2}
+                  color={"gray.500"}
+                  py={{ base: 1, md: 4 }}
+                  px={{ base: 2, md: 10 }}
+                  fontSize="md"
+                  fontWeight="hairline"
+                  borderRadius={"xl"}
                 >
-                  {element.auteur[language]}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="wrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.auteur[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.year[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.titre[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.type[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.specialite[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"}>
+                    {headers.etablissement[language]}
+                  </chakra.span>
+                  <chakra.span maxW={"fit-content"} textAlign={{ md: "end" }}>
+                    {headers.directeur[language]}
+                  </chakra.span>
+                </SimpleGrid>
+                <SimpleGrid
+                  spacingY={3}
+                  columns={{ base: 1, md: Object.values(headers).length }}
+                  w="full"
+                  py={2}
+                  px={10}
+                  fontWeight="hairline"
+                  columnGap="1rem" // Ajout d'un espace entre les colonnes
                 >
-                  {element.annee}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  textOverflow="ellipsis"
-                  alignItems="center"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
-                >
-                  {element.titre[language]}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
-                >
-                  {element.type[language]}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
-                >
-                  {element.specialite[language]}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
-                >
-                  {element.etablissement[language]}
-                </chakra.span>
-                <chakra.span
-                  display="flex"
-                  alignItems="center"
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  _hover={{
-                    whiteSpace: "wrap",
-                  }}
-                  maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
-                  textAlign={{ md: "end" }}
-                >
-                  {element.directeur[language]}
-                </chakra.span>
-              </SimpleGrid>
-            </Flex>
-          );
-        })}
-      </Stack>
-    </Flex>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.auteur[language]}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="wrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.annee}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    textOverflow="ellipsis"
+                    alignItems="center"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.titre[language]}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.type[language]}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.specialite[language]}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                  >
+                    {element.etablissement[language]}
+                  </chakra.span>
+                  <chakra.span
+                    display="flex"
+                    alignItems="center"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    _hover={{
+                      whiteSpace: "wrap",
+                    }}
+                    maxW="fit-content" // Définition d'une largeur minimale adaptée au contenu
+                    textAlign={{ md: "end" }}
+                  >
+                    {element.directeur[language]}
+                  </chakra.span>
+                </SimpleGrid>
+              </Flex>
+            );
+          })}
+        </Stack>
+      </Flex>
+    </Box>
   );
 };
 
