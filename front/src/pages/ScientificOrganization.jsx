@@ -4,9 +4,11 @@ import {
   Divider,
   Flex,
   HStack,
+  Highlight,
   List,
   ListIcon,
   ListItem,
+  Text,
   UnorderedList,
   chakra,
 } from "@chakra-ui/react";
@@ -137,13 +139,25 @@ const ScientificOrganization = () => {
               >
                 Scientific Council
               </chakra.h2>
-              <chakra.p>
-                According to Article 4 of Decree No. 2006-3057 of November 20,
-                2006 establishing the scientific organization of CRRHAB, a
-                Scientific Council of the Center is established to carry out the
-                missions provided for in Article 3 of Decree No. 97-938 of May
-                19, 1997.
-              </chakra.p>
+              <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >
+                  According to Article 4 of Decree No. 2006-3057 of November 20,
+                  2006 establishing the scientific organization of CRRHAB, a
+                  Scientific Council of the Center is established to carry out
+                  the missions provided for in Article 3 of Decree No. 97-938 of
+                  May 19, 1997.
+                </Highlight>
+              </Text>
               <chakra.h3
                 fontSize={"xxl"}
                 color={"primary"}
@@ -154,75 +168,173 @@ const ScientificOrganization = () => {
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={LiaDiscourse}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Provide advice on all matters related to the scientific policy
-                  of the establishment, including research programs to be
-                  undertaken.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={LiaDiscourse}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Provide advice on all matters related to the scientific
+                      policy of the establishment, including research programs
+                      to be undertaken.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={CiMonitor}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Monitor the research activities of the establishment.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={CiMonitor}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Monitor the research activities of the establishment.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={SiValorant}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Propose activities for the valorization and application of
-                  research results, as well as activities for scientific
-                  information and documentation.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={SiValorant}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Propose activities for the valorization and application of
+                      research results, as well as activities for scientific
+                      information and documentation.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaArrowUpFromWaterPump}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Propose professional development activities as deemed
-                  necessary.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaArrowUpFromWaterPump}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Propose professional development activities as deemed
+                      necessary.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GiThink}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Provide opinions on proposals for scientific cooperation
-                  agreements.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={GiThink}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Provide opinions on proposals for scientific cooperation
+                      agreements.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdOutlineEditCalendar}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Express the needs of the different structures of the
-                  establishment in scientific and technical personnel.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={MdOutlineEditCalendar}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Express the needs of the different structures of the
+                      establishment in scientific and technical personnel.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaCheck}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Examine the final versions of the establishment's scientific
-                  reports.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaCheck}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Examine the final versions of the establishment's
+                      scientific reports.
+                    </Highlight>
+                  </Text>
                 </ListItem>
               </List>
             </>
@@ -236,13 +348,25 @@ const ScientificOrganization = () => {
               >
                 Conseil Scientifique
               </chakra.h2>
-              <chakra.p>
-                Conformément à l'article 4 du décret n° 2006-3057 du 20 novembre
-                2006 portant création de l'organisation scientifique du CRRHAB,
-                un Conseil Scientifique du Centre est créé pour accomplir les
-                missions prévues à l'article 3 du décret n° 97-938 du 19 mai
-                1997.
-              </chakra.p>
+              <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Conformément à l'article 4 du décret n° 2006-3057 du 20
+                  novembre 2006 portant création de l'organisation scientifique
+                  du CRRHAB, un Conseil Scientifique du Centre est créé pour
+                  accomplir les missions prévues à l'article 3 du décret n°
+                  97-938 du 19 mai 1997.
+                </Highlight>
+              </Text>
               <chakra.h3
                 fontSize={"xxl"}
                 color={"primary"}
@@ -253,75 +377,173 @@ const ScientificOrganization = () => {
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={LiaDiscourse}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Donner des avis sur toutes les questions relatives à la
-                  politique scientifique de l'établissement, y compris les
-                  programmes de recherche à entreprendre.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={LiaDiscourse}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Donner des avis sur toutes les questions relatives à la
+                      politique scientifique de l'établissement, y compris les
+                      programmes de recherche à entreprendre.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={CiMonitor}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Suivre les activités de recherche de l'établissement.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={CiMonitor}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Suivre les activités de recherche de l'établissement.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={SiValorant}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Proposer des activités de valorisation et d'application des
-                  résultats de recherche, ainsi que des activités d'information
-                  et de documentation scientifiques.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={SiValorant}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Proposer des activités de valorisation et d'application
+                      des résultats de recherche, ainsi que des activités
+                      d'information et de documentation scientifiques.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaArrowUpFromWaterPump}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Proposer des activités de développement professionnel jugées
-                  nécessaires.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaArrowUpFromWaterPump}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Proposer des activités de développement professionnel
+                      jugées nécessaires.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GiThink}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Donner des avis sur les propositions d'accords de coopération
-                  scientifique.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={GiThink}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Donner des avis sur les propositions d'accords de
+                      coopération scientifique.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdOutlineEditCalendar}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Exprimer les besoins des différentes structures de
-                  l'établissement en personnel scientifique et technique.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={MdOutlineEditCalendar}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Exprimer les besoins des différentes structures de
+                      l'établissement en personnel scientifique et technique.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaCheck}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  Examiner les versions finales des rapports scientifiques de
-                  l'établissement.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaCheck}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Examiner les versions finales des rapports scientifiques
+                      de l'établissement.
+                    </Highlight>
+                  </Text>
                 </ListItem>
               </List>
             </>
@@ -335,12 +557,29 @@ const ScientificOrganization = () => {
               >
                 المجلس العلمي
               </chakra.h2>
-              <chakra.p>
-                وفقًا للمادة 4 من المرسوم رقم 2006-3057 الصادر في 20 نوفمبر
-                2006، والذي ينص على إنشاء التنظيم العلمي لمركز CRRHAB، يتم إنشاء
-                مجلس علمي للمركز لتنفيذ المهام المنصوص عليها في المادة 3 من
-                المرسوم رقم 97-938 الصادر في 19 مايو 1997.
-              </chakra.p>
+              <Text
+                textAlHighlightign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >
+                  وفقًا للمادة 4 من المرسوم رقم 2006-3057 الصادر في 20 نوفمبر
+                  2006، والذي ينص على إنشاء التنظيم العلمي لمركز CRRHAB، يتم
+                  إنشاء مجلس علمي للمركز لتنفيذ المهام المنصوص عليها في المادة 3
+                  من المرسوم رقم 97-938 الصادر في 19 مايو 1997.
+                </Highlight>
+              </Text>
               <chakra.h3
                 fontSize={"xxl"}
                 color={"primary"}
@@ -351,70 +590,168 @@ const ScientificOrganization = () => {
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={LiaDiscourse}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  تقديم المشورة في جميع الأمور المتعلقة بالسياسة العلمية
-                  للمؤسسة، بما في ذلك برامج البحث التي سيتم تنفيذها.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={LiaDiscourse}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      تقديم المشورة في جميع الأمور المتعلقة بالسياسة العلمية
+                      للمؤسسة، بما في ذلك برامج البحث التي سيتم تنفيذها.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={CiMonitor}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  متابعة الأنشطة البحثية للمؤسسة.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={CiMonitor}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      متابعة الأنشطة البحثية للمؤسسة.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={SiValorant}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  اقتراح الأنشطة المتعلقة بتثمين وتطبيق نتائج البحث، وكذلك
-                  الأنشطة المتعلقة بالمعلومات والتوثيق العلمي.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={SiValorant}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      اقتراح الأنشطة المتعلقة بتثمين وتطبيق نتائج البحث، وكذلك
+                      الأنشطة المتعلقة بالمعلومات والتوثيق العلمي.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaArrowUpFromWaterPump}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  اقتراح الأنشطة التطويرية المهنية التي يتم اعتبارها ضرورية.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaArrowUpFromWaterPump}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      اقتراح الأنشطة التطويرية المهنية التي يتم اعتبارها ضرورية.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GiThink}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  تقديم الآراء حول مقترحات اتفاقيات التعاون العلمي.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={GiThink}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      تقديم الآراء حول مقترحات اتفاقيات التعاون العلمي.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdOutlineEditCalendar}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  التعبير عن احتياجات الهياكل المختلفة للمؤسسة من الموظفين
-                  العلميين والتقنيين.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={MdOutlineEditCalendar}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      التعبير عن احتياجات الهياكل المختلفة للمؤسسة من الموظفين
+                      العلميين والتقنيين.
+                    </Highlight>
+                  </Text>
                 </ListItem>
                 <ListItem mx={5}>
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={FaCheck}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  />
-                  فحص النسخ النهائية من التقارير العلمية للمؤسسة.
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaCheck}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    <Highlight
+                      query="crrhab"
+                      styles={{
+                        color: "white",
+                        bg: "primary",
+                        px: "2",
+                        py: "1",
+                        rounded: "full",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      فحص النسخ النهائية من التقارير العلمية للمؤسسة.
+                    </Highlight>
+                  </Text>
                 </ListItem>
               </List>
             </>
@@ -725,13 +1062,15 @@ const ScientificOrganization = () => {
                 {managersOfSpecializedUnitsData.map((unit, index) => (
                   <ListItem key={index} mx={5}>
                     <ListIcon
-                      fontSize="xl"
+                      fontSize="lg"
                       as={GoPerson}
                       color="primary"
                       _dark={{ color: "secondary" }}
                     />
                     {unit.title?.[language]}
-                  </ListItem>
+                  </Highlight>
+                  </Text>
+                    </ListItem>
                 ))}
               </List>
               <Divider
@@ -760,14 +1099,16 @@ const ScientificOrganization = () => {
                 {representativesOfResearchersData.map((rep, index) => (
                   <ListItem key={index} mx={5}>
                     <ListIcon
-                      fontSize="xl"
+                      fontSize="lg"
                       as={GoPerson}
                       color="primary"
                       _dark={{ color: "secondary" }}
                     />
                     {rep.title?.[language]} - {rep.grade?.[language]} (
                     {rep.description?.[language]})
-                  </ListItem>
+                  </Highlight>
+                  </Text>
+                    </ListItem>
                 ))}
               </List>
               <Divider
@@ -794,16 +1135,37 @@ const ScientificOrganization = () => {
               </chakra.h2>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
-                    fontSize="xl"
+                    fontSize="lg"
                     as={GoPerson}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   {representativeOfIresa.name?.[language]} -{" "}
                   {representativeOfIresa.grade?.[language]} (
                   {representativeOfIresa.description?.[language]})
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
               <Divider
                 my={5}
@@ -832,14 +1194,16 @@ const ScientificOrganization = () => {
                   (rep, index) => (
                     <ListItem key={index} mx={5}>
                       <ListIcon
-                        fontSize="xl"
+                        fontSize="lg"
                         as={GoPerson}
                         color="primary"
                         _dark={{ color: "secondary" }}
                       />
                       {rep.title?.[language]} - {rep.grade?.[language]} (
                       {rep.description?.[language]})
-                    </ListItem>
+                    </Highlight>
+                    </Text>
+                      </ListItem>
                   )
                 )}
               </List>
@@ -870,14 +1234,16 @@ const ScientificOrganization = () => {
                   (person, index) => (
                     <ListItem key={index} mx={5}>
                       <ListIcon
-                        fontSize="xl"
+                        fontSize="lg"
                         as={GoPerson}
                         color="primary"
                         _dark={{ color: "secondary" }}
                       />
                       {person.name?.[language]} - {person.grade?.[language]}
                       <br />
-                    </ListItem>
+                    </Highlight>
+                    </Text>
+                      </ListItem>
                   )
                 )}
               </List>
@@ -905,24 +1271,66 @@ fr:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPersonFill}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   Prof. Taoufik BETTAIEB - Directeur Général du CRRHAB
                   (Président)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPerson}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   M. Atef MOUGOU - Secrétaire Général (Rapporteur)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
               <chakra.h3
                 mx={5}
@@ -935,14 +1343,35 @@ fr:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={MdPersonSearch}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   Prof. Mejda DAAMI-REMADI - Chef de Laboratoire
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
   </>
 },
@@ -958,23 +1387,65 @@ ar:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPersonFill}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   الأستاذ طوفيق بيتايب - المدير العام لـ CRRHAB (الرئيس)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPerson}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   السيد عاطف موغو - السكرتير العام (المقرر)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
               <chakra.h3
                 mx={5}
@@ -987,14 +1458,35 @@ ar:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={MdPersonSearch}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   الأستاذة مجدة دامي-رماضي - رئيسة المختبر
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
   </>
 },
@@ -1010,24 +1502,66 @@ en:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPersonFill}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   Prof. Taoufik BETTAIEB - General Director of CRRHAB
                   (President)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={GoPerson}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   Mr. Atef MOUGOU - General Secretary (Reporter)
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
               <chakra.h3
                 mx={5}
@@ -1040,14 +1574,35 @@ en:{
               </chakra.h3>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
+
                   <ListIcon
                     fontSize={"xl"}
                     as={MdPersonSearch}
                     color="primary"
                     _dark={{ color: "secondary" }}
-                  />
+                  
+                  <Text
+        
+                textAlign="justify"
+                color={"text"}
+                fontSize="lg"
+                mb={2}
+              >
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >  />
                   Prof. Mejda DAAMI-REMADI - Laboratory Chief
-                </ListItem>
+                </Highlight>
+                </Text>
+                  </ListItem>
               </List>
   </>
 }

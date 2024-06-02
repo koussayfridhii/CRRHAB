@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   Heading,
+  Highlight,
   ListItem,
   OrderedList,
   Text,
@@ -65,33 +66,71 @@ const Missions = ({ full = false }) => {
           : "المهام"}
       </Heading>
       <Card py={3} px={5} mb={6}>
-        <Text>
-          {language === "fr"
-            ? `Les missions du Centre Régional des Recherches en Horticulture et
+        <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
+          <Highlight
+            query="crrhab"
+            styles={{
+              color: "white",
+              bg: "primary",
+              px: "2",
+              py: "1",
+              rounded: "full",
+              fontWeight: "bold",
+            }}
+          >
+            {language === "fr"
+              ? `Les missions du Centre Régional des Recherches en Horticulture et
           Agriculture Biologique (CRRHAB) s’inscrivent dans le cadre de la
           stratégie de la régionalisation et de la décentralisation de la
           recherche, adoptée par l’IRESA :`
-            : language === "en"
-            ? `The missions of the Regional Center for Research in Horticulture and Organic Agriculture (CRRHAB) are part of the regionalization and decentralization strategy for research adopted by the Arab Organization for Agricultural Research (AORA):`
-            : `تندرج مهام المركز الجهوي للبحوث في البستنة والزراعة العضوية (CRRHAB) في إطار استراتيجية اللامركزية واللامركزية للأبحاث التي اعتمدتها المنظمة العربية للبحوث الزراعية (إريسا):`}
+              : language === "en"
+              ? `The missions of the Regional Center for Research in Horticulture and Organic Agriculture (CRRHAB) are part of the regionalization and decentralization strategy for research adopted by the Arab Organization for Agricultural Research (AORA):`
+              : `تندرج مهام المركز الجهوي للبحوث في البستنة والزراعة العضوية (CRRHAB) في إطار استراتيجية اللامركزية واللامركزية للأبحاث التي اعتمدتها المنظمة العربية للبحوث الزراعية (إريسا):`}
+          </Highlight>
         </Text>
         <OrderedList mx={10} my={5}>
           {missions.map((mission) => {
             return (
               <ListItem mx={5} key={mission.fr}>
-                {mission[language]}
+                <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
+                  <Highlight
+                    query="crrhab"
+                    styles={{
+                      color: "white",
+                      bg: "primary",
+                      px: "2",
+                      py: "1",
+                      rounded: "full",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {mission[language]}
+                  </Highlight>
+                </Text>
               </ListItem>
             );
           })}
         </OrderedList>
-        <Text>
-          {language === "fr"
-            ? `De plus, le CRRHAB est fortement impliqué dans la formation par la recherche, par des
+        <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
+          <Highlight
+            query="crrhab"
+            styles={{
+              color: "white",
+              bg: "primary",
+              px: "2",
+              py: "1",
+              rounded: "full",
+              fontWeight: "bold",
+            }}
+          >
+            {language === "fr"
+              ? `De plus, le CRRHAB est fortement impliqué dans la formation par la recherche, par des
             stages, des thèses de doctorat ou des post-doctorats de jeunes scientifiques ainsi que
             d’étudiantes et étudiants.`
-            : language === "en"
-            ? `In addition, the CRRHAB is heavily involved in training through research, through internships, doctoral theses, and postdoctoral training for young scientists and students.`
-            : `بالإضافة إلى ذلك، يشارك المركز الجهوي للبحوث في البستنة والزراعة العضوية بشكل كبير في التدريب من خلال البحث، من خلال التدريبات، وأطروحات الدكتوراه، وما بعد الدكتوراه للعلماء الشباب، وكذلك الطلاب.`}
+              : language === "en"
+              ? `In addition, the CRRHAB is heavily involved in training through research, through internships, doctoral theses, and postdoctoral training for young scientists and students.`
+              : `بالإضافة إلى ذلك، يشارك المركز الجهوي للبحوث في البستنة والزراعة العضوية بشكل كبير في التدريب من خلال البحث، من خلال التدريبات، وأطروحات الدكتوراه، وما بعد الدكتوراه للعلماء الشباب، وكذلك الطلاب.`}
+          </Highlight>
         </Text>
       </Card>
     </Box>
