@@ -1,4 +1,4 @@
-import { Flex, Text, Heading, Box } from "@chakra-ui/react";
+import { Flex, Text, Heading, Box, Highlight } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 const SpecializedUnits = () => {
   const language = useSelector((state) => state.language.language);
@@ -64,8 +64,20 @@ const SpecializedUnits = () => {
         >
           {data[language].split("/n").map((text, i) => {
             return (
-              <Text color={"text"} fontSize={"xl"} key={text + i}>
-                {text}
+              <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
+                <Highlight
+                  query="crrhab"
+                  styles={{
+                    color: "white",
+                    bg: "primary",
+                    px: "2",
+                    py: "1",
+                    rounded: "full",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {text}
+                </Highlight>
               </Text>
             );
           })}
