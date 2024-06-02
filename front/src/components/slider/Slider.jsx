@@ -1,30 +1,57 @@
-
 import React, { useState, useRef } from "react";
 import "./Slider.scss";
 
-const Slider = ({language}) => {
+const Slider = ({ language }) => {
   const [slides, setSlides] = useState([
     {
-      title: {fr:'Slide 1', en:'Slide 1', ar:'سلايد 1'},
-      color: "#1e290b",
+      title: { fr: "coccinelle", en: "", ar: "" },
+      color: "#B94014",
       active: 0,
-      img: "https://plus.unsplash.com/premium_photo-1678344170545-c3edef92a16e?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "IMG_20240503_095557.jpg",
       i: 1,
     },
     {
-      title: {fr:'Slide 2', en:'Slide 2', ar:'سلايد 2'},
-      color: "#de9563",
+      title: { fr: "Chrysope Verte", en: "", ar: "" },
+      color: "#10170D",
       active: 0,
-      img: "https://images.unsplash.com/photo-1597916829826-02e5bb4a54e0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "IMG_20240503_095942.jpg",
       i: 2,
     },
     {
-        title: {fr:'Slide 3', en:'Slide 3', ar:'سلايد 3'},
-      color: "#e5b13e   ",
+      title: { fr: "Dasysyrphus", en: "", ar: "" },
+      color: "#EFF18F",
       active: 0,
-      img: "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "IMG_20240518_094752.jpg",
       i: 3,
-    },      
+    },
+    {
+      title: { fr: "Abricot", en: "", ar: "" },
+      color: "#F4935F",
+      active: 0,
+      img: "L11A12 3 076.jpg",
+      i: 4,
+    },
+    {
+      title: { fr: "Tomate", en: "", ar: "" },
+      color: "#792521",
+      active: 0,
+      img: "371148550_194060910353349_2673705428630603414_n.jpg",
+      i: 5,
+    },
+    {
+      title: { fr: "Cerise", en: "", ar: "" },
+      color: "#E00711",
+      active: 0,
+      img: "IMG_20180527_110614.jpg",
+      i: 6,
+    },
+    {
+      title: { fr: "Aubergine", en: "", ar: "" },
+      color: "#3E670B",
+      active: 0,
+      img: "IMG_20180215_120330_HDR.jpg",
+      i: 7,
+    },
   ]);
   const containerRef = useRef(null);
   const [active, setActive] = useState(false);
@@ -143,16 +170,18 @@ const Slider = ({language}) => {
         ref={containerRef}
         style={{
           backgroundColor: slides[0]?.color,
-          width: slides.length * 100 + "vw",
+          width: slides.length * 100.5 + "vw",
         }}
       >
         {slides.map((slide) => {
           return (
             <div className="slide" key={slide.i}>
-              <h1 className={active ? "active" : ""}>{slide.title?.[language]}</h1>
+              <h1 className={active ? "active" : ""}>
+                {slide.title?.[language]}
+              </h1>
               <img
                 className={active ? "active" : ""}
-                src={slide?.img}
+                src={`/assets/images/${slide.img}`}
                 alt={slide.title}
               />
             </div>
