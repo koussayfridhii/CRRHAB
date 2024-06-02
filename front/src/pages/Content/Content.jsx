@@ -79,7 +79,14 @@ const Content = () => {
           >
             {data[language].split("/n").map((text, i) => {
               return (
-                <Text color={"text"} fontSize={"xl"} key={text + i}>
+                <Text
+                  style={{
+                    textJustify: "inter-word",
+                  }}
+                  color={"text"}
+                  fontSize={"xl"}
+                  key={text + i}
+                >
                   {text}
                 </Text>
               );

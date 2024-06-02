@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .Ministere {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 2rem;
   // animation: animate 3s infinite ease;
+  img {
+    height: 100px;
+    width: 100% !important;
+  }
   .logoFlex {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    img {
-      height: 5rem;
-      // aspect-ratio: 1;
-    }
     .column {
       display: flex;
       flex-direction: column;
@@ -39,7 +39,6 @@
     font-family: "Poppins", sans-serif;
     flex: 2;
     text-align: center;
-    padding-right: 10vw;
   }
 }
 //animation

@@ -14,6 +14,7 @@ const ThemeToggle = () => {
         dispatch(colorModeReducer());
         dispatch(themeReducer());
       }}
+      p={0}
       color={"text"}
     >
       {colorMode === "light" ? <ModeNightIcon /> : <WbTwilightIcon />}

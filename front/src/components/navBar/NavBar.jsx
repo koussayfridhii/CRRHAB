@@ -1,226 +1,3 @@
-// import React, { useState } from "react";
-// import { useSelector } from "react-redux";
-// import {
-//   Link as ChakraLink,
-//   Box,
-//   Flex,
-//   Text,
-//   Button,
-//   Stack,
-//   Menu,
-//   MenuButton,
-//   MenuList,
-//   MenuItem as ChakraMenuItem,
-// } from "@chakra-ui/react";
-// import { useDispatch } from "react-redux";
-// import { sizeDownReducer, sizeUpReducer } from "../../redux/colorModeSlice";
-// import { logout } from "../../redux/userSlice";
-// import { languageReducer } from "../../redux/languageSlice";
-// import ZoomInIcon from "@mui/icons-material/ZoomIn";
-// import ZoomOutIcon from "@mui/icons-material/ZoomOut";
-// import { ChevronDownIcon } from "@chakra-ui/icons";
-// import { Link } from "react-router-dom";
-// import LogoutIcon from "@mui/icons-material/Logout";
-// import Logo from "./Logo";
-// import ThemeToggle from "../ThemeToggle";
-// import Tunisie from "./Tunisie";
-// import "./Navbar.scss";
-
-// const NavBar = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggle = () => setIsOpen((prev) => !prev);
-//   const menus = [
-//     {
-//       fr: {
-//         title: "accueil",
-//       },
-//       ar: {
-//         title: "accueil ar",
-//       },
-//       en: {
-//         title: "Home",
-//       },
-//       path: "/",
-//     },
-//     {
-//       fr: {
-//         title: "chat",
-//       },
-//       ar: {
-//         title: "chat ar",
-//       },
-//       en: {
-//         title: "chat",
-//       },
-//       path: "/chat",
-//     },
-//   ];
-//   return (
-//     <>
-//       <Tunisie />
-//     </>
-//   );
-// };
-
-// export default NavBar;
-
-// // const CloseIcon = () => (
-// //   <svg width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-// //     <title>Close</title>
-// //     <path
-// //       fill="white"
-// //       d="M9.00023 7.58599L13.9502 2.63599L15.3642 4.04999L10.4142 8.99999L15.3642 13.95L13.9502 15.364L9.00023 10.414L4.05023 15.364L2.63623 13.95L7.58623 8.99999L2.63623 4.04999L4.05023 2.63599L9.00023 7.58599Z"
-// //     />
-// //   </svg>
-// // );
-
-// // const MenuIcon = () => (
-// //   <svg
-// //     width="24px"
-// //     viewBox="0 0 20 20"
-// //     xmlns="http://www.w3.org/2000/svg"
-// //     fill="white"
-// //   >
-// //     <title>Menu</title>
-// //     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-// //   </svg>
-// // );
-
-// // const MenuToggle = ({ toggle, isOpen }) => {
-// //   return (
-// //     <Box
-// //       color={"white"}
-// //       display={{ base: "block", '2xl': "none" }}
-// //       onClick={toggle}
-// //     >
-// //       {isOpen ? <CloseIcon /> : <MenuIcon />}
-// //     </Box>
-// //   );
-// // };
-
-// // const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
-// //   return (
-// //     <ChakraLink as={Link} to={to}>
-// //       <Text display="block" color="text">
-// //         {children}
-// //       </Text>
-// //     </ChakraLink>
-// //   );
-// // };
-
-// // const MenuLinks = ({ isOpen, menus }) => {
-// //   const language = useSelector((state) => state.language.language);
-// //   const user = useSelector((state) => state.user.user);
-// //   let languages = ["ar", "fr", "en"].filter((lan) => lan !== language);
-// //   const dispatch = useDispatch();
-// //   return (
-// //     <Box
-// //       display={{ base: isOpen ? "block" : "none", '2xl': "block" }}
-// //       flexBasis={{ base: "100%", '2xl': "auto" }}
-// //     >
-// //       <Stack
-// //         spacing={8}
-// //         align="center"
-// //         justify={["center", "space-between", "flex-end", "flex-end"]}
-// //         direction={["column", "row", "row", "row"]}
-// //         pt={[4, 4, 0, 0]}
-// //       >
-// //         {menus.map((menu) => {
-// //           let title;
-// //           if (language === "ar") {
-// //             title = menu.ar.title;
-// //           } else if (language === "fr") {
-// //             title = menu.fr.title;
-// //           } else {
-// //             title = menu.en.title;
-// //           }
-// //           return (
-// //             <MenuItem key={menu.path} to={menu.path}>
-// //               {title}{" "}
-// //             </MenuItem>
-// //           );
-// //         })}
-// //         {user ? (
-// //           <MenuItem to="/login">
-// //             <Button
-// //               size="sm"
-// //               rounded="md"
-// //               color="text"
-// //               bg="red.600"
-// //               _hover={{
-// //                 bg: "red.500",
-// //               }}
-// //               rightIcon={<LogoutIcon />}
-// //               onClick={() => {
-// //                 dispatch(logout());
-// //               }}
-// //             >
-// //               Logout
-// //             </Button>
-// //           </MenuItem>
-// //         ) : (
-// //           <MenuItem to="/login" isLast>
-// //             <Button
-// //               size="sm"
-// //               rounded="md"
-// //               color="text"
-// //               bg="primary"
-// //               _hover={{
-// //                 bg: "primary",
-// //               }}
-// //             >
-// //               Login
-// //             </Button>
-// //           </MenuItem>
-// //         )}
-// //         <ThemeToggle />
-// //         <Menu>
-// //           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-// //             {language}
-// //           </MenuButton>
-// //           <MenuList>
-// //             {languages.map((lan) => (
-// //               <ChakraMenuItem
-// //                 onClick={() => dispatch(languageReducer(lan))}
-// //                 key={lan}
-// //               >
-// //                 {lan}
-// //               </ChakraMenuItem>
-// //             ))}
-// //           </MenuList>
-// //           <Box display="flex" gap="1">
-// //             <Button onClick={() => dispatch(sizeUpReducer())}>
-// //               <ZoomInIcon />
-// //             </Button>
-// //             <Button>
-// //               <ZoomOutIcon onClick={() => dispatch(sizeDownReducer())} />
-// //             </Button>
-// //           </Box>
-// //         </Menu>
-// //       </Stack>
-// //     </Box>
-// //   );
-// // };
-
-// // const NavBarContainer = ({ children }) => {
-// //   return (
-// //     <Flex
-// //       as="nav"
-// //       align="center"
-// //       justify="space-between"
-// //       wrap="wrap"
-// //       w="100%"
-// //       mb={8}
-// //       p={8}
-// //       bg="background"
-// //       color="text"
-// //     >
-// //       {children}
-// //     </Flex>
-// //   );
-// // };
-
 import {
   Box,
   Flex,
@@ -250,7 +27,6 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Tunisie from "./Tunisie";
-import "./Navbar.scss";
 import { sizeDownReducer, sizeUpReducer } from "../../redux/colorModeSlice";
 import { logout } from "../../redux/userSlice";
 import { languageReducer } from "../../redux/languageSlice";
@@ -294,9 +70,9 @@ export default function WithSubnavigation() {
           style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
         >
           <Flex
-            flex={{ base: 1, "2xl": "auto" }}
+            flex={{ base: 1, xl: "auto" }}
             ml={{ base: -2 }}
-            display={{ base: "flex", "2xl": "none" }}
+            display={{ base: "flex", xl: "none" }}
             align={"center"}
           >
             <IconButton
@@ -316,22 +92,25 @@ export default function WithSubnavigation() {
             flex={{ base: 1 }}
             justify={{
               base: "center",
-              "2xl": "start",
+              xl: "start",
             }}
             gap={"1rem"}
           >
-            <Flex display={{ base: "none", "2xl": "flex" }} ml={10}>
+            <Flex display={{ base: "none", xl: "flex" }} ml={10}>
               <DesktopNav />
             </Flex>
           </Flex>
 
           <Stack
-            flex={{ base: 1, "2xl": 0 }}
+            flex={{ base: 1, xl: 0 }}
             justify={"flex-end"}
             direction={"row"}
-            spacing={6}
+            spacing={{ base: 6, xl: 2 }}
           >
-            <FormControl id="search">
+            {/* <FormControl
+              id="search"
+              display={{ base: "15rem", xl: "2rem", "2xl": "15rem" }}
+            >
               <InputGroup
                 borderColor="secondary"
                 bg={"background"}
@@ -365,13 +144,12 @@ export default function WithSubnavigation() {
                   type="text"
                   size="xl"
                   w={"100%"}
-                  minW={"15rem"}
                   _placeholder={"Search ..."}
                   color={"text"}
                 />
               </InputGroup>
-            </FormControl>
-            <Box display={{ base: "none", "2xl": "block" }} bg={"primary"}>
+            </FormControl> */}
+            <Box display={{ base: "none", xl: "block" }} bg={"primary"}>
               <Popover
                 trigger={"hover"}
                 placement={"bottom-start"}
@@ -395,11 +173,7 @@ export default function WithSubnavigation() {
                       bg: "secondary",
                     }}
                   >
-                    {language === "fr"
-                      ? "Français"
-                      : language === "en"
-                      ? "English"
-                      : "العربية"}
+                    {language}
                   </Button>
                 </PopoverTrigger>
 
@@ -408,8 +182,11 @@ export default function WithSubnavigation() {
                   boxShadow={"xl"}
                   p={4}
                   rounded={"xl"}
-                  minW={"sm"}
+                  w={"xs"}
                   bg={"primary"}
+                  _dark={{
+                    bg: "secondary",
+                  }}
                 >
                   <Stack>
                     {languages
@@ -434,11 +211,7 @@ export default function WithSubnavigation() {
                                 fontWeight={500}
                                 cursor={"pointer"}
                               >
-                                {lan === "fr"
-                                  ? "Français"
-                                  : lan === "en"
-                                  ? "English"
-                                  : "العربية"}
+                                {lan}
                               </Text>
                               <Text fontSize={"sm"}>{lan}</Text>
                             </Box>
@@ -468,9 +241,9 @@ export default function WithSubnavigation() {
                 </PopoverContent>
               </Popover>
             </Box>
-            {user ? (
+            {/* {user ? (
               <Button
-                display={{ base: "none", "2xl": "inline-flex" }}
+                display={{ base: "none", xl: "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
                 color={"white"}
@@ -490,7 +263,7 @@ export default function WithSubnavigation() {
               <>
                 <ChakraLink as={Link} to="/login">
                   <Button
-                    display={{ base: "none", "2xl": "inline-flex" }}
+                    display={{ base: "none", xl: "inline-flex" }}
                     fontSize={"sm"}
                     fontWeight={600}
                     color={"white"}
@@ -510,14 +283,14 @@ export default function WithSubnavigation() {
                   </Button>
                 </ChakraLink>
               </>
-            )}
-            <Box display={{ base: "none", "2xl": "flex" }} gap="1">
+            )} */}
+            <Box display={{ base: "none", xl: "flex" }} gap="1">
               <ThemeToggle />
-              <Button onClick={() => dispatch(sizeUpReducer())}>
+              <Button p={0} onClick={() => dispatch(sizeUpReducer())}>
                 <ZoomInIcon />
               </Button>
-              <Button>
-                <ZoomOutIcon onClick={() => dispatch(sizeDownReducer())} />
+              <Button p={0} onClick={() => dispatch(sizeDownReducer())}>
+                <ZoomOutIcon />
               </Button>
             </Box>
           </Stack>
@@ -544,6 +317,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Box
                 as={Link}
+                // display={"inline-block"}
                 p={2}
                 to={navItem.href ?? "#"}
                 fontSize={"sm"}
@@ -553,6 +327,7 @@ const DesktopNav = () => {
                   textDecoration: "none",
                   color: linkHoverColor,
                 }}
+                whiteSpace="nowrap"
               >
                 {navItem.label[language]}
               </Box>
@@ -632,7 +407,7 @@ const MobileNav = () => {
       borderStyle={"solid"}
       borderColor="secondary"
       p={4}
-      display={{ "2xl": "none" }}
+      display={{ xl: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
@@ -733,7 +508,7 @@ const MobileNav = () => {
       </Box>
       {user ? (
         <Button
-          display={{ base: "inline-flex", "2xl": "none" }}
+          display={{ base: "inline-flex", xl: "none" }}
           fontSize={"sm"}
           fontWeight={600}
           color={"white"}
@@ -753,7 +528,7 @@ const MobileNav = () => {
         <>
           <ChakraLink as={Link} to="/login">
             <Button
-              display={{ base: "inline-flex", "2xl": "none" }}
+              display={{ base: "inline-flex", xl: "none" }}
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
@@ -772,7 +547,7 @@ const MobileNav = () => {
           </ChakraLink>
         </>
       )}
-      <Box display={{ base: "flex", "2xl": "none" }} gap="1">
+      <Box display={{ base: "flex", xl: "none" }} gap="1">
         <ThemeToggle />
         <Button onClick={() => dispatch(sizeUpReducer())}>
           <ZoomInIcon />
