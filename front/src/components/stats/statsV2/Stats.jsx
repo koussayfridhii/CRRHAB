@@ -173,7 +173,7 @@ export default function StatsV2({ language, data }) {
             _dark={{ bg: "gray.700" }}
             mt={{ base: 4, sm: -4 }}
             shadow="xl"
-            zIndex={30}
+            zIndex={2}
             direction="column"
           >
             <VStack

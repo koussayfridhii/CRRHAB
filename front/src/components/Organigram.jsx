@@ -142,7 +142,7 @@ const Card = ({ title, language, color }) => {
   return (
     <HStack
       px={{ base: 3, sm: 5 }}
-      py={{ base: 3, sm: 3 }}
+      py={3}
       bg={useColorModeValue(color, "gray.800")}
       color="white"
       spacing={5}
