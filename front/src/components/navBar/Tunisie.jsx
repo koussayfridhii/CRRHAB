@@ -192,7 +192,7 @@ const Tunisie = () => {
   return (
     <SimpleGrid
       columns={1}
-      w={"100dvw"}
+      w={"100%"}
       bg={"background"}
       dir={language === "ar" ? "rtl" : "ltr"}
       // h={"25vh"}
@@ -327,18 +327,13 @@ const Tunisie = () => {
       >
         {language === "fr" ? (
           <>
-            Centre Régional des Recherches en <br /> Horticulture et Agriculture
+            Centre Régional des Recherches en Horticulture et Agriculture
             Biologique
           </>
         ) : language === "en" ? (
-          <>
-            Regional Research Center in <br /> Horticulture and Organic
-            Agriculture
-          </>
+          <>Regional Research Center in Horticulture and Organic Agriculture</>
         ) : (
-          <>
-            المركز الجهوي للبحوث في <br /> البستنة و الفلاحة البيولوجية
-          </>
+          <>المركز الجهوي للبحوث في البستنة و الفلاحة البيولوجية</>
         )}
       </chakra.h1>
     </SimpleGrid>
