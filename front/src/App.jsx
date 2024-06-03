@@ -37,6 +37,11 @@ import OpenData from "./pages/OpenData.jsx";
 import Personnels from "./pages/Content/Personnels.jsx";
 import AdminResearchTeam from "./pages/admin/adminResearchTeam/AdminResearchTeam.jsx";
 import CreateResearchTeam from "./pages/admin/adminResearchTeam/CreateResearchTeam.jsx";
+import AdminDiplomaCourses from "./pages/admin/diplomaCourses/AdminDiplomaCourses.jsx";
+import CreateDiplomaCourse from "./pages/admin/diplomaCourses/CreateDiplomaCourse.jsx";
+import AdminActualities from "./pages/admin/adminActualities/AdminActualities.jsx";
+import CreateActualities from "./pages/admin/adminActualities/CreateActualities.jsx";
+import AdminGallerie from "./pages/admin/adminGallerie/AdminGallerie.jsx";
 
 const Layout = () => {
   return (
@@ -169,8 +174,12 @@ const router = createBrowserRouter([
         element: <AdminResearchTeam />,
       },
       {
+        path: "/admin/diploma_course",
+        element: <AdminDiplomaCourses />,
+      },
+      {
         path: "/admin/gallery",
-        element: <DashBoard />,
+        element: <AdminGallerie />,
       },
       {
         path: "/admin/stats",
@@ -214,7 +223,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/actualities",
-        element: <DashBoard />,
+        element: <AdminActualities />,
       },
       {
         path: "/admin/create/",
@@ -230,8 +239,34 @@ const router = createBrowserRouter([
             ],
           },
           {
+            path: "/admin/create/diploma_course",
+            element: <CreateDiplomaCourse />,
+            children: [
+              {
+                path: "/admin/create/diploma_course/:id",
+                element: <CreateDiplomaCourse />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/actualities",
+            element: <CreateActualities />,
+            children: [
+              {
+                path: "/admin/create/actualities/:id",
+                element: <CreateActualities />,
+              },
+            ],
+          },
+          {
             path: "/admin/create/gallery",
-            element: <DashBoard />,
+            element: <CreateActualities />,
+            children: [
+              {
+                path: "/admin/create/gallery/:id",
+                element: <CreateActualities />,
+              },
+            ],
           },
           {
             path: "/admin/create/stats",

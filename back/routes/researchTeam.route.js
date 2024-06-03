@@ -20,8 +20,8 @@ router.get("/research_team", getAllResearchers);
 router.get("/research_team/:id", getResearcherById);
 router.put(
   "/research_team/:id",
-  passport.authenticate("jwt", { session: false }),
-  rolesMiddleware.inRole(rolesMiddleware.roles.admin),
+  // passport.authenticate("jwt", { session: false }),
+  // rolesMiddleware.inRole(rolesMiddleware.roles.admin),
   updateResearcherById
 );
 router.delete(

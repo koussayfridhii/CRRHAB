@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -20,7 +20,6 @@ import {
 import SimpleSidebar from "../../../components/adminSideBar/AdminSideBar";
 // import ResearchTeam from "../researchStructures/ResearchTeam";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import dataAdminPages from "../../../dataAdminPages";
 import { BsBoxArrowUpRight, BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
@@ -330,7 +329,13 @@ const AdminResearchTeam = () => {
       },
     },
   ];
-
+  const getAllData = async () => {
+    const res = await axios.get(`http://localhost:5000/api/research_team`);
+    setData(res.data);
+  };
+  useEffect(() => {
+    getAllData();
+  }, []);
   return (
     <Wrap height="100dvh" dir={{ base: "column", "2xl": "row" }}>
       <SimpleSidebar />
@@ -444,7 +449,7 @@ const DataTable = ({ data, setData, headers, language }) => {
                   <ButtonGroup variant="solid" size="sm" spacing={3}>
                     {row.cv !== "" ? (
                       <chakra.a
-                        href={`../${row.cv}`}
+                        href={`${row.cv}`}
                         target="_blank"
                         color="primary"
                       >

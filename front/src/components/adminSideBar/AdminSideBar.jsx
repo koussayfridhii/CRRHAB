@@ -14,7 +14,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FiSettings, FiMenu } from "react-icons/fi";
-import { FaRegUser, FaImages, FaUserCheck, FaQuestion } from "react-icons/fa";
+import {
+  FaRegUser,
+  FaBook,
+  FaImages,
+  FaUserCheck,
+  FaQuestion,
+} from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { BiStats } from "react-icons/bi";
 import { CiTextAlignJustify } from "react-icons/ci";
@@ -28,6 +34,7 @@ import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
+  { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
   { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
   { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
   { name: "Stats", icon: BiStats, href: "/admin/stats" },

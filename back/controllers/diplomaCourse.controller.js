@@ -54,9 +54,9 @@ exports.updateDiplomaCourseById = async (req, res) => {
 // Controller to delete a specific diploma course by ID
 exports.deleteDiplomaCourseById = async (req, res) => {
   try {
-    const deletedDiplomaCourse = await DiplomaCourse.findByIdAndDelete(
-      req.params.id
-    );
+    const deletedDiplomaCourse = await DiplomaCourse.findOneAndDelete({
+      _id: req.params.id,
+    });
     if (!deletedDiplomaCourse) {
       return res.status(404).json({ message: "Diploma course not found" });
     }

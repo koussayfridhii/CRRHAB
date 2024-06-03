@@ -5,6 +5,7 @@ const passport = require("passport");
 const { rolesMiddleware } = require("../middlewares/role");
 /* GET users listing. */
 router.get("/news", newsControllers.getNews);
+router.get("/news/:id", newsControllers.getNewsById);
 
 router.post(
   "/news",

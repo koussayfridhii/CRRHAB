@@ -28,7 +28,7 @@ const CreateResearchTeam = () => {
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
-
+  const path = pathname.replace("/admin/create/research_team", "");
   const handleChange = (e, lang, field) => {
     if (lang) {
       setFormData({
@@ -72,36 +72,68 @@ const CreateResearchTeam = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/research_team",
-        JSON.stringify(formData),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.user?.token}`,
-          },
-        }
-      );
-      setLoading(false);
-      toast({
-        title: "Data submitted successfully!",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-      navigate("/admin/research_team");
-    } catch (error) {
-      setLoading(false);
-      toast({
-        title: "Error submitting data.",
-        description: error.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-      console.error("Error submitting data:", error);
+    if (path === "") {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/research_team",
+          JSON.stringify(formData),
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.user?.token}`,
+            },
+          }
+        );
+        setLoading(false);
+        toast({
+          title: "Data submitted successfully!",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        navigate("/admin/research_team");
+      } catch (error) {
+        setLoading(false);
+        toast({
+          title: "Error submitting data.",
+          description: error.message,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+        console.error("Error submitting data:", error);
+      }
+    } else {
+      try {
+        const response = await axios.put(
+          `http://localhost:5000/api/research_team/${formData._id}`,
+          JSON.stringify(formData),
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.user?.token}`,
+            },
+          }
+        );
+        setLoading(false);
+        toast({
+          title: "Data submitted successfully!",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        navigate("/admin/research_team");
+      } catch (error) {
+        setLoading(false);
+        toast({
+          title: "Error submitting data.",
+          description: error.message,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+        console.error("Error submitting data:", error);
+      }
     }
   };
 
@@ -127,7 +159,6 @@ const CreateResearchTeam = () => {
     }
   };
   useEffect(() => {
-    const path = pathname.replace("/admin/create/research_team", "");
     path !== "" && firstApiCall(path.replace("/", ""));
   }, []);
 

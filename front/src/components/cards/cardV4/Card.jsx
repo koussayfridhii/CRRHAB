@@ -68,7 +68,7 @@ const Card = ({ data, language }) => {
               bg: "gray.400",
             }}
             as={Link}
-            to={"/actualities/" + data.link}
+            to={"/actualities/" + data._id}
           >
             {language === "fr"
               ? "voir plus"

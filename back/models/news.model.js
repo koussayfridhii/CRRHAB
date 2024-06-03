@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const newsSchema = new mongoose.Schema({
   link: {
     type: String,
-    required: true,
+    required: false,
   },
   title: {
     type: Object,
@@ -23,8 +23,9 @@ const newsSchema = new mongoose.Schema({
       en: { type: String },
     },
   },
-  media: {
+  img: {
     type: String,
+    required: true,
   },
 });
 module.exports.newsModel = mongoose.model("news", newsSchema);

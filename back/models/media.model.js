@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const mediaSchema = new mongoose.Schema({
-  link: {
+  img: {
     type: String,
     required: true,
   },
@@ -19,6 +19,11 @@ const mediaSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+  },
+  color: {
+    type: String,
+    required: true,
+    default: "#0FA239",
   },
   description: {
     // Object containing fields for different languages

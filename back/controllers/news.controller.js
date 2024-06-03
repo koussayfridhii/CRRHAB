@@ -1,47 +1,57 @@
 const { newsModel } = require("../models/news.model");
 const { userModel } = require("../models/user.model");
 const sendMail = require("./mailing.controller");
+
+// Controller to add a new news
 const postNews = async (req, res) => {
   try {
-    const { title } = req.body; // Extract path from request body
-    // Check if news with the same path already exists
+    const { title } = req.body; // Extract title from request body
+
+    // Check if news with the same title already exists
     const existingNews = await newsModel.findOne({ title });
 
     if (existingNews) {
       return res
         .status(409)
-        .json({ message: "this news already exists!!", success: false });
+        .json({ message: "This news already exists!", success: false });
     }
-    const news = newsModel.create(req.body);
+
+    // Create a new news
+    const news = await newsModel.create(req.body);
+
+    // Get list of users interested in news
     const usersList = await userModel.find({ news: true });
-    sendMail(
-      usersList.map((user) => {
-        return user.email;
-      })
-    );
+
+    // Send email notification to users interested in news
+    sendMail(usersList.map((user) => user.email));
+
     return res
       .status(201)
-      .json({ message: "news added successfully!", newsId: news._id });
+      .json({ message: "News added successfully!", newsId: news._id });
   } catch (error) {
-    res
+    console.error(error);
+    return res
       .status(500)
-      .json({ message: "something went wrong !!", error, success: false });
-    console.log(error);
+      .json({ message: "Something went wrong!", error, success: false });
   }
 };
+
+// Controller to get all news
 const getNews = async (req, res) => {
   try {
     const news = await newsModel.find();
     return res
-      .status(201)
-      .json({ message: "all found news!", news, success: true });
+      .status(200)
+      .json({ message: "All found news!", news, success: true });
   } catch (error) {
-    res
+    console.error(error);
+    return res
       .status(500)
-      .json({ message: "something went wrong !!", error, success: false });
-    console.log(error);
+      .json({ message: "Something went wrong!", error, success: false });
   }
 };
+
+// Controller to update a news by id
 const putNews = async (req, res) => {
   try {
     const id = req.params.id;
@@ -50,47 +60,73 @@ const putNews = async (req, res) => {
     if (!existingNews) {
       return res
         .status(404)
-        .json({ message: "news not found", success: false });
+        .json({ message: "News not found", success: false });
     }
-    // Update the news with new data, excluding the _id field
+
+    // Update the news with new data
     existingNews.set({ ...req.body, _id: existingNews._id });
 
     // Save the updated news to the database
     await existingNews.save();
 
     return res.status(200).json({
-      message: "news updated successfully!",
+      message: "News updated successfully!",
       newsId: existingNews._id,
       success: true,
     });
   } catch (error) {
-    res
+    console.error(error);
+    return res
       .status(500)
-      .json({ message: "something went wrong !!", error, success: false });
-    console.log(error);
+      .json({ message: "Something went wrong!", error, success: false });
   }
 };
+
+// Controller to delete a news by id
 const deleteNews = async (req, res) => {
   try {
     const id = req.params.id;
-    const deletednews = await newsModel.deleteOne({ _id: id });
+    const deletedNews = await newsModel.deleteOne({ _id: id });
 
-    if (!deletednews.deletedCount) {
-      // No media found with the provided path
+    if (!deletedNews.deletedCount) {
       return res
         .status(404)
-        .json({ message: "media not found!", success: false });
+        .json({ message: "News not found!", success: false });
     }
 
     return res.status(200).json({
-      message: "media deleted successfully!",
+      message: "News deleted successfully!",
       success: true,
-      deletedMediaId: id,
+      deletedNewsId: id,
     });
   } catch (error) {
-    res
+    console.error(error);
+    return res
       .status(500)
-      .json({ message: `something went wrong!!`, success: false, error });
+      .json({ message: "Something went wrong!", success: false, error });
+  }
+};
+
+// Controller to get a news by id
+const getNewsById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const news = await newsModel.findById(id);
+
+    if (!news) {
+      return res
+        .status(404)
+        .json({ message: "News not found!", success: false });
+    }
+
+    return res
+      .status(200)
+      .json({ message: "News found!", news, success: true });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "Something went wrong!", error, success: false });
   }
 };
 
@@ -99,4 +135,5 @@ module.exports.newsControllers = {
   putNews,
   deleteNews,
   getNews,
+  getNewsById,
 };

@@ -1,11 +1,11 @@
 import React from "react";
 import { data } from "../actualitiesData";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Image, SimpleGrid, chakra } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, SimpleGrid, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 const Actuality = () => {
   const { id } = useParams();
-  const actuality = data.find((actuality) => actuality.link == id);
+  const actuality = data.find((actuality) => actuality._id == id);
   const language = useSelector((state) => state.language.language);
   return (
     <SimpleGrid
@@ -90,6 +90,15 @@ const Actuality = () => {
         >
           {actuality?.description?.[language]}
         </chakra.p>
+        {actuality.link !== "" && (
+          <Button as={"a"} href={actuality?.link} target="_blank">
+            {language === "en"
+              ? "Read more"
+              : language === "fr"
+              ? "Lire la suite"
+              : "قراءة المزيد"}
+          </Button>
+        )}
       </Flex>
     </SimpleGrid>
   );
