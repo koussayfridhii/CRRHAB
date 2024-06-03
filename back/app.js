@@ -24,6 +24,7 @@ const messagesRouter = require("./routes/message.route");
 const searchAllRouter = require("./routes/search.route");
 const ScientificCouncilMembersRouter = require("./routes/scientificCounciMembers.route");
 const statsRouter = require("./routes/stats.route");
+const researchTeamRouter = require("./routes/researchTeam.route");
 
 //initializing app(express)
 // var app = express();
@@ -73,6 +74,7 @@ app.use("/api", [
   searchAllRouter,
   ScientificCouncilMembersRouter,
   statsRouter,
+  researchTeamRouter,
 ]);
 app.get("/", (req, res) => {
   mongoose

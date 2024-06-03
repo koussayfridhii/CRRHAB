@@ -37,10 +37,9 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`https://crrhab-3ofe.vercel.app/api/users/signin`, data)
+      .post(`http://localhost:5000/api/users/signin`, data)
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
         dispatch(login(res.data));
         res.data.role === "admin"
           ? navigate("/admin/research_team")

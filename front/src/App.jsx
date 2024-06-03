@@ -35,6 +35,8 @@ import SpecializedUnits from "./pages/page/SpecializedUnits.jsx";
 import ContactPage from "./pages/Contact.jsx";
 import OpenData from "./pages/OpenData.jsx";
 import Personnels from "./pages/Content/Personnels.jsx";
+import AdminResearchTeam from "./pages/admin/adminResearchTeam/AdminResearchTeam.jsx";
+import CreateResearchTeam from "./pages/admin/adminResearchTeam/CreateResearchTeam.jsx";
 
 const Layout = () => {
   return (
@@ -164,7 +166,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/research_team",
-        element: <DashBoard />,
+        element: <AdminResearchTeam />,
       },
       {
         path: "/admin/gallery",
@@ -215,8 +217,67 @@ const router = createBrowserRouter([
         element: <DashBoard />,
       },
       {
-        path: "/admin/create/:name",
-        element: <Create />,
+        path: "/admin/create/",
+        children: [
+          {
+            path: "/admin/create/research_team",
+            element: <CreateResearchTeam />,
+            children: [
+              {
+                path: "/admin/create/research_team/:id",
+                element: <CreateResearchTeam />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/gallery",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/stats",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/scientific_council",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/heads_of_rdi_structures",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/representatives_of_researchers",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/representative_of_IRESA",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/representatives_of_agricultural_research_and_higher_education_establishments",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/scientific_personalities_from_the_academic_and_scientific_research_world",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/staff",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/cvs",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/scientific_productions",
+            element: <DashBoard />,
+          },
+          {
+            path: "/admin/create/actualities",
+            element: <DashBoard />,
+          },
+        ],
       },
     ],
   },

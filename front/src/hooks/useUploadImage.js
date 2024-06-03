@@ -2,63 +2,71 @@ import { storage } from "../firebase";
 import imageCompression from "browser-image-compression";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-//generate random integer
+// Generate random integer
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-const upload = async (image, storageRef, setUrl, setLoading) => {
+
+const upload = async (image, storageRef) => {
   if (!image) {
-    alert("Please upload a file first!");
-    return;
+    throw new Error("Please upload a file first!");
   }
-  setLoading(true);
-  // progress can be paused and resumed. It also exposes progress updates. // Receives the storage reference and the file to upload.
-  const uploadTask = uploadBytesResumable(storageRef, image);
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      const percent = Math.round(
-        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      );
-    },
-    (err) => {
-      setLoading(false);
-      console.log(err);
-    },
-    () => {
-      // download url
-      getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-        setUrl(url);
-        setLoading(false);
-      });
-    }
-  );
+
+  return new Promise((resolve, reject) => {
+    const uploadTask = uploadBytesResumable(storageRef, image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Progress updates
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+      },
+      (err) => {
+        reject(err); // Reject on error
+      },
+      () => {
+        // Download URL
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((url) => {
+            resolve(url); // Resolve with download URL
+          })
+          .catch(reject); // Reject on error
+      }
+    );
+  });
 };
 
-const compressImage = async (imageFile, storageRef, setUrl, setLoading) => {
+const compressImage = async (imageFile, storageRef) => {
   const options = {
     maxSizeMB: 1,
     maxWidthOrHeight: 1920,
   };
-  let compressedFile;
+
   if (imageFile?.type?.includes("pdf")) {
-    setImage(imageFile);
-    return;
+    return upload(imageFile, storageRef);
   }
+
   try {
-    compressedFile = await imageCompression(imageFile, options);
-    alert("compression done", compressedFile.size / 1024 / 1024);
-    upload(imageFile, storageRef, setUrl, setLoading);
+    const compressedFile = await imageCompression(imageFile, options);
+    console.log("Compression done", compressedFile.size / 1024 / 1024);
+    return upload(compressedFile, storageRef);
   } catch (error) {
-    alert(error);
+    throw new Error("Image compression failed: " + error.message);
   }
 };
 
-const useUploadImage = async (uploadFolder, image, setUrl, setLoading) => {
+const useUploadImage = async (uploadFolder, image) => {
   const storageRef = ref(
     storage,
     `/${uploadFolder}/${image?.name}${getRandomInt(10000000000)}`
   );
-  compressImage(image, storageRef, setUrl, setLoading);
+
+  try {
+    return await compressImage(image, storageRef); // Await upload completion
+  } catch (error) {
+    throw error; // Propagate any errors
+  }
 };
+
 export default useUploadImage;
