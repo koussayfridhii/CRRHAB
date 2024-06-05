@@ -61,7 +61,7 @@ const AdminResearchTeam = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000/api/news`);
+    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/news`);
     setData(res.data.news);
   };
   useEffect(() => {
@@ -112,7 +112,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/news/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/news/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

@@ -37,7 +37,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`http://localhost:5000/api/users/signin`, data)
+      .post(`https://crrhab-3ofe.vercel.app/api/users/signin`, data)
       .then((res) => {
         setLoading(false);
         dispatch(login(res.data));

@@ -330,7 +330,9 @@ const AdminResearchTeam = () => {
     },
   ];
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000/api/research_team`);
+    const res = await axios.get(
+      `https://crrhab-3ofe.vercel.app/api/research_team`
+    );
     setData(res.data);
   };
   useEffect(() => {
@@ -378,7 +380,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element.orcid !== orcid));
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/research_team/${orcid}`,
+        `https://crrhab-3ofe.vercel.app/api/research_team/${orcid}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

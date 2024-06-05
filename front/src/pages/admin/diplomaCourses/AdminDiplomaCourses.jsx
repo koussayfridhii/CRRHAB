@@ -92,7 +92,9 @@ const AdminDiplomaCourse = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000/api/diploma_courses`);
+    const res = await axios.get(
+      `https://crrhab-3ofe.vercel.app/api/diploma_courses`
+    );
     setData(res.data);
   };
   useEffect(() => {
@@ -140,7 +142,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/diploma_courses/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/diploma_courses/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
