@@ -69,11 +69,11 @@ const AdminResearchTeam = () => {
     getAllData();
   }, []);
   return (
-    <Wrap height="100dvh" dir={{ base: "column", "2xl": "row" }}>
+    <Wrap height="100dvh" dir={{ base: "column", xl: "row" }}>
       <SimpleSidebar />
       <Box
         bg="background"
-        w={{ base: "full", "2xl": "85dvw" }}
+        w={{ base: "full", xl: "85dvw" }}
         p={10}
         minH={"100dvh"}
         ml={"auto"}

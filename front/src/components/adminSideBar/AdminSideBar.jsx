@@ -33,7 +33,6 @@ import {
 
 import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
-import { logout } from "../../redux/userSlice";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
@@ -99,8 +98,9 @@ export default function SimpleSidebar({ children }) {
     <>
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
+        display={{ base: "none", xl: "block" }}
         bg="primary"
+        _dark={{ bg: "secondary" }}
         color="white"
         w="15dvw"
         borderRight="4px"
@@ -123,8 +123,8 @@ export default function SimpleSidebar({ children }) {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      {/* <Box ml={{ base: 0, md: 60 }} p="4" bg={"green.500"}>
+      <MobileNav display={{ base: "flex", xl: "none" }} onOpen={onOpen} />
+      {/* <Box ml={{ base: 0, xl: 60 }} p="4" bg={"green.500"}>
         {children}
       </Box> */}
     </>
@@ -138,7 +138,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bg={useColorModeValue("background", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 60 }}
+      w={{ base: "full", xl: 60 }}
       pos="fixed"
       h="full"
       {...rest}
@@ -147,7 +147,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           CRRHAB Admin
         </Text>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <CloseButton display={{ base: "flex", xl: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
         <NavItem key={link.name} href={link.href} icon={link.icon}>
@@ -227,8 +227,8 @@ const NavItem = ({ icon, href, children, ...rest }) => {
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
+      ml={{ base: 0, xl: 60 }}
+      px={{ base: 4, xl: 24 }}
       height="20"
       alignItems="center"
       borderBottomWidth="1px"
@@ -236,7 +236,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
       justifyContent="flex-start"
       {...rest}
       w={"full"}
-      bg="background"
+      bg="primary"
+      _dark={{ bg: "secondary" }}
     >
       <IconButton
         variant="outline"
@@ -246,7 +247,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        CRRHAB Admin
       </Text>
     </Flex>
   );

@@ -50,7 +50,7 @@ export default function WithSubnavigation() {
       <Box
         position="sticky"
         top="0"
-        zIndex="10"
+        zIndex="300"
         w="100%"
         bg="red.500"
         color="text"
@@ -100,7 +100,10 @@ export default function WithSubnavigation() {
             }}
             gap={"1rem"}
           >
-            <Flex display={{ base: "none", xl: "flex" }} ml={10}>
+            <Flex
+              display={{ base: "none", xl: "flex" }}
+              ml={{ base: 10, xl: 0, "2xl": 10 }}
+            >
               <DesktopNav />
             </Flex>
           </Flex>
