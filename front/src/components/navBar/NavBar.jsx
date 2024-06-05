@@ -33,6 +33,8 @@ import { languageReducer } from "../../redux/languageSlice";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import ThemeToggle from "../ThemeToggle";
+import { useEffect } from "react";
+import axios from "axios";
 const languages = ["fr", "ar", "en"];
 export default function WithSubnavigation() {
   const language = useSelector((state) => state.language.language);
@@ -40,6 +42,13 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+  const pingOnBack = async () => {
+    const { data } = await axios.get("https://crrhab-3ofe.vercel.app/");
+    console.log(data);
+  };
+  useEffect(() => {
+    pingOnBack();
+  }, []);
   return (
     <>
       <Tunisie />
