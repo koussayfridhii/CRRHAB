@@ -10,7 +10,8 @@ const postNews = async (req, res) => {
     // Check if news with the same title already exists
     const existingNews = await newsModel.findOne({ title });
 
-    if (existingNews) {
+    if (existingNews && title.fr !== "" && title.en !== "" && title.ar !== "") {
+      console.log(title);
       return res
         .status(409)
         .json({ message: "This news already exists!", success: false });

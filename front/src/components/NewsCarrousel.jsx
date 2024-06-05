@@ -12,6 +12,8 @@ import {
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Spinner from "./spinner/Spinner";
+import { useNewsData } from "../hooks/useNewsData";
 // Settings for the slider
 const settings = {
   dots: true,
@@ -34,38 +36,15 @@ const NewsCarrousel = () => {
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
-  const cards = [
-    {
-      title: { fr: "Actulité n1", ar: "اخبار", en: "News" },
-      description: {
-        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
-        ar: "اخبار",
-        en: "News",
-      },
-      image:
-        "https://plus.unsplash.com/premium_photo-1661632638463-9c2eb5586809?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: { fr: "Actulité n2", ar: "اخبار", en: "News" },
-      description: {
-        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
-        ar: "اخبار",
-        en: "News",
-      },
-      image:
-        "https://images.unsplash.com/photo-1708255562611-1e6a003b4ca8?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: { fr: "Actulité 3", ar: "اخبار", en: "News" },
-      description: {
-        fr: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet pariatur exercitationem unde neque. Culpa facere quae alias fugiat adipisci reiciendis voluptates nisi earum eaque numquam blanditiis labore laudantium, odio temporibus.",
-        ar: "اخبار",
-        en: "News",
-      },
-      image:
-        "https://images.unsplash.com/photo-1459802243250-97792e921da4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
+  const { data, error, isLoading } = useNewsData();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
 
   return (
     <>
@@ -144,15 +123,15 @@ const NewsCarrousel = () => {
         </IconButton>
         {/* Slider */}
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {cards.map((card, index) => (
+          {data.map((card, index) => (
             <Box
               key={index}
-              height={'70dvh'}
+              height={"70dvh"}
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
               backgroundSize="cover"
-              backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${card.image})`}
+              backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${card.img})`}
             >
               {/* This is the block you need to change, to customize the caption */}
               <Container

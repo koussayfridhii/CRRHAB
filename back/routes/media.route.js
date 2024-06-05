@@ -6,11 +6,17 @@ const { mediaControllers } = require("../controllers/media.controller");
 
 router.post(
   "/media",
-  passport.authenticate("jwt", { session: false }),
-  rolesMiddleware.inRole(rolesMiddleware.roles.admin),
+  // passport.authenticate("jwt", { session: false }),
+  // rolesMiddleware.inRole(rolesMiddleware.roles.admin),
   mediaControllers.postMedia
 );
 router.get("/media", mediaControllers.getMedia);
+router.get(
+  "/media/:id",
+  passport.authenticate("jwt", { session: false }),
+  rolesMiddleware.inRole(rolesMiddleware.roles.admin),
+  mediaControllers.getMediaById
+);
 router.put(
   "/media/:id",
   passport.authenticate("jwt", { session: false }),

@@ -1,18 +1,21 @@
-import {
-  Box,
-  Flex,
-  chakra,
-  SimpleGrid,
-  Text,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
 import React from "react";
+import { Box, Flex, chakra, Wrap, WrapItem } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Card from "../components/cards/cardV4/Card";
-import { data } from "../actualitiesData";
+import { useNewsData } from "../hooks/useNewsData"; // Ensure the correct path
+import Spinner from "../components/spinner/Spinner";
+
 const Actualities = () => {
   const language = useSelector((state) => state.language.language);
+  const { data, error, isLoading } = useNewsData();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
 
   return (
     <Flex
@@ -78,13 +81,11 @@ const Actualities = () => {
           </chakra.p>
         </Box>
         <Wrap>
-          {data?.map((e, i) => {
-            return (
-              <WrapItem key={i}>
-                <Card data={e} language={language} />
-              </WrapItem>
-            );
-          })}
+          {data?.map((e, i) => (
+            <WrapItem key={i}>
+              <Card data={e} language={language} />
+            </WrapItem>
+          ))}
         </Wrap>
       </Box>
     </Flex>

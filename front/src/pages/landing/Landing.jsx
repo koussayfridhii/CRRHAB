@@ -3,7 +3,16 @@ import NewsCarrousel from "../../components/NewsCarrousel";
 import SideBar from "../../components/sideBar/SideBar";
 import { useSelector } from "react-redux";
 import Content from "../Content/Content";
-import { Divider, Wrap, WrapItem, chakra, Heading } from "@chakra-ui/react";
+import {
+  Divider,
+  Wrap,
+  WrapItem,
+  chakra,
+  Heading,
+  Flex,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import Testimonial from "../../components/Testimonials";
 import Contact from "../../components/Contact";
 import FaqV2 from "../../components/FaqV2";
@@ -29,10 +38,20 @@ const Landing = () => {
         mx={"auto"}
         borderColor={"primary"}
       />
-      <Wrap dir={language === "ar" ? "rtl" : "ltr"} style={{ display: "flex" }}>
-        <SideBar />
-        <Content />
-      </Wrap>
+      <Grid
+        dir={language === "ar" ? "rtl" : "ltr"}
+        w={"100%"}
+        p={0}
+        templateColumns={{ base: "100%", xl: "25% 70%" }}
+        templateRows={{ base: "auto auto", xl: "auto" }}
+      >
+        <GridItem>
+          <SideBar />
+        </GridItem>
+        <GridItem>
+          <Content />
+        </GridItem>
+      </Grid>
       {/* <Divider
         my={5}
         _dark={{

@@ -71,8 +71,9 @@ export default function Contact() {
               spacing={{ base: 4, md: 8, lg: 20 }}
               direction={{ base: "column", md: "row" }}
               gap={0}
+              w={{ base: "95vw", xl: "auto" }}
             >
-              <Flex align={"center"} shadow={"lg"} mr={-1}>
+              <Flex align={"center"} shadow={"lg"} mr={{ base: 0, xl: -1 }}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
                   width={500}
@@ -85,8 +86,12 @@ export default function Contact() {
               </Flex>
               <Box
                 bg={useColorModeValue("background", "gray.700")}
-                borderRightRadius={language === "ar" ? "0" : "3xl"}
-                borderLeftRadius={language === "ar" ? "3xl" : "0"}
+                borderRightRadius={
+                  language === "ar" ? "0" : { base: 0, xl: "3xl" }
+                }
+                borderLeftRadius={
+                  language === "ar" ? { base: 0, xl: "3xl" } : "0"
+                }
                 p={8}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="2xl"

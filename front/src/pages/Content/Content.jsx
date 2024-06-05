@@ -26,13 +26,13 @@ const Content = () => {
   return (
     <Box
       bg={"background"}
-      py={6}
-      px={10}
+      py={{ base: 1, xl: 10 }}
+      px={{ base: 1, xl: 10 }}
       my={6}
-      mr={4}
+      // mr={4}
       shadow={"2xl"}
       className="content"
-      w={{ base: "100dvw", xl: "75dvw" }}
+      // w={{ base: "100%", xl: "100%" }}
       borderRadius={"lg"}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
@@ -43,17 +43,18 @@ const Content = () => {
         <Box
           w="full"
           bg="white"
+          _dark={{ bg: "background" }}
           shadow={"lg"}
           minH={"30dvh"}
           mx={"auto"}
           my={"5dvh"}
-          p={10}
+          p={{ base: 2, xl: 10 }}
         >
           <Heading
             _dark={{
               bg: "secondary",
             }}
-            fontSize={"xxl"}
+            fontSize={{ base: "lg", xl: "xl", "2xl": "xxl" }}
             fontFamily={"body"}
             color={"white"}
             bg={"primary"}
@@ -71,7 +72,7 @@ const Content = () => {
             direction="column"
             py={7}
             mt={10}
-            px={10}
+            px={{ base: 2, xl: 10 }}
             gap={10}
           >
             {data[language].split("\n").map((text, i) => (

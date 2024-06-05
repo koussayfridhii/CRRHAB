@@ -1,10 +1,20 @@
 import React from "react";
-import { data } from "../actualitiesData";
 import { useParams } from "react-router-dom";
 import { Box, Button, Flex, Image, SimpleGrid, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import Spinner from "../components/spinner/Spinner";
+import { useNewsData } from "../hooks/useNewsData";
 const Actuality = () => {
   const { id } = useParams();
+  const { data, error, isLoading } = useNewsData();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
   const actuality = data.find((actuality) => actuality._id == id);
   const language = useSelector((state) => state.language.language);
   return (

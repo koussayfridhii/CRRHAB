@@ -1,3 +1,4 @@
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import {
   ChakraProvider,
@@ -5,49 +6,83 @@ import {
   extendTheme,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-// import { lightTheme, darkTheme } from "./theme";
 import "./App.scss";
 import NavBar from "./components/navBar/NavBar";
-import Chat from "./pages/chat/Chat";
 import Footer from "./components/footer/Footer.tsx";
-import Login from "./pages/auth/Login";
-import Signup from "./pages/auth/Signup";
-import CreatePage from "./pages/page/createPage.jsx";
-import Landing from "./pages/landing/Landing.jsx";
-import ResearchTeam from "./pages/researchStructures/ResearchTeam.jsx";
-import ScientificProductionsV1 from "./pages/researchStructures/scientificProductions/v1/ScientificProductions.jsx";
-import ScientificProductionsV2 from "./pages/researchStructures/scientificProductions/v2/ScientificProductions.jsx";
-import ImageGallery from "./pages/media/ImageGallery.jsx";
 import AdminSideBar from "./components/adminSideBar/AdminSideBar.jsx";
-import DashBoard from "./pages/admin/DashBoard.jsx";
-import Create from "./pages/admin/Create.jsx";
-import Actualities from "./pages/Actualities.jsx";
-import Actuality from "./pages/Actuality.jsx";
-import Map from "./pages/Map.jsx";
-import History from "./pages/History.jsx";
-import Missions from "./pages/Missions.jsx";
-import ScientificOrganization from "./pages/ScientificOrganization.jsx";
-import ResearchTopics from "./pages/ResearchTopics.jsx";
-import DiplomaCourse from "./pages/DiplomaCourse.jsx";
-import ResearchProjects from "./pages/ResearchProjects.jsx";
-import Collabs from "./pages/Collabs.jsx";
-import SpecializedUnits from "./pages/page/SpecializedUnits.jsx";
-import ContactPage from "./pages/Contact.jsx";
-import OpenData from "./pages/OpenData.jsx";
-import Personnels from "./pages/Content/Personnels.jsx";
-import AdminResearchTeam from "./pages/admin/adminResearchTeam/AdminResearchTeam.jsx";
-import CreateResearchTeam from "./pages/admin/adminResearchTeam/CreateResearchTeam.jsx";
-import AdminDiplomaCourses from "./pages/admin/diplomaCourses/AdminDiplomaCourses.jsx";
-import CreateDiplomaCourse from "./pages/admin/diplomaCourses/CreateDiplomaCourse.jsx";
-import AdminActualities from "./pages/admin/adminActualities/AdminActualities.jsx";
-import CreateActualities from "./pages/admin/adminActualities/CreateActualities.jsx";
-import AdminGallerie from "./pages/admin/adminGallerie/AdminGallerie.jsx";
+import Spinner from "./components/spinner/Spinner.jsx";
+
+const Chat = lazy(() => import("./pages/chat/Chat"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Signup = lazy(() => import("./pages/auth/Signup"));
+const CreatePage = lazy(() => import("./pages/page/createPage.jsx"));
+const Landing = lazy(() => import("./pages/landing/Landing.jsx"));
+const ResearchTeam = lazy(() =>
+  import("./pages/researchStructures/ResearchTeam.jsx")
+);
+const ScientificProductionsV1 = lazy(() =>
+  import(
+    "./pages/researchStructures/scientificProductions/v1/ScientificProductions.jsx"
+  )
+);
+const ScientificProductionsV2 = lazy(() =>
+  import(
+    "./pages/researchStructures/scientificProductions/v2/ScientificProductions.jsx"
+  )
+);
+const ImageGallery = lazy(() => import("./pages/media/ImageGallery.jsx"));
+const DashBoard = lazy(() => import("./pages/admin/DashBoard.jsx"));
+const Create = lazy(() => import("./pages/admin/Create.jsx"));
+const Actualities = lazy(() => import("./pages/Actualities.jsx"));
+const Actuality = lazy(() => import("./pages/Actuality.jsx"));
+const Map = lazy(() => import("./pages/Map.jsx"));
+const History = lazy(() => import("./pages/History.jsx"));
+const Missions = lazy(() => import("./pages/Missions.jsx"));
+const ScientificOrganization = lazy(() =>
+  import("./pages/ScientificOrganization.jsx")
+);
+const ResearchTopics = lazy(() => import("./pages/ResearchTopics.jsx"));
+const DiplomaCourse = lazy(() => import("./pages/DiplomaCourse.jsx"));
+const ResearchProjects = lazy(() => import("./pages/ResearchProjects.jsx"));
+const Collabs = lazy(() => import("./pages/Collabs.jsx"));
+const SpecializedUnits = lazy(() =>
+  import("./pages/page/SpecializedUnits.jsx")
+);
+const ContactPage = lazy(() => import("./pages/Contact.jsx"));
+const OpenData = lazy(() => import("./pages/OpenData.jsx"));
+const Personnels = lazy(() => import("./pages/Content/Personnels.jsx"));
+const AdminResearchTeam = lazy(() =>
+  import("./pages/admin/adminResearchTeam/AdminResearchTeam.jsx")
+);
+const CreateResearchTeam = lazy(() =>
+  import("./pages/admin/adminResearchTeam/CreateResearchTeam.jsx")
+);
+const AdminDiplomaCourses = lazy(() =>
+  import("./pages/admin/diplomaCourses/AdminDiplomaCourses.jsx")
+);
+const CreateDiplomaCourse = lazy(() =>
+  import("./pages/admin/diplomaCourses/CreateDiplomaCourse.jsx")
+);
+const AdminActualities = lazy(() =>
+  import("./pages/admin/adminActualities/AdminActualities.jsx")
+);
+const CreateActualities = lazy(() =>
+  import("./pages/admin/adminActualities/CreateActualities.jsx")
+);
+const AdminGallerie = lazy(() =>
+  import("./pages/admin/adminGallerie/AdminGallerie.jsx")
+);
+const CreateGallery = lazy(() =>
+  import("./pages/admin/adminGallerie/CreateGallerie.jsx")
+);
 
 const Layout = () => {
   return (
     <div className="app">
       <NavBar />
-      <Outlet />
+      <Suspense fallback={<Spinner />}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </div>
   );
@@ -55,11 +90,13 @@ const Layout = () => {
 const LayoutAdmin = () => {
   return (
     <div className="app">
-      <AdminSideBar />
-      <Outlet />
+      <Suspense fallback={<Spinner />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -118,7 +155,6 @@ const router = createBrowserRouter([
         path: "/specialized_units",
         element: <SpecializedUnits />,
       },
-      ,
       {
         path: "/gallery/imgs",
         element: <ImageGallery />,
@@ -160,10 +196,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
   },
   {
     path: "/admin",
+    element: <LayoutAdmin />,
     children: [
       {
         path: "/admin",
@@ -260,11 +303,11 @@ const router = createBrowserRouter([
           },
           {
             path: "/admin/create/gallery",
-            element: <CreateActualities />,
+            element: <CreateGallery />,
             children: [
               {
                 path: "/admin/create/gallery/:id",
-                element: <CreateActualities />,
+                element: <CreateGallery />,
               },
             ],
           },
@@ -317,6 +360,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 function App() {
   let usedTheme = useSelector((state) => state.colorMode.theme);
   let theme = extendTheme(usedTheme);

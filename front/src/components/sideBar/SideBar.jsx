@@ -6,7 +6,7 @@ import CardV2 from "../cards/cardV2/Card";
 import CardV3 from "../cards/cardV3/Card";
 const SideBar = () => {
   return (
-    <chakra.aside className="sideBar" w={{ base: "100dvw", xl: "20dvw" }}>
+    <chakra.aside className="sideBar">
       <CardV1 />
       <Divider
         _dark={{

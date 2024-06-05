@@ -15,7 +15,7 @@ const fetchData = async () => {
   } catch (error) {
     // Handle any errors that occur during the request
     console.error("Error fetching data:", error);
-    throw error;
+    return;
   }
 };
 

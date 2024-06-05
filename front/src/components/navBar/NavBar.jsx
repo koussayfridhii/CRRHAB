@@ -648,6 +648,19 @@ const NAV_ITEMS = [
         },
         href: "/presentation/scientific_organization",
       },
+      {
+        label: {
+          fr: "Personnels",
+          en: "Staff",
+          ar: "طاقم العمل",
+        },
+        subLabel: {
+          fr: "Personnels",
+          en: "Staff",
+          ar: "طاقم العمل",
+        },
+        href: "/staff",
+      },
     ],
   },
   {
@@ -709,19 +722,7 @@ const NAV_ITEMS = [
         },
         href: "/diploma_course",
       },
-      {
-        label: {
-          fr: "Personnels",
-          en: "Staff",
-          ar: "طاقم العمل",
-        },
-        subLabel: {
-          fr: "Personnels",
-          en: "Staff",
-          ar: "طاقم العمل",
-        },
-        href: "/staff",
-      },
+
       {
         label: {
           fr: "Projets de Recherche",
