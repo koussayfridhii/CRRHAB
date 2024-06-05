@@ -24,6 +24,7 @@ import { BsBoxArrowUpRight, BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { withAuthorization } from "../../../HOC/Protect";
 // import Table from "../../components/tables/tableV2/Table";
 
 const AdminDiplomaCourseV0 = () => {
@@ -242,4 +243,4 @@ const DataTable = ({ data, setData, headers, language }) => {
     </TableContainer>
   );
 };
-export default AdminDiplomaCourseV0;
+export default withAuthorization(AdminDiplomaCourseV0, ["admin"]);

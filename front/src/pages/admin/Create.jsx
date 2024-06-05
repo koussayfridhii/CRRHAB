@@ -5,6 +5,7 @@ import CreatePage from "../page/createPage";
 import { useParams } from "react-router-dom";
 import DynamicForm from "../../components/DynamicForm";
 import dataAdminPages from "../../dataAdminPages";
+import { withAuthorization } from "../../HOC/Protect";
 const Create = () => {
   const { name } = useParams();
   const pagesData = dataAdminPages.find((e) => e.name === name);
@@ -30,4 +31,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default withAuthorization(Create, ["admin"]);

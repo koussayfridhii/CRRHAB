@@ -14,6 +14,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import useUploadImage from "../../../hooks/useUploadImage";
+import { withAuthorization } from "../../../HOC/Protect";
 
 const CreateGallery = () => {
   const { id } = useParams();
@@ -219,4 +220,4 @@ const CreateGallery = () => {
   );
 };
 
-export default CreateGallery;
+export default withAuthorization(CreateGallery, ["admin"]);

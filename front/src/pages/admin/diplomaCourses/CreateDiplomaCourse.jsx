@@ -14,6 +14,7 @@ import useUploadImage from "../../../hooks/useUploadImage";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { withAuthorization } from "../../../HOC/Protect";
 
 const CreateDiplomaCourse = () => {
   const { pathname } = useLocation();
@@ -314,4 +315,4 @@ const CreateDiplomaCourse = () => {
   );
 };
 
-export default CreateDiplomaCourse;
+export default withAuthorization(CreateDiplomaCourse, ["admin"]);

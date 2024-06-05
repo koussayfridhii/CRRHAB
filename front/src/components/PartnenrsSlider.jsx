@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const PartnersSlider = ({ data, language }) => {
+const PartnersSlider = ({ data, language, title = true }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -38,37 +38,45 @@ const PartnersSlider = ({ data, language }) => {
   return (
     <Box bg="background" py="4em">
       <Container maxW="container.lg">
-        <Box textAlign="center" mb="6em">
-          <Heading
-            as="h2"
-            size="lg"
-            fontWeight="600"
-            textTransform="uppercase"
-            letterSpacing="0.3px"
-            position="relative"
-            _after={{
-              content: '""',
-              height: "3px",
-              background: "primary",
-              width: "80px",
-              position: "absolute",
-              left: "0",
-              right: "0",
-              margin: "auto",
-              top: "calc(100% + 10px)",
-            }}
-          >
-            {language === "en"
-              ? "Our International Projects"
-              : language === "fr"
-              ? "Nos Projets Inertnationaux"
-              : "مشاريعنا الدولية"}
-          </Heading>
-        </Box>
+        {title && (
+          <Box textAlign="center" mb="6em">
+            <Heading
+              as="h2"
+              size="lg"
+              fontWeight="600"
+              textTransform="uppercase"
+              letterSpacing="0.3px"
+              position="relative"
+              _after={{
+                content: '""',
+                height: "3px",
+                background: "primary",
+                width: "80px",
+                position: "absolute",
+                left: "0",
+                right: "0",
+                margin: "auto",
+                top: "calc(100% + 10px)",
+              }}
+            >
+              {language === "en"
+                ? "Our International Projects"
+                : language === "fr"
+                ? "Nos Projets Inertnationaux"
+                : "مشاريعنا الدولية"}
+            </Heading>
+          </Box>
+        )}
         <Slider {...settings} className="carousel-client">
           {data.map((partner, index) => (
             <Box key={index}>
-              <Box boxSize={"20dvh"} className="slide">
+              <Box
+                boxSize={"20dvh"}
+                className="slide"
+                onClick={() => {
+                  !title && window.open(partner.img, "_blank");
+                }}
+              >
                 <Image
                   h={"full"}
                   src={partner.img}
@@ -88,15 +96,17 @@ const PartnersSlider = ({ data, language }) => {
               >
                 {partner.description?.[language]}
               </Text> */}
-              <Link
-                textAlign={"center"}
-                w={"full"}
-                color="primary"
-                href={partner.link}
-                target="_blank"
-              >
-                {partner.title?.[language]}
-              </Link>
+              {title && (
+                <Link
+                  textAlign={"center"}
+                  w={"full"}
+                  color="primary"
+                  href={partner.link}
+                  target="_blank"
+                >
+                  {partner.title?.[language]}
+                </Link>
+              )}
             </Box>
           ))}
         </Slider>

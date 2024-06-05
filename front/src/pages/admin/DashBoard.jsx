@@ -5,6 +5,7 @@ import SimpleSidebar from "../../components/adminSideBar/AdminSideBar";
 import { Link, useLocation } from "react-router-dom";
 import dataAdminPages from "../../dataAdminPages";
 import Table from "../../components/tables/tableV2/Table";
+import { withAuthorization } from "../../HOC/Protect";
 
 const DashBoard = () => {
   const [filtredData, setFiltredData] = useState([]);
@@ -154,4 +155,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default withAuthorization(DashBoard, ["admin"]);

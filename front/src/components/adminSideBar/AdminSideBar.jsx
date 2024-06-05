@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import {
   IconButton,
   Box,
@@ -32,6 +33,7 @@ import {
 
 import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
+import { logout } from "../../redux/userSlice";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
@@ -130,6 +132,7 @@ export default function SimpleSidebar({ children }) {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const dispatch = useDispatch();
   return (
     <Box
       bg={useColorModeValue("background", "gray.900")}
@@ -157,6 +160,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           color={"white"}
           _hover={{ bg: "red.300" }}
           boxShadow={"lg"}
+          onClick={() => dispatch(logout())}
         >
           Logout
         </Button>

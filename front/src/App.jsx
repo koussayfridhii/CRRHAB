@@ -75,6 +75,7 @@ const AdminGallerie = lazy(() =>
 const CreateGallery = lazy(() =>
   import("./pages/admin/adminGallerie/CreateGallerie.jsx")
 );
+const Projects = lazy(() => import("./pages/Projects.jsx"));
 
 const Layout = () => {
   return (
@@ -191,6 +192,19 @@ const router = createBrowserRouter([
       {
         path: "/staff",
         element: <Personnels />,
+      },
+      {
+        path: "/projects",
+        children: [
+          {
+            path: "/projects/international",
+            element: <Projects />,
+          },
+          {
+            path: "/projects/national",
+            element: <Projects />,
+          },
+        ],
       },
     ],
   },

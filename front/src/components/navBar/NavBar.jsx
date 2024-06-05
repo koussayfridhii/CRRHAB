@@ -13,10 +13,6 @@ import {
   useColorModeValue,
   useDisclosure,
   Link as ChakraLink,
-  FormControl,
-  InputGroup,
-  InputLeftElement,
-  Input,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -44,7 +40,6 @@ export default function WithSubnavigation() {
   const dispatch = useDispatch();
   const pingOnBack = async () => {
     const { data } = await axios.get("https://crrhab-3ofe.vercel.app/");
-    console.log(data);
   };
   useEffect(() => {
     pingOnBack();
@@ -366,7 +361,7 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ label, href }) => {
   const language = useSelector((state) => state.language.language);
   return (
     <Box
@@ -387,7 +382,6 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           >
             {label[language]}
           </Text>
-          <Text fontSize={"sm"}>{subLabel[language]}</Text>
         </Box>
         <Flex
           transition={"all .3s ease"}
@@ -412,6 +406,7 @@ const MobileNav = () => {
   return (
     <Stack
       bg={"primary"}
+      _dark={{ bg: "secondary" }}
       borderBottom={4}
       borderStyle={"solid"}
       borderColor="secondary"
@@ -472,6 +467,7 @@ const MobileNav = () => {
                     onClick={() => dispatch(languageReducer(lan))}
                     cursor={"pointer"}
                     key={lan}
+                    color="textHover"
                   >
                     <Stack direction={"row"} align={"center"}>
                       <Box>
@@ -480,6 +476,7 @@ const MobileNav = () => {
                           _groupHover={{ color: "secondary" }}
                           fontWeight={500}
                           cursor={"pointer"}
+                          color="textHover"
                         >
                           {lan === "fr"
                             ? "Français"
@@ -593,11 +590,17 @@ const MobileNavItem = ({ label, children, href }) => {
             transform={isOpen ? "rotate(180deg)" : ""}
             w={6}
             h={6}
+            color="white"
           />
         )}
       </Box>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse
+        color="white"
+        in={isOpen}
+        animateOpacity
+        style={{ marginTop: "0!important" }}
+      >
         <Stack
           mt={2}
           pl={4}
@@ -608,7 +611,13 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map((child) => (
-              <Box as={Link} key={child.href} py={2} to={child.href}>
+              <Box
+                as={Link}
+                key={child.href}
+                py={2}
+                to={child.href}
+                color="white"
+              >
                 {child.label[language]}
               </Box>
             ))}
@@ -679,6 +688,41 @@ const NAV_ITEMS = [
       ar: "شبكة الباحثين",
     },
     href: "/researchteam",
+  },
+  {
+    label: {
+      fr: "Projets",
+      en: "Projects",
+      ar: "المشاريع",
+    },
+    children: [
+      {
+        label: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/international",
+      },
+      {
+        label: {
+          fr: "Projets Nationaux",
+          en: "National Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Nationaux",
+          en: "National Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/national",
+      },
+    ],
   },
   {
     label: {

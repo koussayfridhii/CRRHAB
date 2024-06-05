@@ -8,6 +8,7 @@ import {
   List,
   ListIcon,
   ListItem,
+  OrderedList,
   Text,
   UnorderedList,
   chakra,
@@ -19,6 +20,7 @@ import { LiaDiscourse } from "react-icons/lia";
 import { CiMonitor } from "react-icons/ci";
 import { SiValorant } from "react-icons/si";
 import { FaArrowUpFromWaterPump } from "react-icons/fa6";
+import { FaHandPointRight, FaHandPointLeft } from "react-icons/fa";
 import { GiThink } from "react-icons/gi";
 import { MdOutlineEditCalendar, MdPersonSearch } from "react-icons/md";
 import { GoPersonFill, GoPerson } from "react-icons/go";
@@ -129,43 +131,101 @@ const ScientificOrganization = () => {
         gap={10}
       >
         <Box>
+          <chakra.h2
+            fontSize={"xxl"}
+            color={"white"}
+            px={4}
+            py={1}
+            _dark={{ bg: "secondary" }}
+            mb={10}
+            bg="primary"
+            borderRadius={"lg"}
+          >
+            {language === "en"
+              ? "Scientific Organization of CRRHAB"
+              : language === "fr"
+              ? "ORGANISATION SCIENTIFIQUE DU CRRHAB"
+              : "التنظيم العلمي للمركز CRRRHAB"}
+          </chakra.h2>
           {language === "en" ? (
             <>
-              <chakra.h2
-                mx={"auto"}
-                fontSize={"xxxl"}
-                color={"primary"}
-                fontWeight={"bold"}
-              >
-                Scientific Council
-              </chakra.h2>
               <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >
-                  According to Article 4 of Decree No. 2006-3057 of November 20,
-                  2006 establishing the scientific organization of CRRHAB, a
-                  Scientific Council of the Center is established to carry out
-                  the missions provided for in Article 3 of Decree No. 97-938 of
-                  May 19, 1997.
+                  The scientific organization of the center includes:
                 </Highlight>
               </Text>
-              <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Missions:
-              </chakra.h3>
+              <List>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    A research laboratory.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Three agricultural experimentation units.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    A unit for the valorization of research results.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    A unit for scientific information and documentation.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    A Scientific Council (Article 4 of Decree No. 2006-3057 of
+                    November 20, 2006).
+                  </Text>
+                </ListItem>
+              </List>
+              <br />
+              <Text fontSize={"lg"} color={"text"} mb={4}>
+                The Scientific Council is the reflection and proposal body on
+                the scientific policy of the establishment. To this end, it is
+                notably responsible for:
+              </Text>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
@@ -337,17 +397,18 @@ const ScientificOrganization = () => {
                   </Text>
                 </ListItem>
               </List>
+              <Text fontSize={"lg"} color={"text"} my={4}>
+                In addition to its ordinary sessions mentioned in Article 6 of
+                Decree No. 97-938 cited above, the Scientific Council of the
+                center holds an annual session to evaluate the scientific
+                activities of the establishment. The Scientific Council of the
+                center meets in accordance with the provisions of Decree No.
+                97-938 of May 19, 1997, and performs the missions assigned to it
+                by said decree.
+              </Text>
             </>
           ) : language === "fr" ? (
             <>
-              <chakra.h2
-                mx={"auto"}
-                fontSize={"xxxl"}
-                color={"primary"}
-                fontWeight={"bold"}
-              >
-                Conseil Scientifique
-              </chakra.h2>
               <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
                 <Highlight
                   query="crrhab"
@@ -358,21 +419,73 @@ const ScientificOrganization = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Conformément à l'article 4 du décret n° 2006-3057 du 20
-                  novembre 2006 portant création de l'organisation scientifique
-                  du CRRHAB, un Conseil Scientifique du Centre est créé pour
-                  accomplir les missions prévues à l'article 3 du décret n°
-                  97-938 du 19 mai 1997.
+                  L’organisation scientifique du centre comprend :
                 </Highlight>
               </Text>
-              <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Missions :
-              </chakra.h3>
+              <List>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Un laboratoire de recherche.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Trois unités d’expérimentation agricole.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Une unité de valorisation des résultats de la recherche.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Une unité d’information et de documentation scientifique.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    Un conseil scientifique (Article 4 du Décret N° 2006-3057 du
+                    20 novembre 2006).
+                  </Text>
+                </ListItem>
+              </List>
+              <br />
+              <Text fontSize={"lg"} color={"text"} mb={4}>
+                Le Conseil scientifique est l’organe de réflexion et de
+                proposition sur la politique scientifique de l’établissement. A
+                ce titre, il est notamment chargé de :
+              </Text>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
@@ -393,9 +506,9 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Donner des avis sur toutes les questions relatives à la
-                      politique scientifique de l'établissement, y compris les
-                      programmes de recherche à entreprendre.
+                      Donner des avis sur toutes questions relatives à la
+                      politique scientifique de l’établissement, notamment sur
+                      les programmes de recherche à entreprendre.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -418,7 +531,8 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Suivre les activités de recherche de l'établissement.
+                      Assurer le suivi des activités de recherche de
+                      l’établissement.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -442,8 +556,8 @@ const ScientificOrganization = () => {
                       }}
                     >
                       Proposer des activités de valorisation et d'application
-                      des résultats de recherche, ainsi que des activités
-                      d'information et de documentation scientifiques.
+                      des résultats de la recherche ainsi que des activités
+                      d'information et de documentation scientifique.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -466,7 +580,7 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Proposer des activités de développement professionnel
+                      Proposer des actions de perfectionnement professionnel
                       jugées nécessaires.
                     </Highlight>
                   </Text>
@@ -515,7 +629,7 @@ const ScientificOrganization = () => {
                       }}
                     >
                       Exprimer les besoins des différentes structures de
-                      l'établissement en personnel scientifique et technique.
+                      l’établissement en personnel scientifique et technique.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -538,54 +652,100 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Examiner les versions finales des rapports scientifiques
-                      de l'établissement.
+                      Examiner les versions définitives des rapports
+                      scientifiques de l’établissement.
                     </Highlight>
                   </Text>
                 </ListItem>
               </List>
+              <Text fontSize={"lg"} color={"text"} my={4}>
+                En plus de ses séances ordinaires mentionnées à l’article 6 du
+                décret n° 97-938 précité, le Conseil Scientifique du centre
+                tient une séance annuelle d’évaluation des activités
+                scientifiques de l’établissement. Le Conseil Scientifique du
+                centre se réunit conformément aux dispositions du décret n°
+                97-938 du 19 mai 1997 et exerce les missions qui lui sont
+                assignées par ledit décret.
+              </Text>
             </>
           ) : (
             <>
-              <chakra.h2
-                mx={"auto"}
-                fontSize={"xxxl"}
-                color={"primary"}
-                fontWeight={"bold"}
-              >
-                المجلس العلمي
-              </chakra.h2>
-              <Text
-                textAlHighlightign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
+              <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >
-                  وفقًا للمادة 4 من المرسوم رقم 2006-3057 الصادر في 20 نوفمبر
-                  2006، والذي ينص على إنشاء التنظيم العلمي لمركز CRRHAB، يتم
-                  إنشاء مجلس علمي للمركز لتنفيذ المهام المنصوص عليها في المادة 3
-                  من المرسوم رقم 97-938 الصادر في 19 مايو 1997.
+                  التنظيم العلمي للمركز يشمل:
                 </Highlight>
               </Text>
-              <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                المهام:
-              </chakra.h3>
+              <List>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    مختبر أبحاث.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    ثلاث وحدات للتجارب الزراعية.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    وحدة لتثمين نتائج البحث.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    وحدة المعلومات والتوثيق العلمي.
+                  </Text>
+                </ListItem>
+                <ListItem>
+                  <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
+                    <ListIcon
+                      fontSize={"xl"}
+                      as={FaHandPointRight}
+                      color="primary"
+                      _dark={{ color: "secondary" }}
+                    />
+                    مجلس علمي (المادة 4 من المرسوم رقم 2006-3057 المؤرخ 20
+                    نوفمبر 2006).
+                  </Text>
+                </ListItem>
+              </List>
+              <br />
+              <Text fontSize={"lg"} color={"text"} mb={4}>
+                المجلس العلمي هو الهيئة المسؤولة عن التفكير وتقديم الاقتراحات
+                حول السياسة العلمية للمؤسسة. ولهذا الغرض، فهو مكلف بـ:
+              </Text>
               <List spacing={4} mb={5}>
                 <ListItem mx={5}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
@@ -606,8 +766,8 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      تقديم المشورة في جميع الأمور المتعلقة بالسياسة العلمية
-                      للمؤسسة، بما في ذلك برامج البحث التي سيتم تنفيذها.
+                      إبداء الآراء حول جميع المسائل المتعلقة بالسياسة العلمية
+                      للمؤسسة، وخاصة برامج البحث التي يتعين القيام بها.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -653,8 +813,8 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      اقتراح الأنشطة المتعلقة بتثمين وتطبيق نتائج البحث، وكذلك
-                      الأنشطة المتعلقة بالمعلومات والتوثيق العلمي.
+                      اقتراح أنشطة التثمين وتطبيق نتائج البحث بالإضافة إلى أنشطة
+                      المعلومات والتوثيق العلمي.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -677,7 +837,7 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      اقتراح الأنشطة التطويرية المهنية التي يتم اعتبارها ضرورية.
+                      اقتراح إجراءات التدريب المهني التي يعتبرها ضرورية.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -700,7 +860,7 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      تقديم الآراء حول مقترحات اتفاقيات التعاون العلمي.
+                      تقديم الآراء حول مقترحات الاتفاقيات العلمية.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -724,7 +884,7 @@ const ScientificOrganization = () => {
                       }}
                     >
                       التعبير عن احتياجات الهياكل المختلفة للمؤسسة من الموظفين
-                      العلميين والتقنيين.
+                      العلميين والفنيين.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -747,14 +907,22 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      فحص النسخ النهائية من التقارير العلمية للمؤسسة.
+                      فحص النسخ النهائية للتقارير العلمية للمؤسسة.
                     </Highlight>
                   </Text>
                 </ListItem>
               </List>
+              <Text fontSize={"lg"} color={"text"} my={4}>
+                بالإضافة إلى جلساته العادية المذكورة في المادة 6 من المرسوم رقم
+                97-938، يعقد المجلس العلمي للمركز جلسة سنوية لتقييم الأنشطة
+                العلمية للمؤسسة. يجتمع المجلس العلمي للمركز وفقاً لأحكام المرسوم
+                رقم 97-938 المؤرخ 19 مايو 1997 ويمارس المهام المسندة إليه بموجب
+                المرسوم المذكور.
+              </Text>
             </>
           )}
         </Box>
+
         <Divider
           my={5}
           _dark={{
@@ -1150,11 +1318,9 @@ const ScientificOrganization = () => {
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1286,11 +1452,9 @@ fr:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1317,11 +1481,9 @@ fr:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1358,11 +1520,9 @@ fr:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1402,11 +1562,9 @@ ar:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1432,11 +1590,9 @@ ar:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1473,11 +1629,9 @@ ar:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1517,11 +1671,9 @@ en:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1548,11 +1700,9 @@ en:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />
@@ -1589,11 +1739,9 @@ en:{
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >  />

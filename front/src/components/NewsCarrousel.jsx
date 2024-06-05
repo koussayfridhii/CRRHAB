@@ -132,6 +132,8 @@ const NewsCarrousel = () => {
               backgroundRepeat="no-repeat"
               backgroundSize="cover"
               backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${card.img})`}
+              as={Link}
+              to={`/actualities/${card._id}`}
             >
               {/* This is the block you need to change, to customize the caption */}
               <Container
@@ -181,7 +183,7 @@ const NewsCarrousel = () => {
         borderRadius={"sm"}
         mt={3}
       >
-        <ChakraLink as={Link} to="/">
+        <ChakraLink as={Link} to="/actualities">
           {language === "fr"
             ? "toutes les actulités"
             : language === "en"

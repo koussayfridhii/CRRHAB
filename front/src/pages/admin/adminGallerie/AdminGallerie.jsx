@@ -24,6 +24,7 @@ import { BsBoxArrowUpRight, BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { withAuthorization } from "../../../HOC/Protect";
 
 const AdminGallerie = () => {
   const [data, setData] = useState([]);
@@ -213,4 +214,4 @@ const DataTable = ({ data, setData, headers, language }) => {
   );
 };
 
-export default AdminGallerie;
+export default withAuthorization(AdminGallerie, ["admin"]);

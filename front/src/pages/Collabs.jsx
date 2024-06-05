@@ -1,72 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import React from "react";
+import { Box, Heading } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import PartnersSlider from "../components/PartnenrsSlider";
 
 const Collabs = () => {
   const language = useSelector((state) => state.language.language);
-  const data = [
-    {
-      title: {
-        fr: "iGUESSmed",
-        en: "iGUESSmed",
-        ar: "iGUESSmed",
-      },
-      description: {
-        fr: "",
-        en: "iGUESSmed is a PRIMA (Partnership for Research and Innovation in the Mediterranean Area) project, relates to the Call: Section 1 – Farming Systems 2019 and belongs to the IA – Topic 1.2.2: “Sustainability and competitiveness of Mediterranean greenhouse and intensive horticulture”",
-        ar: "",
-      },
-      link: "https://www.iguessmed.com/",
-      img: "./assets/images/iguessmed.png",
-    },
-    {
-      title: {
-        fr: "4Biolive",
-        en: "4Biolive",
-        ar: "4Biolive",
-      },
-      description: {
-        fr: "",
-        en: "Production of Biostimulants, Biofertilizers, Biopolymers and Bioenergy from OLIVE-oil chain residues and by-products",
-        ar: "",
-      },
-      link: "https://www.4biolive.eu/",
-      img: "./assets/images/biolive.png",
-    },
-    {
-      title: {
-        fr: "FruitFlyNet II",
-        en: "FruitFlyNet II",
-        ar: "FruitFlyNet II",
-      },
-      description: {
-        fr: "Commercialisation d'un système Automatisé de Surveillance et de Contrôle contre la Mouche de l’Olive et la Mouche Méditerranéenne des Fruits",
-        en: "",
-        ar: "",
-      },
-      link: "https://www.enicbcmed.eu/fr/projets/fruitflynet-ii#:~:text=A%20propos%20du%20projet&text=Le%20projet%20FruitFlynet%2Dii%20vise,des%20fruits%20(Ceratitis%20capitata)",
-      img: "./assets/images/fruitFlyNet.png",
-    },
-    {
-      title: {
-        fr: "Kafaci",
-        en: "Kafaci",
-        ar: "Kafaci",
-      },
-      description: {
-        fr: "",
-        en: "to enhance tomato and onion production and productivity for sustainable yields in participating African countries",
-        ar: "",
-      },
-      link: "https://kafaci.org/site/project/02020300/view?pageId=02020300&pageName=Horticulture",
-      img: "./assets/images/kafaci.png",
-    },
-  ];
-
   return (
     <Box dir={language === "ar" ? "rtl" : "ltr"}>
-      <Slider language={language} />
       <Box
         minH={"25dvh"}
         bg={"background"}
@@ -93,114 +32,12 @@ const Collabs = () => {
           {language === "en"
             ? "National and InterNational Collaborations"
             : language === "fr"
-            ? "Collaboration Nationale et InterNationale"
-            : "التعاون الوطني و الدولي"}
+            ? "Collaborations Nationaux et InterNationaux"
+            : "التعاونات الوطنية و الدولية"}
         </Heading>
-        <PartnersSlider data={data} language={language} />
       </Box>
     </Box>
   );
 };
 
 export default Collabs;
-
-const Slider = ({ language }) => {
-  const arrowStyles = {
-    cursor: "pointer",
-    pos: "absolute",
-    top: "50%",
-    w: "auto",
-    mt: "-22px",
-    p: "16px",
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "18px",
-    transition: "0.6s ease",
-    borderRadius: "0 3px 3px 0",
-    userSelect: "none",
-    _hover: {
-      opacity: 0.8,
-      bg: "black",
-    },
-  };
-
-  const slides = [
-    {
-      img: "./assets/images/cartina-nuova-4biolove-rev-02.jpg",
-      title: {
-        fr: "",
-        en: "",
-        ar: "",
-      },
-    },
-    {
-      img: "./assets/images/iguessmed coordinators.png",
-      title: {
-        fr: "",
-        en: "",
-        ar: "",
-      },
-    },
-  ];
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slidesCount = slides.length;
-
-  const prevSlide = () => {
-    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
-  };
-
-  const carouselStyle = {
-    transition: "all .5s",
-    ml: `-${currentSlide * 100}%`,
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000); // Change slide every 5 seconds
-
-    return () => {
-      clearInterval(interval); // Clean up the interval on component unmount
-    };
-  }, [currentSlide]); // Re-run the effect when currentSlide changes
-
-  return (
-    <Flex w="full" bg="background" alignItems="center" justifyContent="center">
-      <Flex w="full" overflow="hidden" pos="relative">
-        <Flex h="80dvh" w="full" {...carouselStyle}>
-          {slides.map((slide, sid) => (
-            <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
-              <Text
-                color="white"
-                fontSize="xs"
-                p="8px 12px"
-                pos="absolute"
-                top="0"
-              >
-                {sid + 1} / {slidesCount}
-              </Text>
-              <Image
-                src={slide.img}
-                alt={slide?.title?.[language]}
-                boxSize="full"
-                backgroundSize="cover"
-              />
-            </Box>
-          ))}
-        </Flex>
-        <Text {...arrowStyles} left="0" onClick={prevSlide}>
-          &#10094;
-        </Text>
-        <Text {...arrowStyles} right="0" onClick={nextSlide}>
-          &#10095;
-        </Text>
-      </Flex>
-    </Flex>
-  );
-};

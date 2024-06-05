@@ -14,6 +14,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import useUploadImage from "../../../hooks/useUploadImage";
+import { withAuthorization } from "../../../HOC/Protect";
 
 const CreateNews = () => {
   const { id } = useParams();
@@ -214,4 +215,4 @@ const CreateNews = () => {
   );
 };
 
-export default CreateNews;
+export default withAuthorization(CreateNews, ["admin"]);

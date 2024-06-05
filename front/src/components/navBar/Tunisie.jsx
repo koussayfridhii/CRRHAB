@@ -183,7 +183,7 @@
 
 // export default Tunisie;
 
-import { Image, SimpleGrid, Text, chakra } from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Text, chakra } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -206,28 +206,43 @@ const Tunisie = () => {
         h={"fit-content"}
       >
         <SimpleGrid columns={4} gap={3}>
-          <Image
-            boxSize="15vh"
-            objectFit="contain"
-            src="/assets/images/tunisie.png"
-            textAlign={"center"}
-          />
-          <Image
-            boxSize="15vh"
-            objectFit="contain"
-            src="/assets/images/Logo_Ministère_de_l'Agriculture_(Tunisie).png"
-          />
-          <Image
-            boxSize="15vh"
-            objectFit="contain"
-            src="/assets/images/logoIRESA_couleur_fr.png"
-          />
-          <Image
-            objectFit="contain"
-            boxSize="15vh"
-            src="/assets/images/logoCRRHABWithName.jpg"
-            fallbackSrc="https://via.placeholder.com/150"
-          />
+          <Box w="full">
+            <Image
+              boxSize="15vh"
+              objectFit="contain"
+              src="/assets/images/tunisie.png"
+              fallbackSrc="https://via.placeholder.com/150"
+              textAlign={"center"}
+              mx={"auto"}
+            />
+          </Box>
+          <Box w="full">
+            <Image
+              boxSize="15vh"
+              objectFit="contain"
+              src="/assets/images/Logo_Ministère_de_l'Agriculture_(Tunisie).png"
+              fallbackSrc="https://via.placeholder.com/150"
+              mx={"auto"}
+            />
+          </Box>
+          <Box w="full">
+            <Image
+              boxSize="15vh"
+              objectFit="contain"
+              src="/assets/images/logoIRESA_couleur_fr.png"
+              fallbackSrc="https://via.placeholder.com/150"
+              mx={"auto"}
+            />
+          </Box>
+          <Box w="full">
+            <Image
+              objectFit="contain"
+              boxSize="15vh"
+              src="/assets/images/logoCRRHABWithName.jpg"
+              fallbackSrc="https://via.placeholder.com/150"
+              mx={"auto"}
+            />
+          </Box>
         </SimpleGrid>
         <SimpleGrid
           columns={4}
@@ -236,7 +251,7 @@ const Tunisie = () => {
           fontWeight={"bold"}
           fontSize={"sm"}
         >
-          <Text textAlign={"start"}>
+          <Text textAlign={"center"}>
             {language === "fr" ? (
               <>
                 République Tunisienne <br />
@@ -251,7 +266,7 @@ const Tunisie = () => {
               </>
             )}
           </Text>
-          <Text>
+          <Text textAlign={"center"}>
             {language === "fr" ? (
               <>
                 Ministère de l’Agriculture, <br />
@@ -275,7 +290,7 @@ const Tunisie = () => {
               </>
             )}
           </Text>
-          <Text>
+          <Text textAlign={"center"}>
             {language === "fr" ? (
               <>
                 Institution de la Recherche <br />
@@ -294,7 +309,7 @@ const Tunisie = () => {
               </>
             )}
           </Text>
-          <Text>
+          <Text textAlign={"center"}>
             {language === "fr" ? (
               <>
                 Centre Régional des <br /> Recherches en Horticulture <br />

@@ -14,6 +14,7 @@ import useUploadImage from "../../../hooks/useUploadImage";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { withAuthorization } from "../../../HOC/Protect";
 
 const CreateResearchTeam = () => {
   const { pathname } = useLocation();
@@ -248,4 +249,4 @@ const CreateResearchTeam = () => {
   );
 };
 
-export default CreateResearchTeam;
+export default withAuthorization(CreateResearchTeam, ["admin"]);

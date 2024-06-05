@@ -25,6 +25,7 @@ import { BsBoxArrowUpRight, BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { withAuthorization } from "../../../HOC/Protect";
 // import Table from "../../components/tables/tableV2/Table";
 
 const AdminResearchTeam = () => {
@@ -229,4 +230,4 @@ const DataTable = ({ data, setData, headers, language }) => {
   );
 };
 
-export default AdminResearchTeam;
+export default withAuthorization(AdminResearchTeam, ["admin"]);
