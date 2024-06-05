@@ -13,7 +13,7 @@ import Slider from "react-slick";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "./spinner/Spinner";
-import { useNewsData } from "../hooks/useNewsData";
+import { useCallApi } from "../hooks/useCallApi";
 // Settings for the slider
 const settings = {
   dots: true,
@@ -36,7 +36,7 @@ const NewsCarrousel = () => {
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
-  const { data, error, isLoading } = useNewsData();
+  const { data, error, isLoading } = useCallApi("news");
 
   if (isLoading) {
     return <Spinner />;

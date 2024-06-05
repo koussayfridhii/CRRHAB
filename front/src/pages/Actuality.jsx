@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { Box, Button, Flex, Image, SimpleGrid, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Spinner from "../components/spinner/Spinner";
-import { useNewsData } from "../hooks/useNewsData";
+import { useCallApi } from "../hooks/useCallApi";
 const Actuality = () => {
   const { id } = useParams();
-  const { data, error, isLoading } = useNewsData();
+  const { data, error, isLoading } = useCallApi("news");
 
   if (isLoading) {
     return <Spinner />;

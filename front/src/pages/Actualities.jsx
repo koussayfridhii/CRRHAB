@@ -2,12 +2,12 @@ import React from "react";
 import { Box, Flex, chakra, Wrap, WrapItem } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Card from "../components/cards/cardV4/Card";
-import { useNewsData } from "../hooks/useNewsData"; // Ensure the correct path
 import Spinner from "../components/spinner/Spinner";
+import { useCallApi } from "../hooks/useCallApi";
 
 const Actualities = () => {
   const language = useSelector((state) => state.language.language);
-  const { data, error, isLoading } = useNewsData();
+  const { data, error, isLoading } = useCallApi("news");
 
   if (isLoading) {
     return <Spinner />;
