@@ -42,10 +42,10 @@ const Landing = () => {
         dir={language === "ar" ? "rtl" : "ltr"}
         w={"100%"}
         p={0}
-        templateColumns={{ base: "100%", xl: "25% 70%" }}
+        templateColumns={{ base: "100%", xl: "25% 75%" }}
         templateRows={{ base: "auto auto", xl: "auto" }}
       >
-        <GridItem>
+        <GridItem mr={{ xl: -10, "2xl": 0 }}>
           <SideBar />
         </GridItem>
         <GridItem>

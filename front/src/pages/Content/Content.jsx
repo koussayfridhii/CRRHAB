@@ -1,6 +1,14 @@
 import React from "react";
 import "./Content.scss";
-import { Box, Flex, chakra, Heading, Text, Highlight } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  chakra,
+  Heading,
+  Text,
+  Highlight,
+  background,
+} from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Organisation from "../../components/Organigram";
 import StatsV1 from "../../components/stats/statsV1/Stats";
@@ -24,37 +32,92 @@ const Content = () => {
     en: "Regional Research Center in Horticulture and Organic Agriculture (CRRHAB)",
   };
   return (
-    <Box
-      bg={"background"}
-      py={{ base: 1, xl: 10 }}
-      px={{ base: 1, xl: 10 }}
-      my={6}
-      // mr={4}
-      shadow={"2xl"}
-      className="content"
-      // w={{ base: "100%", xl: "100%" }}
-      borderRadius={"lg"}
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
-      {/* <chakra.section>
+    <Box>
+      <Box
+        bg={"background"}
+        py={{ base: 1, xl: 10 }}
+        px={{ base: 1, xl: 10 }}
+        mx={"auto"}
+        my={6}
+        // mr={4}
+        shadow={"2xl"}
+        className="content"
+        w={{ base: "95%", xl: "90%", "2xl": "95%" }}
+        borderRadius={"lg"}
+        dir={language === "ar" ? "rtl" : "ltr"}
+      >
+        {/* <chakra.section>
         <StatsV1 />
       </chakra.section> */}
-      <section>
-        <Box
-          w="full"
-          bg="white"
-          _dark={{ bg: "background" }}
-          shadow={"lg"}
-          minH={"30dvh"}
-          mx={"auto"}
-          my={"5dvh"}
-          p={{ base: 2, xl: 10 }}
-        >
+        <section>
+          <Box
+            w="full"
+            bg="white"
+            _dark={{ bg: "background" }}
+            shadow={"lg"}
+            minH={"30dvh"}
+            mx={"auto"}
+            my={"5dvh"}
+            p={{ base: 2, xl: 10 }}
+          >
+            <Heading
+              _dark={{
+                bg: "secondary",
+              }}
+              fontSize={{ base: "lg", xl: "xl", "2xl": "xxl" }}
+              fontFamily={"body"}
+              color={"white"}
+              bg={"primary"}
+              px={5}
+              py={2}
+              fontWeight={400}
+              borderRadius={"lg"}
+              mb={6}
+            >
+              {missionsTitle?.[language]}
+            </Heading>
+            <Flex
+              justify={"start"}
+              align={"center"}
+              direction="column"
+              py={7}
+              mt={10}
+              px={{ base: 2, xl: 10 }}
+              gap={10}
+            >
+              {data[language].split("\n").map((text, i) => (
+                <Text
+                  key={i}
+                  textAlign="justify"
+                  color={"text"}
+                  fontSize="xl"
+                  mb={2}
+                >
+                  <Highlight
+                    query="crrhab"
+                    styles={{
+                      color: "white",
+                      bg: "primary",
+                      px: "2",
+                      py: "1",
+                      rounded: "full",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {text}
+                  </Highlight>
+                </Text>
+              ))}
+            </Flex>
+          </Box>
+        </section>
+
+        <section>
           <Heading
             _dark={{
               bg: "secondary",
             }}
-            fontSize={{ base: "lg", xl: "xl", "2xl": "xxl" }}
+            fontSize={"xxl"}
             fontFamily={"body"}
             color={"white"}
             bg={"primary"}
@@ -64,67 +127,15 @@ const Content = () => {
             borderRadius={"lg"}
             mb={6}
           >
-            {missionsTitle?.[language]}
+            {language === "en"
+              ? "ORGANIZATION OF THE CENTER"
+              : language === "fr"
+              ? "ORGANISATION DU CENTRE"
+              : "تنظيم المركز"}
           </Heading>
-          <Flex
-            justify={"start"}
-            align={"center"}
-            direction="column"
-            py={7}
-            mt={10}
-            px={{ base: 2, xl: 10 }}
-            gap={10}
-          >
-            {data[language].split("\n").map((text, i) => (
-              <Text
-                key={i}
-                textAlign="justify"
-                color={"text"}
-                fontSize="xl"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "white",
-                    bg: "primary",
-                    px: "2",
-                    py: "1",
-                    rounded: "full",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {text}
-                </Highlight>
-              </Text>
-            ))}
-          </Flex>
-        </Box>
-      </section>
-
-      <section>
-        <Heading
-          _dark={{
-            bg: "secondary",
-          }}
-          fontSize={"xxl"}
-          fontFamily={"body"}
-          color={"white"}
-          bg={"primary"}
-          px={5}
-          py={2}
-          fontWeight={400}
-          borderRadius={"lg"}
-          mb={6}
-        >
-          {language === "en"
-            ? "ORGANIZATION OF THE CENTER"
-            : language === "fr"
-            ? "ORGANISATION DU CENTRE"
-            : "تنظيم المركز"}
-        </Heading>
-        <Organisation />
-      </section>
+          <Organisation />
+        </section>
+      </Box>
     </Box>
   );
 };
