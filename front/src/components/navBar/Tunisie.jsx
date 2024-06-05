@@ -279,8 +279,8 @@ const Tunisie = () => {
             {language === "fr" ? (
               <>
                 Institution de la Recherche <br />
-                et de l'Enseignement Supérieur <br />
-                Agricoles
+                et de l'Enseignement <br />
+                Supérieur Agricoles
               </>
             ) : language === "ar" ? (
               <>
@@ -297,8 +297,8 @@ const Tunisie = () => {
           <Text>
             {language === "fr" ? (
               <>
-                Centre Régional des Recherches <br /> en Horticulture et
-                Agriculture Biologique
+                Centre Régional des <br /> Recherches en Horticulture <br />
+                et Agriculture Biologique
               </>
             ) : language === "en" ? (
               <>

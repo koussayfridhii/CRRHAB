@@ -352,11 +352,9 @@ const ScientificOrganization = () => {
                 <Highlight
                   query="crrhab"
                   styles={{
-                    color: "white",
-                    bg: "primary",
+                    color: "text",
                     px: "2",
                     py: "1",
-                    rounded: "full",
                     fontWeight: "bold",
                   }}
                 >

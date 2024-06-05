@@ -70,11 +70,9 @@ const Missions = ({ full = false }) => {
           <Highlight
             query="crrhab"
             styles={{
-              color: "white",
-              bg: "primary",
+              color: "text",
               px: "2",
               py: "1",
-              rounded: "full",
               fontWeight: "bold",
             }}
           >
@@ -115,11 +113,9 @@ const Missions = ({ full = false }) => {
           <Highlight
             query="crrhab"
             styles={{
-              color: "white",
-              bg: "primary",
+              color: "text",
               px: "2",
               py: "1",
-              rounded: "full",
               fontWeight: "bold",
             }}
           >
