@@ -228,6 +228,7 @@ const Tunisie = () => {
           <Box w="full">
             <Image
               boxSize="15vh"
+              w={"25vh"}
               objectFit="contain"
               src="/assets/images/logoIRESA_couleur_fr.png"
               fallbackSrc="https://via.placeholder.com/150"
@@ -238,7 +239,8 @@ const Tunisie = () => {
             <Image
               objectFit="contain"
               boxSize="15vh"
-              src="/assets/images/logoCRRHABWithName.jpg"
+              w={"25vh"}
+              src="/assets/images/crrhab.png"
               fallbackSrc="https://via.placeholder.com/150"
               mx={"auto"}
             />

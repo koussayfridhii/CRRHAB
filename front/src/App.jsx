@@ -27,7 +27,7 @@ const ScientificProductionsV1 = lazy(() =>
 );
 const ScientificProductionsV2 = lazy(() =>
   import(
-    "./pages/researchStructures/scientificProductions/v2/ScientificProductions.jsx"
+    "./pages/researchStructures/scientificProductions/v3/ScientificProductions.jsx"
   )
 );
 const ImageGallery = lazy(() => import("./pages/media/ImageGallery.jsx"));

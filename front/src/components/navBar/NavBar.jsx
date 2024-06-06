@@ -832,7 +832,7 @@ const NAV_ITEMS = [
     href: "/specialized_units",
   },
   {
-    label: { fr: "Gallerie", en: "Gallery", ar: "مكتبة الوسائط" },
+    label: { fr: "Galerie", en: "Gallery", ar: "مكتبة الوسائط" },
     href: "/gallery/imgs",
   },
   {

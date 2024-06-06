@@ -185,7 +185,7 @@ const NewsCarrousel = () => {
       >
         <ChakraLink as={Link} to="/actualities">
           {language === "fr"
-            ? "toutes les actulités"
+            ? "toutes les actualités"
             : language === "en"
             ? "All News"
             : "كل المستجدات"}

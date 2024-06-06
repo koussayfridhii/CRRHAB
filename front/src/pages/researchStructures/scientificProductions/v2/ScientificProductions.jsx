@@ -70,7 +70,7 @@ const ScientificProductionsV2 = () => {
           //   textAlign={{ base: "center", sm: "left" }}
           color="text"
           w={"full"}
-          gap={10}
+          gap={5}
         >
           {language === "en" ? (
             <Text
@@ -142,7 +142,7 @@ const ScientificProductionsV2 = () => {
             <Text fontSize={"md"}>{e.journal?.name?.[language]}</Text>
           </Flex>
 
-          <SimpleGrid columns={2} w={"70%"}>
+          <Flex>
             {e.journal?.[language]}
             {language === "en" ? (
               <Text
@@ -187,12 +187,11 @@ const ScientificProductionsV2 = () => {
             >
               {e.journal?.volume}
             </Text>
-          </SimpleGrid>
-          <SimpleGrid columns={2} w={"70%"}>
+          </Flex>
+          <Flex>
             {e.journal?.[language]}
             {language === "en" ? (
               <Text
-                textAlign={"start"}
                 fontWeight={"bold"}
                 color={"secondary"}
                 fontSize={"sm"}
@@ -204,7 +203,6 @@ const ScientificProductionsV2 = () => {
               </Text>
             ) : language === "fr" ? (
               <Text
-                textAlign={"start"}
                 fontWeight={"bold"}
                 color={"secondary"}
                 fontSize={"sm"}
@@ -216,7 +214,6 @@ const ScientificProductionsV2 = () => {
               </Text>
             ) : (
               <Text
-                textAlign={"start"}
                 fontWeight={"bold"}
                 color={"secondary"}
                 fontSize={"sm"}
@@ -236,8 +233,8 @@ const ScientificProductionsV2 = () => {
             >
               {e.journal?.issue}
             </Text>
-          </SimpleGrid>
-          <SimpleGrid columns={2} w={"70%"}>
+          </Flex>
+          <Flex>
             {e.journal?.[language]}
             {language === "en" ? (
               <Text
@@ -282,8 +279,8 @@ const ScientificProductionsV2 = () => {
             >
               {e.journal?.pages}
             </Text>
-          </SimpleGrid>
-          <SimpleGrid columns={2} w={"70%"}>
+          </Flex>
+          <Flex>
             {e.journal?.[language]}
             {language === "en" ? (
               <Text
@@ -326,8 +323,8 @@ const ScientificProductionsV2 = () => {
               ml={language !== "ar" ? 8 : 0}
               mr={language === "ar" ? 8 : 0}
             >
-              <Flex columns={2} w={"130%"} direction={"column"} gap={2}>
-                <SimpleGrid columns={2} spacing={2}>
+              <Flex direction={"column"} gap={2}>
+                <Flex gap={3}>
                   <Text color={"primary"} textTransform={"capitalize"}>
                     {language === "en"
                       ? "electronic"
@@ -338,8 +335,8 @@ const ScientificProductionsV2 = () => {
                   <Text color={"textSecondary"}>
                     {e.journal?.ISSN?.electronic}
                   </Text>
-                </SimpleGrid>
-                <SimpleGrid columns={2} spacing={2}>
+                </Flex>
+                <Flex gap={3}>
                   <Text color={"primary"} textTransform={"capitalize"}>
                     {language === "en"
                       ? "print"
@@ -348,10 +345,10 @@ const ScientificProductionsV2 = () => {
                       : "الطباعية"}
                   </Text>
                   <Text color={"textSecondary"}>{e.journal?.ISSN?.print}</Text>
-                </SimpleGrid>
+                </Flex>
               </Flex>
             </Text>
-          </SimpleGrid>
+          </Flex>
         </Flex>
         {language === "en" ? (
           <Text

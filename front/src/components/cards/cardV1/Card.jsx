@@ -23,7 +23,7 @@ const Card = () => {
       ar: "المستجدات",
     },
     {
-      fr: "évennements",
+      fr: "Evènements",
       en: "Events",
       ar: "الاحداث",
     },
@@ -82,7 +82,7 @@ const Card = () => {
               </svg>
             </Text>
             <Stack direction={"row"} align={"center"} justify={"center"}>
-              <Text fontSize={"6xl"} fontWeight={800}>
+              <Text fontSize={"5xl"} fontWeight={800}>
                 {language === "fr"
                   ? "Joindre"
                   : language === "en"
