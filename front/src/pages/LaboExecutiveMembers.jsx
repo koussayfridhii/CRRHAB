@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from "react";
 import {
   Box,
-  Button,
   Divider,
   Flex,
   Heading,
-  Icon,
-  InputGroup,
-  InputRightElement,
   SimpleGrid,
   Stack,
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
-import {
-  AutoComplete,
-  AutoCompleteInput,
-  AutoCompleteItem,
-  AutoCompleteList,
-} from "@choc-ui/chakra-autocomplete";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 const LaboExecutiveMembers = ({ add = false }) => {
   const language = useSelector((state) => state.language.language);
   const execData = [
@@ -43,17 +30,17 @@ const LaboExecutiveMembers = ({ add = false }) => {
   const researchData = [
     {
       grade: {
-        fr: "Professeurs",
+        fr: "Professeur",
         en: "",
         ar: "",
       },
       name: {
-        fr: "BETTAIEB Taoufik",
-        ar: "توفيق بالطيبي",
-        en: "BETTAIEB Taoufik",
+        fr: "DAAMI-REMADI Mejda",
+        ar: "ماجدة دعامي-رمادي",
+        en: "DAAMI-REMADI Mejda",
       },
-      email: "tbettaieb@yahoo.fr",
-      orcid: "0000-0002-0053-848X",
+      email: "mejda.daami@gmail.com",
+      orcid: "0000-0003-2239-5624",
       affiliation: "CRRHAB",
     },
   ];
