@@ -8,10 +8,11 @@ import {
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-const LaboExecutiveMembers = ({ add = false }) => {
+const LaboExecutiveMembers = () => {
   const language = useSelector((state) => state.language.language);
-  const execData = [
+  let execData = [
     {
       name: {
         fr: "Mougou Atef",
@@ -27,7 +28,7 @@ const LaboExecutiveMembers = ({ add = false }) => {
       affiliation: "CRRHAB",
     },
   ];
-  const researchData = [
+  let researchData = [
     {
       grade: {
         fr: "Professeur",
@@ -44,7 +45,20 @@ const LaboExecutiveMembers = ({ add = false }) => {
       affiliation: "CRRHAB",
     },
   ];
-  const execHeaders = {
+  const { data, error, isLoading } = useCallApi("laboratory_members");
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
+  useEffect(() => {
+    execData = [...data.filter((e) => e.executive)];
+    researchData = [...data.filter((e) => !e.executive)];
+  }, []);
+  let execHeaders = {
     name: {
       fr: "Nom et prénom",
       en: "fullname",

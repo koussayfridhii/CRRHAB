@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   IconButton,
@@ -34,9 +34,15 @@ import {
 import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 import { logout } from "../../redux/userSlice";
+import axios from "axios";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
+  {
+    name: "Scientific Productions",
+    icon: FaBook,
+    href: "/admin/scientific_productions",
+  },
   { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
   { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
   { name: "Stats", icon: BiStats, href: "/admin/stats" },
@@ -95,6 +101,12 @@ const LinkItems = [
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const pingOnBack = async () => {
+    const { data } = await axios.get("https://crrhab-3ofe.vercel.app/");
+  };
+  useEffect(() => {
+    pingOnBack();
+  }, []);
   return (
     <>
       <SidebarContent

@@ -80,7 +80,16 @@ const LaboResearchTeam = lazy(() => import("./pages/LaboResearchMembers.jsx"));
 const LaboExecutiveMembers = lazy(() =>
   import("./pages/LaboExecutiveMembers.jsx")
 );
-
+const AdminScientificProductions = lazy(() =>
+  import(
+    "./pages/admin/adminScientificProductions/AdminScientificProductions.jsx"
+  )
+);
+const CreateScientificProductions = lazy(() =>
+  import(
+    "./pages/admin/adminScientificProductions/CreateScientificProductions.jsx"
+  )
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -259,6 +268,10 @@ const router = createBrowserRouter([
         element: <DashBoard />,
       },
       {
+        path: "/admin/scientific_productions",
+        element: <AdminScientificProductions />,
+      },
+      {
         path: "/admin/heads_of_rdi_structures",
         element: <DashBoard />,
       },
@@ -314,6 +327,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/diploma_course/:id",
                 element: <CreateDiplomaCourse />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/scientific_productions",
+            element: <CreateScientificProductions />,
+            children: [
+              {
+                path: "/admin/create/scientific_productions/:id",
+                element: <CreateScientificProductions />,
               },
             ],
           },

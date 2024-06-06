@@ -13,7 +13,6 @@ import {
   chakra,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { data } from "../../../../productionData";
 import { useSelector } from "react-redux";
 import {
   AutoComplete,
@@ -23,13 +22,28 @@ import {
 } from "@choc-ui/chakra-autocomplete";
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { GiArchiveResearch } from "react-icons/gi";
+import { useCallApi } from "../../../../hooks/useCallApi";
+import Spinner from "../../../../components/spinner/Spinner";
 const ScientificProductionsV2 = () => {
   const language = useSelector((state) => state.language.language);
 
   const [filtredData, setFiltredData] = useState([]);
+  const { data, error, isLoading } = useCallApi("scientific_productions"); // Fetch data using custom hook
+
   useEffect(() => {
-    filtredData.length < 1 && setFiltredData([...data]);
-  }, []);
+    if (filtredData.length < 1 && data) {
+      // Populate filtered data if it's empty and data is available
+      setFiltredData([...data]);
+    }
+  }, [data, filtredData.length]); // Dependency array includes data and filtredData.length
+
+  if (isLoading) {
+    return <Spinner />; // Show spinner while loading
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>; // Display error message if there's an error
+  }
   return (
     <Flex
       bg="white"
