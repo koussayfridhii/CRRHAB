@@ -4,6 +4,7 @@ const { researcherModel } = require("../models/laboratoryMembers.model");
 const createMember = async (req, res) => {
   try {
     const newMember = new researcherModel(req.body);
+    console.log(req.body);
     await newMember.save();
     res.status(201).json(newMember);
   } catch (error) {

@@ -20,9 +20,7 @@ const laboratoryMemberSchema = mongoose.Schema(
       en: { type: String },
     },
     affiliation: {
-      ar: { type: String },
-      fr: { type: String },
-      en: { type: String },
+      type: String,
     },
     executive: {
       type: Boolean,

@@ -40,61 +40,20 @@ const LinkItems = [
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
   {
     name: "Scientific Productions",
-    icon: FaBook,
-    href: "/admin/scientific_productions",
-  },
-  { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
-  { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
-  { name: "Stats", icon: BiStats, href: "/admin/stats" },
-  {
-    name: "Scientific Council",
-    icon: MdOutlinePersonSearch,
-    href: "/admin/scientific_council",
-  },
-  {
-    name: "Heads of RDI Structures",
-    icon: MdOutlineSupervisorAccount,
-    href: "/admin/heads_of_rdi_structures",
-  },
-  {
-    name: "Representatives of Researchers",
-    icon: FaUserCheck,
-    href: "/admin/representatives_of_researchers",
-  },
-  {
-    name: "Representative of IRESA",
-    icon: FaUserCheck,
-    href: "/admin/representative_of_IRESA",
-  },
-  {
-    name: "Representatives of agricultural research and higher education establishments",
-    icon: FaUserCheck,
-    href: "/admin/representatives_of_agricultural_research_and_higher_education_establishments",
-  },
-  {
-    name: "Scientific personalities from the academic and scientific research world",
-    icon: FaUserCheck,
-    href: "/admin/scientific_personalities_from_the_academic_and_scientific_research_world",
-  },
-  {
-    name: "Staff",
-    icon: GiTeamUpgrade,
-    href: "/admin/scientific_personalities_from_the_academic_and_scientific_research_world",
-  },
-  {
-    name: "CV",
-    icon: CiTextAlignJustify,
-    href: "/admin/cvs",
-  },
-  {
-    name: "Scientific Productions",
     icon: GiMaterialsScience,
     href: "/admin/scientific_productions",
   },
   {
-    name: "Frequently Asked Questions",
-    icon: FaQuestion,
-    href: "/admin/frequently_asked_questions",
+    name: "Laboratory Members",
+    icon: GiMaterialsScience,
+    href: "/admin/laboratory_members",
+  },
+  { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
+  { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
+  {
+    name: "Scientific Council",
+    icon: MdOutlinePersonSearch,
+    href: "/admin/scientific_council",
   },
   { name: "Settings", icon: FiSettings, href: "#" },
 ];

@@ -8,44 +8,25 @@ import {
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useCallApi } from "../hooks/useCallApi";
+import Spinner from "../components/spinner/Spinner";
 const LaboExecutiveMembers = () => {
   const language = useSelector((state) => state.language.language);
-  let execData = [
-    {
-      name: {
-        fr: "Mougou Atef",
-        ar: "عاطف موقو",
-        en: "Mougou Atef",
-      },
-      email: "atef.mougou@yahoo.fr",
-      qualite: {
-        fr: "Ingénieur en chef  ",
-        en: "",
-        ar: "",
-      },
-      affiliation: "CRRHAB",
-    },
-  ];
-  let researchData = [
-    {
-      grade: {
-        fr: "Professeur",
-        en: "",
-        ar: "",
-      },
-      name: {
-        fr: "DAAMI-REMADI Mejda",
-        ar: "ماجدة دعامي-رمادي",
-        en: "DAAMI-REMADI Mejda",
-      },
-      email: "mejda.daami@gmail.com",
-      orcid: "0000-0003-2239-5624",
-      affiliation: "CRRHAB",
-    },
-  ];
+  const [execData, setExecData] = useState([]);
+  const [researchData, setResearchData] = useState([]);
+
   const { data, error, isLoading } = useCallApi("laboratory_members");
+  useEffect(() => {
+    // Filter the data array to separate executive and research data if data is iterable
+    if (Array.isArray(data)) {
+      setExecData([...data?.filter((e) => e.executive)]);
+      setResearchData([...data?.filter((e) => !e.executive)]);
+    }
+
+    console.log(data);
+  }, [data]);
 
   if (isLoading) {
     return <Spinner />;
@@ -54,10 +35,6 @@ const LaboExecutiveMembers = () => {
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
-  useEffect(() => {
-    execData = [...data.filter((e) => e.executive)];
-    researchData = [...data.filter((e) => !e.executive)];
-  }, []);
   let execHeaders = {
     name: {
       fr: "Nom et prénom",
@@ -69,7 +46,7 @@ const LaboExecutiveMembers = () => {
       en: "email",
       ar: "البريد الالكتروني",
     },
-    qualite: {
+    grade: {
       fr: "Qualité",
       en: "Quality",
       ar: "",
@@ -224,7 +201,7 @@ function ExecTable({ data, headers, language = "fr" }) {
                 fontWeight="hairline"
                 borderRadius={"xl"}
               >
-                <chakra.span>{headers.qualite[language]}</chakra.span>
+                <chakra.span>{headers.grade[language]}</chakra.span>
                 <chakra.span>{headers.name[language]}</chakra.span>
                 <chakra.span>{headers.email[language]}</chakra.span>
                 <chakra.span>{headers.affiliation[language]}</chakra.span>
@@ -237,7 +214,7 @@ function ExecTable({ data, headers, language = "fr" }) {
                 px={10}
                 fontWeight="hairline"
               >
-                <chakra.span>{element.qualite[language]}</chakra.span>
+                <chakra.span>{element.grade[language]}</chakra.span>
                 <chakra.span>{element.name[language]}</chakra.span>
                 <chakra.span
                   textOverflow="ellipsis"
@@ -313,8 +290,8 @@ function ResearchTable({ data, headers, language = "fr" }) {
                 px={10}
                 fontWeight="hairline"
               >
-                <chakra.span>{element.grade[language]}</chakra.span>
-                <chakra.span>{element.name[language]}</chakra.span>
+                <chakra.span>{element.grade?.[language]}</chakra.span>
+                <chakra.span>{element.name?.[language]}</chakra.span>
                 <chakra.span
                   textOverflow="ellipsis"
                   overflow="hidden"
@@ -328,10 +305,10 @@ function ResearchTable({ data, headers, language = "fr" }) {
                     target="_blank"
                     color="primary"
                   >
-                    {element.orcid}
+                    {element?.orcid}
                   </chakra.a>
                 </Flex>
-                <chakra.span>{element.affiliation}</chakra.span>
+                <chakra.span>{element?.affiliation}</chakra.span>
               </SimpleGrid>
             </Flex>
           );
