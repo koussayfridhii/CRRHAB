@@ -123,7 +123,7 @@ const NewsCarrousel = () => {
         </IconButton>
         {/* Slider */}
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {data.map((card, index) => (
+          {data?.map((card, index) => (
             <Box
               key={index}
               height={"70dvh"}

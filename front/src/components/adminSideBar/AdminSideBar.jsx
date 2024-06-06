@@ -33,6 +33,7 @@ import {
 
 import { Link } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
+import { logout } from "../../redux/userSlice";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
@@ -142,6 +143,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       pos="fixed"
       h="full"
       {...rest}
+      overflowY="scroll"
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">

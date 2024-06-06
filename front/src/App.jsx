@@ -76,6 +76,10 @@ const CreateGallery = lazy(() =>
   import("./pages/admin/adminGallerie/CreateGallerie.jsx")
 );
 const Projects = lazy(() => import("./pages/Projects.jsx"));
+const LaboResearchTeam = lazy(() => import("./pages/LaboResearchMembers.jsx"));
+const LaboExecutiveMembers = lazy(() =>
+  import("./pages/LaboExecutiveMembers.jsx")
+);
 
 const Layout = () => {
   return (
@@ -123,6 +127,14 @@ const router = createBrowserRouter([
       {
         path: "/chat",
         element: <Chat />,
+      },
+      {
+        path: "/laboratory_researchers",
+        element: <LaboResearchTeam />,
+      },
+      {
+        path: "/laboratory_technical_executives",
+        element: <LaboExecutiveMembers />,
       },
       {
         path: "/signup",

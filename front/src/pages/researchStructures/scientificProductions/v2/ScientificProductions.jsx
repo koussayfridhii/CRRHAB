@@ -1,8 +1,25 @@
-import { Box, Flex, Icon, SimpleGrid, Text, Wrap } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  Flex,
+  Icon,
+  InputGroup,
+  InputRightElement,
+  SimpleGrid,
+  Text,
+  Wrap,
+  chakra,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { data } from "../../../../productionData";
 import { useSelector } from "react-redux";
 import StatsV1 from "../../../../components/stats/statsV1/Stats";
+import {
+  AutoComplete,
+  AutoCompleteInput,
+  AutoCompleteItem,
+  AutoCompleteList,
+} from "@choc-ui/chakra-autocomplete";
+import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 const ScientificProductionsV2 = () => {
   const language = useSelector((state) => state.language.language);
   const Feature = (props) => {
@@ -23,6 +40,7 @@ const ScientificProductionsV2 = () => {
           window.open(e.journal?.url, "_blank");
         }}
         dir={language === "ar" ? "rtl" : "ltr"}
+        w={"full"}
       >
         <Flex
           alignItems="center"
@@ -51,9 +69,8 @@ const ScientificProductionsV2 = () => {
           my={5}
           //   textAlign={{ base: "center", sm: "left" }}
           color="text"
-          direction={"column"}
           w={"full"}
-          gap={5}
+          gap={10}
         >
           {language === "en" ? (
             <Text
@@ -62,7 +79,7 @@ const ScientificProductionsV2 = () => {
               fontSize={"lg"}
               _dark={{ color: "primary" }}
             >
-              Journal
+              Title
             </Text>
           ) : language === "fr" ? (
             <Text
@@ -71,7 +88,7 @@ const ScientificProductionsV2 = () => {
               fontSize={"lg"}
               _dark={{ color: "primary" }}
             >
-              Journal
+              Titre
             </Text>
           ) : (
             <Text
@@ -80,9 +97,50 @@ const ScientificProductionsV2 = () => {
               fontSize={"lg"}
               _dark={{ color: "primary" }}
             >
-              مجلة
+              العنوان
             </Text>
           )}
+          <Text fontSize={"md"}>{e.title?.[language]}</Text>
+        </Flex>
+        <Flex
+          my={5}
+          //   textAlign={{ base: "center", sm: "left" }}
+          color="text"
+          direction={"column"}
+          w={"full"}
+          gap={5}
+        >
+          <Flex w={"full"} gap={5}>
+            {language === "en" ? (
+              <Text
+                fontWeight={"bold"}
+                color={"secondary"}
+                fontSize={"lg"}
+                _dark={{ color: "primary" }}
+              >
+                Journal
+              </Text>
+            ) : language === "fr" ? (
+              <Text
+                fontWeight={"bold"}
+                color={"secondary"}
+                fontSize={"lg"}
+                _dark={{ color: "primary" }}
+              >
+                Journal
+              </Text>
+            ) : (
+              <Text
+                fontWeight={"bold"}
+                color={"secondary"}
+                fontSize={"lg"}
+                _dark={{ color: "primary" }}
+              >
+                مجلة
+              </Text>
+            )}
+            <Text fontSize={"md"}>{e.journal?.name?.[language]}</Text>
+          </Flex>
 
           <Flex>
             {e.journal?.[language]}
@@ -351,7 +409,10 @@ const ScientificProductionsV2 = () => {
       </Box>
     );
   };
-
+  const [filtredData, setFiltredData] = useState([]);
+  useEffect(() => {
+    filtredData.length < 1 && setFiltredData([...data]);
+  }, []);
   return (
     <Flex
       bg="white"
@@ -371,13 +432,8 @@ const ScientificProductionsV2 = () => {
         shadow="xl"
         borderRadius={"lg"}
       >
-        <StatsV1 />
-        {/* <Box
-          textAlign={{
-            lg: "center",
-          }}
-        >
-          <chakra.p
+        <Box textAlign="center" mb={20}>
+          <chakra.h2
             mt={2}
             fontSize={{
               base: "3xl",
@@ -386,12 +442,18 @@ const ScientificProductionsV2 = () => {
             lineHeight="8"
             fontWeight="extrabold"
             letterSpacing="tight"
-            _light={{
-              color: "gray.900",
+            textTransform={"capitalize"}
+            color="primary"
+            _dark={{
+              color: "secondary",
             }}
           >
-            Features
-          </chakra.p>
+            {language === "en"
+              ? "Scientific Productions"
+              : language === "ar"
+              ? "الانتاجات العلمية"
+              : "Productions Scientifiques"}
+          </chakra.h2>
           <chakra.p
             mt={4}
             maxW="2xl"
@@ -399,21 +461,25 @@ const ScientificProductionsV2 = () => {
             mx={{
               lg: "auto",
             }}
-            color="gray.500"
-            _dark={{
-              color: "gray.400",
-            }}
+            color="textSecondary"
           >
-            Get insights to dig down into what&apos;s powering your growth the
-            most.
+            {language === "en"
+              ? " Embark on a journey of transformative impact and discover how we are making a tangible difference in the world."
+              : language === "ar"
+              ? ".انطلق في رحلة ذات تأثير تحويلي واكتشف كيف نحدث فرقًا ملموسًا في العالم"
+              : "Embarquez pour un voyage à impact transformateur et découvrez comment nous faisons une différence tangible dans le monde."}
           </chakra.p>
-        </Box> */}
+        </Box>
+        <AutoCompleteMade
+          options={data}
+          language={language}
+          setFiltredData={setFiltredData}
+        />
         <SimpleGrid
           columns={{
             base: 1,
             sm: 2,
-            md: 3,
-            lg: 4,
+            "2xl": 3,
           }}
           spacingX={{
             base: 16,
@@ -422,7 +488,7 @@ const ScientificProductionsV2 = () => {
           spacingY={20}
           mt={6}
         >
-          {data?.map((e, i) => {
+          {filtredData?.map((e, i) => {
             const num = Math.floor(Math.random() * 4);
             const colors = ["red", "green", "blue", "pink"];
             return (
@@ -447,6 +513,107 @@ const ScientificProductionsV2 = () => {
         </SimpleGrid>
       </Box>
     </Flex>
+  );
+};
+const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
+  const [text, setText] = useState("");
+
+  // Populate the data array with values from options based on the selected language
+  let data = [];
+  options.forEach((option) => {
+    if (option.title && option.title[language]) {
+      data.push(option.title[language]);
+    }
+    if (option.authors && option.authors[language]) {
+      data.push(...option.authors[language]);
+    }
+    if (
+      option.journal &&
+      option.journal.name &&
+      option.journal.name[language]
+    ) {
+      data.push(option.journal.name[language]);
+    }
+    if (option.published_date && option.published_date[language]) {
+      data.push(option.published_date[language]);
+    }
+  });
+
+  // Remove duplicate values from data array
+  data = [...new Set(data)];
+
+  // Handler for input change event
+  const changeInputHandler = (e) => {
+    e.preventDefault();
+    setText(e.target.value);
+  };
+
+  // Function to filter options based on text input
+  const optionsFilter = () => {
+    const filteredData = options.filter((option) => {
+      return (
+        (option.title?.[language] &&
+          option.title[language].toLowerCase().includes(text.toLowerCase())) ||
+        (option.authors?.[language] &&
+          option.authors[language].some((author) =>
+            author.toLowerCase().includes(text.toLowerCase())
+          )) ||
+        (option.journal?.name?.[language] &&
+          option.journal.name[language]
+            .toLowerCase()
+            .includes(text.toLowerCase())) ||
+        (option.published_date?.[language] &&
+          option.published_date[language]
+            .toLowerCase()
+            .includes(text.toLowerCase()))
+      );
+    });
+    setFiltredData(filteredData);
+  };
+
+  // Effect to trigger optionsFilter function when text input changes
+  useEffect(() => {
+    optionsFilter();
+  }, [text]);
+
+  return (
+    <>
+      <AutoComplete rollNavigation>
+        {({ isOpen }) => (
+          <>
+            <InputGroup>
+              <AutoCompleteInput
+                variant="filled"
+                bg="textHover"
+                border="2px"
+                borderColor="primary"
+                _dark={{ borderColor: "secondary" }}
+                placeholder="Search By author , Journal , Title , Publish Date ...."
+                onChange={changeInputHandler}
+              />
+              <InputRightElement>
+                <Icon as={isOpen ? ChevronRightIcon : ChevronDownIcon} />
+              </InputRightElement>
+            </InputGroup>
+            <AutoCompleteList>
+              {data?.map((option, index) => (
+                <AutoCompleteItem
+                  key={`option${index}`}
+                  value={option}
+                  textTransform="capitalize"
+                  align="center"
+                  onClick={(e) => {
+                    setText(e.target.innerText);
+                  }}
+                >
+                  {option}
+                </AutoCompleteItem>
+              ))}
+            </AutoCompleteList>
+          </>
+        )}
+      </AutoComplete>
+    </>
   );
 };
 

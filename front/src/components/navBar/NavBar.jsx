@@ -669,19 +669,19 @@ const NAV_ITEMS = [
         },
         href: "/presentation/scientific_organization",
       },
-      {
-        label: {
-          fr: "Personnels",
-          en: "Staff",
-          ar: "طاقم العمل",
-        },
-        subLabel: {
-          fr: "Personnels",
-          en: "Staff",
-          ar: "طاقم العمل",
-        },
-        href: "/staff",
-      },
+      // {
+      //   label: {
+      //     fr: "Personnels",
+      //     en: "Staff",
+      //     ar: "طاقم العمل",
+      //   },
+      //   subLabel: {
+      //     fr: "Personnels",
+      //     en: "Staff",
+      //     ar: "طاقم العمل",
+      //   },
+      //   href: "/staff",
+      // },
     ],
   },
   {
@@ -743,14 +743,30 @@ const NAV_ITEMS = [
         label: {
           fr: "Thématiques de Recherches",
           en: "Research  Topics",
-          ar: "فريق البحث",
+          ar: "مواضيع البحث",
         },
         subLabel: {
           fr: "Thématiques de Recherches",
           en: "Research Topics",
-          ar: "فريق البحث",
+          ar: "مواضيع البحث",
         },
         href: "/research_topics",
+      },
+      {
+        label: {
+          fr: "Chercheurs Membres du Laboratoire",
+          en: "Researchers Members of The Laboratory",
+          ar: "الباحثون أعضاء المختبر",
+        },
+        href: "/laboratory_researchers",
+      },
+      {
+        label: {
+          fr: "Cadres Techniques Membres du Laboratoire",
+          en: "Technical Executives of The Laboratory",
+          ar: "المديرين الفنيين أعضاء المختبر",
+        },
+        href: "/laboratory_technical_executives",
       },
       {
         label: {
