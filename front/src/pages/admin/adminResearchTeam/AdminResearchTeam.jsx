@@ -63,7 +63,7 @@ const AdminResearchTeam = () => {
     const res = await axios.get(
       `https://crrhab-3ofe.vercel.app/api/research_team`
     );
-    setData(res.data);
+    setData(res.data.research_team);
   };
   useEffect(() => {
     getAllData();
