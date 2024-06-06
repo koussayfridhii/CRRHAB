@@ -15,7 +15,9 @@ exports.createResearcher = async (req, res) => {
 exports.getAllResearchers = async (req, res) => {
   try {
     const researchers = await researcherModel.find();
-    return res.status(200).json(researchers);
+    return res
+      .status(200)
+      .json({ research_team: researchers, success: true, error: "false" });
   } catch (error) {
     console.error("Error fetching researchers:", error);
     return res.status(500).json({ error: "Could not fetch researchers" });
