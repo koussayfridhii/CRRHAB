@@ -133,7 +133,7 @@ const router = createBrowserRouter([
         element: <LaboResearchTeam />,
       },
       {
-        path: "/laboratory_technical_executives",
+        path: "/laboratory_members",
         element: <LaboExecutiveMembers />,
       },
       {

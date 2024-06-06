@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
+  Divider,
   Flex,
   Heading,
   Icon,
@@ -23,8 +24,7 @@ import { Link } from "react-router-dom";
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 const LaboExecutiveMembers = ({ add = false }) => {
   const language = useSelector((state) => state.language.language);
-  const [filtredData, setFiltredData] = useState([]);
-  const data = [
+  const execData = [
     {
       name: {
         fr: "Mougou Atef",
@@ -40,7 +40,24 @@ const LaboExecutiveMembers = ({ add = false }) => {
       affiliation: "CRRHAB",
     },
   ];
-  const headers = {
+  const researchData = [
+    {
+      grade: {
+        fr: "Professeurs",
+        en: "",
+        ar: "",
+      },
+      name: {
+        fr: "BETTAIEB Taoufik",
+        ar: "توفيق بالطيبي",
+        en: "BETTAIEB Taoufik",
+      },
+      email: "tbettaieb@yahoo.fr",
+      orcid: "0000-0002-0053-848X",
+      affiliation: "CRRHAB",
+    },
+  ];
+  const execHeaders = {
     name: {
       fr: "Nom et prénom",
       en: "fullname",
@@ -62,9 +79,34 @@ const LaboExecutiveMembers = ({ add = false }) => {
       ar: "المؤسسة",
     },
   };
-  useEffect(() => {
-    filtredData.length < 1 && setFiltredData([...data]);
-  }, []);
+  const researchHeaders = {
+    grade: {
+      fr: "grade",
+      en: "grade",
+      ar: "المرحلة",
+    },
+    name: {
+      fr: "Nom et prénom",
+      en: "fullname",
+      ar: "الاسم الكامل",
+    },
+    email: {
+      fr: "email",
+      en: "email",
+      ar: "البريد الالكتروني",
+    },
+    orcid: {
+      fr: "orcid",
+      en: "orcid",
+      ar: "orcid",
+    },
+    affiliation: {
+      fr: "établissement d’affiliation",
+      en: "affiliation establishment",
+      ar: "مؤسسة الانتماء",
+    },
+  };
+
   return (
     <Box
       w={{ base: "full", xl: "95dvw", "2xl": "80dvw" }}
@@ -77,15 +119,51 @@ const LaboExecutiveMembers = ({ add = false }) => {
     >
       <Heading
         _dark={{
-          bg: "secondary",
+          color: "secondary",
         }}
         fontSize={"xxl"}
         fontFamily={"body"}
-        color={"white"}
-        bg={"primary"}
+        color={"primary"}
         px={5}
         py={2}
-        fontWeight={400}
+        fontWeight={"bold"}
+        borderRadius={"lg"}
+        mb={6}
+      >
+        {language === "en"
+          ? "Laboratory Research Members"
+          : language === "fr"
+          ? "Chercheurs Membres du Laboratoire"
+          : "شبكة الباحثين"}
+      </Heading>
+      <ResearchTable
+        data={researchData}
+        headers={researchHeaders}
+        language={language}
+      />
+      <Divider
+        my={5}
+        _dark={{
+          bg: "secondary",
+          borderColor: "secondary",
+        }}
+        orientation="horizontal"
+        bg={"primary"}
+        // borderWidth={1}
+        w={"90%"}
+        mx={"auto"}
+        borderColor={"primary"}
+      />
+      <Heading
+        _dark={{
+          color: "secondary",
+        }}
+        fontSize={"xxl"}
+        fontFamily={"body"}
+        color={"primary"}
+        px={5}
+        py={2}
+        fontWeight={"bold"}
         borderRadius={"lg"}
         mb={6}
       >
@@ -95,22 +173,12 @@ const LaboExecutiveMembers = ({ add = false }) => {
           ? "Cadres Techniques Membres du Laboratoire"
           : "أعضاء الكادر الفني في المختبر"}
       </Heading>
-      {add && (
-        <Button as={Link} mb={5} ml={"95%"} to="/admin/create/research_Team">
-          Add
-        </Button>
-      )}
-      <AutoCompleteMade
-        options={data}
-        language={language}
-        setFiltredData={setFiltredData}
-      />
-      <Table data={filtredData} headers={headers} language={language} />
+      <ExecTable data={execData} headers={execHeaders} language={language} />
     </Box>
   );
 };
 
-function Table({ data, headers, language = "fr" }) {
+function ExecTable({ data, headers, language = "fr" }) {
   // Définir les couleurs selon le mode de couleur
   const dataColor = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("background", "gray.700");
@@ -186,95 +254,89 @@ function Table({ data, headers, language = "fr" }) {
     </Flex>
   );
 }
-
-const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
-  // État pour stocker la valeur de l'entrée de texte
-  const [text, setText] = useState("");
-
-  // Initialiser le tableau de données en fonction de la langue sélectionnée
-  let data = [];
-  options.forEach((option) => {
-    if (option.name && option.name[language]) {
-      data.push(option.name[language]);
-    }
-    if (option.qualite && option.qualite[language]) {
-      data.push(option.qualite[language]);
-    }
-    if (option.email) {
-      data.push(option.email);
-    }
-  });
-
-  // Supprimer les valeurs dupliquées du tableau de données
-  data = [...new Set(data)];
-
-  // Gestionnaire pour l'événement de changement de l'entrée
-  const changeInputHandler = (e) => {
-    e.preventDefault();
-    setText(e.target.value);
-  };
-
-  // Fonction pour filtrer les options en fonction de l'entrée de texte
-  const optionsFilter = () => {
-    const filteredData = options.filter((option) => {
-      return (
-        (option.name?.[language] &&
-          option.name[language].toLowerCase().includes(text.toLowerCase())) ||
-        (option.qualite?.[language] &&
-          option.qualite[language]
-            .toLowerCase()
-            .includes(text.toLowerCase())) ||
-        (option.email &&
-          option.email.toLowerCase().includes(text.toLowerCase()))
-      );
-    });
-    setFiltredData(filteredData);
-  };
-
-  // Effet pour déclencher la fonction optionsFilter lorsque l'entrée de texte change
-  useEffect(() => {
-    optionsFilter();
-  }, [text]);
+function ResearchTable({ data, headers, language = "fr" }) {
+  const dataColor = useColorModeValue("white", "gray.800");
+  const bg2 = useColorModeValue("background", "gray.700");
 
   return (
-    <>
-      <AutoComplete rollNavigation>
-        {({ isOpen }) => (
-          <>
-            <InputGroup>
-              <AutoCompleteInput
-                variant="filled"
-                bg="textHover"
-                border="2px"
-                borderColor="primary"
-                _dark={{ borderColor: "secondary" }}
-                placeholder="Rechercher par nom, qualité, email..."
-                onChange={changeInputHandler}
-              />
-              <InputRightElement>
-                <Icon as={isOpen ? ChevronRightIcon : ChevronDownIcon} />
-              </InputRightElement>
-            </InputGroup>
-            <AutoCompleteList>
-              {data?.map((option, index) => (
-                <AutoCompleteItem
-                  key={`option${index}`}
-                  value={option}
-                  textTransform="capitalize"
-                  align="center"
-                  onClick={(e) => {
-                    setText(e.target.innerText);
-                  }}
+    <Flex
+      w="full"
+      bg="background"
+      p={50}
+      alignItems="center"
+      justifyContent="center"
+      _dark={{ bg: "background" }}
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
+      <Stack
+        direction={{ base: "column" }}
+        w="full"
+        bg={{ md: "primaryHover" }}
+        shadow="lg"
+        borderRadius={"lg"}
+        p={3}
+        _dark={{ bg: "secondary" }}
+      >
+        {data.map((element, index) => {
+          return (
+            <Flex
+              direction={{ base: "row", md: "column" }}
+              bg={dataColor}
+              key={index}
+              borderRadius={"xl"}
+            >
+              <SimpleGrid
+                spacingY={3}
+                columns={{ base: 1, md: 5 }}
+                w={{ base: 120, md: "full" }}
+                textTransform="uppercase"
+                bg={bg2}
+                color={"gray.500"}
+                py={{ base: 1, md: 4 }}
+                px={{ base: 2, md: 10 }}
+                fontSize="md"
+                fontWeight="hairline"
+                borderRadius={"xl"}
+              >
+                <chakra.span>{headers.grade[language]}</chakra.span>
+                <chakra.span>{headers.name[language]}</chakra.span>
+                <chakra.span>{headers.email[language]}</chakra.span>
+                <chakra.span>{headers.orcid[language]}</chakra.span>
+                <chakra.span>{headers.affiliation[language]}</chakra.span>
+              </SimpleGrid>
+              <SimpleGrid
+                spacingY={3}
+                columns={{ base: 1, md: 5 }}
+                w="full"
+                py={2}
+                px={10}
+                fontWeight="hairline"
+              >
+                <chakra.span>{element.grade[language]}</chakra.span>
+                <chakra.span>{element.name[language]}</chakra.span>
+                <chakra.span
+                  textOverflow="ellipsis"
+                  overflow="hidden"
+                  whiteSpace="nowrap"
                 >
-                  {option}
-                </AutoCompleteItem>
-              ))}
-            </AutoCompleteList>
-          </>
-        )}
-      </AutoComplete>
-    </>
+                  {element.email}
+                </chakra.span>
+                <Flex>
+                  <chakra.a
+                    href={`https://orcid.org/${element.orcid}`}
+                    target="_blank"
+                    color="primary"
+                  >
+                    {element.orcid}
+                  </chakra.a>
+                </Flex>
+                <chakra.span>{element.affiliation}</chakra.span>
+              </SimpleGrid>
+            </Flex>
+          );
+        })}
+      </Stack>
+    </Flex>
   );
-};
-
+}
 export default LaboExecutiveMembers;

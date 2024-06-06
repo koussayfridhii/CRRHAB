@@ -46,6 +46,7 @@ export default function Contact() {
       }}
       id="contact"
       dir={language == "ar" ? "rtl" : "ltr"}
+      shadow={"lg"}
     >
       <Box
         borderRadius="lg"

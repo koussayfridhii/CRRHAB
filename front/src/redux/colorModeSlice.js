@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const calculateFontSizes = (size) => ({
   xs: size * 0.75 + "rem",
+  ls: size * 0.8 + "rem",
   sm: size * 0.875 + "rem",
   md: size * 1 + "rem",
   lg: size * 1.125 + "rem",
@@ -11,8 +12,8 @@ const calculateFontSizes = (size) => ({
   "5xl": size * 3 + "rem",
   "6xl": size * 3.75 + "rem",
   "7xl": size * 4.5 + "rem",
-  "8xl": size * 6 + "rem", // Limit max font size to 3.5rem
-  "9xl": size * 8 + "rem", // Limit max font size to 5rem
+  "8xl": size * 6 + "rem",
+  "9xl": size * 8 + "rem",
 });
 const initialSize = localStorage.getItem("size") || 1;
 const lightTheme = {
@@ -29,6 +30,7 @@ const lightTheme = {
   },
   fontSizes: {
     xs: initialSize * 0.75 + "rem",
+    ls: initialSize * 0.8 + "rem",
     sm: initialSize * 0.875 + "rem",
     md: initialSize * 1 + "rem",
     lg: initialSize * 1.125 + "rem",
@@ -58,6 +60,7 @@ const darkTheme = {
   },
   fontSizes: {
     xs: initialSize * 0.75 + "rem",
+    ls: initialSize * 0.8 + "rem",
     sm: initialSize * 0.875 + "rem",
     md: initialSize * 1 + "rem",
     lg: initialSize * 1.125 + "rem",

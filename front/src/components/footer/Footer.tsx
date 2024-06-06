@@ -22,6 +22,7 @@ const Footer = () => {
       borderColor="primary"
       py="2.5rem"
       fontSize="sm"
+      shadow={"lg"}
     >
       <Box
         maxW="90vw"

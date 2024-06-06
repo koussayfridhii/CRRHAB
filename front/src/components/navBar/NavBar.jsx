@@ -327,7 +327,7 @@ const DesktopNav = () => {
                 // display={"inline-block"}
                 p={2}
                 to={navItem.href ?? "#"}
-                fontSize={"sm"}
+                fontSize={{ base: "sm", xl: "ls", "2xl": "sm" }}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -754,19 +754,11 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Chercheurs Membres du Laboratoire",
-          en: "Researchers Members of The Laboratory",
-          ar: "الباحثون أعضاء المختبر",
+          fr: "Membres du Laboratoire",
+          en: "Members of The Laboratory",
+          ar: "أعضاء المختبر",
         },
-        href: "/laboratory_researchers",
-      },
-      {
-        label: {
-          fr: "Cadres Techniques Membres du Laboratoire",
-          en: "Technical Executives of The Laboratory",
-          ar: "المديرين الفنيين أعضاء المختبر",
-        },
-        href: "/laboratory_technical_executives",
+        href: "/laboratory_members",
       },
       {
         label: {
