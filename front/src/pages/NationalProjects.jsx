@@ -12,37 +12,20 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useCallApi } from "../hooks/useCallApi";
+import Spinner from "../components/spinner/Spinner";
 
 const NationalProjects = () => {
   const language = useSelector((state) => state.language.language);
-  const data = [
-    {
-      title: {
-        en: "Integrated and sustainable management of protected vegetable crop systems (CLéProD)/PRM IRESA",
-        fr: "Gestion intégrée et durable des systèmes de cultures légumières protégées (CLéProD)/PRM IRESA",
-        ar: "الإدارة المتكاملة والمستدامة لنظم محاصيل الخضروات المحمية (CLéProD)/PRM IRESA",
-      },
-      cordinator: {
-        en: "Asma Laarif",
-        fr: "Asma Laarif",
-        ar: "أسماء العريف",
-      },
-      duration: "2015-2018",
-    },
-    {
-      title: {
-        en: "Valorization of bacterial bio-inoculants for improving the health and productivity of vegetable crops (conventional and organic farming systems) and for preserving the fertility of soils in the Central-East of Tunisia (LegBioFert-CE )",
-        fr: "Valorisation de bio-inoculants bactériens pour l'amélioration de la santé et de la productivité des cultures maraîchères (systèmes agricoles conventionnels et biologiques) et pour la préservation de la fertilité des sols dans le Centre-Est de la Tunisie (LegBioFert-CE)",
-        ar: "تثمين الملقحات الحيوية البكتيرية لتحسين صحة وإنتاجية محاصيل الخضروات (نظم الزراعة التقليدية والعضوية) وللحفاظ على خصوبة التربة في وسط شرق تونس (LegBioFert-CE)",
-      },
-      cordinator: {
-        en: "Rania Aydi Ben Abdallah",
-        fr: "Rania Aydi Ben Abdallah",
-        ar: "رانيا عايدي بن عبد اللٌه",
-      },
-      duration: "2023-2025",
-    },
-  ];
+  const { data, error, isLoading } = useCallApi("national_projects");
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
   return (
     <Box
       w={{ base: "full", xl: "90%", "2xl": "80%" }}

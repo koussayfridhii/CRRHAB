@@ -96,6 +96,12 @@ const AdminLaboratoryMembers = lazy(() =>
 const CreateLaboratoryMembers = lazy(() =>
   import("./pages/admin/adminLaboratoryMembers/CreateLaboratoryMembers.jsx")
 );
+const AdminNationalProjects = lazy(() =>
+  import("./pages/admin/adminNationalProjects/AdminNationalProjects.jsx")
+);
+const CreateNationalProjects = lazy(() =>
+  import("./pages/admin/adminNationalProjects/CreateNationalProjects.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -259,6 +265,10 @@ const router = createBrowserRouter([
         element: <AdminResearchTeam />,
       },
       {
+        path: "/admin/national_projects",
+        element: <AdminNationalProjects />,
+      },
+      {
         path: "/admin/diploma_course",
         element: <AdminDiplomaCourses />,
       },
@@ -338,6 +348,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/diploma_course/:id",
                 element: <CreateDiplomaCourse />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/national_projects",
+            element: <CreateNationalProjects />,
+            children: [
+              {
+                path: "/admin/create/national_projects/:id",
+                element: <CreateNationalProjects />,
               },
             ],
           },

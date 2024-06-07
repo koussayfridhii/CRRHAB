@@ -37,6 +37,11 @@ import { logout } from "../../redux/userSlice";
 import axios from "axios";
 const LinkItems = [
   { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
+  {
+    name: "Laboratory Members",
+    icon: FaRegUser,
+    href: "/admin/laboratory_members",
+  },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
   {
     name: "Scientific Productions",
@@ -44,9 +49,9 @@ const LinkItems = [
     href: "/admin/scientific_productions",
   },
   {
-    name: "Laboratory Members",
+    name: "National Projects",
     icon: GiMaterialsScience,
-    href: "/admin/laboratory_members",
+    href: "/admin/national_projects",
   },
   { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
   { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
