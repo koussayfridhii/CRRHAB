@@ -13,6 +13,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Footer = () => {
   const { pathname } = useLocation();
   const { colorMode } = useColorMode();
@@ -27,13 +28,13 @@ const Footer = () => {
       shadow={"lg"}
     >
       <Box
-        maxW="90vw"
         marginX="auto"
         pb="2rem"
         mb="1.5rem"
         px={10}
         borderBottom="1px solid"
         borderColor="primary"
+        w={{ base: "full", "2xl": "90%" }}
       >
         <Flex flexWrap="wrap" alignItems="start" justifyContent="space-between">
           {pathname === "/" && (
@@ -50,8 +51,8 @@ const Footer = () => {
               <iframe
                 className={`map ${colorMode}`}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
-                width={300}
-                height={300}
+                width={220}
+                height={250}
                 style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
@@ -137,7 +138,7 @@ const Footer = () => {
                 </Text>
                 <Text fontSize="md">Session du matin : du 8 h à 13 h</Text>
                 <Text fontSize="md">
-                  Session de L'apr ès-midi : du 14 h 30 mn à 17 h 30 mn
+                  Session de L'après-midi : du 14 h 30 mn à 17 h 30 mn
                 </Text>
               </Box>
             </List>
@@ -153,30 +154,33 @@ const Footer = () => {
               CRRHAB
             </Heading>
             <List lineHeight="2" justifyContent="center">
-              <LinkItem text="Careers" />
-              <LinkItem text="News" />
-              <LinkItem text="Policies" />
-              <LinkItem text="Help" />
-              <LinkItem text="Diversity & Belonging" />
+              <LinkItem text="Présentation" link="/presentation" />
+              <LinkItem text="Actualités" link="/actualities" />
+              <LinkItem
+                text="Productions Scientifiques"
+                link="scientificproductions"
+              />
+              <LinkItem text="Galery" link="/gallery/imgs" />
+              <LinkItem text="Contact" link="/contact" />
             </List>
-          </Box>
-          <Box mb={{ base: "1.5rem", lg: "0" }}>
-            <Flex justifyContent="start" mb="0.5rem" alignItems="baseline">
-              <Link href="https://youtu.be/97pPWx9j9cI" mr="0.5rem">
-                <YouTubeIcon style={{ color: "#FF0000" }} />
-              </Link>
-              <Link href="https://www.facebook.com/CRRHAB.RP" mr="0.5rem">
-                <FacebookIcon style={{ color: "#0866FF" }} />
-              </Link>
-              <Link href="#" mr="0.5rem">
-                <XIcon style={{ color: "#609bf2" }} />
-              </Link>
-            </Flex>
-            <List lineHeight="2">
+            <Box mb={{ base: "1.5rem", lg: "0" }} mt={5}>
+              <Flex justifyContent="start" mb="0.5rem" alignItems="baseline">
+                <Link href="https://youtu.be/97pPWx9j9cI" mr="0.5rem">
+                  <YouTubeIcon style={{ color: "#FF0000" }} />
+                </Link>
+                <Link href="https://www.facebook.com/CRRHAB.RP" mr="0.5rem">
+                  <FacebookIcon style={{ color: "#0866FF" }} />
+                </Link>
+                <Link href="#" mr="0.5rem">
+                  <XIcon style={{ color: "#609bf2" }} />
+                </Link>
+              </Flex>
+              {/* <List lineHeight="2">
               <LinkItem text="Terms" />
               <LinkItem text="Privacy" />
               <LinkItem text="Site Map" />
-            </List>
+            </List> */}
+            </Box>
           </Box>
         </Flex>
       </Box>
@@ -205,14 +209,15 @@ type LinkItemProps = {
   text?: string;
   isTag?: boolean;
   tagText?: string;
+  link?: string;
 };
 
-const LinkItem = ({ text, isTag = false, tagText }: LinkItemProps) => {
+const LinkItem = ({ text, link, isTag = false, tagText }: LinkItemProps) => {
   return (
     <ListItem display="flex">
       <Link
         fontWeight="600"
-        href="#"
+        href={link}
         color="textSecondary"
         _hover={{ color: "secondary" }}
       >
