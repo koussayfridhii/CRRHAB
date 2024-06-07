@@ -242,8 +242,8 @@ const DataTable = ({ data, setData, headers, language }) => {
             <Tr key={index}>
               <Td>{getText(row.grade, language)}</Td>
               <Td>{getText(row.name, language)}</Td>
-              <Td>{getText(row.grade, language)}</Td>
               <Td>{row.email}</Td>
+              <Td>{row.affiliation}</Td>
               <Td>
                 <Flex justify={{ md: "end" }}>
                   <ButtonGroup variant="solid" size="sm" spacing={3}>
