@@ -82,7 +82,7 @@ const Card = () => {
               </svg>
             </Text>
             <Stack direction={"row"} align={"center"} justify={"center"}>
-              <Text fontSize={"5xl"} fontWeight={800}>
+              <Text fontSize={{ base: "xxxxl", "2xl": "5xl" }} fontWeight={800}>
                 {language === "fr"
                   ? "Joindre"
                   : language === "en"
