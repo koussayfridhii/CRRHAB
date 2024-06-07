@@ -16,6 +16,7 @@ import {
   useClipboard,
   useColorModeValue,
   VStack,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 const confetti = {
@@ -35,6 +36,7 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 export default function Contact() {
   const language = useSelector((state) => state.language.language);
+  const { colorMode } = useColorMode();
   return (
     <Flex
       bg={useColorModeValue("gray.100", "gray.900")}
@@ -76,6 +78,7 @@ export default function Contact() {
             >
               <Flex align={"center"} shadow={"lg"} mr={{ base: 0, xl: -1 }}>
                 <iframe
+                  className={`map ${colorMode}`}
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
                   width={500}
                   height={500}

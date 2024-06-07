@@ -7,6 +7,7 @@ import {
   ListItem,
   Link,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
@@ -14,6 +15,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
+  const { colorMode } = useColorMode();
   return (
     <Box
       as="footer"
@@ -46,6 +48,7 @@ const Footer = () => {
                 CRRHAB
               </Heading>
               <iframe
+                className={`map ${colorMode}`}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
                 width={300}
                 height={300}

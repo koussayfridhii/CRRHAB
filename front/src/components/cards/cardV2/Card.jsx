@@ -53,7 +53,7 @@ const Card = () => {
             }}
           >
             <Box rounded={"lg"} height={230} width={282} objectFit={"cover"}>
-              <VideoPlayer />
+              <VideoPlayer posterImage={posterImg} />
             </Box>
           </Box>
           <Stack pt={10} align={"center"}>

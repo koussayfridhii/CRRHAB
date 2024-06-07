@@ -1,90 +1,148 @@
-import { Flex, Text, Heading, Box, Highlight } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Heading,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  useColorMode,
+} from "@chakra-ui/react";
+import React from "react";
 import { useSelector } from "react-redux";
-const SpecializedUnits = () => {
-  const language = useSelector((state) => state.language.language);
-  const data = {
-    ar: `
-    وحدة تثمين نتائج البحث مكلفة بتثمين مكتسبات البحث وإقامة شراكة علمية وتكنولوجية مع
-    الهيئات الاقتصادية في مجالات نشاط المركز
-    `,
-    fr: `
-      Une unité de valorisation des résultats de recherche chargée de la valorisation des
-      acquis de la recherche et de l’institution d’un partenariat scientifique et technologique avec les
-      organismes économiques dans les domaines d’activité du centre
-    `,
-    en: `
-      A research results valorization unit responsible for the valorization of research achievements
-      and the establishment of a scientific and technological partnership with economic organizations
-      in the center's fields of activity
-    `,
-  };
 
+const NationalProjects = () => {
+  const language = useSelector((state) => state.language.language);
+  const data = [
+    {
+      title: {
+        en: "",
+        fr: "Unité d'expérimentation agricole à Chott Mériem, Sousse",
+        ar: "",
+      },
+      activity: {
+        en: "",
+        fr: "Horticulture : Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel et Biolologique",
+        ar: "",
+      },
+      superficie: "9.5 ha",
+    },
+  ];
   return (
-    <>
-      <Box
-        w={{ base: "full", "2xl": "80vw" }}
-        bg="background"
-        shadow={"lg"}
-        minH={"50dvh"}
-        mx={"auto"}
-        my={"5dvh"}
-        dir={language === "ar" ? "rtl" : "ltr"}
-        p={20}
+    <Box
+      w={{ base: "full", xl: "90%", "2xl": "80%" }}
+      bg="background"
+      mx="auto"
+      my={10}
+      borderRadius="lg"
+      minH="100dvh"
+      py={10}
+      px={{ base: 0, xl: 10 }}
+      boxShadow="lg"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
+      <Heading
+        _dark={{
+          bg: "secondary",
+        }}
+        fontSize={"xxl"}
+        fontFamily={"body"}
+        color={"white"}
+        bg={"primary"}
+        px={5}
+        py={2}
+        fontWeight={400}
+        borderRadius={"lg"}
+        mb={6}
       >
-        <Flex
-          justify={"start"}
-          align={"center"}
-          py={3}
-          px={10}
-          bg="primary"
-          _dark={{ bg: "secondary" }}
-          borderRadius={10}
-        >
-          <Heading
-            color={"white"}
-            _dark={{ color: "#fff" }}
-            fontSize={"xxl"}
-            mb={0}
-          >
-            {language === "en"
-              ? "Specialized Units"
-              : language === "fr"
-              ? "Unités Spécialisées"
-              : "وحدات مختصة"}
-          </Heading>
-        </Flex>
-        <Flex
-          justify={"start"}
-          align={"center"}
-          direction="column"
-          py={7}
-          mt={2}
-          px={10}
-          gap={10}
-        >
-          {data[language].split("/n").map((text, i) => {
-            return (
-              <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "white",
-                    bg: "primary",
-                    px: "2",
-                    py: "1",
-                    rounded: "full",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {text}
-                </Highlight>
-              </Text>
-            );
-          })}
-        </Flex>
-      </Box>
-    </>
+        {language === "en"
+          ? "Specialized Units"
+          : language === "fr"
+          ? "Unités Spécialisées"
+          : "وحدات مختصة"}
+      </Heading>
+      <DataTable data={data} language={language} />
+      <Divider
+        my={5}
+        _dark={{
+          bg: "secondary",
+          borderColor: "secondary",
+        }}
+        orientation="horizontal"
+        bg={"primary"}
+        // borderWidth={1}
+        w={"90%"}
+        mx={"auto"}
+        borderColor={"primary"}
+      />
+    </Box>
   );
 };
-
-export default SpecializedUnits;
+const DataTable = ({ data, language }) => {
+  const getText = (item, language) => item[language] || item.en || "";
+  const { colorMode } = useColorMode();
+  return (
+    <TableContainer>
+      <Table
+        variant="striped"
+        colorScheme={colorMode === "light" ? "green" : "blue"}
+        // Ensure table does not overflow the container
+        width="100%"
+        overflowX="auto"
+      >
+        <Thead bg={"primary"} _dark={{ bg: "secondary" }}>
+          <Tr>
+            <Th color={"white"}>
+              {language === "en"
+                ? ""
+                : language === "fr"
+                ? "Unité d'expérimentation"
+                : ""}
+            </Th>
+            <Th color={"white"}>
+              {language === "en" ? "" : language === "fr" ? "Superficie" : ""}
+            </Th>
+            <Th color={"white"}>
+              {language === "en"
+                ? ""
+                : language === "fr"
+                ? "Activités de recherche"
+                : ""}
+            </Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {data.map((row, index) => (
+            <Tr key={index}>
+              <Td
+                display="flex"
+                alignItems="center"
+                textOverflow="ellipsis"
+                overflow="hidden"
+                whiteSpace="normal"
+                maxW="auto"
+              >
+                {getText(row.title, language)}
+              </Td>
+              <Td>{row.superficie}</Td>
+              <Td
+                display="flex"
+                alignItems="center"
+                textOverflow="ellipsis"
+                overflow="hidden"
+                whiteSpace="normal"
+                maxW="auto"
+              >
+                {getText(row.activity, language)}
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
+  );
+};
+export default NationalProjects;
