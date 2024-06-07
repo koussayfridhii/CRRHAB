@@ -12,18 +12,18 @@ const {
 const router = express.Router();
 
 // Define the route to create a new national project
-router.post("/", createNationalProject);
+router.post("/national_projects", createNationalProject);
 
 // Define the route to get all national projects
-router.get("/", getNationalProjects);
+router.get("/national_projects", getNationalProjects);
 
 // Define the route to get a specific national project by ID
-router.get("/:id", getNationalProjectById);
+router.get("/national_projects/:id", getNationalProjectById);
 
 // Define the route to update a national project by ID
-router.put("/:id", updateNationalProject);
+router.put("/national_projects/:id", updateNationalProject);
 
 // Define the route to delete a national project by ID
-router.delete("/:id", deleteNationalProject);
+router.delete("/national_projects/:id", deleteNationalProject);
 
 module.exports = router;
