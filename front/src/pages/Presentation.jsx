@@ -38,7 +38,7 @@ const Presentation = () => {
         <iframe
           className={`map ${colorMode}`}
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12924.22053312735!2d10.5691836!3d35.9211505!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1717759134911!5m2!1sfr!2stn"
-          width={1024}
+          width={"100%"}
           height={550}
           style={{
             //   border: "2px solid #0FA239",

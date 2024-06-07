@@ -17,7 +17,7 @@ export default function Table({ data, headers, language = "fr" }) {
     <Flex
       w="full"
       bg="background"
-      p={50}
+      p={{ base: 0, xl: 50 }}
       alignItems="center"
       justifyContent="center"
       _dark={{

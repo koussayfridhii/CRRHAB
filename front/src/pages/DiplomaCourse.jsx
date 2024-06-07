@@ -86,7 +86,8 @@ const DiplomaCourse = () => {
       mx={"auto"}
       bg={"background"}
       my={10}
-      p={5}
+      px={{ base: 0, xl: 5 }}
+      py={5}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <Flex
@@ -114,7 +115,7 @@ const DiplomaCourse = () => {
       <Flex
         w="full"
         bg="background"
-        p={50}
+        p={{ base: 0, xl: 50 }}
         alignItems="center"
         justifyContent="center"
         direction={"column"}
