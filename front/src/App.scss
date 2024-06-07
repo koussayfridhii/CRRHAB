@@ -72,3 +72,8 @@ $border-color_2: #287afeb0 #0000;
     }
   }
 }
+.map {
+  &.dark {
+    filter: grayscale(30%) invert(100%) contrast(83%);
+  }
+}

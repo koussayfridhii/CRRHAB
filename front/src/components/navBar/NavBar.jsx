@@ -640,49 +640,50 @@ const NAV_ITEMS = [
   },
   {
     label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
-    children: [
-      {
-        label: { fr: "Carte", en: "Map", ar: "الخريطة" },
-        subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
-        href: "/presentation/map",
-      },
-      {
-        label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-        subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
-        href: "/presentation/history",
-      },
-      {
-        label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-        subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
-        href: "/presentation/missions",
-      },
-      {
-        label: {
-          fr: "Organisation Scientifique du Centre",
-          en: "Scientific Organization of the Center",
-          ar: "التنظيم العلمي للمركز",
-        },
-        subLabel: {
-          fr: "Organisation Scientifique du Centre",
-          en: "Scientific Organization of the Center",
-          ar: "التنظيم العلمي للمركز",
-        },
-        href: "/presentation/scientific_organization",
-      },
-      // {
-      //   label: {
-      //     fr: "Personnels",
-      //     en: "Staff",
-      //     ar: "طاقم العمل",
-      //   },
-      //   subLabel: {
-      //     fr: "Personnels",
-      //     en: "Staff",
-      //     ar: "طاقم العمل",
-      //   },
-      //   href: "/staff",
-      // },
-    ],
+    href: "/presentation",
+    // children: [
+    //   {
+    //     label: { fr: "Carte", en: "Map", ar: "الخريطة" },
+    //     subLabel: { fr: "Carte", en: "Map", ar: "خريطة مراكز البحث" },
+    //     href: "/presentation/map",
+    //   },
+    //   {
+    //     label: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+    //     subLabel: { fr: "Historique", en: "History", ar: "تاريخ المؤسسة" },
+    //     href: "/presentation/history",
+    //   },
+    //   {
+    //     label: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+    //     subLabel: { fr: "Missions", en: "Missions", ar: "مهام المؤسسة" },
+    //     href: "/presentation/missions",
+    //   },
+    //   {
+    //     label: {
+    //       fr: "Organisation Scientifique du Centre",
+    //       en: "Scientific Organization of the Center",
+    //       ar: "التنظيم العلمي للمركز",
+    //     },
+    //     subLabel: {
+    //       fr: "Organisation Scientifique du Centre",
+    //       en: "Scientific Organization of the Center",
+    //       ar: "التنظيم العلمي للمركز",
+    //     },
+    //     href: "/presentation/scientific_organization",
+    //   },
+    //   // {
+    //   //   label: {
+    //   //     fr: "Personnels",
+    //   //     en: "Staff",
+    //   //     ar: "طاقم العمل",
+    //   //   },
+    //   //   subLabel: {
+    //   //     fr: "Personnels",
+    //   //     en: "Staff",
+    //   //     ar: "طاقم العمل",
+    //   //   },
+    //   //   href: "/staff",
+    //   // },
+    // ],
   },
   {
     label: {
@@ -785,20 +786,6 @@ const NAV_ITEMS = [
           ar: "تدريب مؤهل",
         },
         href: "/diploma_course",
-      },
-
-      {
-        label: {
-          fr: "Projets de Recherche",
-          en: "Research Projects",
-          ar: "مشاريع البحث",
-        },
-        subLabel: {
-          fr: "Projets de Recherche",
-          en: "Research Projects",
-          ar: "مشاريع البحث",
-        },
-        href: "/research_projects",
       },
       {
         label: {

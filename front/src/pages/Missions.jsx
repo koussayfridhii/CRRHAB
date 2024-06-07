@@ -36,13 +36,10 @@ const Missions = ({ full = false }) => {
   ];
   return (
     <Box
-      w={{ base: "full", "2xl": full ? "full" : "75%" }}
-      bg={"background"}
-      px={10}
+      w={{ base: "full" }}
       py={5}
       mx={"auto"}
       my={5}
-      shadow={"lg"}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <Heading

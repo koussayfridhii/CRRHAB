@@ -1,4 +1,4 @@
-import { Flex, Text, Heading, Box, Highlight } from "@chakra-ui/react";
+import { Flex, Text, Heading, Box, Highlight, Card } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 
 const History = () => {
@@ -21,49 +21,46 @@ const History = () => {
   return (
     <>
       <Box
-        w={{ base: "full", "2xl": "80vw" }}
+        w={{ base: "full" }}
         bg="background"
         shadow={"lg"}
-        minH={"50dvh"}
         mx={"auto"}
         my={"5dvh"}
+        borderRadius="lg"
         dir={language === "ar" ? "rtl" : "ltr"}
-        p={20}
+        _dark={{
+          bg: "background",
+        }}
       >
-        <Flex
-          justify={"start"}
-          align={"center"}
-          py={3}
-          px={10}
-          bg="primary"
-          _dark={{ bg: "secondary" }}
-          borderRadius={10}
+        <Heading
+          _dark={{
+            bg: "secondary",
+          }}
+          fontSize={"xxl"}
+          fontFamily={"body"}
+          color={"white"}
+          bg={"primary"}
+          px={5}
+          py={2}
+          fontWeight={400}
+          borderRadius={"lg"}
+          my={6}
         >
-          <Heading color={"white"} _dark={{ color: "#fff" }}>
-            {language === "en"
-              ? "HISTORY"
-              : language === "fr"
-              ? "HISTORIQUE"
-              : "تاريخ المؤسسة"}
-          </Heading>
-        </Flex>
-        <Flex
-          justify={"start"}
-          align={"center"}
-          direction="column"
-          py={7}
-          mt={10}
-          px={10}
-          gap={10}
-        >
+          {language === "en"
+            ? "HISTORY"
+            : language === "fr"
+            ? "HISTORIQUE"
+            : "تاريخ المؤسسة"}
+        </Heading>
+        <Card py={3} px={5} mb={6}>
           {data[language].split("/n").map((text, i) => {
             return (
               <Text
-                key={i}
                 textAlign="justify"
                 color={"text"}
                 fontSize="xl"
-                mb={2}
+                key={i}
+                mb={4}
               >
                 <Highlight
                   query="crrhab"
@@ -79,7 +76,7 @@ const History = () => {
               </Text>
             );
           })}
-        </Flex>
+        </Card>
       </Box>
     </>
   );

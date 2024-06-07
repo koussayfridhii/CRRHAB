@@ -119,8 +119,8 @@ const ScientificOrganization = () => {
     <>
       <Flex
         direction="column"
-        w={{ base: "full", "2xl": "75%" }}
-        bg={"background"}
+        w={{ base: "full" }}
+        bg={"white"}
         mx={"auto"}
         my={10}
         borderRadius={10}
@@ -129,6 +129,9 @@ const ScientificOrganization = () => {
         py={5}
         dir={language === "ar" ? "rtl" : "ltr"}
         gap={10}
+        _dark={{
+          bg: "background",
+        }}
       >
         <Box>
           <chakra.h2

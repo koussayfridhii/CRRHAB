@@ -9,13 +9,11 @@ import { useSelector } from "react-redux";
 import "./App.scss";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer.tsx";
-import AdminSideBar from "./components/adminSideBar/AdminSideBar.jsx";
 import Spinner from "./components/spinner/Spinner.jsx";
 
 const Chat = lazy(() => import("./pages/chat/Chat"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const Signup = lazy(() => import("./pages/auth/Signup"));
-const CreatePage = lazy(() => import("./pages/page/createPage.jsx"));
 const Landing = lazy(() => import("./pages/landing/Landing.jsx"));
 const ResearchTeam = lazy(() =>
   import("./pages/researchStructures/ResearchTeam.jsx")
@@ -48,6 +46,7 @@ const Collabs = lazy(() => import("./pages/Collabs.jsx"));
 const SpecializedUnits = lazy(() =>
   import("./pages/page/SpecializedUnits.jsx")
 );
+const Presentation = lazy(() => import("./pages/Presentation.jsx"));
 const ContactPage = lazy(() => import("./pages/Contact.jsx"));
 const OpenData = lazy(() => import("./pages/OpenData.jsx"));
 const Personnels = lazy(() => import("./pages/Content/Personnels.jsx"));
@@ -76,6 +75,7 @@ const CreateGallery = lazy(() =>
   import("./pages/admin/adminGallerie/CreateGallerie.jsx")
 );
 const Projects = lazy(() => import("./pages/Projects.jsx"));
+const NationalProjects = lazy(() => import("./pages/NationalProjects.jsx"));
 const LaboResearchTeam = lazy(() => import("./pages/LaboResearchMembers.jsx"));
 const LaboExecutiveMembers = lazy(() =>
   import("./pages/LaboExecutiveMembers.jsx")
@@ -193,24 +193,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/presentation",
-        children: [
-          {
-            path: "/presentation/map",
-            element: <Map />,
-          },
-          {
-            path: "/presentation/history",
-            element: <History />,
-          },
-          {
-            path: "/presentation/missions",
-            element: <Missions />,
-          },
-          {
-            path: "/presentation/scientific_organization",
-            element: <ScientificOrganization />,
-          },
-        ],
+        element: <Presentation />,
+        // children: [
+        //   {
+        //     path: "/presentation/map",
+        //     element: <Map />,
+        //   },
+        //   {
+        //     path: "/presentation/history",
+        //     element: <History />,
+        //   },
+        //   {
+        //     path: "/presentation/missions",
+        //     element: <Missions />,
+        //   },
+        //   {
+        //     path: "/presentation/scientific_organization",
+        //     element: <ScientificOrganization />,
+        //   },
+        // ],
       },
       {
         path: "/open_data",
@@ -229,7 +230,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/projects/national",
-            element: <Projects />,
+            element: <NationalProjects />,
           },
         ],
       },
