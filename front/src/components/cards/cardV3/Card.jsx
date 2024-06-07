@@ -14,12 +14,12 @@ const Card = () => {
   const language = useSelector((state) => state.language.language);
   const event = {
     title: {
-      fr: "Evènements",
+      fr: "événnements",
       en: "Event",
       ar: "الحدث",
     },
     description: {
-      fr: "Evènements",
+      fr: "événnements",
       en: "Event",
       ar: "الحدث",
     },
@@ -82,7 +82,7 @@ const Card = () => {
               }}
             >
               {language === "fr"
-                ? "Evènements"
+                ? "événnements"
                 : language === "en"
                 ? "Event"
                 : "حدث"}

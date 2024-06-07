@@ -18,12 +18,12 @@ const Card = () => {
   const language = useSelector((state) => state.language.language);
   const adventages = [
     {
-      fr: "Actulités",
+      fr: "Actualités",
       en: "News",
       ar: "المستجدات",
     },
     {
-      fr: "Evènements",
+      fr: "événnements",
       en: "Events",
       ar: "الاحداث",
     },
@@ -96,7 +96,7 @@ const Card = () => {
             <List spacing={3}>
               {adventages.map((adventage) => {
                 return (
-                  <ListItem key={adventage.fr}>
+                  <ListItem key={adventage.fr} textTransform={"capitalize"}>
                     <ListIcon as={CheckIcon} color="green.400" />
                     {adventage[language]}
                   </ListItem>
