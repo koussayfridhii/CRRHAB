@@ -128,7 +128,12 @@ const CreateEvents = () => {
     if (id) {
       // Récupérer les données des événements pour le mode édition
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/events/${id}`)
+        .get(`https://crrhab-3ofe.vercel.app/api/events/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.user?.token}`,
+          },
+        })
         .then((response) => setFormData(response.data.events))
         .catch((error) => {
           toast({
@@ -152,7 +157,7 @@ const CreateEvents = () => {
               <FormLabel>Lien</FormLabel>
               <Input
                 type="text"
-                value={formData.link}
+                value={formData?.link}
                 onChange={(e) => handleChange(e, null, "link")}
               />
             </FormControl>
@@ -162,19 +167,19 @@ const CreateEvents = () => {
                 <Input
                   placeholder="fr"
                   type="text"
-                  value={formData.title.fr}
+                  value={formData?.title.fr}
                   onChange={(e) => handleChange(e, "fr", "title")}
                 />
                 <Input
                   placeholder="ar"
                   type="text"
-                  value={formData.title.ar}
+                  value={formData?.title.ar}
                   onChange={(e) => handleChange(e, "ar", "title")}
                 />
                 <Input
                   placeholder="en"
                   type="text"
-                  value={formData.title.en}
+                  value={formData?.title.en}
                   onChange={(e) => handleChange(e, "en", "title")}
                 />
               </VStack>
@@ -185,19 +190,19 @@ const CreateEvents = () => {
                 <Textarea
                   placeholder="fr"
                   type="text"
-                  value={formData.description.fr}
+                  value={formData?.description.fr}
                   onChange={(e) => handleChange(e, "fr", "description")}
                 />
                 <Textarea
                   placeholder="ar"
                   type="text"
-                  value={formData.description.ar}
+                  value={formData?.description.ar}
                   onChange={(e) => handleChange(e, "ar", "description")}
                 />
                 <Textarea
                   placeholder="en"
                   type="text"
-                  value={formData.description.en}
+                  value={formData?.description.en}
                   onChange={(e) => handleChange(e, "en", "description")}
                 />
               </VStack>
@@ -210,7 +215,7 @@ const CreateEvents = () => {
               <FormLabel>Date</FormLabel>
               <Input
                 type="date"
-                value={formData.date}
+                value={formData?.date}
                 onChange={(e) => handleChange(e, null, "date")}
               />
             </FormControl>

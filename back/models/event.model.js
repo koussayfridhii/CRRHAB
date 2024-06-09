@@ -3,22 +3,14 @@ const mongoose = require("mongoose");
 const eventSchema = new mongoose.Schema(
   {
     title: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
     },
     description: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
     },
     link: {
       type: String,
@@ -29,13 +21,9 @@ const eventSchema = new mongoose.Schema(
       required: false,
     },
     type: {
-      type: Object,
-      required: true,
-      properties: {
-        fr: { type: String },
-        ar: { type: String },
-        en: { type: String },
-      },
+      fr: { type: String },
+      ar: { type: String },
+      en: { type: String },
     },
     date: {
       type: Date,
