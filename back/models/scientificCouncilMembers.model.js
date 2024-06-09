@@ -2,29 +2,52 @@ const mongoose = require("mongoose");
 
 const scientificCouncilSchema = new mongoose.Schema(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
+    president: {
+      fr: String,
+      en: String,
+      ar: String,
     },
-    role: {
-      type: Object,
-      required: true,
-      properties: {
+    rapporteur: {
+      fr: String,
+      en: String,
+      ar: String,
+    },
+    Responsables_des_structures_RDI: [
+      {
         fr: String,
         en: String,
         ar: String,
       },
-    },
-    council: {
-      type: Object,
-      required: true,
-      properties: {
+    ],
+    managersOfSpecializedUnits: [
+      {
         fr: String,
         en: String,
         ar: String,
       },
+    ],
+    representativesOfResearchers: {
+      fr: String,
+      en: String,
+      ar: String,
     },
+    representativeOfIresa: {
+      fr: String,
+      en: String,
+      ar: String,
+    },
+    representativesOfAgriculturalResearchAndHigherEducationEstablishments: {
+      fr: String,
+      en: String,
+      ar: String,
+    },
+    scientificPersonalitiesFromTheAcademicAndScientificResearchWorld: [
+      {
+        fr: String,
+        en: String,
+        ar: String,
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -32,7 +55,7 @@ const scientificCouncilSchema = new mongoose.Schema(
   }
 );
 
-module.exports.ScientificCouncilModel = mongoose.model(
-  "ScientificCouncilMembers",
+module.exports.ScientificCouncilMembersModel = mongoose.model(
+  "ScientificCouncilMember",
   scientificCouncilSchema
 );

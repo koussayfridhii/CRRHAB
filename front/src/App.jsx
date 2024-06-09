@@ -108,6 +108,12 @@ const AdminNationalProjects = lazy(() =>
 const CreateNationalProjects = lazy(() =>
   import("./pages/admin/adminNationalProjects/CreateNationalProjects.jsx")
 );
+const AdminVideos = lazy(() =>
+  import("./pages/admin/adminVideo/AdminVideo.jsx")
+);
+const CreateVideos = lazy(() =>
+  import("./pages/admin/adminVideo/CreateVideo.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -283,6 +289,10 @@ const router = createBrowserRouter([
         element: <AdminEvents />,
       },
       {
+        path: "/admin/videos",
+        element: <AdminVideos />,
+      },
+      {
         path: "/admin/laboratory_members",
         element: <AdminLaboratoryMembers />,
       },
@@ -408,6 +418,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/actualities/:id",
                 element: <CreateActualities />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/videos",
+            element: <CreateVideos />,
+            children: [
+              {
+                path: "/admin/create/videos/:id",
+                element: <CreateVideos />,
               },
             ],
           },

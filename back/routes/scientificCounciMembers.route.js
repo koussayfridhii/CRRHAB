@@ -1,20 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const {
-  ScientificCouncilMembersController,
+  createMember,
+  deleteMemberById,
+  getAllMembers,
+  getMemberById,
+  updateMemberById,
 } = require("../controllers/scientificCouncilMembers.controller");
 
-router.post(
-  "/scientificCouncil/add_member",
-  ScientificCouncilMembersController.addMember
-);
-router.delete(
-  "/scientificCouncil/delete_member/:id",
-  ScientificCouncilMembersController.deleteMember
-);
-router.get(
-  "/scientificCouncil/all_members",
-  ScientificCouncilMembersController.getAll
-);
+router.post("/scientific_council", createMember);
+
+router.get("/scientific_council", getAllMembers);
+
+router.get("/scientific_council/:id", getMemberById);
+
+router.put("/scientific_council/:id", updateMemberById);
+
+router.delete("/scientific_council/:id", deleteMemberById);
 
 module.exports = router;

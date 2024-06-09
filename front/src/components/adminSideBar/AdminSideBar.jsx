@@ -23,7 +23,7 @@ import {
   FaQuestion,
 } from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa6";
-import { BiStats } from "react-icons/bi";
+import { CiVideoOn } from "react-icons/ci";
 import { MdOutlineEvent } from "react-icons/md";
 import { GiTeamUpgrade, GiMaterialsScience } from "react-icons/gi";
 import {
@@ -56,6 +56,7 @@ const LinkItems = [
   { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
   { name: "Events", icon: MdOutlineEvent, href: "/admin/events" },
   { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
+  { name: "Video", icon: CiVideoOn, href: "/admin/videos" },
   {
     name: "Scientific Council",
     icon: MdOutlinePersonSearch,
