@@ -18,31 +18,28 @@ const postVideo = async (req, res) => {
       .status(201)
       .json({ message: "Vidéo ajoutée avec succès !", videoId: video._id });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
 
 const getVideos = async (req, res) => {
+  console.log(req.body);
   try {
     const videos = await videoModel.find();
     return res
       .status(200)
       .json({ message: "Toutes les vidéos trouvées !", videos, success: true });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -62,13 +59,11 @@ const getVideoById = async (req, res) => {
       .status(200)
       .json({ message: "Vidéo trouvée avec succès !", video, success: true });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -96,13 +91,11 @@ const putVideo = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -124,13 +117,11 @@ const deleteVideo = async (req, res) => {
       deletedVideoId: id,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        success: false,
-        error,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      success: false,
+      error,
+    });
   }
 };
 

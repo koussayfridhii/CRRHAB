@@ -23,7 +23,7 @@ const Card = () => {
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
-  const event = data[0];
+  const event = data.at(-1);
   return (
     <>
       <Center py={12}>
@@ -51,7 +51,7 @@ const Card = () => {
               pos: "absolute",
               top: 5,
               left: 0,
-              backgroundImage: `url(${event.img})`,
+              backgroundImage: `url(${event?.img})`,
               filter: "blur(15px)",
               zIndex: -1,
             }}

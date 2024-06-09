@@ -24,4 +24,4 @@ const videoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports.eventModel = mongoose.model("video", videoSchema);
+module.exports.videoModel = mongoose.model("video", videoSchema);
