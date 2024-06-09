@@ -1,12 +1,12 @@
 import React from "react";
 import "./VideoPlayer.scss";
 import { Player } from "video-react";
-const VideoPlayer = () => {
+const VideoPlayer = ({ id }) => {
   return (
     <iframe
       width={280}
       height={180}
-      src="https://www.youtube.com/embed/WUC9acwdmIw?si=KYxoeg2Ghp_Irw0Q"
+      src={`https://www.youtube.com/embed/${id}?si=KYxoeg2Ghp_Irw0Q`}
       title="YouTube video player"
       frameBorder={0}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

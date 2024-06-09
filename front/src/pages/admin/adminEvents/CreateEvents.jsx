@@ -134,7 +134,7 @@ const CreateEvents = () => {
             Authorization: `Bearer ${user?.user?.token}`,
           },
         })
-        .then((response) => setFormData(response.data.events))
+        .then((response) => setFormData(response.data.event))
         .catch((error) => {
           toast({
             title: "Erreur lors de la récupération des données.",
@@ -147,7 +147,9 @@ const CreateEvents = () => {
         });
     }
   }, [id]);
-
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
   return (
     <Flex w="100dvw" h="100dvh" justify="center" align="center">
       <Box bg="background" p={8} rounded="md" shadow="lg" maxW="md" mx="auto">
@@ -167,19 +169,19 @@ const CreateEvents = () => {
                 <Input
                   placeholder="fr"
                   type="text"
-                  value={formData?.title.fr}
+                  value={formData?.title?.fr}
                   onChange={(e) => handleChange(e, "fr", "title")}
                 />
                 <Input
                   placeholder="ar"
                   type="text"
-                  value={formData?.title.ar}
+                  value={formData?.title?.ar}
                   onChange={(e) => handleChange(e, "ar", "title")}
                 />
                 <Input
                   placeholder="en"
                   type="text"
-                  value={formData?.title.en}
+                  value={formData?.title?.en}
                   onChange={(e) => handleChange(e, "en", "title")}
                 />
               </VStack>
@@ -190,19 +192,19 @@ const CreateEvents = () => {
                 <Textarea
                   placeholder="fr"
                   type="text"
-                  value={formData?.description.fr}
+                  value={formData?.description?.fr}
                   onChange={(e) => handleChange(e, "fr", "description")}
                 />
                 <Textarea
                   placeholder="ar"
                   type="text"
-                  value={formData?.description.ar}
+                  value={formData?.description?.ar}
                   onChange={(e) => handleChange(e, "ar", "description")}
                 />
                 <Textarea
                   placeholder="en"
                   type="text"
-                  value={formData?.description.en}
+                  value={formData?.description?.en}
                   onChange={(e) => handleChange(e, "en", "description")}
                 />
               </VStack>

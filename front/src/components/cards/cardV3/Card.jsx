@@ -9,23 +9,21 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import { useCallApi } from "../../../hooks/useCallApi";
+import Spinner from "../../spinner/Spinner";
 
 const Card = () => {
   const language = useSelector((state) => state.language.language);
-  const event = {
-    title: {
-      fr: "événnements",
-      en: "Event",
-      ar: "الحدث",
-    },
-    description: {
-      fr: "événnements",
-      en: "Event",
-      ar: "الحدث",
-    },
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    date: "15/05/2024",
-  };
+  const { data, error, isLoading } = useCallApi("events");
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
+  const event = data[0];
   return (
     <>
       <Center py={12}>
@@ -68,7 +66,7 @@ const Card = () => {
               height={230}
               width={282}
               objectFit={"cover"}
-              src={event.img}
+              src={event.media}
               alt={event.title?.[language]}
             />
           </Box>
@@ -102,7 +100,7 @@ const Card = () => {
               <Text fontWeight={400} fontSize={"sm"} color={"textSecondary"}>
                 {event.description?.[language]}
               </Text>
-              <Text color={"gray.400"}>{event.date}</Text>
+              <Text color={"gray.400"}>{event.date?.split("T")?.[0]}</Text>
             </Stack>
           </Stack>
         </Box>

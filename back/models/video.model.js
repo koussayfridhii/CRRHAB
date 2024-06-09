@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const eventSchema = new mongoose.Schema(
+const videoSchema = new mongoose.Schema(
   {
     title: {
       fr: { type: String },
@@ -12,20 +12,16 @@ const eventSchema = new mongoose.Schema(
       ar: { type: String },
       en: { type: String },
     },
-    link: {
+    img: {
       type: String,
-      required: false,
+      required: true,
     },
     media: {
       type: String,
-      required: false,
-    },
-    date: {
-      type: Date,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports.eventModel = mongoose.model("events", eventSchema);
+module.exports.eventModel = mongoose.model("video", videoSchema);

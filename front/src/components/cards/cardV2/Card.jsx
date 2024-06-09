@@ -10,11 +10,13 @@ import {
 import VideoPlayer from "../../videoPlayer/VideoPlayer";
 import { useSelector } from "react-redux";
 const Card = () => {
-  const posterImg =
-    "https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-  const title = { fr: "Video", en: "Video", ar: "فيديو" };
-  const description = { fr: "Video", en: "Video", ar: "فيديو" };
   const language = useSelector((state) => state.language.language);
+  const data = {
+    title: { fr: "Video", en: "Video", ar: "فيديو" },
+    description: { fr: "Video", en: "Video", ar: "فيديو" },
+    media: "WUC9acwdmIw",
+    img: "https://firebasestorage.googleapis.com/v0/b/crrhab-358e9.appspot.com/o/media%2Figuessmed%20coordinators.png?alt=media&token=ddf7b821-a85e-482c-b7b6-44b2914ed894",
+  };
   return (
     <>
       <Center py={12}>
@@ -42,7 +44,7 @@ const Card = () => {
               pos: "absolute",
               top: -3,
               left: 0,
-              backgroundImage: `url(${posterImg})`,
+              backgroundImage: `url(${data?.img})`,
               filter: "blur(15px)",
               zIndex: -1,
             }}
@@ -53,7 +55,7 @@ const Card = () => {
             }}
           >
             <Box rounded={"lg"} height={230} width={282} objectFit={"cover"}>
-              <VideoPlayer posterImage={posterImg} />
+              <VideoPlayer id={data?.media} />
             </Box>
           </Box>
           <Stack pt={10} align={"center"}>
@@ -66,10 +68,10 @@ const Card = () => {
                 color: "secondary",
               }}
             >
-              {title[language]}
+              {data?.title[language]}
             </Heading>
             <Text fontSize={"sm"} textTransform={"uppercase"}>
-              {description[language]}
+              {data?.description[language]}
             </Text>
           </Stack>
         </Box>

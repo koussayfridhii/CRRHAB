@@ -67,6 +67,7 @@ const AdminEvents = () => {
   const getAllData = async () => {
     try {
       const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/events`);
+      console.log(res.data.events);
       setData(res.data.events);
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
@@ -200,7 +201,7 @@ const DataTable = ({ data, setData, headers, language }) => {
             <Td>
               <Image
                 boxSize={"7.5vh"}
-                src={item.img}
+                src={item.media}
                 onClick={() => {
                   window.open(item.img, "_blank");
                 }}
