@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  Divider,
   Heading,
   ListItem,
   OrderedList,
@@ -43,7 +44,32 @@ const ResearchThemes = ({ full = false }) => {
       my={5}
       shadow={"lg"}
       dir={language === "ar" ? "rtl" : "ltr"}
+      borderRadius={"lg"}
     >
+      <Text textAlign="justify" color={"text"} fontSize="xl" my={10}>
+        Le laboratoire "Production et Protection pour une Horticulture Durable:
+        2PHD (LR21AGR03) est associé à l'Université de Sousse. L’objectif
+        stratégique du laboratoire est de développer un système de production
+        intégré durable, voire biologique des espèces horticoles dominantes
+        (essentiellement des espèces arboricoles et maraîchères) dans la région
+        du Centre-Est de la Tunisie dans le respect de l’environnement, la santé
+        de l’agriculteur et du consommateur par l’usage raisonné des intrants
+        chimiques et des ressources naturelles et en s'adaptant aux changements
+        climatiques.
+      </Text>
+      <Divider
+        my={10}
+        _dark={{
+          bg: "secondary",
+          borderColor: "secondary",
+        }}
+        orientation="horizontal"
+        bg={"primary"}
+        // borderWidth={1}
+        w={"90%"}
+        mx={"auto"}
+        borderColor={"primary"}
+      />
       <Heading
         _dark={{
           bg: "secondary",
@@ -64,7 +90,14 @@ const ResearchThemes = ({ full = false }) => {
           ? "THÉMATIQUES DE RECHERCHES"
           : "مواضيع البحث"}
       </Heading>
-      <Card py={3} px={5} mb={6}>
+      <Card
+        py={3}
+        px={5}
+        mb={6}
+        textAlign="justify"
+        color={"text"}
+        fontSize="xl"
+      >
         <Text>
           {language === "en"
             ? `The research themes are as follows:`

@@ -107,9 +107,9 @@ const Slider = ({ language }) => {
       >
         {data.map((slide, i) => (
           <div className="slide" key={i}>
-            <h1 className={active ? "active" : ""}>
+            {/* <h1 className={active ? "active" : ""}>
               {slide.title?.[language]}
-            </h1>
+            </h1> */}
             <img
               className={active ? "active" : ""}
               src={`${slide.img}`}

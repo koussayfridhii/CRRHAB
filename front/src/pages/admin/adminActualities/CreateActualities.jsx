@@ -9,6 +9,7 @@ import {
   Box,
   Flex,
   useToast,
+  Textarea,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -152,7 +153,7 @@ const CreateNews = () => {
             </FormControl>
             <FormControl>
               <FormLabel>Title</FormLabel>
-              <HStack>
+              <VStack>
                 <Input
                   placeholder="fr"
                   type="text"
@@ -171,30 +172,30 @@ const CreateNews = () => {
                   value={formData.title.en}
                   onChange={(e) => handleChange(e, "en", "title")}
                 />
-              </HStack>
+              </VStack>
             </FormControl>
             <FormControl>
               <FormLabel>Description</FormLabel>
-              <HStack>
-                <Input
+              <VStack>
+                <Textarea
                   placeholder="fr"
                   type="text"
                   value={formData.description.fr}
                   onChange={(e) => handleChange(e, "fr", "description")}
                 />
-                <Input
+                <Textarea
                   placeholder="ar"
                   type="text"
                   value={formData.description.ar}
                   onChange={(e) => handleChange(e, "ar", "description")}
                 />
-                <Input
+                <Textarea
                   placeholder="en"
                   type="text"
                   value={formData.description.en}
                   onChange={(e) => handleChange(e, "en", "description")}
                 />
-              </HStack>
+              </VStack>
             </FormControl>
             <FormControl>
               <FormLabel>Image</FormLabel>

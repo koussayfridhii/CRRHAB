@@ -730,14 +730,9 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "Laboratoire",
-      en: "Laboratory",
-      ar: "مختبر",
-    },
-    subLabel: {
-      fr: "Production et Protection pour une Horticulture Durable (2PHD) (LR21AGR03, Université de Sousse)", // French sub-label
-      en: "Production and Protection for Sustainable Horticulture (2PHD) (LR21AGR03, University of Sousse)", // English sub-label
-      ar: "الإنتاج والحماية لهندسة البستنة المستدامة (2PHD) (LR21AGR03، جامعة سوسة)", // Arabic sub-label
+      fr: "Laboratoire de Recherche",
+      en: "Research Laboratory",
+      ar: "مختبر البحث",
     },
     children: [
       {

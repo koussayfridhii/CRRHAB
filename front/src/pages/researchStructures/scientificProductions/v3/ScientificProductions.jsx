@@ -24,6 +24,7 @@ import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { GiArchiveResearch } from "react-icons/gi";
 import { useCallApi } from "../../../../hooks/useCallApi";
 import Spinner from "../../../../components/spinner/Spinner";
+import NotFoundPage from "../../../error/ErrorPage";
 const ScientificProductionsV2 = () => {
   const language = useSelector((state) => state.language.language);
 
@@ -42,7 +43,7 @@ const ScientificProductionsV2 = () => {
   }
 
   if (error) {
-    return <div>Error fetching data: {error.message}</div>; // Display error message if there's an error
+    return <div>Error fetching data: {error.message}</div>;
   }
   return (
     <Flex

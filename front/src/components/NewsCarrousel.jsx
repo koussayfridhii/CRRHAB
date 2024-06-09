@@ -1,198 +1,221 @@
-import React, { useState } from "react";
-import {
-  Box,
-  IconButton,
-  useBreakpointValue,
-  Stack,
-  Heading,
-  Text,
-  Container,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
-import Slider from "react-slick";
-import { useSelector } from "react-redux";
+import React, { useState, useCallback } from "react";
+import { Box, Flex, Image, Stack, Text, HStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import Spinner from "./spinner/Spinner";
 import { useCallApi } from "../hooks/useCallApi";
-// Settings for the slider
-const settings = {
-  dots: true,
-  arrows: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
-const NewsCarrousel = () => {
-  const [slider, setSlider] = useState(null);
-  const language = useSelector((state) => state.language.language);
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
-  const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "40px" });
 
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
-  const { data, error, isLoading } = useCallApi("news");
+const SLIDE_CHANGE_THRESHOLD = 100; // Seuil pour détecter le changement de diapositive lors du glissement
+
+const arrowStyles = {
+  cursor: "pointer",
+  position: "absolute",
+  top: "50%",
+  width: "auto",
+  marginTop: "-22px",
+  padding: "16px",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "18px",
+  transition: "0.6s ease",
+  borderRadius: "0 3px 3px 0",
+  userSelect: "none",
+  _hover: {
+    opacity: 0.8,
+    backgroundColor: "black",
+  },
+};
+
+const CustomNewsCarousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+
+  const language = useSelector((state) => state.language.language); // Obtenir la langue actuelle de l'état redux
+
+  const { data, error, isLoading } = useCallApi("news"); // Récupérer les données d'actualités en utilisant un hook personnalisé
+
+  const slides =
+    data?.sort((a, b) => {
+      // Assuming _created_at is in ISO date format, you can directly compare them
+      return new Date(a._created_at) - new Date(b._created_at);
+    }) || [];
+  const slidesCount = slides.length;
+
+  // Fonction pour passer à la diapositive précédente
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
+  }, [slidesCount]);
+
+  // Fonction pour passer à la diapositive suivante
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
+  }, [slidesCount]);
+
+  // Fonction pour gérer l'événement de mousedown pour le glissement
+  const handleMouseDown = useCallback((e) => {
+    setDragging(true);
+    setDragStartX(e.clientX);
+    e.preventDefault();
+  }, []);
+
+  // Fonction pour gérer l'événement de mousemove pour le glissement
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (dragging) {
+        const diffX = e.clientX - dragStartX;
+        setDragOffset(diffX);
+        e.preventDefault();
+      }
+    },
+    [dragging, dragStartX]
+  );
+
+  // Fonction pour gérer l'événement de mouseup pour le glissement
+  const handleMouseUp = useCallback(() => {
+    if (dragging) {
+      setDragging(false);
+
+      if (Math.abs(dragOffset) > SLIDE_CHANGE_THRESHOLD) {
+        const slideChange = dragOffset > 0 ? prevSlide : nextSlide;
+        slideChange();
+      }
+
+      setDragOffset(0);
+    }
+  }, [dragging, dragOffset, prevSlide, nextSlide]);
+
+  // Calcul du décalage de la diapositive pour une transition fluide
+  const slideOffset =
+    currentSlide === 0
+      ? Math.min(dragOffset, 0)
+      : currentSlide === slidesCount - 1
+      ? Math.max(dragOffset, 0)
+      : dragOffset;
+
+  // Style du carrousel pour l'effet de glissement
+  const carouselStyle = {
+    transition: dragging ? "none" : "all .5s",
+    marginLeft: `calc(-${currentSlide * 100}% + ${slideOffset}px)`,
+  };
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />; // Afficher le spinner pendant le chargement des données
   }
 
   if (error) {
-    return <div>Error fetching data: {error.message}</div>;
+    console.error("Erreur lors de la récupération des données :", error);
+    return <div>Error fetching data: {error.message}</div>; // Afficher le message d'erreur en cas d'échec de la récupération des données
   }
 
   return (
-    <>
-      <Box
-        position={"relative"}
-        height={"70dvh"}
-        width={"full"}
-        overflow={"hidden"}
-      >
-        {/* CSS files for react-slick */}
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-        {/* Left Icon */}
-        <IconButton
-          aria-label="left-arrow"
-          variant="ghost"
-          position="absolute"
-          left={side}
-          top={top}
-          transform={"translate(0%, -50%)"}
-          zIndex={2}
-          onClick={() => slider?.slickPrev()}
+    <Flex
+      width="full"
+      alignItems="center"
+      justifyContent="center"
+      style={{ cursor: dragging ? "grabbing" : "auto" }}
+      onMouseLeave={handleMouseUp}
+    >
+      <Flex width="full" overflow="hidden" position="relative">
+        <Flex
+          height="100dvh"
+          width="full"
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onMouseDown={handleMouseDown}
+          style={carouselStyle}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width={60}
-            height={60}
-            color={"#ffffff"}
-            fill={"none"}
-          >
-            <path
-              d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </IconButton>
-        {/* Right Icon */}
-        <IconButton
-          aria-label="right-arrow"
-          variant="ghost"
-          position="absolute"
-          right={side}
-          top={top}
-          transform={"translate(0%, -50%)"}
-          zIndex={2}
-          onClick={() => slider?.slickNext()}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width={60}
-            height={60}
-            color={"#ffffff"}
-            fill={"none"}
-          >
-            <path
-              d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </IconButton>
-        {/* Slider */}
-        <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {data?.map((card, index) => (
+          {slides.map((slide, sid) => (
             <Box
-              key={index}
-              height={"70dvh"}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="cover"
-              backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${card.img})`}
+              key={`slide-${sid}`}
+              boxSize="full"
+              shadow="md"
+              flex="none"
               as={Link}
-              to={`/actualities/${card._id}`}
+              to={`/actualities/${slide._id}`}
+              position="relative"
             >
-              {/* This is the block you need to change, to customize the caption */}
-              <Container
-                size="container.lg"
-                height="100%"
-                position="relative"
-                zIndex={99}
+              <Text
+                color="white"
+                fontSize="xs"
+                padding="8px 12px"
+                position="absolute"
+                top="0"
               >
-                <Stack
-                  spacing={6}
-                  w={"full"}
-                  maxW={"xl"}
-                  position="absolute"
-                  top="50%"
-                  right={language === "ar" ? "7vw" : ""}
-                  transform="translate(0, -50%)"
-                  zIndex={1000}
+                {sid + 1} / {slidesCount}
+              </Text>
+              <Image
+                src={slide.img}
+                alt={`Slide ${sid + 1}`}
+                boxSize="full"
+                backgroundSize="cover"
+              />
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                width="100%"
+                height="100%"
+                background="rgba(15, 162, 57, 0.6)"
+              />
+              <Stack
+                padding="8px 12px"
+                position="absolute"
+                bottom="24px"
+                textAlign="center"
+                width="full"
+                marginBottom="8"
+                color="white"
+              >
+                <Text
+                  fontSize="xxxl"
+                  fontWeight="bold"
+                  dir={language === "ar" ? "rtl" : "ltr"}
                 >
-                  <Heading
-                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                    color={"white"}
-                    dir={`${language === "ar" ? "rtl" : "ltr"}`}
-                  >
-                    {card.title?.[language]}
-                  </Heading>
-                  <Text
-                    fontSize={{ base: "md", lg: "lg" }}
-                    color="white"
-                    style={{ width: "100%" }}
-                    dir={`${language === "ar" ? "rtl" : "ltr"}`}
-                  >
-                    {card.description?.[language]}
-                  </Text>
-                </Stack>
-              </Container>
+                  {slide.title?.[language]}
+                </Text>
+                <Text fontSize="lg" dir={language === "ar" ? "rtl" : "ltr"}>
+                  {slide.description?.[language]}
+                </Text>
+              </Stack>
             </Box>
           ))}
-        </Slider>
-      </Box>
-      <Heading
-        fontSize={"lg"}
-        fontFamily={"body"}
-        color={"primary"}
-        px={5}
-        py={2}
-        fontWeight={400}
-        borderRadius={"sm"}
-        mt={3}
-      >
-        <ChakraLink as={Link} to="/actualities">
-          {language === "fr"
-            ? "toutes les actualités"
-            : language === "en"
-            ? "All News"
-            : "كل المستجدات"}
-        </ChakraLink>
-      </Heading>
-    </>
+        </Flex>
+        <Text {...arrowStyles} left="0" onClick={prevSlide}>
+          &#10094;
+        </Text>
+        <Text {...arrowStyles} right="0" onClick={nextSlide}>
+          &#10095;
+        </Text>
+        <HStack justify="center" position="absolute" bottom="8px" width="full">
+          {Array.from({ length: slidesCount }).map((_, slideIndex) => (
+            <Box
+              key={`dots-${slideIndex}`}
+              cursor="pointer"
+              boxSize={["7px", null, "15px"]}
+              margin="0 2px"
+              backgroundColor={
+                currentSlide === slideIndex
+                  ? "blackAlpha.800"
+                  : "blackAlpha.500"
+              }
+              rounded="50%"
+              display="inline-block"
+              transition="background-color 0.6s ease"
+              _hover={{ backgroundColor: "blackAlpha.800" }}
+              onClick={() => setCurrentSlide(slideIndex)}
+            />
+          ))}
+        </HStack>
+      </Flex>
+    </Flex>
   );
 };
 
-export default NewsCarrousel;
+CustomNewsCarousel.propTypes = {
+  language: PropTypes.string.isRequired,
+};
+
+export default CustomNewsCarousel;
