@@ -90,6 +90,12 @@ const CreateScientificProductions = lazy(() =>
     "./pages/admin/adminScientificProductions/CreateScientificProductions.jsx"
   )
 );
+const AdminEvents = lazy(() =>
+  import("./pages/admin/adminEvents/AdminEvents.jsx")
+);
+const CreateEvents = lazy(() =>
+  import("./pages/admin/adminEvents/CreateEvents.jsx")
+);
 const AdminLaboratoryMembers = lazy(() =>
   import("./pages/admin/adminLaboratoryMembers/AdminLaboratoryMembers.jsx")
 );
@@ -273,6 +279,10 @@ const router = createBrowserRouter([
         element: <AdminDiplomaCourses />,
       },
       {
+        path: "/admin/events",
+        element: <AdminEvents />,
+      },
+      {
         path: "/admin/laboratory_members",
         element: <AdminLaboratoryMembers />,
       },
@@ -338,6 +348,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/research_team/:id",
                 element: <CreateResearchTeam />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/events",
+            element: <CreateEvents />,
+            children: [
+              {
+                path: "/admin/create/events/:id",
+                element: <CreateEvents />,
               },
             ],
           },

@@ -24,5 +24,11 @@ router.put(
   rolesMiddleware.inRole(rolesMiddleware.roles.admin),
   eventControllers.putEvent
 );
+router.get(
+  "/events/:id",
+  passport.authenticate("jwt", { session: false }),
+  rolesMiddleware.inRole(rolesMiddleware.roles.admin),
+  eventControllers.getEventById
+);
 
 module.exports = router;

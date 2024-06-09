@@ -37,11 +37,10 @@ const CustomNewsCarousel = () => {
 
   const { data, error, isLoading } = useCallApi("news"); // Récupérer les données d'actualités en utilisant un hook personnalisé
 
-  const slides =
-    data?.sort((a, b) => {
-      // Assuming _created_at is in ISO date format, you can directly compare them
-      return new Date(a._created_at) - new Date(b._created_at);
-    }) || [];
+  const slides = (data || []).sort((a, b) => {
+    // Assuming _created_at is in ISO date format, you can directly compare them
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
   const slidesCount = slides.length;
 
   // Fonction pour passer à la diapositive précédente
@@ -120,7 +119,7 @@ const CustomNewsCarousel = () => {
     >
       <Flex width="full" overflow="hidden" position="relative">
         <Flex
-          height="100dvh"
+          height="75dvh"
           width="full"
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
@@ -148,9 +147,9 @@ const CustomNewsCarousel = () => {
               </Text>
               <Image
                 src={slide.img}
-                alt={`Slide ${sid + 1}`}
+                alt={slide.title?.[language]}
                 boxSize="full"
-                backgroundSize="cover"
+                objectFit="cover"
               />
               <Box
                 position="absolute"
