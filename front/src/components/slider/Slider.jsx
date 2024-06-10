@@ -30,11 +30,11 @@ const Slider = ({ language }) => {
     setTimeout(() => {
       containerRef.current.style.left = `-${index * 101}%`;
       containerRef.current.style.backgroundColor = data[index]?.color;
-    }, 500);
+    }, 250);
 
     setTimeout(() => {
       setActive((prev) => !prev);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -101,7 +101,7 @@ const Slider = ({ language }) => {
         className="container"
         ref={containerRef}
         style={{
-          backgroundColor: data[0]?.color,
+          backgroundColor: data?.[0]?.color,
           width: `${data.length * 100.5}vw`,
         }}
       >
