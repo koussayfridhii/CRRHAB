@@ -244,15 +244,8 @@ const Slider = ({ language, data }) => {
                 backgroundPosition="center"
                 backgroundRepeat="no-repeat"
                 backgroundSize="cover"
-                backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0.6951155462184874) 0%, rgba(23,154,92,0.5046393557422969) 65%, rgba(47,129,196,0.39539565826330536) 100%), url(${slide.img})`}
-              >
-                <Text fontSize="2xl" fontWeight="bold" mb="4">
-                  {slide.title[language]}
-                </Text>
-                <Text fontSize="lg" textAlign="center">
-                  {slide.description[language]}
-                </Text>
-              </Box>
+                backgroundImage={`linear-gradient(360deg, rgba(15,162,57,0) 0%, rgba(23,154,92,0) 65%, rgba(47,129,196,0) 100%), url(${slide.img})`}
+              ></Box>
             </Box>
           ))}
         </Flex>
