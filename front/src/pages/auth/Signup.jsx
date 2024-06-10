@@ -100,7 +100,7 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         dispatch(login(res.data));
-        navigate("/");
+        navigate("/profile");
       })
       .catch((err) => {
         setLoading(false);

@@ -43,7 +43,7 @@ const Login = () => {
         dispatch(login(res.data));
         res.data.role === "admin"
           ? navigate("/admin/research_team")
-          : navigate("/");
+          : navigate("/profile");
       })
       .catch((err) => {
         console.log(err);

@@ -23,7 +23,7 @@ const Card = () => {
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
-  const event = data.at(-1);
+  const event = data?.at(-1);
   return (
     <>
       <Center py={12}>
