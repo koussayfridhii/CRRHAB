@@ -46,6 +46,7 @@ const Collabs = lazy(() => import("./pages/Collabs.jsx"));
 const SpecializedUnits = lazy(() =>
   import("./pages/page/SpecializedUnits.jsx")
 );
+const UserProfile = lazy(() => import("./components/userProfile.jsx"));
 const Presentation = lazy(() => import("./pages/Presentation.jsx"));
 const ContactPage = lazy(() => import("./pages/Contact.jsx"));
 const OpenData = lazy(() => import("./pages/OpenData.jsx"));
@@ -114,6 +115,16 @@ const AdminVideos = lazy(() =>
 const CreateVideos = lazy(() =>
   import("./pages/admin/adminVideo/CreateVideo.jsx")
 );
+const AdminScientificCouncilMembers = lazy(() =>
+  import(
+    "./pages/admin/adminScientificCouncilMembers/AdminScientificCouncilMembers.jsx"
+  )
+);
+const CreateScientificCouncilMembers = lazy(() =>
+  import(
+    "./pages/admin/adminScientificCouncilMembers/CreateScientificCouncilMembers.jsx"
+  )
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -158,8 +169,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/chat",
-        element: <Chat />,
+        path: "/profile",
+        element: <UserProfile />,
       },
       {
         path: "/laboratory_researchers",
@@ -306,7 +317,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/scientific_council",
-        element: <DashBoard />,
+        element: <AdminScientificCouncilMembers />,
       },
       {
         path: "/admin/scientific_productions",
@@ -442,12 +453,14 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: "/admin/create/stats",
-            element: <DashBoard />,
-          },
-          {
             path: "/admin/create/scientific_council",
-            element: <DashBoard />,
+            element: <CreateScientificCouncilMembers />,
+            children: [
+              {
+                path: "/admin/create/scientific_council/:id",
+                element: <CreateScientificCouncilMembers />,
+              },
+            ],
           },
           {
             path: "/admin/create/heads_of_rdi_structures",

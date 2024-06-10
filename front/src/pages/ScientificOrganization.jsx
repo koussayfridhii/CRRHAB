@@ -24,96 +24,20 @@ import { FaHandPointRight, FaHandPointLeft } from "react-icons/fa";
 import { GiThink } from "react-icons/gi";
 import { MdOutlineEditCalendar, MdPersonSearch } from "react-icons/md";
 import { GoPersonFill, GoPerson } from "react-icons/go";
+import { useCallApi } from "../hooks/useCallApi";
+import Spinner from "../components/spinner/Spinner";
 
 const ScientificOrganization = () => {
   const language = useSelector((state) => state.language.language);
-  const scientificCouncilMembers = {
-    president: {
-      fr: "Pr Taoufik BETTAIEB, Directeur Général",
-      ar: "الأستاذ توفيق بطيّب، المدير العام",
-      en: "Pr Taoufik BETTAIEB, General Director",
-    },
-    rapporteur: {
-      fr: "Mr Atef MOUGOU, Secrétaire Général",
-      ar: "السيد عاطف موقو، الأمين العام",
-      en: "Mr Atef MOUGOU, General Secretary",
-    },
-    Responsables_des_structures_RDI: [
-      {
-        fr: "Pr Mejda DAAMI-REMADI, Chef de Laboratoire",
-        ar: "البروفيسور مجدى الدعامي-رمادي، رئيس المختبر",
-        en: "Pr Mejda DAAMI-REMADI, Head of Laboratory",
-      },
-    ],
-    managersOfSpecializedUnits: [
-      {
-        fr: "Responsable de l’unité d’information et de documentation scientifique",
-        en: "Head of the scientific information and documentation unit",
-        ar: "رئيس وحدة المعلومات والتوثيق العلمي",
-      },
-      {
-        fr: "Responsable de l’unité de valorisation des résultats de recherche",
-        en: "Head of the Research Results Valorization Unit",
-        ar: "مسؤول وحدة تثمين نتائج البحث",
-      },
-      {
-        fr: "Responsable de l’unité d’expérimentations agricoles",
-        en: "Head of the Agricultural Experimentation Unit",
-        ar: "مسؤول وحدة التجارب الزراعية",
-      },
-    ],
-    representativesOfResearchers: [
-      {
-        fr: "Pr Mohamed BRAHAM, Corps A",
-        en: "Pr Mohamed BRAHAM, Corps A",
-        ar: "الأستاذ محمد براهم, القسم 1",
-      },
-      {
-        fr: "Dr Hela CHIKH ROUHOU, Corps B",
-        en: "Dr Hela CHIKH ROUHOU, Corps B",
-        ar: "الدكتورة هالة شيخ روحو, القسم 2",
-      },
-      {
-        fr: "Dr Chokri BAYOUDH, Corps B",
-        en: "Dr Chokri BAYOUDH, Corps B",
-        ar: "الدكتور شكري بيوض, القسم 2",
-      },
-    ],
-    representativeOfIresa: {
-      fr: "Pr Rajouene MAJDOUD",
-      en: "Pr Rajouene MAJDOUD",
-      ar: "الأستاذ رجوان مجدود",
-    },
-    representativesOfAgriculturalResearchAndHigherEducationEstablishments: [
-      {
-        fr: "Pr Walid HAMADA, INAT",
-        en: "Pr Walid HAMADA, INAT",
-        ar: "الأستاذ وليد حمادة, INAT",
-      },
-      {
-        fr: "Dr Thouray RHIM, INRAT",
-        en: "Dr Thouray RHIM, INRAT",
-        ar: "الدكتور ثري رحيم, INRAT",
-      },
-      {
-        fr: "Pr Lamia HAMROUNI, INRGREF",
-        en: "Pr Lamia HAMROUNI, INRGREF",
-        ar: "الأستاذ لمياء الحمروني, INRGREF",
-      },
-      {
-        fr: "Dr Khaled Hibar, IO",
-        en: "Dr Khaled Hibar, IO",
-        ar: "الدكتور خالد حيبار, IO",
-      },
-    ],
-    scientificPersonalitiesFromTheAcademicAndScientificResearchWorld: [
-      {
-        fr: "Dr Olfa AYARI, ISBM",
-        en: "Dr Olfa AYARI, ISBM",
-        ar: "الدكتور ألفة عياري, ISBM",
-      },
-    ],
-  };
+  const { data, error, isLoading } = useCallApi("scientific_council");
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data[0]: {error.message}</div>;
+  }
 
   return (
     <>
@@ -992,12 +916,8 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                <chakra.h5>
-                  {scientificCouncilMembers.president?.[language]}
-                </chakra.h5>
-                <chakra.h5>
-                  {scientificCouncilMembers.rapporteur?.[language]}
-                </chakra.h5>
+                <chakra.h5>{data[0].president?.[language]}</chakra.h5>
+                <chakra.h5>{data[0].rapporteur?.[language]}</chakra.h5>
               </Card>
             </Flex>
             <Flex gap={1}>
@@ -1023,15 +943,13 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {scientificCouncilMembers.Responsables_des_structures_RDI.map(
-                  (responsable) => {
-                    return (
-                      <chakra.h5 key={responsable.fr}>
-                        {responsable?.[language]}
-                      </chakra.h5>
-                    );
-                  }
-                )}
+                {data[0].Responsables_des_structures_RDI.map((responsable) => {
+                  return (
+                    <chakra.h5 key={responsable.fr}>
+                      {responsable?.[language]}
+                    </chakra.h5>
+                  );
+                })}
               </Card>
             </Flex>
             <Flex gap={1}>
@@ -1057,15 +975,13 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {scientificCouncilMembers.managersOfSpecializedUnits.map(
-                  (responsable) => {
-                    return (
-                      <chakra.h5 key={responsable.fr}>
-                        {responsable?.[language]}
-                      </chakra.h5>
-                    );
-                  }
-                )}
+                {data[0].managersOfSpecializedUnits.map((responsable) => {
+                  return (
+                    <chakra.h5 key={responsable.fr}>
+                      {responsable?.[language]}
+                    </chakra.h5>
+                  );
+                })}
               </Card>
             </Flex>
             <Flex gap={1}>
@@ -1091,15 +1007,13 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {scientificCouncilMembers.representativesOfResearchers.map(
-                  (responsable) => {
-                    return (
-                      <chakra.h5 key={responsable.fr}>
-                        {responsable?.[language]}
-                      </chakra.h5>
-                    );
-                  }
-                )}
+                {data[0].representativesOfResearchers.map((responsable) => {
+                  return (
+                    <chakra.h5 key={responsable.fr}>
+                      {responsable?.[language]}
+                    </chakra.h5>
+                  );
+                })}
               </Card>
             </Flex>
             <Flex gap={1}>
@@ -1125,7 +1039,7 @@ const ScientificOrganization = () => {
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
                 <chakra.h5>
-                  {scientificCouncilMembers.representativeOfIresa?.[language]}
+                  {data[0].representativeOfIresa?.[language]}
                 </chakra.h5>
               </Card>
             </Flex>
@@ -1152,7 +1066,7 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {scientificCouncilMembers.representativesOfAgriculturalResearchAndHigherEducationEstablishments.map(
+                {data[0].representativesOfAgriculturalResearchAndHigherEducationEstablishments.map(
                   (responsable) => {
                     return (
                       <chakra.h5 key={responsable.fr}>
@@ -1186,7 +1100,7 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {scientificCouncilMembers.scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
+                {data[0].scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
                   (responsable) => {
                     return (
                       <chakra.h5 key={responsable.fr}>
@@ -1228,7 +1142,7 @@ const ScientificOrganization = () => {
                   : "مدراء الوحدات المتخصصة"}
               </chakra.h2>
               <List spacing={4} mb={5}>
-                {managersOfSpecializedUnitsData.map((unit, index) => (
+                {managersOfSpecializedUnitsData[0].map((unit, index) => (
                   <ListItem key={index} mx={5}>
                     <ListIcon
                       fontSize="lg"
@@ -1265,7 +1179,7 @@ const ScientificOrganization = () => {
                   : "ممثلو الباحثين"}
               </chakra.h2>
               <List spacing={4} mb={5}>
-                {representativesOfResearchersData.map((rep, index) => (
+                {representativesOfResearchersData[0].map((rep, index) => (
                   <ListItem key={index} mx={5}>
                     <ListIcon
                       fontSize="lg"
