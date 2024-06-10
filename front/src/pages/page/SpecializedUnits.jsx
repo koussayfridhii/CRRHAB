@@ -6,6 +6,7 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
@@ -13,24 +14,69 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { renderToStaticMarkup } from "react-dom/server";
+
+// Créer une icône personnalisée en utilisant React Icons
+const createCustomIcon = () => {
+  const iconMarkup = renderToStaticMarkup(
+    <div style={{ color: "red", fontSize: "35px" }}>
+      <FaMapMarkerAlt />
+    </div>
+  );
+  return L.divIcon({
+    html: iconMarkup,
+    className: "custom-icon", // Ajoutez une classe pour un style personnalisé, si nécessaire
+  });
+};
 
 const NationalProjects = () => {
   const language = useSelector((state) => state.language.language);
   const data = [
     {
       title: {
-        en: "",
+        en: "Agricultural Experimentation Unit in Chott Mériem, Sousse",
         fr: "Unité d'expérimentation agricole à Chott Mériem, Sousse",
-        ar: "",
+        ar: "وحدة التجارب الزراعية في شط مريم، سوسة",
       },
       activity: {
-        en: "",
-        fr: "Horticulture : Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel et Biolologique",
-        ar: "",
+        en: "Horticulture: Vegetable Crops and Fruit Tree Cultivation conducted in Conventional and Organic modes",
+        fr: "Horticulture : Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel et Biologique",
+        ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية",
       },
       superficie: "9.5 ha",
     },
+    {
+      title: {
+        en: "Agricultural Experimentation Unit in Sahline, Monastir",
+        fr: "Unité d'expérimentation agricole à Sahline, Monastir",
+        ar: "وحدة التجارب الزراعية في ساحلين، المنستير",
+      },
+      activity: {
+        en: "Vegetable Crops and Fruit Tree Cultivation conducted in Conventional modes",
+        fr: "Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel",
+        ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية",
+      },
+      superficie: "5.8 ha",
+    },
+    {
+      title: {
+        en: "Agricultural Experimentation Unit in Teboulba, Monastir",
+        fr: "Unité d'expérimentation agricole à Teboulba, Monastir",
+        ar: "وحدة التجارب الزراعية في طبلبة، المنستير",
+      },
+      activity: {
+        en: "Greenhouse and open field Vegetable Crops",
+        fr: "Cultures Maraichères sous abri-serre et en plein champ",
+        ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة",
+      },
+      superficie: "3.7 ha",
+    },
   ];
+
   return (
     <Box
       w={{ base: "full", xl: "90%", "2xl": "80%" }}
@@ -73,14 +119,15 @@ const NationalProjects = () => {
         }}
         orientation="horizontal"
         bg={"primary"}
-        // borderWidth={1}
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
       />
+      <LeafletMap />
     </Box>
   );
 };
+
 const DataTable = ({ data, language }) => {
   const getText = (item, language) => item[language] || item.en || "";
   const { colorMode } = useColorMode();
@@ -89,7 +136,6 @@ const DataTable = ({ data, language }) => {
       <Table
         variant="striped"
         colorScheme={colorMode === "light" ? "green" : "blue"}
-        // Ensure table does not overflow the container
         width="100%"
         overflowX="auto"
       >
@@ -97,20 +143,24 @@ const DataTable = ({ data, language }) => {
           <Tr>
             <Th color={"white"}>
               {language === "en"
-                ? ""
+                ? "Unit"
                 : language === "fr"
                 ? "Unité d'expérimentation"
-                : ""}
-            </Th>
-            <Th color={"white"}>
-              {language === "en" ? "" : language === "fr" ? "Superficie" : ""}
+                : "الوحدة"}
             </Th>
             <Th color={"white"}>
               {language === "en"
-                ? ""
+                ? "Area"
+                : language === "fr"
+                ? "Superficie"
+                : "المساحة"}
+            </Th>
+            <Th color={"white"}>
+              {language === "en"
+                ? "Research Activities"
                 : language === "fr"
                 ? "Activités de recherche"
-                : ""}
+                : "أنشطة البحث"}
             </Th>
           </Tr>
         </Thead>
@@ -145,4 +195,37 @@ const DataTable = ({ data, language }) => {
     </TableContainer>
   );
 };
+
+const LeafletMap = () => {
+  const locations = [
+    { name: "Station Sahline", lat: 35.769444, lng: 10.691389 },
+    { name: "Station Chott Mariem", lat: 35.9125, lng: 10.564444 },
+    { name: "Station Teboulba", lat: 35.6375, lng: 10.958889 },
+  ];
+
+  const center = [35.769444, 10.691389];
+
+  return (
+    <MapContainer
+      center={center}
+      zoom={10}
+      style={{ width: "100%", height: "400px" }}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution=""
+      />
+      {locations.map((location, index) => (
+        <Marker
+          key={index}
+          position={[location.lat, location.lng]}
+          icon={createCustomIcon()}
+        >
+          <Popup>{location.name}</Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  );
+};
+
 export default NationalProjects;
