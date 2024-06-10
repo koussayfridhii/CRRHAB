@@ -75,6 +75,7 @@ const UsefulLinks = ({ data, language, title = true }) => {
                   target="_blank"
                   display="block" // Ensure the link takes the full width
                   _dark={{ color: "secondary" }}
+                  fontSize={"ls"}
                 >
                   {partner.title?.[language]}
                 </Link>
