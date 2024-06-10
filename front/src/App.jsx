@@ -125,6 +125,9 @@ const CreateScientificCouncilMembers = lazy(() =>
     "./pages/admin/adminScientificCouncilMembers/CreateScientificCouncilMembers.jsx"
   )
 );
+const AdminUsers = lazy(() =>
+  import("./pages/admin/adminUsers/AdminUsers.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -286,6 +289,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/research_team",
         element: <AdminResearchTeam />,
+      },
+      {
+        path: "/admin/users",
+        element: <AdminUsers />,
       },
       {
         path: "/admin/national_projects",

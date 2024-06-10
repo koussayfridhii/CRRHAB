@@ -62,6 +62,11 @@ const LinkItems = [
     icon: MdOutlinePersonSearch,
     href: "/admin/scientific_council",
   },
+  {
+    name: "Users",
+    icon: FaRegUser,
+    href: "/admin/users",
+  },
   { name: "Settings", icon: FiSettings, href: "#" },
 ];
 
