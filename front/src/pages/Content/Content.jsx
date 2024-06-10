@@ -1,17 +1,10 @@
 import React from "react";
 import "./Content.scss";
-import {
-  Box,
-  Flex,
-  chakra,
-  Heading,
-  Text,
-  Highlight,
-  background,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Highlight } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Organisation from "../../components/Organigram";
-import StatsV1 from "../../components/stats/statsV1/Stats";
+import { motion } from "framer-motion"; // Importez Framer Motion
+import { useInView } from "react-intersection-observer"; // Importez useInView depuis react-intersection-observer
 
 const Content = () => {
   const language = useSelector((state) => state.language.language);
@@ -31,26 +24,42 @@ const Content = () => {
     fr: "Centre Régional des Recherches en Horticulture et Agriculture Biologique (CRRHAB)",
     en: "Regional Research Center in Horticulture and Organic Agriculture (CRRHAB)",
   };
+
+  const { ref: ref1, inView: inView1 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref2, inView: inView2 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <Box>
       <Box
+        as={motion.div}
+        initial={{ opacity: 0 }}
+        animate={inView1 ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1 }}
         bg={"background"}
         py={{ base: 1, xl: 10 }}
         px={{ base: 1, xl: 10 }}
         mx={"auto"}
         my={6}
-        // mr={4}
         shadow={"2xl"}
         className="content"
         w={{ base: "95%", xl: "90%", "2xl": "95%" }}
         borderRadius={"lg"}
         dir={language === "ar" ? "rtl" : "ltr"}
+        ref={ref1}
       >
-        {/* <chakra.section>
-        <StatsV1 />
-      </chakra.section> */}
         <section>
           <Box
+            as={motion.div}
+            initial={{ y: 50 }}
+            animate={inView1 ? { y: 0 } : { y: 50 }}
+            transition={{ duration: 1 }}
             w="full"
             bg="white"
             _dark={{ bg: "background" }}
@@ -112,6 +121,10 @@ const Content = () => {
 
         <section>
           <Heading
+            as={motion.div}
+            initial={{ x: -50 }}
+            animate={inView2 ? { x: 0 } : { x: -50 }}
+            transition={{ duration: 1 }}
             _dark={{
               bg: "secondary",
             }}
@@ -124,6 +137,7 @@ const Content = () => {
             fontWeight={400}
             borderRadius={"lg"}
             mb={6}
+            ref={ref2}
           >
             {language === "en"
               ? "ORGANIZATION OF THE CENTER"

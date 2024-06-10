@@ -3,19 +3,14 @@ import NewsCarrousel from "../../components/NewsCarrousel";
 import SideBar from "../../components/sideBar/SideBar";
 import { useSelector } from "react-redux";
 import Content from "../Content/Content";
-import {
-  Divider,
-  chakra,
-  Grid,
-  GridItem,
-  Heading,
-  Box,
-} from "@chakra-ui/react";
+import { Divider, chakra, Grid, GridItem, Box } from "@chakra-ui/react";
 import Contact from "../../components/Contact";
 import "./Landing.scss";
 import PartnersSlider from "../../components/PartnenrsSlider";
-import LienUtilsSlider from "../../components/UtilLinks";
 import UsefulLinks from "../../components/UtilLinks";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const Landing = () => {
   const language = useSelector((state) => state.language.language);
   const data = [
@@ -123,10 +118,52 @@ const Landing = () => {
       img: "/assets/images/cnudest.png",
     },
   ];
+
+  const { ref: ref1, inView: inView1 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref2, inView: inView2 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref3, inView: inView3 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref4, inView: inView4 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref5, inView: inView5 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref6, inView: inView6 } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <div className="landing">
-      <nav>
-        <NewsCarrousel />
+    <motion.div
+      className="landing"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <nav ref={ref1}>
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+          transition={{ duration: 1 }}
+        >
+          <NewsCarrousel />
+        </motion.div>
       </nav>
       <Divider
         my={5}
@@ -136,7 +173,6 @@ const Landing = () => {
         }}
         orientation="horizontal"
         bg={"primary"}
-        // borderWidth={1}
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
@@ -148,29 +184,25 @@ const Landing = () => {
         templateColumns={{ base: "100%", xl: "25% 75%" }}
         templateRows={{ base: "auto auto", xl: "auto" }}
       >
-        <GridItem mr={{ xl: -10, "2xl": 0 }}>
-          <SideBar />
+        <GridItem mr={{ xl: -10, "2xl": 0 }} ref={ref2}>
+          <motion.div
+            initial={{ x: -100 }}
+            animate={inView2 ? { x: 0 } : { x: -100 }}
+            transition={{ duration: 1 }}
+          >
+            <SideBar />
+          </motion.div>
         </GridItem>
-        <GridItem>
-          <Content />
+        <GridItem ref={ref3}>
+          <motion.div
+            initial={{ x: 100 }}
+            animate={inView3 ? { x: 0 } : { x: 100 }}
+            transition={{ duration: 1 }}
+          >
+            <Content />
+          </motion.div>
         </GridItem>
       </Grid>
-      {/* <Divider
-        my={5}
-        _dark={{
-          bg: "secondary",
-          borderColor: "secondary",
-        }}
-        orientation="horizontal"
-        bg={"primary"}
-        // borderWidth={1}
-        w={"90%"}
-        mx={"auto"}
-        borderColor={"primary"}
-      />
-      <chakra.section px={10}>
-        <Personnels />
-      </chakra.section> */}
       <Divider
         my={5}
         _dark={{
@@ -179,7 +211,6 @@ const Landing = () => {
         }}
         orientation="horizontal"
         bg={"primary"}
-        // borderWidth={1}
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
@@ -191,8 +222,15 @@ const Landing = () => {
         w={{ base: "full" }}
         mx={"auto"}
         my={10}
+        ref={ref4}
       >
-        <PartnersSlider data={data} language={language} />
+        <motion.div
+          initial={{ scale: 0.9 }}
+          animate={inView4 ? { scale: 1 } : { scale: 0.9 }}
+          transition={{ duration: 0.5 }}
+        >
+          <PartnersSlider data={data} language={language} />
+        </motion.div>
       </Box>
       <Divider
         my={5}
@@ -202,12 +240,27 @@ const Landing = () => {
         }}
         orientation="horizontal"
         bg={"primary"}
-        // borderWidth={1}
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
       />
-      <UsefulLinks data={utilLinks} language={language} />
+      <Box
+        minH={"25dvh"}
+        borderRadius={"lg"}
+        boxShadow={"lg"}
+        w={{ base: "full" }}
+        mx={"auto"}
+        my={10}
+        ref={ref5}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView5 ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <UsefulLinks data={utilLinks} language={language} />
+        </motion.div>
+      </Box>
       <Divider
         my={5}
         _dark={{
@@ -216,16 +269,20 @@ const Landing = () => {
         }}
         orientation="horizontal"
         bg={"primary"}
-        // borderWidth={1}
         w={"90%"}
         mx={"auto"}
         borderColor={"primary"}
       />
-
-      <chakra.section px={10} id="contact">
-        <Contact />
+      <chakra.section px={10} id="contact" ref={ref6}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView6 ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Contact />
+        </motion.div>
       </chakra.section>
-    </div>
+    </motion.div>
   );
 };
 

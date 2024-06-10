@@ -66,8 +66,8 @@ const Card = () => {
               height={230}
               width={282}
               objectFit={"cover"}
-              src={event.media}
-              alt={event.title?.[language]}
+              src={event?.media}
+              alt={event?.title?.[language]}
             />
           </Box>
           <Stack pt={10} align={"center"}>
@@ -98,9 +98,9 @@ const Card = () => {
             </Heading>
             <Stack direction={"column"} align={"center"}>
               <Text fontWeight={400} fontSize={"sm"} color={"textSecondary"}>
-                {event.description?.[language]}
+                {event?.description?.[language]}
               </Text>
-              <Text color={"gray.400"}>{event.date?.split("T")?.[0]}</Text>
+              <Text color={"gray.400"}>{event?.date?.split("T")?.[0]}</Text>
             </Stack>
           </Stack>
         </Box>

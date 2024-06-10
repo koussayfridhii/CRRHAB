@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { useSelector } from "react-redux";
+import { useInView } from "react-intersection-observer"; // Importez useInView
+
 // Array containing administrative organization roles with translations and colors
 const administrativeOrganization = [
   {
@@ -97,14 +99,18 @@ const scientificOrganization = [
     color: "#F79646", // Color associated with this role
   },
 ];
+
 const Milestones = () => {
   const language = useSelector((state) => state.language.language);
+  const [ref1, inView1] = useInView(); // Utilisez useInView pour détecter la visibilité
+  const [ref2, inView2] = useInView(); // Utilisez useInView pour détecter la visibilité
+
   return (
     <SimpleGrid
       columns={{ base: 1, xl: 2 }}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }}>
+      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref1}>
         <chakra.h3 fontSize="4xl" fontWeight="bold" mb={20} textAlign="center">
           {language === "en"
             ? "ADMINISTRATIVE ORGANIZATION"
@@ -119,7 +125,7 @@ const Milestones = () => {
           </Flex>
         ))}
       </Container>
-      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }}>
+      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref2}>
         <chakra.h3 fontSize="4xl" fontWeight="bold" mb={20} textAlign="center">
           {language === "en"
             ? "SCIENTIFIC ORGANIZATION"
