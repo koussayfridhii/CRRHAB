@@ -119,7 +119,7 @@ const CustomNewsCarousel = () => {
     >
       <Flex width="full" overflow="hidden" position="relative">
         <Flex
-          height="75dvh"
+          height="50dvh"
           width="full"
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
@@ -157,7 +157,7 @@ const CustomNewsCarousel = () => {
                 left="0"
                 width="100%"
                 height="100%"
-                background="rgba(15, 162, 57, 0.6)"
+                background="rgba(15, 162, 57, 0.5)"
               />
               <Stack
                 padding="8px 12px"
