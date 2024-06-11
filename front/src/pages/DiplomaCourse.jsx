@@ -82,7 +82,7 @@ const DiplomaCourse = () => {
   const bg2 = useColorModeValue("background", "gray.700");
   return (
     <Box
-      w={{ base: "full", xl: "80dvw" }}
+      w={{ base: "full", xl: "90dvw", "2xl": "80dvw" }}
       mx={"auto"}
       bg={"background"}
       my={10}

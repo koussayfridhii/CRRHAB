@@ -66,7 +66,7 @@ const ResearchTeam = ({ add = false }) => {
       mx={"auto"} // Center horizontally
       my={10} // Set vertical margin
       py={50} // Set vertical padding
-      px={{ base: 0, "2xl": 10 }} // Set horizontal padding
+      px={{ base: 0, xl: "5", "2xl": 10 }} // Set horizontal padding
       dir={language === "ar" ? "rtl" : "ltr"} // Set text direction based on language
     >
       <Heading
