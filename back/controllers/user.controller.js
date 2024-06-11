@@ -12,6 +12,12 @@ const signIn = async (req, res) => {
 
     if (!user) {
       res.status(401).send({ message: "User does not exist" });
+    } else if (!user.isActive) {
+      res
+        .status(401)
+        .send({
+          message: "User account is not active contact the administartion",
+        });
     } else {
       const authenticated = await bcrypt.compare(
         req.body.password,

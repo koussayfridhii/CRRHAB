@@ -10,8 +10,11 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 export default function SocialProfileWithImage() {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <Center py={6}>
       <Box
