@@ -128,20 +128,20 @@ const DataTable = ({ data, setData, headers, language }) => {
       });
 
       toast({
-        title: "Événement supprimé avec succès !",
+        title: "évènement supprimé avec succès !",
         status: "success",
         duration: 5000,
         isClosable: true,
       });
     } catch (error) {
       toast({
-        title: "Erreur lors de la suppression de l'événement.",
+        title: "Erreur lors de la suppression de l'évènement.",
         description: error.message,
         status: "error",
         duration: 5000,
         isClosable: true,
       });
-      console.error("Erreur lors de la suppression de l'événement :", error);
+      console.error("Erreur lors de la suppression de l'évènement :", error);
     }
   };
 

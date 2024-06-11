@@ -86,12 +86,16 @@ const CreateGallery = () => {
           }
         );
       } else {
-        await axios.post("https://crrhab-3ofe.vercel.app/api/media", formData, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.user?.token}`,
-          },
-        });
+        const res = await axios.post(
+          "https://crrhab-3ofe.vercel.app/api/media",
+          formData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.user?.token}`,
+            },
+          }
+        );
       }
       setLoading(false);
       toast({

@@ -89,79 +89,43 @@ const ScientificOrganization = () => {
                   The scientific organization of the center includes:
                 </Highlight>
               </Text>
-              <List>
+              <UnorderedList>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     A research laboratory.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Three agricultural experimentation units.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     A unit for the valorization of research results.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     A unit for scientific information and documentation.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     A Scientific Council (Article 4 of Decree No. 2006-3057 of
                     November 20, 2006).
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <br />
               <Text fontSize={"lg"} color={"text"} mb={4}>
                 The Scientific Council is the reflection and proposal body on
                 the scientific policy of the establishment. To this end, it is
                 notably responsible for:
               </Text>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
+              <UnorderedList spacing={4} mb={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={LiaDiscourse}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -179,14 +143,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={CiMonitor}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -202,14 +160,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={SiValorant}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -227,14 +179,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaArrowUpFromWaterPump}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -251,14 +197,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={GiThink}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -275,14 +215,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={MdOutlineEditCalendar}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -299,14 +233,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaCheck}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -323,7 +251,7 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <Text fontSize={"lg"} color={"text"} my={4}>
                 In addition to its ordinary sessions mentioned in Article 6 of
                 Decree No. 97-938 cited above, the Scientific Council of the
@@ -349,79 +277,43 @@ const ScientificOrganization = () => {
                   L’organisation scientifique du centre comprend :
                 </Highlight>
               </Text>
-              <List>
+              <UnorderedList>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Un laboratoire de recherche.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Trois unités d’expérimentation agricole.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Une unité de valorisation des résultats de la recherche.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Une unité d’information et de documentation scientifique.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     Un conseil scientifique (Article 4 du Décret N° 2006-3057 du
                     20 novembre 2006).
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <br />
               <Text fontSize={"lg"} color={"text"} mb={4}>
                 Le Conseil scientifique est l’organe de réflexion et de
                 proposition sur la politique scientifique de l’établissement. A
                 ce titre, il est notamment chargé de :
               </Text>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
+              <UnorderedList spacing={4} mb={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={LiaDiscourse}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -439,14 +331,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={CiMonitor}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -463,14 +349,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={SiValorant}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -488,14 +368,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaArrowUpFromWaterPump}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -512,14 +386,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={GiThink}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -536,14 +404,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={MdOutlineEditCalendar}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -560,14 +422,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaCheck}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -584,7 +440,7 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <Text fontSize={"lg"} color={"text"} my={4}>
                 En plus de ses séances ordinaires mentionnées à l’article 6 du
                 décret n° 97-938 précité, le Conseil Scientifique du centre
@@ -610,78 +466,42 @@ const ScientificOrganization = () => {
                   التنظيم العلمي للمركز يشمل:
                 </Highlight>
               </Text>
-              <List>
+              <UnorderedList>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     مختبر أبحاث.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     ثلاث وحدات للتجارب الزراعية.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     وحدة لتثمين نتائج البحث.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     وحدة المعلومات والتوثيق العلمي.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaHandPointRight}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     مجلس علمي (المادة 4 من المرسوم رقم 2006-3057 المؤرخ 20
                     نوفمبر 2006).
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <br />
               <Text fontSize={"lg"} color={"text"} mb={4}>
                 المجلس العلمي هو الهيئة المسؤولة عن التفكير وتقديم الاقتراحات
                 حول السياسة العلمية للمؤسسة. ولهذا الغرض، فهو مكلف بـ:
               </Text>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
+              <UnorderedList spacing={4} mb={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={LiaDiscourse}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -698,14 +518,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={CiMonitor}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -721,14 +535,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={SiValorant}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -745,14 +553,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaArrowUpFromWaterPump}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -768,14 +570,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={GiThink}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -791,14 +587,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={MdOutlineEditCalendar}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -815,14 +605,8 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-                <ListItem mx={5}>
+                <ListItem mx={1}>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    <ListIcon
-                      fontSize={"xl"}
-                      as={FaCheck}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
                     <Highlight
                       query="crrhab"
                       styles={{
@@ -838,7 +622,7 @@ const ScientificOrganization = () => {
                     </Highlight>
                   </Text>
                 </ListItem>
-              </List>
+              </UnorderedList>
               <Text fontSize={"lg"} color={"text"} my={4}>
                 بالإضافة إلى جلساته العادية المذكورة في المادة 6 من المرسوم رقم
                 97-938، يعقد المجلس العلمي للمركز جلسة سنوية لتقييم الأنشطة
@@ -907,6 +691,24 @@ const ScientificOrganization = () => {
                     ? "Président"
                     : "رئيس المجلس"}
                 </chakra.h4>
+              </Card>
+              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+                <chakra.h5>{data[0].president?.[language]}</chakra.h5>
+              </Card>
+            </Flex>
+            <Flex gap={1}>
+              <Card
+                bg="blue.500"
+                gap={3}
+                flex={3}
+                minH={"5dvh"}
+                px={5}
+                py={1}
+                fontWeight={"Bold"}
+                color="white"
+                letterSpacing={1}
+                shadow={"lg"}
+              >
                 <chakra.h4>
                   {language === "en"
                     ? "Rapporteur"
@@ -916,7 +718,6 @@ const ScientificOrganization = () => {
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                <chakra.h5>{data[0].president?.[language]}</chakra.h5>
                 <chakra.h5>{data[0].rapporteur?.[language]}</chakra.h5>
               </Card>
             </Flex>
@@ -1126,549 +927,9 @@ const ScientificOrganization = () => {
           mx={"auto"}
           borderColor={"primary"}
         />
-        {/* <Box>
-          {language && (
-            <>
-              <chakra.h2
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                {language === "en"
-                  ? "Managers of Specialized Units"
-                  : language === "fr"
-                  ? "Responsables des Unités Spécialisées"
-                  : "مدراء الوحدات المتخصصة"}
-              </chakra.h2>
-              <List spacing={4} mb={5}>
-                {managersOfSpecializedUnitsData[0].map((unit, index) => (
-                  <ListItem key={index} mx={5}>
-                    <ListIcon
-                      fontSize="lg"
-                      as={GoPerson}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
-                    {unit.title?.[language]}
-                  </Highlight>
-                  </Text>
-                    </ListItem>
-                ))}
-              </List>
-              <Divider
-                my={5}
-                _dark={{ bg: "secondary", borderColor: "secondary" }}
-                orientation="horizontal"
-                bg="primary"
-                w="90%"
-                mx="auto"
-                borderColor="primary"
-              />
-
-              <chakra.h2
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                {language === "en"
-                  ? "Representatives of Researchers"
-                  : language === "fr"
-                  ? "Représentants des Chercheurs"
-                  : "ممثلو الباحثين"}
-              </chakra.h2>
-              <List spacing={4} mb={5}>
-                {representativesOfResearchersData[0].map((rep, index) => (
-                  <ListItem key={index} mx={5}>
-                    <ListIcon
-                      fontSize="lg"
-                      as={GoPerson}
-                      color="primary"
-                      _dark={{ color: "secondary" }}
-                    />
-                    {rep.title?.[language]} - {rep.grade?.[language]} (
-                    {rep.description?.[language]})
-                  </Highlight>
-                  </Text>
-                    </ListItem>
-                ))}
-              </List>
-              <Divider
-                my={5}
-                _dark={{ bg: "secondary", borderColor: "secondary" }}
-                orientation="horizontal"
-                bg="primary"
-                w="90%"
-                mx="auto"
-                borderColor="primary"
-              />
-
-              <chakra.h2
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                {language === "en"
-                  ? "Representative of Iresa"
-                  : language === "fr"
-                  ? "Représentant de l'Iresa"
-                  : "ممثل Iresa"}
-              </chakra.h2>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize="lg"
-                    as={GoPerson}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  {representativeOfIresa.name?.[language]} -{" "}
-                  {representativeOfIresa.grade?.[language]} (
-                  {representativeOfIresa.description?.[language]})
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-              <Divider
-                my={5}
-                _dark={{ bg: "secondary", borderColor: "secondary" }}
-                orientation="horizontal"
-                bg="primary"
-                w="90%"
-                mx="auto"
-                borderColor="primary"
-              />
-
-              <chakra.h2
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                {language === "en"
-                  ? "Representatives of Agricultural Research and Higher Education Establishments"
-                  : language === "fr"
-                  ? "Représentants des Établissements de Recherche et d'Enseignement Supérieur Agricoles"
-                  : "ممثلو مؤسسات البحث والتعليم العالي الزراعي"}
-              </chakra.h2>
-              <List spacing={4} mb={5}>
-                {representativesOfAgriculturalResearchAndHigherEducationEstablishments.map(
-                  (rep, index) => (
-                    <ListItem key={index} mx={5}>
-                      <ListIcon
-                        fontSize="lg"
-                        as={GoPerson}
-                        color="primary"
-                        _dark={{ color: "secondary" }}
-                      />
-                      {rep.title?.[language]} - {rep.grade?.[language]} (
-                      {rep.description?.[language]})
-                    </Highlight>
-                    </Text>
-                      </ListItem>
-                  )
-                )}
-              </List>
-              <Divider
-                my={5}
-                _dark={{ bg: "secondary", borderColor: "secondary" }}
-                orientation="horizontal"
-                bg="primary"
-                w="90%"
-                mx="auto"
-                borderColor="primary"
-              />
-
-              <chakra.h2
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                {language === "en"
-                  ? "Scientific Personalities from the Academic and Scientific Research World"
-                  : language === "fr"
-                  ? "Personnalités Scientifiques du Monde Académique et de la Recherche Scientifique"
-                  : "الشخصيات العلمية من العالم الأكاديمي والبحث العلمي"}
-              </chakra.h2>
-              <List spacing={4} mb={5}>
-                {scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
-                  (person, index) => (
-                    <ListItem key={index} mx={5}>
-                      <ListIcon
-                        fontSize="lg"
-                        as={GoPerson}
-                        color="primary"
-                        _dark={{ color: "secondary" }}
-                      />
-                      {person.name?.[language]} - {person.grade?.[language]}
-                      <br />
-                    </Highlight>
-                    </Text>
-                      </ListItem>
-                  )
-                )}
-              </List>
-            </>
-          )}
-        </Box> */}
       </Flex>
     </>
   );
 };
 
 export default ScientificOrganization;
-
-/*
-{
-fr:{
-  <>
-  <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Membres du Conseil Scientifique (Arrêté 315 du 4 avril 2024) :
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPersonFill}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  Prof. Taoufik BETTAIEB - Directeur Général du CRRHAB
-                  (Président)
-                </Highlight>
-                </Text>
-                  </ListItem>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPerson}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  M. Atef MOUGOU - Secrétaire Général (Rapporteur)
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-              <chakra.h3
-                mx={5}
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Chefs des Structures RDI :
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdPersonSearch}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  Prof. Mejda DAAMI-REMADI - Chef de Laboratoire
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-  </>
-},
-ar:{
-  <>
-  <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                أعضاء المجلس العلمي (القرار 315 بتاريخ 4 أبريل 2024):
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPersonFill}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  الأستاذ طوفيق بيتايب - المدير العام لـ CRRHAB (الرئيس)
-                </Highlight>
-                </Text>
-                  </ListItem>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPerson}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  السيد عاطف موغو - السكرتير العام (المقرر)
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-              <chakra.h3
-                mx={5}
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                رؤساء هياكل البحث والتطوير:
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdPersonSearch}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  الأستاذة مجدة دامي-رماضي - رئيسة المختبر
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-  </>
-},
-en:{
-  <>
-  <chakra.h3
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Members of the Scientific Council (Order 315 of April 4, 2024):
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPersonFill}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  Prof. Taoufik BETTAIEB - General Director of CRRHAB
-                  (President)
-                </Highlight>
-                </Text>
-                  </ListItem>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={GoPerson}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  Mr. Atef MOUGOU - General Secretary (Reporter)
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-              <chakra.h3
-                mx={5}
-                fontSize={"xxl"}
-                color={"primary"}
-                _dark={{ color: "secondary" }}
-                mb={4}
-              >
-                Heads of RDI Structures:
-              </chakra.h3>
-              <List spacing={4} mb={5}>
-                <ListItem mx={5}>
-
-                  <ListIcon
-                    fontSize={"xl"}
-                    as={MdPersonSearch}
-                    color="primary"
-                    _dark={{ color: "secondary" }}
-                  
-                  <Text
-        
-                textAlign="justify"
-                color={"text"}
-                fontSize="lg"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >  />
-                  Prof. Mejda DAAMI-REMADI - Laboratory Chief
-                </Highlight>
-                </Text>
-                  </ListItem>
-              </List>
-  </>
-}
-
-}
-*/

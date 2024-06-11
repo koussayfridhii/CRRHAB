@@ -126,19 +126,19 @@ const Footer = () => {
                   Du lundi au Jeudi :
                 </Text>
                 <Text fontSize="md">
-                  Session du matin : du 8 h 30 mn à 12 h 30 mn
+                  Séance du matin : du 8 h 30 mn à 12 h 30 mn
                 </Text>
                 <Text fontSize="md">
-                  L'après-midi: du 13 h 30 mn à 17h 30 mn
+                  Séance L'après-midi: du 13 h 30 mn à 17h 30 mn
                 </Text>
               </Box>
               <Box>
                 <Text fontSize="md" fontWeight="bold">
                   Vendredi :
                 </Text>
-                <Text fontSize="md">Session du matin : du 8 h à 13 h</Text>
+                <Text fontSize="md">Séance du matin : du 8 h à 13 h</Text>
                 <Text fontSize="md">
-                  Session de L'après-midi : du 14 h 30 mn à 17 h 30 mn
+                  Séance de L'après-midi : du 14 h 30 mn à 17 h 30 mn
                 </Text>
               </Box>
             </List>
@@ -160,7 +160,7 @@ const Footer = () => {
                 text="Productions Scientifiques"
                 link="scientificproductions"
               />
-              <LinkItem text="Galery" link="/gallery/imgs" />
+              <LinkItem text="Gallerie" link="/gallery/imgs" />
               <LinkItem text="Contact" link="/contact" />
             </List>
             <Box mb={{ base: "1.5rem", lg: "0" }} mt={5}>

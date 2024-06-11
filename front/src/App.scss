@@ -29,6 +29,9 @@ section {
 html {
   scroll-behavior: smooth;
 }
+body {
+  overflow-x: hidden;
+}
 $border-color_1: #dbdcef #0000;
 $border-color_2: #287afeb0 #0000;
 

@@ -23,7 +23,7 @@ const Card = () => {
       ar: "المستجدات",
     },
     {
-      fr: "événnements",
+      fr: "évènnements",
       en: "Events",
       ar: "الاحداث",
     },

@@ -5,24 +5,30 @@ import { useSelector } from "react-redux";
 import Organisation from "../../components/Organigram";
 import { motion } from "framer-motion"; // Importez Framer Motion
 import { useInView } from "react-intersection-observer"; // Importez useInView depuis react-intersection-observer
+import AvatarWithRipple from "./Avatar";
 
 const Content = () => {
   const language = useSelector((state) => state.language.language);
+  // Définir un objet pour stocker les données multilingues pour le CRRHAB
   const data = {
+    // Texte en arabe
     ar: `
-    مركز الجهوي للبحوث في البستنة و الفلاحة البيولوجية(CRRHAB) يقع في شط مريم - سوسة. منذ إنشائه في عام 2006، يمتلك CRRHAB توجهاً نحو البستنة وفريقه تطور مع وتيرة التوظيفات التي حدثت وبناء المرافق. يكرس CRRHAB الآن نفسه للبحث الأساسي والتطبيقي في الإنتاج التقليدي والبيولوجي، وحماية وحفظ الخضروات والفواكه للاستجابة للمطالب البيئية، الاجتماعية والاقتصادية لقطاع البستنة. المستقبل يبدو واعداً بفضل فريق كفء، مرافق ومعدات حديثة والعديد من التعاونات مع الجهات المعنية في قطاع البستنة داخل وخارج البلاد.\n يعمل الباحثون وموظفو الدعم في CRRHAB على تحديد وسائل تطوير ونقل المعرفة وإنتاج التكنولوجيا والمنتجات المبتكرة، مع السعي للتكيف مع التغيرات المناخية، حماية البيئة والحفاظ على صحة الإنسان.
-    `,
+    مركز الجهوي للبحوث في البستنة و الفلاحة البيولوجية(CRRHAB) يقع في شط مريم - سوسة. في الأصل، كان قطبًا إقليميًا للبحث والتطوير الزراعي ثم تحول في عام 2006 إلى مركز للبحث الأساسي والتطبيقي في الإنتاج البستني التقليدي والبيولوجي وتطور فريقه مع وتيرة التوظيفات التي حدثت وبناء المرافق. \n يدرك باحثو CRRHAB أن البستنة التونسية تواجه العديد من العوائق، بما في ذلك الجفاف، تملح التربة ومياه الري وظهور العديد من المشاكل الصحية النباتية. يقوم الباحثون في CRRHAB بتكييف أبحاثهم ومنظماتهم ومواردهم باستمرار لدعم مشاريع البحث ومعالجة القضايا الناشئة المتعلقة بالإنتاج وحماية المحاصيل، المعالجة بعد الحصاد وخلق قيمة مضافة، التسويق وحماية البيئة. \n يبدو مستقبل CRRHAB واعدًا بفضل فريق من الباحثين، الموظفين الإداريين، الفنيين والعمال الأكفاء والمتضامنين وأيضًا بفضل التعاونات الوطنية والدولية التي تسعى جميعها إلى تحديد وسائل لتطوير ونقل المعرفة وإنتاج تقنيات ومنتجات مبتكرة مع السعي للتكيف مع التغيرات المناخية، حماية البيئة والحفاظ على صحة الإنسان.
+  `,
+    // Texte en français
     fr: `
-      Le Centre Régional des Recherches en Horticulture et Agriculture Biologique (CRRHAB) est situé à Chott-Mariem-Sousse. Depuis sa création en 2006, le CRRHAB a une vocation horticole et son équipe s’est développée au rythme des embauches qui ont eu lieu et la construction des locaux de travail. Le CRRHAB se dédie maintenant à la recherche fondamentale et appliquée en production conventionnelle et biologique, protection et conservation des légumes et des fruits pour répondre aux impératifs environnementaux, sociaux et économiques du secteur horticole. L’avenir se veut prometteur grâce à une équipe compétente, des installations et équipements modernes et de nombreuses collaborations avec des intervenants du secteur horticole à l’intérieur et à l’extérieur du pays.\n Les chercheurs et le personnel d’appui du CRRHAB s’emploient à déterminer des moyens de développer et de transférer les connaissances et de produire des technologies et des produits novateurs, tout en s’efforçant de s’adapter aux changements climatiques, de protéger l’environnement et de préserver la santé humaine.
-    `,
+    Le Centre Régional des Recherches en Horticulture et Agriculture Biologique (CRRHAB) est situé à Chott-Mariem-Sousse. A l’origine, il était un pôle régional de recherche développement agricole puis il s’est converti en 2006 en un centre de recherche fondamentale et appliquée en production horticole conventionnelle et biologique et son équipe s’est développée au rythme des embauches qui ont eu lieu et la construction des locaux de travail. \n Conscients que l’horticulture tunisienne est confrontée à plusieurs handicaps entre autres la sécheresse, la salinisation des sols et des eaux d’irrigation et l’émergence de plusieurs problèmes phytosanitaires, les chercheurs du CRRHAB adaptent en permanence leurs recherches, leurs organisations et leurs ressources pour soutenir les projets de recherche et traiter les questions émergentes liées à la production et la protection des cultures, le traitement post-récolte et la création de valeur ajoutée, la commercialisation et la préservation de l’environnement. \n L’avenir du CRRHAB se veut prometteur grâce à une équipe de chercheurs, d’agents administratifs, de techniciens et d’ouvriers compétents et solidaires et grâce aussi à des collaborations nationales et internationales qui s’emploient tous ensemble à déterminer des moyens de développer et de transférer les connaissances et de produire des technologies et des produits novateurs tout en s’efforçant de s’adapter aux changements climatiques, de protéger l’environnement et de préserver la santé humaine.
+  `,
+    // Texte en anglais
     en: `
-    Regional Research Center in Horticulture and Organic Agriculture (CRRHAB) is located in Chott-Mariem-Sousse. Since its creation in 2006, CRRHAB has had a horticultural vocation and its team has developed in line with the hiring that has taken place and the construction of work premises. CRRHAB is now dedicated to fundamental and applied research in conventional and organic production, protection, and conservation of vegetables and fruits to meet the environmental, social, and economic demands of the horticultural sector. The future looks promising thanks to a competent team, modern facilities and equipment, and numerous collaborations with stakeholders in the horticultural sector inside and outside the country.\n The researchers and support staff of CRRHAB strive to determine ways to develop and transfer knowledge and produce innovative technologies and products, while striving to adapt to climate changes, protect the environment, and preserve human health.
-    `,
-  };
-  const missionsTitle = {
-    ar: "المركز الجهوي للبحوث في البستنة و الفلاحة البيولوجية",
-    fr: "Centre Régional des Recherches en Horticulture et Agriculture Biologique (CRRHAB)",
-    en: "Regional Research Center in Horticulture and Organic Agriculture (CRRHAB)",
+    Regional Research Center in Horticulture and Organic Agriculture (CRRHAB) is located in Chott-Mariem-Sousse. Originally, it was a regional agricultural research and development hub, then in 2006 it became a center for fundamental and applied research in conventional and organic horticultural production, and its team developed with the pace of hiring that took place and the construction of work premises. \n Aware that Tunisian horticulture faces several handicaps, including drought, soil and irrigation water salinization, and the emergence of several phytosanitary problems, CRRHAB researchers constantly adapt their research, organizations, and resources to support research projects and address emerging issues related to production and crop protection, post-harvest processing, and the creation of added value, marketing, and environmental preservation. \n The future of CRRHAB looks promising thanks to a team of competent and supportive researchers, administrative staff, technicians, and workers, and also thanks to national and international collaborations that all work together to determine ways to develop and transfer knowledge and produce innovative technologies and products while striving to adapt to climate change, protect the environment, and preserve human health.
+  `,
+    directeur: {
+      fr: "Bettaibi Taoufik",
+      ar: "توفيق بالطيبي",
+      en: "Bettaibi Taoufik",
+      img: "/assets/images/photo du directeur.jpg",
+    },
   };
 
   const { ref: ref1, inView: inView1 } = useInView({
@@ -67,30 +73,13 @@ const Content = () => {
             minH={"30dvh"}
             mx={"auto"}
             my={"5dvh"}
-            p={{ base: 2, xl: 10 }}
+            p={{ base: 2, xl: 5 }}
           >
-            <Heading
-              _dark={{
-                bg: "secondary",
-              }}
-              fontSize={{ base: "lg", xl: "xl", "2xl": "xxl" }}
-              fontFamily={"body"}
-              color={"white"}
-              bg={"primary"}
-              px={5}
-              py={2}
-              fontWeight={400}
-              borderRadius={"lg"}
-              mb={6}
-            >
-              {missionsTitle?.[language]}
-            </Heading>
             <Flex
               justify={"start"}
               align={"center"}
               direction="column"
               py={7}
-              mt={10}
               px={{ base: 2, xl: 10 }}
               gap={10}
             >
@@ -116,6 +105,7 @@ const Content = () => {
                 </Text>
               ))}
             </Flex>
+            <AvatarWithRipple language={language} data={data} />
           </Box>
         </section>
 

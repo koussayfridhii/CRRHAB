@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import { Box, Flex, Image, Stack, Text, HStack } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "./spinner/Spinner";
@@ -27,7 +26,7 @@ const arrowStyles = {
   },
 };
 
-const CustomNewsCarousel = () => {
+const CustomNewsCarousel = ({ title = "accueil" }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
@@ -35,12 +34,17 @@ const CustomNewsCarousel = () => {
 
   const language = useSelector((state) => state.language.language); // Obtenir la langue actuelle de l'état redux
 
-  const { data, error, isLoading } = useCallApi("news"); // Récupérer les données d'actualités en utilisant un hook personnalisé
+  const { data, error, isLoading } = useCallApi("media"); // Récupérer les données d'actualités en utilisant un hook personnalisé
 
-  const slides = (data || []).sort((a, b) => {
-    // Assuming _created_at is in ISO date format, you can directly compare them
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
+  const slides = (data || [])
+    .filter((img) => img.title?.fr === title)
+    .sort((a, b) => {
+      // Supposant que createdAt est au format de date ISO, vous pouvez les comparer directement
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+  // Ensuite, vous pouvez utiliser `slides` dans votre rendu JSX
+
   const slidesCount = slides.length;
 
   // Fonction pour passer à la diapositive précédente
@@ -53,14 +57,14 @@ const CustomNewsCarousel = () => {
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   }, [slidesCount]);
 
-  // Fonction pour gérer l'événement de mousedown pour le glissement
+  // Fonction pour gérer l'évènement de mousedown pour le glissement
   const handleMouseDown = useCallback((e) => {
     setDragging(true);
     setDragStartX(e.clientX);
     e.preventDefault();
   }, []);
 
-  // Fonction pour gérer l'événement de mousemove pour le glissement
+  // Fonction pour gérer l'évènement de mousemove pour le glissement
   const handleMouseMove = useCallback(
     (e) => {
       if (dragging) {
@@ -72,7 +76,7 @@ const CustomNewsCarousel = () => {
     [dragging, dragStartX]
   );
 
-  // Fonction pour gérer l'événement de mouseup pour le glissement
+  // Fonction pour gérer l'évènement de mouseup pour le glissement
   const handleMouseUp = useCallback(() => {
     if (dragging) {
       setDragging(false);
@@ -119,7 +123,7 @@ const CustomNewsCarousel = () => {
     >
       <Flex width="full" overflow="hidden" position="relative">
         <Flex
-          height="50dvh"
+          height="60dvh"
           width="full"
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
@@ -132,8 +136,6 @@ const CustomNewsCarousel = () => {
               boxSize="full"
               shadow="md"
               flex="none"
-              as={Link}
-              to={`/actualities/${slide._id}`}
               position="relative"
             >
               <Text
@@ -151,34 +153,6 @@ const CustomNewsCarousel = () => {
                 boxSize="full"
                 objectFit="cover"
               />
-              <Box
-                position="absolute"
-                top="0"
-                left="0"
-                width="100%"
-                height="100%"
-                background="rgba(15, 162, 57, 0.5)"
-              />
-              <Stack
-                padding="8px 12px"
-                position="absolute"
-                bottom="24px"
-                textAlign="center"
-                width="full"
-                marginBottom="8"
-                color="white"
-              >
-                <Text
-                  fontSize="xxxl"
-                  fontWeight="bold"
-                  dir={language === "ar" ? "rtl" : "ltr"}
-                >
-                  {slide.title?.[language]}
-                </Text>
-                <Text fontSize="lg" dir={language === "ar" ? "rtl" : "ltr"}>
-                  {slide.description?.[language]}
-                </Text>
-              </Stack>
             </Box>
           ))}
         </Flex>

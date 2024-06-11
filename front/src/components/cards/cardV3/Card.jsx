@@ -80,7 +80,7 @@ const Card = () => {
               }}
             >
               {language === "fr"
-                ? "événnements"
+                ? "évènnements"
                 : language === "en"
                 ? "Event"
                 : "حدث"}

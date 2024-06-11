@@ -225,7 +225,7 @@ const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
   // Supprimer les valeurs dupliquées du tableau de données
   data = [...new Set(data)];
 
-  // Gestionnaire pour l'événement de changement de l'entrée
+  // Gestionnaire pour l'évènement de changement de l'entrée
   const changeInputHandler = (e) => {
     e.preventDefault();
     setText(e.target.value);

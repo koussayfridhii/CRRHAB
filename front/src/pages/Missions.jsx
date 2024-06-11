@@ -57,9 +57,9 @@ const Missions = ({ full = false }) => {
         mb={6}
       >
         {language === "en"
-          ? "MISSIONS"
+          ? "MISSIONS Of CRRHAB"
           : language === "fr"
-          ? "MISSIONS"
+          ? "MISSIONS du CRRHAB"
           : "المهام"}
       </Heading>
       <Card py={3} px={5} mb={6}>
@@ -83,10 +83,10 @@ const Missions = ({ full = false }) => {
               : `تندرج مهام المركز الجهوي للبحوث في البستنة والزراعة العضوية (CRRHAB) في إطار استراتيجية اللامركزية واللامركزية للأبحاث التي اعتمدتها المنظمة العربية للبحوث الزراعية (إريسا):`}
           </Highlight>
         </Text>
-        <OrderedList mx={10} my={5}>
+        <OrderedList mx={5} my={5}>
           {missions.map((mission) => {
             return (
-              <ListItem mx={5} key={mission.fr}>
+              <ListItem key={mission.fr}>
                 <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
                   <Highlight
                     query="crrhab"

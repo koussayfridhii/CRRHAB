@@ -2,6 +2,8 @@ import {
   Box,
   Divider,
   Heading,
+  List,
+  ListItem,
   Table,
   TableContainer,
   Tbody,
@@ -10,6 +12,7 @@ import {
   Th,
   Thead,
   Tr,
+  UnorderedList,
   useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
@@ -19,6 +22,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { renderToStaticMarkup } from "react-dom/server";
+import CustomNewsCarousel from "../../components/NewsCarrousel";
 
 // Créer une icône personnalisée en utilisant React Icons
 const createCustomIcon = () => {
@@ -78,53 +82,77 @@ const NationalProjects = () => {
   ];
 
   return (
-    <Box
-      w={{ base: "full", xl: "90%", "2xl": "80%" }}
-      bg="background"
-      mx="auto"
-      my={10}
-      borderRadius="lg"
-      minH="100dvh"
-      py={10}
-      px={{ base: 0, xl: 10 }}
-      boxShadow="lg"
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
-      <Heading
-        _dark={{
-          bg: "secondary",
-        }}
-        fontSize={"xxl"}
-        fontFamily={"body"}
-        color={"white"}
-        bg={"primary"}
-        px={5}
-        py={2}
-        fontWeight={400}
-        borderRadius={"lg"}
-        mb={6}
+    <>
+      <CustomNewsCarousel title="unit" />
+      <Box
+        w={{ base: "full", xl: "90%", "2xl": "80%" }}
+        bg="background"
+        mx="auto"
+        my={10}
+        borderRadius="lg"
+        minH="100dvh"
+        py={10}
+        px={{ base: 0, xl: 10 }}
+        boxShadow="lg"
+        dir={language === "ar" ? "rtl" : "ltr"}
       >
-        {language === "en"
-          ? "Specialized Units"
-          : language === "fr"
-          ? "Unités Spécialisées"
-          : "وحدات مختصة"}
-      </Heading>
-      <DataTable data={data} language={language} />
-      <Divider
-        my={5}
-        _dark={{
-          bg: "secondary",
-          borderColor: "secondary",
-        }}
-        orientation="horizontal"
-        bg={"primary"}
-        w={"90%"}
-        mx={"auto"}
-        borderColor={"primary"}
-      />
-      <LeafletMap />
-    </Box>
+        <Heading
+          _dark={{
+            bg: "secondary",
+          }}
+          fontSize={"xxl"}
+          fontFamily={"body"}
+          color={"white"}
+          bg={"primary"}
+          px={5}
+          py={2}
+          fontWeight={400}
+          borderRadius={"lg"}
+          mb={6}
+        >
+          {language === "en"
+            ? "Specialized Units"
+            : language === "fr"
+            ? "Unités Spécialisées"
+            : "وحدات مختصة"}
+        </Heading>
+        <List spacing={2} my={10}>
+          <ListItem
+            fontSize="lg"
+            px={3}
+            py={5}
+            bg="#C6F6D5"
+            _dark={{ bg: "#2C5282" }}
+          >
+            Unité d’information et de documentation
+          </ListItem>
+          <ListItem
+            fontSize="lg"
+            px={3}
+            py={5}
+            bg="background"
+            borderBottom={"2px"}
+            borderColor="primary"
+          >
+            Unité de valorisation des résultats de la recherche
+          </ListItem>
+        </List>
+        <DataTable data={data} language={language} />
+        <Divider
+          my={5}
+          _dark={{
+            bg: "secondary",
+            borderColor: "secondary",
+          }}
+          orientation="horizontal"
+          bg={"primary"}
+          w={"90%"}
+          mx={"auto"}
+          borderColor={"primary"}
+        />
+        <LeafletMap />
+      </Box>
+    </>
   );
 };
 

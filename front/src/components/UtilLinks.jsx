@@ -11,10 +11,10 @@ import {
 
 const UsefulLinks = ({ data, language, title = true }) => {
   return (
-    <Box bg="background" py="4em" minH="850px">
-      <Container maxW="container.lg">
+    <Box bg="background" w="100%" py={5}>
+      <Box w={{ base: "full", xl: "90%" }} mx="auto" minH="250px">
         {title && (
-          <Box textAlign="center" mb="6em">
+          <Box textAlign="center">
             <Heading
               as="h2"
               size="lg"
@@ -47,11 +47,11 @@ const UsefulLinks = ({ data, language, title = true }) => {
             </Heading>
           </Box>
         )}
-        <SimpleGrid columns={{ base: 2, md: 3, "2xl": 4 }} spacing={10}>
+        <SimpleGrid columns={{ base: 2, md: 3, xl: 5 }} spacing={20} mt={10}>
           {data.map((partner, index) => (
-            <Box key={index} textAlign="center">
+            <Box key={index} textAlign="center" spacing={10}>
               <Box
-                boxSize={{ base: "50%", "2xl": "full" }}
+                boxSize={{ base: "50%", "2xl": "50%" }}
                 className="grid-item"
                 onClick={() => {
                   !title && window.open(partner.img, "_blank");
@@ -59,7 +59,7 @@ const UsefulLinks = ({ data, language, title = true }) => {
               >
                 <Image
                   h="full"
-                  mx={{ base: "50%", "2xl": "auto" }}
+                  mx={{ base: "50%", "2xl": "50%" }}
                   src={partner.img}
                   alt={partner.title.en}
                   borderRadius="md"
@@ -75,7 +75,8 @@ const UsefulLinks = ({ data, language, title = true }) => {
                   target="_blank"
                   display="block" // Ensure the link takes the full width
                   _dark={{ color: "secondary" }}
-                  fontSize={"ls"}
+                  fontSize={"xs"}
+                  mt={2}
                 >
                   {partner.title?.[language]}
                 </Link>
@@ -83,7 +84,7 @@ const UsefulLinks = ({ data, language, title = true }) => {
             </Box>
           ))}
         </SimpleGrid>
-      </Container>
+      </Box>
     </Box>
   );
 };

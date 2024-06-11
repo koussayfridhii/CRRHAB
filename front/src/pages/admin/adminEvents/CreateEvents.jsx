@@ -126,7 +126,7 @@ const CreateEvents = () => {
 
   useEffect(() => {
     if (id) {
-      // Récupérer les données des événements pour le mode édition
+      // Récupérer les données des évènements pour le mode édition
       axios
         .get(`https://crrhab-3ofe.vercel.app/api/events/${id}`, {
           headers: {

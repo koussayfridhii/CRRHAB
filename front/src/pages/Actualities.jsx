@@ -61,24 +61,6 @@ const Actualities = () => {
               ? "News"
               : "الأخبار "}
           </chakra.p>
-          <chakra.p
-            mt={4}
-            maxW="2xl"
-            fontSize="xl"
-            mx={{
-              lg: "auto",
-            }}
-            color="gray.500"
-            _dark={{
-              color: "gray.400",
-            }}
-          >
-            {language === "fr"
-              ? "Restez informé(e) avec nos dernières actualités et les dernières nouvelles dans la rubrique Actualités. Explorez des articles opportuns, des annonces et des perspectives sur des sujets qui vous intéressent."
-              : language === "en"
-              ? "Stay informed with our latest updates and breaking news in the Actualities section. Explore timely articles, announcements, and insights on topics that matter to you."
-              : "ابقَ على اطلاعٍ باستمرار مع أحدث التحديثات وآخر الأخبار في قسم الأحداث. استكشف المقالات الموجهة في الوقت المناسب، والإعلانات، والتحليلات حول المواضيع التي تهمك.     "}{" "}
-          </chakra.p>
         </Box>
         <Wrap>
           {data?.map((e, i) => (
