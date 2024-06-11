@@ -61,12 +61,12 @@ const ResearchTeam = ({ add = false }) => {
 
   return (
     <Box
-      w={{ base: "full", xl: "80dvw" }} // Set width based on screen size
+      w={{ base: "full", xl: "90dvw", "2xl": "80dvw" }} // Set width based on screen size
       bg={"background"} // Set background color
       mx={"auto"} // Center horizontally
       my={10} // Set vertical margin
       py={50} // Set vertical padding
-      px={{ base: 0, xl: 10 }} // Set horizontal padding
+      px={{ base: 0, "2xl": 10 }} // Set horizontal padding
       dir={language === "ar" ? "rtl" : "ltr"} // Set text direction based on language
     >
       <Heading
