@@ -33,7 +33,7 @@ const signIn = async (req, res) => {
         res.status(200).json({
           token: token,
           userId: user._id,
-          ...user,
+          ...user._doc,
         });
       } else {
         res
