@@ -11,6 +11,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  useToast,
 } from "@chakra-ui/react";
 // icons
 import LoginIcon from "@mui/icons-material/Login";
@@ -21,6 +22,7 @@ import { login } from "../../redux/userSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const toast = useToast();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -41,13 +43,27 @@ const Login = () => {
       .then((res) => {
         setLoading(false);
         dispatch(login(res.data));
+        toast({
+          title: "Connexion réussie",
+          description: "Vous êtes connecté avec succès.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
         res.data.role === "admin"
           ? navigate("/admin/research_team")
           : navigate("/profile");
       })
       .catch((err) => {
-        console.log(err);
+        const msg = err.response.data.message;
         setLoading(false);
+        toast({
+          title: "Erreur de connexion",
+          description: msg,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
       });
   };
   return (
@@ -78,20 +94,6 @@ const Login = () => {
           name="password"
           onChange={dataHandler}
         />
-        {/* <Button
-          bg="primary"
-          color="text"
-          _hover={{
-            bg: "primaryHover",
-          }}
-          mb={8}
-          type="submit"
-          onClick={submitHandler}
-          isLoading={loading}
-          rightIcon={<LoginIcon />}
-        >
-          Log In
-        </Button> */}
         <Flex gap={5} align={"center"} justify={"center"}>
           <Button
             bg="primary"
