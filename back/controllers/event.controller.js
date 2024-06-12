@@ -15,18 +15,23 @@ const postEvent = async (req, res) => {
     }
     const event = await eventModel.create(req.body);
     const usersList = await userModel.find({ news: true });
-    sendMail(usersList.map((user) => user.email));
+    sendMail(
+      usersList.map((user) => user.email),
+
+      event.title?.en,
+      event.description?.en,
+      event.link,
+      event.media
+    );
     return res
       .status(201)
       .json({ message: "Événement ajouté avec succès !", eventId: event._id });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -34,21 +39,17 @@ const postEvent = async (req, res) => {
 const getEvent = async (req, res) => {
   try {
     const events = await eventModel.find();
-    return res
-      .status(200)
-      .json({
-        message: "Tous les événements trouvés !",
-        events,
-        success: true,
-      });
+    return res.status(200).json({
+      message: "Tous les événements trouvés !",
+      events,
+      success: true,
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -68,13 +69,11 @@ const getEventById = async (req, res) => {
       .status(200)
       .json({ message: "Événement trouvé !", event, success: true });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -101,13 +100,11 @@ const putEvent = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };
@@ -130,13 +127,11 @@ const deleteEvent = async (req, res) => {
       deletedEventId: id,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Quelque chose s'est mal passé !!",
-        error,
-        success: false,
-      });
+    res.status(500).json({
+      message: "Quelque chose s'est mal passé !!",
+      error,
+      success: false,
+    });
     console.log(error);
   }
 };

@@ -24,7 +24,13 @@ const postNews = async (req, res) => {
     const usersList = await userModel.find({ news: true });
 
     // Send email notification to users interested in news
-    sendMail(usersList.map((user) => user.email));
+    sendMail(
+      usersList.map((user) => user.email),
+      news.title?.en,
+      news.description?.en,
+      news.link,
+      news.img
+    );
 
     return res
       .status(201)

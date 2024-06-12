@@ -44,6 +44,11 @@ const LinkItems = [
   },
   { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
   {
+    name: "Scientific Council",
+    icon: MdOutlinePersonSearch,
+    href: "/admin/scientific_council",
+  },
+  {
     name: "Scientific Productions",
     icon: GiMaterialsScience,
     href: "/admin/scientific_productions",
@@ -58,9 +63,9 @@ const LinkItems = [
   { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
   { name: "Video", icon: CiVideoOn, href: "/admin/videos" },
   {
-    name: "Scientific Council",
+    name: "Paragraph Landing Page",
     icon: MdOutlinePersonSearch,
-    href: "/admin/scientific_council",
+    href: "/admin/paragraphs",
   },
   {
     name: "Users",

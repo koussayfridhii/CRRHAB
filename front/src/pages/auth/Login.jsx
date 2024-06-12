@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 // theming
@@ -22,6 +22,7 @@ import { login } from "../../redux/userSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
   const toast = useToast();
   const [data, setData] = useState({
     email: "",
@@ -67,6 +68,11 @@ const Login = () => {
         });
       });
   };
+  useEffect(() => {
+    user && user.role === "admin"
+      ? navigate("/admin/research_team")
+      : navigate("/profile");
+  }, []);
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
       <Flex

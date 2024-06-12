@@ -128,6 +128,12 @@ const CreateScientificCouncilMembers = lazy(() =>
 const AdminUsers = lazy(() =>
   import("./pages/admin/adminUsers/AdminUsers.jsx")
 );
+const AdminParagraphLanding = lazy(() =>
+  import("./pages/admin/adminLandingParagraph/AdminLandingParagraph.jsx")
+);
+const CreateParagraphLanding = lazy(() =>
+  import("./pages/admin/adminLandingParagraph/CreateLandingParagraph.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -317,6 +323,10 @@ const router = createBrowserRouter([
         element: <AdminVideos />,
       },
       {
+        path: "/admin/paragraphs",
+        element: <AdminParagraphLanding />,
+      },
+      {
         path: "/admin/laboratory_members",
         element: <AdminLaboratoryMembers />,
       },
@@ -472,6 +482,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/scientific_council/:id",
                 element: <CreateScientificCouncilMembers />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/paragraphs",
+            element: <CreateParagraphLanding />,
+            children: [
+              {
+                path: "/admin/create/paragraphs/:id",
+                element: <CreateParagraphLanding />,
               },
             ],
           },
