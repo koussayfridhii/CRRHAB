@@ -10,28 +10,54 @@ import {
   Button,
   useColorModeValue,
   ButtonGroup,
+  useToast, // Import de useToast depuis Chakra UI
 } from "@chakra-ui/react";
 import axios from "axios";
 import { CiSettings } from "react-icons/ci";
+import { logout } from "../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { withAuthorization } from "../HOC/Protect";
+import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-
-export default function SocialProfileWithImage() {
+const SocialProfileWithImage = () => {
+  const dispatch = useDispatch();
+  const toast = useToast(); // Initialisation de useToast
   const { language } = useSelector((state) => state.language);
   const { user } = useSelector((state) => state.user);
-  console.log(user);
   const toggleNews = async () => {
     const data = { ...user, news: !user.news };
-    await axios.put(
-      `http://localhost:5000/api/users/${user._id}`,
-      { data },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
-        },
-      }
-    );
+    await axios
+      .put(
+        `https://crrhab-3ofe.vercel.app/api/users/${user?._id}`,
+        { data },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      )
+      .then(() => {
+        toast({
+          title: "Notifications mises à jour",
+          description:
+            "Les paramètres de notification ont été mis à jour avec succès.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({
+          title: "Erreur",
+          description:
+            "Une erreur s'est produite lors de la mise à jour des paramètres de notification.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
   return (
     <Center py={6}>
@@ -66,7 +92,7 @@ export default function SocialProfileWithImage() {
         <Box p={6}>
           <Stack spacing={0} align={"center"} mb={5}>
             <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
-              {user.fullName?.[language]}
+              {user?.fullName?.[language]}
             </Heading>
             <Text color={"gray.500"}>{user?.grade?.[language]}</Text>
             <Text color={"gray.500"}>{user?.description?.[language]}</Text>
@@ -77,9 +103,8 @@ export default function SocialProfileWithImage() {
               bg={useColorModeValue("#151f21", "gray.900")}
               color={"white"}
               rounded={"md"}
-              onClick={() => {
-                console.log(user);
-              }}
+              as={Link}
+              to={`/signup/${user?._id}`}
               _hover={{
                 transform: "translateY(-2px)",
                 boxShadow: "lg",
@@ -113,9 +138,7 @@ export default function SocialProfileWithImage() {
               bg="red.600"
               color={"white"}
               rounded={"md"}
-              onClick={() => {
-                window.location = "/messages?email=kaushik@moneysave.io";
-              }}
+              onClick={() => dispatch(logout())}
               _hover={{
                 transform: "translateY(-2px)",
                 boxShadow: "lg",
@@ -132,4 +155,6 @@ export default function SocialProfileWithImage() {
       </Box>
     </Center>
   );
-}
+};
+
+export default withAuthorization(SocialProfileWithImage, ["user", "admin"]);

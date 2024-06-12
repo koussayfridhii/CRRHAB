@@ -146,6 +146,7 @@ const updateAccount = async (req, res) => {
   try {
     const id = req.params.id;
     const existingUser = await userModel.findById(id);
+    console.log(req.body);
     if (!existingUser) {
       return res
         .status(404)
@@ -153,14 +154,37 @@ const updateAccount = async (req, res) => {
     }
 
     // Mettre à jour la vidéo avec les nouvelles données, sans modifier le champ _id
-    existingUser.set({ ...req.body.data, _id: existingUser._id });
+    const authenticated = await bcrypt.compare(
+      req.body.data.password,
+      existingUser.password
+    );
+    if (!authenticated) {
+      return res
+        .status(401)
+        .json({ message: "passowrd incorrect", success: false });
+    }
+    const hashedPassword = await bcrypt.hash(req.body.data.password, 12);
+    existingUser.set({
+      ...req.body.data,
+      _id: existingUser._id,
+      password: hashedPassword,
+    });
+    const payload = {
+      id: existingUser._id,
+      email: existingUser.email,
+      role: existingUser.role,
+    };
+    const expiresIn = process.env.JWT_EXPIRES_IN;
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
     // Sauvegarder la vidéo mise à jour dans la base de données
     await existingUser.save();
 
     return res.status(200).json({
       message: "user mise à jour avec succès !",
-      videoId: existingUser._id,
+      user: existingUser._doc,
+      token,
+      role: existingUser.role,
       success: true,
     });
   } catch (error) {

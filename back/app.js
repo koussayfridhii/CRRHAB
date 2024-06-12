@@ -41,7 +41,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(cors());
+// Configuration de CORS pour accepter les requêtes de n'importe quelle source
+app.use(cors({ origin: "*" }));
 
 require("./middlewares/passport")(passport);
 

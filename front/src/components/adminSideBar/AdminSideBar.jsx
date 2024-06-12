@@ -67,7 +67,7 @@ const LinkItems = [
     icon: FaRegUser,
     href: "/admin/users",
   },
-  { name: "Settings", icon: FiSettings, href: "#" },
+  { name: "Settings", icon: FiSettings, href: "/profile" },
 ];
 
 export default function SimpleSidebar({ children }) {

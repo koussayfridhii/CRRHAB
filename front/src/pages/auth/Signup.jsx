@@ -1,11 +1,12 @@
+// Importation des bibliothèques et composants nécessaires
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { login } from "../../redux/userSlice";
 import { Link } from "react-router-dom";
 
-// theming
+// Thématisation
 import {
   Flex,
   Heading,
@@ -16,16 +17,21 @@ import {
   FormControl,
   FormLabel,
   Wrap,
+  useToast,
 } from "@chakra-ui/react";
-// icons
+// Icônes
 import LoginIcon from "@mui/icons-material/Login";
-//custom hooks
+// Hooks personnalisés
 import useUploadImage from "../../hooks/useUploadImage";
 
+// Composant fonctionnel principal pour la connexion
 const Login = () => {
+  // Initialisation des variables d'état
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let usedTheme = useSelector((state) => state.colorMode.theme);
+  const { pathname } = useLocation();
+  const { user } = useSelector((state) => state.user);
   const [url, setUrl] = useState("");
   const [data, setData] = useState({
     fullName: {
@@ -64,6 +70,9 @@ const Login = () => {
     },
   });
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
+
+  // Gestionnaire pour les changements des données du formulaire
   const dataHandler = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -84,28 +93,121 @@ const Login = () => {
     }
   };
 
+  // Effet pour mettre à jour l'URL de l'image de profil
   useEffect(() => {
     setData({ ...data, profilePic: url });
   }, [url]);
+
+  // Gestionnaire pour le changement de fichier
   const fileChangeHandler = async (e) => {
     e.preventDefault();
     const imageFile = e.target.files[0];
-    await useUploadImage("profilePictures", imageFile, setUrl, setLoading);
+    try {
+      setLoading(true);
+      const url = await useUploadImage("profilePictures", imageFile);
+      setUrl(url);
+      setLoading(false);
+      toast({
+        title: "Fichier téléchargé avec succès.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Échec du téléchargement du fichier.",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   };
+
+  // Gestionnaire pour la soumission du formulaire
   const submitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await axios
-      .post(`https://crrhab-3ofe.vercel.app/api/users/signup`, data)
-      .then((res) => {
-        setLoading(false);
-        dispatch(login(res.data));
-        navigate("/profile");
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
+    if (pathname === "/signup") {
+      setLoading(true);
+      await axios
+        .post(`https://crrhab-3ofe.vercel.app/api/users/signup`, data)
+        .then((res) => {
+          setLoading(false);
+
+          navigate("/profile");
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(true);
+      await axios
+        .put(
+          `https://crrhab-3ofe.vercel.app/api/users/${user?._id}`,
+          { data },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.token}`,
+            },
+          }
+        )
+        .then((res) => {
+          dispatch(
+            login({
+              ...res.data.user,
+              token: res.data.token,
+              role: res.data.role,
+            })
+          );
+          toast({
+            title: "utilisateur mise à jour",
+            description:
+              "Les paramètres de notification ont été mis à jour avec succès.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+          navigate("/profile");
+          setLoading(false);
+        })
+        .catch((error) => {
+          toast({
+            title: "Erreur",
+            description:
+              "Une erreur s'est produite lors de la mise à jour des paramètres de notification.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+          setLoading(false);
+        });
+    }
   };
+
+  // Effet pour effacer les données de l'utilisateur si le chemin change
+  useEffect(() => {
+    if (pathname !== "/signup") {
+      setData({
+        fullName: user?.fullName,
+        username: user?.username,
+        email: user?.email,
+        gender: user?.gender,
+        birthDate: user?.birthDate,
+        password: "",
+        role: user?.role,
+        profilePic: user?.profilePic,
+        news: user?.news,
+        grade: user?.grade,
+        socialMedia: "",
+        description: user?.description,
+        affiliation: user?.affiliation,
+      });
+    }
+  }, [pathname]);
+
+  // Rendu des composants JSX
   return (
     <Flex minH="100vh" p={15} alignItems="center" justifyContent="center">
       <Flex
@@ -118,8 +220,12 @@ const Login = () => {
         borderColor="secondary"
         width={{ base: "full", "2xl": "50vw" }}
       >
-        <Heading mb={6}>Sign Up</Heading>
+        <Heading mb={6}>
+          {pathname === "/signup" ? "S'inscrire" : "Mettre à jour le profil"}
+        </Heading>
+        {/* Champs d'entrée pour le nom complet */}
         <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          {/* Nom complet en français */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="nomComplet"
@@ -143,8 +249,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["fullName"]["fr"]} // Valeur pour le nom complet en français
             />
           </FormControl>
+          {/* Nom complet en anglais */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="fullName.en"
@@ -155,7 +263,7 @@ const Login = () => {
                 color: "gray.50",
               }}
             >
-              Full Name
+              Nom Complet
             </FormLabel>
             <Input
               onChange={dataHandler}
@@ -168,8 +276,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["fullName"]["en"]} // Valeur pour le nom complet en anglais
             />
           </FormControl>
+          {/* Nom complet en arabe */}
           <FormControl maxW={"250px"} dir="rtl">
             <FormLabel
               htmlFor="fullNameAr"
@@ -193,10 +303,13 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["fullName"]["ar"]} // Valeur pour le nom complet en arabe
             />
           </FormControl>
         </Wrap>
+        {/* Champs d'entrée pour le nom d'utilisateur */}
         <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          {/* Nom d'utilisateur en français */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="userNameFr"
@@ -220,8 +333,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["username"]["fr"]} // Valeur pour le nom d'utilisateur en français
             />
           </FormControl>
+          {/* Nom d'utilisateur en anglais */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="userName"
@@ -245,8 +360,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["username"]["en"]} // Valeur pour le nom d'utilisateur en anglais
             />
           </FormControl>
+          {/* Nom d'utilisateur en arabe */}
           <FormControl maxW={"250px"} dir="rtl">
             <FormLabel
               htmlFor="userNameAr"
@@ -271,9 +388,11 @@ const Login = () => {
               w="full"
               rounded="md"
               my={2}
+              value={data["username"]["ar"]} // Valeur pour le nom d'utilisateur en arabe
             />
           </FormControl>
         </Wrap>
+        {/* Champs d'entrée supplémentaires */}
         <Input
           placeholder="johndoe@gmail.com"
           type="email"
@@ -281,6 +400,7 @@ const Login = () => {
           mb={3}
           name="email"
           onChange={dataHandler}
+          value={data["email"]} // Valeur pour l'adresse email
         />
         <input
           type="date"
@@ -292,6 +412,7 @@ const Login = () => {
           }}
           name="birthDate"
           onChange={dataHandler}
+          value={data["birthDate"]} // Valeur pour la date de naissance
         />
         <input
           type="file"
@@ -305,14 +426,15 @@ const Login = () => {
           onChange={fileChangeHandler}
         />
         <Select
-          placeholder="Gender"
+          placeholder="Genre"
           name="gender"
           mb={3}
           variant="outline"
           onChange={dataHandler}
+          value={data["gender"]} // Valeur pour le genre
         >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
         </Select>
         <Input
           placeholder="**********"
@@ -321,16 +443,22 @@ const Login = () => {
           mb={6}
           name="password"
           onChange={dataHandler}
+          value={data["password"]} // Valeur pour le mot de passe
         />
-        <Input
-          placeholder="**********"
-          type="password"
-          variant="filled"
-          mb={6}
-          name="repeat_password"
-          onChange={dataHandler}
-        />
+        {pathname === "/signup" && (
+          <Input
+            placeholder="**********"
+            type="password"
+            variant="filled"
+            mb={6}
+            name="repeat_password"
+            onChange={dataHandler}
+            value={data["repeat_password"]} // Valeur pour la répétition du mot de passe
+          />
+        )}
+        {/* Champs d'entrée pour le grade */}
         <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          {/* Grade en français */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="gradeFr"
@@ -354,8 +482,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["grade"]["fr"]} // Valeur pour le grade en français
             />
           </FormControl>
+          {/* Grade en anglais */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="Grade"
@@ -379,8 +509,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["grade"]["en"]} // Valeur pour le grade en anglais
             />
           </FormControl>
+          {/* Grade en arabe */}
           <FormControl maxW={"250px"} dir="rtl">
             <FormLabel
               htmlFor="gradeAr"
@@ -405,18 +537,13 @@ const Login = () => {
               w="full"
               rounded="md"
               my={2}
+              value={data["grade"]["ar"]} // Valeur pour le grade en arabe
             />
           </FormControl>
         </Wrap>
-        <Input
-          placeholder=""
-          type="text"
-          variant="filled"
-          mb={3}
-          name="socialMedia"
-          onChange={dataHandler}
-        />
+        {/* Champs d'entrée pour la description */}
         <Wrap gap={10} my={2} w={"full"} justify={"center"}>
+          {/* Description en français */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="descriptionFr"
@@ -440,8 +567,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["description"]["fr"]} // Valeur pour la description en français
             />
           </FormControl>
+          {/* Description en anglais */}
           <FormControl maxW={"250px"}>
             <FormLabel
               htmlFor="description"
@@ -452,7 +581,7 @@ const Login = () => {
                 color: "gray.50",
               }}
             >
-              description
+              Description
             </FormLabel>
             <Input
               onChange={dataHandler}
@@ -465,8 +594,10 @@ const Login = () => {
               size="sm"
               w="full"
               rounded="md"
+              value={data["description"]["en"]} // Valeur pour la description en anglais
             />
           </FormControl>
+          {/* Description en arabe */}
           <FormControl maxW={"250px"} dir="rtl">
             <FormLabel
               htmlFor="descriptionAr"
@@ -491,9 +622,11 @@ const Login = () => {
               w="full"
               rounded="md"
               my={2}
+              value={data["description"]["ar"]} // Valeur pour la description en arabe
             />
           </FormControl>
         </Wrap>
+        {/* Case à cocher pour les actualités */}
         <Checkbox
           onChange={() => {
             setData({
@@ -505,8 +638,9 @@ const Login = () => {
           name="news"
           mb={3}
         >
-          News
+          Actualités
         </Checkbox>
+        {/* Boutons pour l'inscription et la connexion */}
         <Wrap gap={5} align={"center"} justify={"center"}>
           <Button
             bg="primary"
@@ -520,7 +654,7 @@ const Login = () => {
             isLoading={loading}
             rightIcon={<LoginIcon />}
           >
-            Sign Up
+            S'inscrire
           </Button>
           <Button
             color="text"
@@ -530,7 +664,7 @@ const Login = () => {
             mb={8}
             rightIcon={<LoginIcon />}
           >
-            <Link to="/login">Login</Link>
+            <Link to="/login">Connexion</Link>
           </Button>
         </Wrap>
       </Flex>
@@ -538,4 +672,5 @@ const Login = () => {
   );
 };
 
+// Exportation du composant Login par défaut
 export default Login;
