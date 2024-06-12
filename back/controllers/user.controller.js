@@ -148,7 +148,7 @@ const updateAccount = async (req, res) => {
     const updates = req.body;
 
     const updatedUser = await userModel.findByIdAndUpdate(userId, updates, {
-      new: true,
+      new: false,
     });
 
     if (!updatedUser) {

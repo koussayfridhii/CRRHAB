@@ -42,7 +42,6 @@ const Login = () => {
       .post(`https://crrhab-3ofe.vercel.app/api/users/signin`, data)
       .then((res) => {
         setLoading(false);
-        console.log(res);
         dispatch(login(res.data));
         toast({
           title: "Connexion réussie",

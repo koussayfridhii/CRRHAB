@@ -9,16 +9,36 @@ import {
   Stack,
   Button,
   useColorModeValue,
+  ButtonGroup,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { CiSettings } from "react-icons/ci";
+
 import { useSelector } from "react-redux";
 
 export default function SocialProfileWithImage() {
-  const user = useSelector((state) => state.user);
+  const { language } = useSelector((state) => state.language);
+  const { user } = useSelector((state) => state.user);
   console.log(user);
+  const toggleNews = async () => {
+    const data = { ...user, news: !user.news };
+    console.log(data);
+    await axios.put(
+      `https://crrhab-3ofe.vercel.app/api/videos/${user._id}`,
+      { data },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+  };
   return (
     <Center py={6}>
       <Box
-        maxW={"270px"}
+        minW={"20dvw"}
+        maxW={"fit-content"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
@@ -36,10 +56,8 @@ export default function SocialProfileWithImage() {
         <Flex justify={"center"} mt={-12}>
           <Avatar
             size={"xl"}
-            src={
-              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-            }
-            alt={"Author"}
+            src={user?.profilePic}
+            alt={user?.username?.fr}
             css={{
               border: "2px solid white",
             }}
@@ -49,27 +67,68 @@ export default function SocialProfileWithImage() {
         <Box p={6}>
           <Stack spacing={0} align={"center"} mb={5}>
             <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
-              John Doe
+              {user.fullName?.[language]}
             </Heading>
-            <Text color={"gray.500"}>Frontend Developer</Text>
+            <Text color={"gray.500"}>{user?.grade?.[language]}</Text>
+            <Text color={"gray.500"}>{user?.description?.[language]}</Text>
           </Stack>
-
-          <Button
-            w={"full"}
-            mt={8}
-            bg={useColorModeValue("#151f21", "gray.900")}
-            color={"white"}
-            rounded={"md"}
-            onClick={() => {
-              window.location = "/messages?email=kaushik@moneysave.io";
-            }}
-            _hover={{
-              transform: "translateY(-2px)",
-              boxShadow: "lg",
-            }}
-          >
-            Message
-          </Button>
+          <ButtonGroup mx="auto">
+            <Button
+              mt={8}
+              bg={useColorModeValue("#151f21", "gray.900")}
+              color={"white"}
+              rounded={"md"}
+              onClick={() => {
+                console.log(user);
+              }}
+              _hover={{
+                transform: "translateY(-2px)",
+                boxShadow: "lg",
+              }}
+              fontSize={"6xl"}
+            >
+              <CiSettings />
+            </Button>
+            <Button
+              w={"full"}
+              mt={8}
+              bg={useColorModeValue("#151f21", "gray.900")}
+              color={"white"}
+              rounded={"md"}
+              onClick={toggleNews}
+              _hover={{
+                transform: "translateY(-2px)",
+                boxShadow: "lg",
+              }}
+              px={10}
+            >
+              {language === "fr"
+                ? "Notifications par mail"
+                : language === "en"
+                ? "Mail Notifications"
+                : "اشعارات البريد"}
+            </Button>
+            <Button
+              w={"full"}
+              mt={8}
+              bg="red.600"
+              color={"white"}
+              rounded={"md"}
+              onClick={() => {
+                window.location = "/messages?email=kaushik@moneysave.io";
+              }}
+              _hover={{
+                transform: "translateY(-2px)",
+                boxShadow: "lg",
+              }}
+            >
+              {language === "fr"
+                ? "Déconnecter"
+                : language === "en"
+                ? "Disconnect"
+                : "خروج"}
+            </Button>
+          </ButtonGroup>
         </Box>
       </Box>
     </Center>
