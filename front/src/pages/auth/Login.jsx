@@ -22,7 +22,7 @@ import { login } from "../../redux/userSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
   const toast = useToast();
   const [data, setData] = useState({
     email: "",
@@ -69,10 +69,16 @@ const Login = () => {
       });
   };
   useEffect(() => {
-    user && user.role === "admin"
-      ? navigate("/admin/research_team")
-      : navigate("/profile");
-  }, []);
+    if (user?.isLoggedIn) {
+      if (user?.user?.role === "admin") {
+        navigate("/admin/research_team");
+      } else {
+        navigate("/profile");
+      }
+    } else {
+      navigate("/login"); // ou toute autre route pour les utilisateurs non connectés
+    }
+  }, [user, navigate]);
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
       <Flex
