@@ -144,24 +144,25 @@ const restoreAccount = async (req, res) => {
 // Update Account Controller
 const updateAccount = async (req, res) => {
   try {
-    const userId = req.params.id;
-    const updates = req.body;
+    const id = req.params.id;
+    const existingUser = await userModel.findById(id);
 
-    const updatedUser = await userModel.findByIdAndUpdate(userId, updates, {
-      new: false,
-    });
-
-    if (!updatedUser) {
+    if (!existingUser) {
       return res
         .status(404)
-        .json({ message: "User not found", success: false, error: true });
+        .json({ message: "utilisateur non trouvée", success: false });
     }
 
-    res.status(200).json({
-      message: "Account updated successfully",
+    // Mettre à jour la vidéo avec les nouvelles données, sans modifier le champ _id
+    existingUser.set({ ...req.body, _id: existingUser._id });
+
+    // Sauvegarder la vidéo mise à jour dans la base de données
+    await existingUser.save();
+
+    return res.status(200).json({
+      message: "user mise à jour avec succès !",
+      videoId: existingUser._id,
       success: true,
-      error: false,
-      updatedUser,
     });
   } catch (error) {
     console.error("Error in updateAccount: ", error.message);

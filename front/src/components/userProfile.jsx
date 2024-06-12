@@ -22,9 +22,8 @@ export default function SocialProfileWithImage() {
   console.log(user);
   const toggleNews = async () => {
     const data = { ...user, news: !user.news };
-    console.log(data);
     await axios.put(
-      `https://crrhab-3ofe.vercel.app/api/videos/${user._id}`,
+      `https://crrhab-3ofe.vercel.app/api/users/${user._id}`,
       { data },
       {
         headers: {
