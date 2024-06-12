@@ -18,9 +18,9 @@ export default function AvatarWithRipple({ language, data }) {
 	`;
 
   return (
-    <Flex justifyContent="end" alignItems="center" h="150px" w="full">
+    <Flex justifyContent="end" alignItems="center" h="70px" w="full">
       {/* Ideally, only the box should be used. The <Flex /> is used to style the preview. */}
-      <VStack textAlign={"center"} fontWeight="bold">
+      <VStack textAlign={"center"} fontWeight="bold" mx={5}>
         <Text>{data?.directeur?.[language]}</Text>
         <Text>
           {language === "fr"
@@ -30,7 +30,7 @@ export default function AvatarWithRipple({ language, data }) {
             : "مدير عام CRHRAB"}
         </Text>
       </VStack>
-      <Box
+      {/* <Box
         as="div"
         position="relative"
         w={size}
@@ -57,7 +57,7 @@ export default function AvatarWithRipple({ language, data }) {
           position="absolute"
           top={0}
         />
-      </Box>
+      </Box> */}
     </Flex>
   );
 }

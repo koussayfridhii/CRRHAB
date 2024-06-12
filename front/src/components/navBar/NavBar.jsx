@@ -782,19 +782,6 @@ const NAV_ITEMS = [
         },
         href: "/diploma_course",
       },
-      {
-        label: {
-          fr: "Collaboration Nationale et Internationale",
-          en: "National and International Collaboration",
-          ar: "تعاون وطني ودولي ",
-        },
-        subLabel: {
-          fr: "Collaboration Nationale et Internationale",
-          en: "National and International Collaboration",
-          ar: "تعاون وطني ودولي ",
-        },
-        href: "/collabs",
-      },
     ],
   },
   {

@@ -48,7 +48,7 @@ const NationalProjects = () => {
       },
       activity: {
         en: "Horticulture: Vegetable Crops and Fruit Tree Cultivation conducted in Conventional and Organic modes",
-        fr: "Horticulture : Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel et Biologique",
+        fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en mode conventionnel et Biologique",
         ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية",
       },
       superficie: "9.5 ha",
@@ -61,7 +61,7 @@ const NationalProjects = () => {
       },
       activity: {
         en: "Vegetable Crops and Fruit Tree Cultivation conducted in Conventional modes",
-        fr: "Cultures Maraichères et Arboriculture Fruitière conduites en modes Conventionnel",
+        fr: "Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel",
         ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية",
       },
       superficie: "5.8 ha",
@@ -74,7 +74,7 @@ const NationalProjects = () => {
       },
       activity: {
         en: "Greenhouse and open field Vegetable Crops",
-        fr: "Cultures Maraichères sous abri-serre et en plein champ",
+        fr: "Cultures maraichères sous abri-serre et en plein champ",
         ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة",
       },
       superficie: "3.7 ha",

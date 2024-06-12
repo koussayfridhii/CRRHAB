@@ -160,7 +160,7 @@ const Footer = () => {
                 text="Productions Scientifiques"
                 link="scientificproductions"
               />
-              <LinkItem text="Gallerie" link="/gallery/imgs" />
+              <LinkItem text="Galerie" link="/gallery/imgs" />
               <LinkItem text="Contact" link="/contact" />
             </List>
             <Box mb={{ base: "1.5rem", lg: "0" }} mt={5}>

@@ -57,14 +57,14 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   }, [slidesCount]);
 
-  // Fonction pour gérer l'évènement de mousedown pour le glissement
+  // Fonction pour gérer l'évènnement de mousedown pour le glissement
   const handleMouseDown = useCallback((e) => {
     setDragging(true);
     setDragStartX(e.clientX);
     e.preventDefault();
   }, []);
 
-  // Fonction pour gérer l'évènement de mousemove pour le glissement
+  // Fonction pour gérer l'évènnement de mousemove pour le glissement
   const handleMouseMove = useCallback(
     (e) => {
       if (dragging) {
@@ -76,7 +76,7 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
     [dragging, dragStartX]
   );
 
-  // Fonction pour gérer l'évènement de mouseup pour le glissement
+  // Fonction pour gérer l'évènnement de mouseup pour le glissement
   const handleMouseUp = useCallback(() => {
     if (dragging) {
       setDragging(false);
@@ -151,7 +151,7 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
                 src={slide.img}
                 alt={slide.title?.[language]}
                 boxSize="full"
-                objectFit="cover"
+                objectFit={title === "accueil" ? "cover" : "contain"}
               />
             </Box>
           ))}
