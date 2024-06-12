@@ -14,7 +14,7 @@ const sendMail = async (
     subject: "CRRHAB News", // Subject line
     html: `<h1>Hi Mr/MRS</h1><br/>,
     <h1>
-    ${title}
+    ${actuality}
     </h1>
     <p>
     ${description}
@@ -26,6 +26,5 @@ const sendMail = async (
     <b>The team of CRRHAB</b>`, // html body
   };
   const mail = await nodeMailer(message);
-  console.log(mail);
 };
 module.exports = sendMail;
