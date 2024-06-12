@@ -146,7 +146,6 @@ const updateAccount = async (req, res) => {
   try {
     const id = req.params.id;
     const existingUser = await userModel.findById(id);
-
     if (!existingUser) {
       return res
         .status(404)
@@ -154,7 +153,7 @@ const updateAccount = async (req, res) => {
     }
 
     // Mettre à jour la vidéo avec les nouvelles données, sans modifier le champ _id
-    existingUser.set({ ...req.body, _id: existingUser._id });
+    existingUser.set({ ...req.body.data, _id: existingUser._id });
 
     // Sauvegarder la vidéo mise à jour dans la base de données
     await existingUser.save();
