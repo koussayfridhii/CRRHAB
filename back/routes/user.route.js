@@ -16,6 +16,8 @@ router.post("/users/restore", userController.restoreAccount);
 
 /* PUT update an existing user account */
 router.put("/users/:id", userController.updateAccount);
+/* PUT update an existing user account */
+router.put("/users/role/:id", userController.makeAdmin);
 
 /* DELETE deactivate an existing user account */
 router.delete("/users/:id", userController.deactivateAccount);

@@ -796,16 +796,30 @@ const NAV_ITEMS = [
     label: { fr: "Galerie", en: "Gallery", ar: "مكتبة الوسائط" },
     href: "/gallery/imgs",
   },
-  {
-    label: {
-      fr: "Accés à l’information",
-      en: "Open Data",
-      ar: "النفاذ للمعلومة",
-    },
-    href: "/open_data",
-  },
+
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
     href: "/contact",
+  },
+  {
+    label: { fr: "Voir Plus", en: "More", ar: "المزيد" },
+    children: [
+      {
+        label: {
+          fr: "Accés à l’information",
+          en: "Open Data",
+          ar: "النفاذ للمعلومة",
+        },
+        href: "/open_data",
+      },
+      {
+        label: {
+          fr: "Espace de téléchargement",
+          en: "Download area",
+          ar: "منطقة التحميل",
+        },
+        href: "/open_data",
+      },
+    ],
   },
 ];

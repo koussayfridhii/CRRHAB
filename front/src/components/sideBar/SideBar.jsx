@@ -7,7 +7,7 @@ import CardV3 from "../cards/cardV3/Card";
 const SideBar = () => {
   return (
     <chakra.aside className="sideBar">
-      <CardV1 />
+      <CardV3 />
       <Divider
         _dark={{
           bg: "secondary",
@@ -33,7 +33,7 @@ const SideBar = () => {
         mx={"auto"}
         borderColor={"primary"}
       />
-      <CardV3 />
+      <CardV1 />
     </chakra.aside>
   );
 };

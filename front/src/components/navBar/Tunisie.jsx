@@ -16,7 +16,7 @@ const Tunisie = () => {
       <SimpleGrid
         columns={1}
         gap={3}
-        p={5}
+        px={5}
         w={{ base: "full", "2xl": "80dvw" }}
         mx={"auto"}
         h={"fit-content"}
@@ -201,15 +201,15 @@ const Tunisie = () => {
         transition={{ duration: 0.5, delay: 1.6 }}
       >
         <chakra.h1
-          fontSize={{ base: "xxl", xl: "xxxxl", "2xl": "5xl" }}
+          fontSize={{ base: "xxl", xl: "xxxl", "2xl": "xxxxl" }}
           fontWeight={"bold"}
           textAlign={"center"}
           color={"primary"}
-          my={10}
+          my={3}
           borderTop={"2px"}
           borderColor={"primary"}
           _dark={{ color: "secondary", borderColor: "secondary" }}
-          pt={10}
+          py={3}
         >
           {language === "fr" ? (
             <>

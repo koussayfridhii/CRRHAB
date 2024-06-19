@@ -54,16 +54,16 @@ const Card = () => {
               fontSize={"sm"}
               fontWeight={500}
               bg={useColorModeValue("green.50", "green.900")}
-              p={5}
-              px={8}
+              p={2}
+              px={5}
               color={"green.500"}
               rounded={"full"}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                width={40}
-                height={40}
+                width={24}
+                height={24}
                 color={"#0fa239"}
                 fill={"none"}
               >
@@ -82,7 +82,11 @@ const Card = () => {
               </svg>
             </Text>
             <Stack direction={"row"} align={"center"} justify={"center"}>
-              <Text fontSize={{ base: "xxxxl", "2xl": "5xl" }} fontWeight={800}>
+              <Text
+                fontSize={{ base: "xxxl" }}
+                fontWeight={800}
+                color={"white"}
+              >
                 {language === "fr"
                   ? "Joindre"
                   : language === "en"

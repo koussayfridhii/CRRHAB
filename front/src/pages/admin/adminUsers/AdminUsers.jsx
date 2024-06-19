@@ -85,7 +85,7 @@ const AdminUsers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `https://crrhab-3ofe.vercel.app/api/users/${user.user.userId}`
+      `https://crrhab-3ofe.vercel.app/api/users/${user.user._id}`
     );
     setData(res.data);
   };
@@ -113,13 +113,14 @@ const AdminUsers = () => {
           setData={setData}
           language={"en"}
           user={user}
+          getAllData={getAllData}
         />
       </Box>
     </Wrap>
   );
 };
 
-const DataTable = ({ data, setData, headers, language, user }) => {
+const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
@@ -133,10 +134,10 @@ const DataTable = ({ data, setData, headers, language, user }) => {
 
   const makeAdmin = async (e, id, row, role) => {
     e.preventDefault();
-    const dataToUpdate = { ...row, role };
+    const dataToUpdate = { role };
     try {
       const response = await axios.put(
-        `https://crrhab-3ofe.vercel.app/api/users/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/users/role/${id}`,
         dataToUpdate,
         {
           headers: {
@@ -152,8 +153,7 @@ const DataTable = ({ data, setData, headers, language, user }) => {
         isClosable: true,
       });
 
-      const updatedUser = response.data.updatedUser || response.data;
-
+      const updatedUser = response.data.user || response.data;
       setData([...data.filter((e) => e._id !== id), updatedUser]);
       navigate("/admin/users");
     } catch (error) {
@@ -170,17 +170,30 @@ const DataTable = ({ data, setData, headers, language, user }) => {
 
   const activate = async (e, row) => {
     e.preventDefault();
-    const dataToUpdate = { ...row, isActive: !row.isActive };
     try {
-      const response = await axios.put(
-        `https://crrhab-3ofe.vercel.app/api/users/${row._id}`,
-        dataToUpdate,
-        {
-          headers: {
-            Authorization: `Bearer ${user?.user?.token}`,
+      let response;
+      if (row.isActive) {
+        response = await axios.delete(
+          `https://crrhab-3ofe.vercel.app/api/users/${row._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user?.user?.token}`,
+            },
+          }
+        );
+      } else {
+        response = await axios.post(
+          `https://crrhab-3ofe.vercel.app/api/users/restore`,
+          {
+            email: row?.email,
           },
-        }
-      );
+          {
+            headers: {
+              Authorization: `Bearer ${user?.user?.token}`,
+            },
+          }
+        );
+      }
 
       toast({
         title: "Utilisateur mis à jour avec succès !",
@@ -189,7 +202,7 @@ const DataTable = ({ data, setData, headers, language, user }) => {
         isClosable: true,
       });
 
-      const updatedUser = response.data.updatedUser || response.data;
+      const updatedUser = response.data.user || response.data;
 
       setData([...data.filter((e) => e._id !== row._id), updatedUser]);
       navigate("/admin/users");

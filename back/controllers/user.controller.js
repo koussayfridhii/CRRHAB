@@ -130,6 +130,7 @@ const restoreAccount = async (req, res) => {
 
     res.status(200).json({
       message: "Account restored successfully",
+      user,
       success: true,
       error: false,
     });
@@ -153,7 +154,6 @@ const updateAccount = async (req, res) => {
         .json({ message: "utilisateur non trouvée", success: false });
     }
 
-    // Mettre à jour la vidéo avec les nouvelles données, sans modifier le champ _id
     const authenticated = await bcrypt.compare(
       req.body.data.password,
       existingUser.password
@@ -163,12 +163,13 @@ const updateAccount = async (req, res) => {
         .status(401)
         .json({ message: "passowrd incorrect", success: false });
     }
-    const hashedPassword = await bcrypt.hash(req.body.data.password, 12);
+    const hashedPassword = await bcrypt.hash(req.body.data.newPassword, 12);
     existingUser.set({
       ...req.body.data,
       _id: existingUser._id,
       password: hashedPassword,
     });
+    console.log(req.body.data.newPassword);
     const payload = {
       id: existingUser._id,
       email: existingUser.email,
@@ -177,7 +178,6 @@ const updateAccount = async (req, res) => {
     const expiresIn = process.env.JWT_EXPIRES_IN;
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn });
 
-    // Sauvegarder la vidéo mise à jour dans la base de données
     await existingUser.save();
 
     return res.status(200).json({
@@ -213,6 +213,7 @@ const deactivateAccount = async (req, res) => {
 
     res.status(200).json({
       message: "Account deactivated successfully",
+      user,
       success: true,
       error: false,
     });
@@ -325,6 +326,36 @@ const resetPassword = async (req, res) => {
   }
 };
 
+// Make Regular User Admin Controller
+const makeAdmin = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false, error: true });
+    }
+
+    user.role = req.body.role;
+    await user.save();
+
+    res.status(200).json({
+      message: "User promoted to admin successfully",
+      user: user,
+      success: true,
+      error: false,
+    });
+  } catch (error) {
+    console.error("Error in makeAdmin: ", error.message);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error, success: false });
+  }
+};
+
 module.exports.userController = {
   signIn,
   signUp,
@@ -334,4 +365,5 @@ module.exports.userController = {
   deactivateAccount,
   forgotPassword,
   resetPassword,
+  makeAdmin,
 };

@@ -1,125 +1,189 @@
-import React, { useState, useRef } from "react";
-import "./Slider.scss";
-import { useCallApi } from "../../hooks/useCallApi";
+import React, { useState, useCallback } from "react";
+import { Box, Flex, Image, Stack, Text, HStack } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import Spinner from "../spinner/Spinner";
+import { useCallApi } from "../../hooks/useCallApi";
 
-const Slider = ({ language }) => {
-  const containerRef = useRef(null);
-  const [active, setActive] = useState(false);
-  const [index, setIndex] = useState(0);
+const SLIDE_CHANGE_THRESHOLD = 100; // Seuil pour détecter le changement de diapositive lors du glissement
 
-  const { data, error, isLoading } = useCallApi("media");
+const arrowStyles = {
+  cursor: "pointer",
+  position: "absolute",
+  top: "50%",
+  width: "auto",
+  marginTop: "-22px",
+  padding: "16px",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "18px",
+  transition: "0.6s ease",
+  borderRadius: "0 3px 3px 0",
+  userSelect: "none",
+  _hover: {
+    opacity: 0.8,
+    backgroundColor: "black",
+  },
+};
+
+const CustomNewsCarousel = ({ title = "accueil" }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+
+  const language = useSelector((state) => state.language.language); // Obtenir la langue actuelle de l'état redux
+
+  const { data, error, isLoading } = useCallApi("media"); // Récupérer les données d'actualités en utilisant un hook personnalisé
+
+  const slides = data || [];
+
+  // Ensuite, vous pouvez utiliser `slides` dans votre rendu JSX
+
+  const slidesCount = slides.length;
+
+  // Fonction pour passer à la diapositive précédente
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
+  }, [slidesCount]);
+
+  // Fonction pour passer à la diapositive suivante
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
+  }, [slidesCount]);
+
+  // Fonction pour gérer l'évènnement de mousedown pour le glissement
+  const handleMouseDown = useCallback((e) => {
+    setDragging(true);
+    setDragStartX(e.clientX);
+    e.preventDefault();
+  }, []);
+
+  // Fonction pour gérer l'évènnement de mousemove pour le glissement
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (dragging) {
+        const diffX = e.clientX - dragStartX;
+        setDragOffset(diffX);
+        e.preventDefault();
+      }
+    },
+    [dragging, dragStartX]
+  );
+
+  // Fonction pour gérer l'évènnement de mouseup pour le glissement
+  const handleMouseUp = useCallback(() => {
+    if (dragging) {
+      setDragging(false);
+
+      if (Math.abs(dragOffset) > SLIDE_CHANGE_THRESHOLD) {
+        const slideChange = dragOffset > 0 ? prevSlide : nextSlide;
+        slideChange();
+      }
+
+      setDragOffset(0);
+    }
+  }, [dragging, dragOffset, prevSlide, nextSlide]);
+
+  // Calcul du décalage de la diapositive pour une transition fluide
+  const slideOffset =
+    currentSlide === 0
+      ? Math.min(dragOffset, 0)
+      : currentSlide === slidesCount - 1
+      ? Math.max(dragOffset, 0)
+      : dragOffset;
+
+  // Style du carrousel pour l'effet de glissement
+  const carouselStyle = {
+    transition: dragging ? "none" : "all .5s",
+    marginLeft: `calc(-${currentSlide * 100}% + ${slideOffset}px)`,
+  };
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />; // Afficher le spinner pendant le chargement des données
   }
 
   if (error) {
-    return <div>Error fetching data: {error.message}</div>;
+    console.error("Erreur lors de la récupération des données :", error);
+    return <div>Error fetching data: {error.message}</div>; // Afficher le message d'erreur en cas d'échec de la récupération des données
   }
 
-  const swipe = (dir) => {
-    setActive((prev) => !prev);
-
-    if (dir === "prev") {
-      setIndex((prev) => (prev > 0 ? prev - 1 : data.length - 1));
-    } else {
-      setIndex((prev) => (prev < data.length - 1 ? prev + 1 : 0));
-    }
-
-    setTimeout(() => {
-      containerRef.current.style.left = `-${index * 101}%`;
-      containerRef.current.style.backgroundColor = data[index]?.color;
-    }, 250);
-
-    setTimeout(() => {
-      setActive((prev) => !prev);
-    }, 500);
-  };
-
   return (
-    <div className="slider">
-      <div className="btn btn-prev" onClick={() => swipe("prev")}>
-        <svg
-          fill="#eee"
-          version="1.1"
-          id="Layer_1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 242.13 242.13"
-          xmlSpace="preserve"
-          stroke="#eee"
-          strokeWidth="0.001"
-          transform="rotate(45)"
+    <Flex
+      width="full"
+      alignItems="center"
+      justifyContent="center"
+      style={{ cursor: dragging ? "grabbing" : "auto" }}
+      onMouseLeave={handleMouseUp}
+    >
+      <Flex width="full" overflow="hidden" position="relative">
+        <Flex
+          height="100dvh"
+          width="full"
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onMouseDown={handleMouseDown}
+          style={carouselStyle}
         >
-          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            stroke="#CCCCCC"
-            strokeWidth="0.48426600000000003"
-          />
-          <g id="SVGRepo_iconCarrier">
-            <path
-              id="XMLID_6_"
-              d="M237.739,4.394c-5.857-5.857-15.355-5.858-21.213,0L30,190.92V174.1c0-8.284-6.716-15-15-15s-15,6.716-15,15v53.033c0,8.284,6.716,15,15,15h53.033c8.284,0,15-6.716,15-15c0-8.284-6.716-15-15-15h-16.82L237.739,25.607C243.598,19.75,243.598,10.252,237.739,4.394z"
+          {slides.map((slide, sid) => (
+            <Box
+              key={`slide-${sid}`}
+              boxSize="full"
+              shadow="md"
+              flex="none"
+              position="relative"
+            >
+              <Text
+                color="white"
+                fontSize="xs"
+                padding="8px 12px"
+                position="absolute"
+                top="0"
+              >
+                {sid + 1} / {slidesCount}
+              </Text>
+              <Image
+                src={slide.img}
+                alt={slide.title?.[language]}
+                boxSize="full"
+                objectFit={title === "accueil" ? "cover" : "contain"}
+              />
+            </Box>
+          ))}
+        </Flex>
+        <Text {...arrowStyles} left="0" onClick={prevSlide}>
+          &#10094;
+        </Text>
+        <Text {...arrowStyles} right="0" onClick={nextSlide}>
+          &#10095;
+        </Text>
+        <HStack justify="center" position="absolute" bottom="8px" width="full">
+          {Array.from({ length: slidesCount }).map((_, slideIndex) => (
+            <Box
+              key={`dots-${slideIndex}`}
+              cursor="pointer"
+              boxSize={["7px", null, "15px"]}
+              margin="0 2px"
+              backgroundColor={
+                currentSlide === slideIndex
+                  ? "blackAlpha.800"
+                  : "blackAlpha.500"
+              }
+              rounded="50%"
+              display="inline-block"
+              transition="background-color 0.6s ease"
+              _hover={{ backgroundColor: "blackAlpha.800" }}
+              onClick={() => setCurrentSlide(slideIndex)}
             />
-          </g>
-        </svg>
-      </div>
-      <div className="btn btn-next" onClick={() => swipe("next")}>
-        <svg
-          fill="#eee"
-          version="1.1"
-          id="Layer_1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 242.13 242.13"
-          xmlSpace="preserve"
-          stroke="#eee"
-          strokeWidth="0.001"
-          transform="rotate(45)"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            stroke="#CCCCCC"
-            strokeWidth="0.48426600000000003"
-          />
-          <g id="SVGRepo_iconCarrier">
-            <path
-              id="XMLID_6_"
-              d="M237.739,4.394c-5.857-5.857-15.355-5.858-21.213,0L30,190.92V174.1c0-8.284-6.716-15-15-15s-15,6.716-15,15v53.033c0,8.284,6.716,15,15,15h53.033c8.284,0,15-6.716,15-15c0-8.284-6.716-15-15-15h-16.82L237.739,25.607C243.598,19.75,243.598,10.252,237.739,4.394z"
-            />
-          </g>
-        </svg>
-      </div>
-      <div
-        className="container"
-        ref={containerRef}
-        style={{
-          backgroundColor: data?.[0]?.color,
-          width: `${data.length * 100.5}vw`,
-        }}
-      >
-        {data.map((slide, i) => (
-          <div className="slide" key={i}>
-            {/* <h1 className={active ? "active" : ""}>
-              {slide.title?.[language]}
-            </h1> */}
-            <img
-              className={active ? "active" : ""}
-              src={`${slide.img}`}
-              alt={slide.title?.[language]}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+          ))}
+        </HStack>
+      </Flex>
+    </Flex>
   );
 };
 
-export default Slider;
+CustomNewsCarousel.propTypes = {
+  language: PropTypes.string.isRequired,
+};
+
+export default CustomNewsCarousel;

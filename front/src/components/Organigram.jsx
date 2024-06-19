@@ -15,15 +15,6 @@ import { useInView } from "react-intersection-observer"; // Importez useInView
 // Array containing administrative organization roles with translations and colors
 const administrativeOrganization = [
   {
-    id: 1,
-    title: {
-      fr: "Directeur Général", // French translation
-      en: "Director General", // English translation
-      ar: "المدير العام", // Arabic translation
-    },
-    color: "#9BBB59", // Color associated with this role
-  },
-  {
     id: 2,
     title: {
       fr: "Conseil d’administration", // French translation
@@ -104,52 +95,102 @@ const Milestones = () => {
   const language = useSelector((state) => state.language.language);
   const [ref1, inView1] = useInView(); // Utilisez useInView pour détecter la visibilité
   const [ref2, inView2] = useInView(); // Utilisez useInView pour détecter la visibilité
-
+  const directeur = {
+    id: 1,
+    title: {
+      fr: "Directeur Général", // French translation
+      en: "Director General", // English translation
+      ar: "المدير العام", // Arabic translation
+    },
+    color: "#9BBB59", // Color associated with this role
+  };
   return (
-    <SimpleGrid
-      columns={{ base: 1, xl: 2 }}
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
-      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref1}>
-        <chakra.h3 fontSize="4xl" fontWeight="bold" mb={20} textAlign="center">
-          {language === "en"
-            ? "ADMINISTRATIVE ORGANIZATION"
-            : language === "fr"
-            ? "ORGANISATION ADMINISTRATIVE"
-            : "التنظيم الإداري"}
-        </chakra.h3>
-        {administrativeOrganization.map((milestone, index) => (
-          <Flex key={index} mb="10px">
-            <LineWithDot />
-            <Card {...milestone} language={language} />
-          </Flex>
-        ))}
-      </Container>
-      <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref2}>
-        <chakra.h3 fontSize="4xl" fontWeight="bold" mb={20} textAlign="center">
-          {language === "en"
-            ? "SCIENTIFIC ORGANIZATION"
-            : language === "fr"
-            ? "ORGANISATION SCIENTIFIQUE"
-            : "التنظيم العلمي"}
-        </chakra.h3>
-        {scientificOrganization.map((milestone, index) => (
-          <Flex key={index} mb="10px">
-            <LineWithDot />
-            <Card {...milestone} language={language} />
-          </Flex>
-        ))}
-      </Container>
+    <SimpleGrid columns={1}>
+      <HStack
+        px={{ base: 3, sm: 5 }}
+        py={3}
+        bg={useColorModeValue("primary", "gray.800")}
+        _dark={{ bg: "secondary" }}
+        color="white"
+        spacing={5}
+        rounded="lg"
+        alignItems="center"
+        w={"50%"}
+        mx={"auto"}
+        my={5}
+        shadow="lg"
+        justify="center"
+      >
+        <Flex justify="center">
+          <chakra.h1
+            _hover={{ color: "whiteHover" }}
+            fontSize="2xl"
+            lineHeight={1.2}
+            fontWeight="bold"
+            w="100%"
+            textAlign="center"
+          >
+            {directeur?.title?.[language]}
+          </chakra.h1>
+        </Flex>
+      </HStack>
+      <SimpleGrid
+        columns={{ base: 1, xl: 2 }}
+        dir={language === "ar" ? "rtl" : "ltr"}
+      >
+        <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref1}>
+          <chakra.h3
+            fontSize="4xl"
+            fontWeight="bold"
+            mb={20}
+            textAlign="start"
+            whiteSpace={{ base: "wrap", "2xl": "nowrap" }}
+          >
+            {language === "en"
+              ? "ADMINISTRATIVE ORGANIZATION"
+              : language === "fr"
+              ? "ORGANISATION ADMINISTRATIVE"
+              : "التنظيم الإداري"}
+          </chakra.h3>
+          {administrativeOrganization.map((milestone, index) => (
+            <Flex key={index} mb="10px">
+              <LineWithDot />
+              <Card {...milestone} language={language} />
+            </Flex>
+          ))}
+        </Container>
+        <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref2}>
+          <chakra.h3
+            fontSize="4xl"
+            fontWeight="bold"
+            mb={20}
+            textAlign="center"
+          >
+            {language === "en"
+              ? "SCIENTIFIC ORGANIZATION"
+              : language === "fr"
+              ? "ORGANISATION SCIENTIFIQUE"
+              : "التنظيم العلمي"}
+          </chakra.h3>
+          {scientificOrganization.map((milestone, index) => (
+            <Flex key={index} mb="10px">
+              <LineWithDot />
+              <Card {...milestone} language={language} />
+            </Flex>
+          ))}
+        </Container>
+      </SimpleGrid>
     </SimpleGrid>
   );
 };
 
-const Card = ({ title, language, color }) => {
+const Card = ({ title, language }) => {
   return (
     <HStack
       px={{ base: 3, sm: 5 }}
       py={3}
-      bg={useColorModeValue(color, "gray.800")}
+      bg={useColorModeValue("primary", "gray.800")}
+      _dark={{ bg: "secondary" }}
       color="white"
       spacing={5}
       rounded="lg"

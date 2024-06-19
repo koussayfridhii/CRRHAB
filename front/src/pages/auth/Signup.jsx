@@ -196,6 +196,7 @@ const Login = () => {
         gender: user?.gender,
         birthDate: user?.birthDate,
         password: "",
+        newPassword: "",
         role: user?.role,
         profilePic: user?.profilePic,
         news: user?.news,
@@ -436,25 +437,75 @@ const Login = () => {
           <option value="male">Homme</option>
           <option value="female">Femme</option>
         </Select>
-        <Input
-          placeholder="**********"
-          type="password"
-          variant="filled"
-          mb={6}
-          name="password"
-          onChange={dataHandler}
-          value={data["password"]} // Valeur pour le mot de passe
-        />
-        {pathname === "/signup" && (
+        <FormControl>
+          <FormLabel
+            htmlFor="password"
+            fontSize="sm"
+            fontWeight="md"
+            color="gray.700"
+            _dark={{
+              color: "gray.50",
+            }}
+          >
+            Password
+          </FormLabel>
           <Input
             placeholder="**********"
             type="password"
             variant="filled"
             mb={6}
-            name="repeat_password"
+            name="password"
             onChange={dataHandler}
-            value={data["repeat_password"]} // Valeur pour la répétition du mot de passe
+            value={data["password"]} // Valeur pour le mot de passe
           />
+        </FormControl>
+        {pathname === "/signup" && (
+          <FormControl>
+            <FormLabel
+              htmlFor="repeat_password"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              Repeat Password
+            </FormLabel>
+            <Input
+              placeholder="**********"
+              type="password"
+              variant="filled"
+              mb={6}
+              name="repeat_password"
+              onChange={dataHandler}
+              value={data["repeat_password"]} // Valeur pour la répétition du mot de passe
+            />
+          </FormControl>
+        )}
+        {pathname !== "/signup" && (
+          <FormControl>
+            <FormLabel
+              htmlFor="newPassword"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: "gray.50",
+              }}
+            >
+              new Password (not required)
+            </FormLabel>
+            <Input
+              placeholder="**********"
+              type="password"
+              variant="filled"
+              mb={6}
+              name="newPassword"
+              onChange={dataHandler}
+              value={data["newPassword"]}
+            />
+          </FormControl>
         )}
         {/* Champs d'entrée pour le grade */}
         <Wrap gap={10} my={2} w={"full"} justify={"center"}>
