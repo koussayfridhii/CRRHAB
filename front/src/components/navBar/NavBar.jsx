@@ -335,6 +335,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
                 whiteSpace="nowrap"
+                textTransform="capitalize"
               >
                 {navItem.label[language]}
               </Box>
@@ -639,8 +640,12 @@ const NAV_ITEMS = [
     href: "/actualities",
   },
   {
-    label: { fr: "Présentation", en: "Presentation", ar: "تقديم المؤسسة" },
-    href: "/presentation",
+    label: {
+      fr: "Organisation Scientifique",
+      en: "Scientific Organization",
+      ar: "التنظيم العلمي",
+    },
+    href: "/scientific_organization",
     // children: [
     //   {
     //     label: { fr: "Carte", en: "Map", ar: "الخريطة" },

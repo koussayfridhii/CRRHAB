@@ -236,7 +236,7 @@ const router = createBrowserRouter([
         element: <ContactPage />,
       },
       {
-        path: "/presentation",
+        path: "/scientific_organization",
         element: <Presentation />,
         // children: [
         //   {

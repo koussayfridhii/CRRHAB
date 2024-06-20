@@ -28,9 +28,8 @@ const History = () => {
         my={"5dvh"}
         borderRadius="lg"
         dir={language === "ar" ? "rtl" : "ltr"}
-        _dark={{
-          bg: "background",
-        }}
+        px={5}
+        py={3}
       >
         <Heading
           _dark={{
@@ -52,31 +51,29 @@ const History = () => {
             ? "HISTORIQUE"
             : "تاريخ المؤسسة"}
         </Heading>
-        <Card py={3} px={5} mb={6}>
-          {data[language].split("/n").map((text, i) => {
-            return (
-              <Text
-                textAlign="justify"
-                color={"text"}
-                fontSize="xl"
-                key={i}
-                mb={4}
+        {data[language].split("/n").map((text, i) => {
+          return (
+            <Text
+              textAlign="justify"
+              color={"text"}
+              fontSize="xl"
+              key={i}
+              mb={4}
+            >
+              <Highlight
+                query="crrhab"
+                styles={{
+                  color: "text",
+                  px: "2",
+                  py: "1",
+                  fontWeight: "bold",
+                }}
               >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {text}
-                </Highlight>
-              </Text>
-            );
-          })}
-        </Card>
+                {text}
+              </Highlight>
+            </Text>
+          );
+        })}
       </Box>
     </>
   );

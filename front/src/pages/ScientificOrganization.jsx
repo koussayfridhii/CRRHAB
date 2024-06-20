@@ -44,13 +44,13 @@ const ScientificOrganization = () => {
       <Flex
         direction="column"
         w={{ base: "full" }}
-        bg={"white"}
+        bg={"background"}
         mx={"auto"}
         my={10}
         borderRadius={10}
         shadow={"lg"}
         px={10}
-        py={5}
+        py={7}
         dir={language === "ar" ? "rtl" : "ltr"}
         gap={10}
         _dark={{

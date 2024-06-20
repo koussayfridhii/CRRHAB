@@ -139,7 +139,7 @@ const Milestones = () => {
         dir={language === "ar" ? "rtl" : "ltr"}
       >
         <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref1}>
-          <chakra.h3
+          {/* <chakra.h3
             fontSize="4xl"
             fontWeight="bold"
             mb={20}
@@ -151,7 +151,7 @@ const Milestones = () => {
               : language === "fr"
               ? "ORGANISATION ADMINISTRATIVE"
               : "التنظيم الإداري"}
-          </chakra.h3>
+          </chakra.h3> */}
           {administrativeOrganization.map((milestone, index) => (
             <Flex key={index} mb="10px">
               <LineWithDot />
@@ -160,7 +160,7 @@ const Milestones = () => {
           ))}
         </Container>
         <Container maxWidth="4xl" p={{ base: 2, sm: 10 }} ref={ref2}>
-          <chakra.h3
+          {/* <chakra.h3
             fontSize="4xl"
             fontWeight="bold"
             mb={20}
@@ -171,7 +171,7 @@ const Milestones = () => {
               : language === "fr"
               ? "ORGANISATION SCIENTIFIQUE"
               : "التنظيم العلمي"}
-          </chakra.h3>
+          </chakra.h3> */}
           {scientificOrganization.map((milestone, index) => (
             <Flex key={index} mb="10px">
               <LineWithDot />

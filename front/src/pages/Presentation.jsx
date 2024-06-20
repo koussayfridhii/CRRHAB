@@ -14,42 +14,8 @@ const Presentation = () => {
       my={10}
       borderRadius="lg"
       minH="100dvh"
-      py={10}
-      px={{ base: 0, xl: 10 }}
       boxShadow="lg"
     >
-      <Box w="full">
-        <Missions />
-      </Box>
-      <Divider
-        my={5}
-        _dark={{
-          bg: "secondary",
-          borderColor: "secondary",
-        }}
-        orientation="horizontal"
-        bg={"primary"}
-        // borderWidth={1}
-        w={"90%"}
-        mx={"auto"}
-        borderColor={"primary"}
-      />
-      <Box w="full">
-        <History />
-      </Box>
-      <Divider
-        my={5}
-        _dark={{
-          bg: "secondary",
-          borderColor: "secondary",
-        }}
-        orientation="horizontal"
-        bg={"primary"}
-        // borderWidth={1}
-        w={"90%"}
-        mx={"auto"}
-        borderColor={"primary"}
-      />
       <Box w="full">
         <ScientificOrganization />
       </Box>

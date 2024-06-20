@@ -1,6 +1,6 @@
 import React from "react";
 import "./Content.scss";
-import { Box, Flex, Heading, Text, Highlight } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Highlight, Divider } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Organisation from "../../components/Organigram";
 import { motion } from "framer-motion"; // Importez Framer Motion
@@ -8,6 +8,8 @@ import { useInView } from "react-intersection-observer"; // Importez useInView d
 import AvatarWithRipple from "./Avatar";
 import Spinner from "../../components/spinner/Spinner";
 import { useCallApi } from "../../hooks/useCallApi";
+import Missions from "../Missions";
+import History from "../History";
 
 const Content = () => {
   const language = useSelector((state) => state.language.language);
@@ -55,45 +57,42 @@ const Content = () => {
           animate={inView1 ? { y: 0 } : { y: 50 }}
           transition={{ duration: 1 }}
           w="full"
-          bg="white"
-          _dark={{ bg: "background" }}
+          bg="background"
           shadow={"lg"}
           minH={"30dvh"}
           mx={"auto"}
           my={"5dvh"}
           p={{ base: 2, xl: 0 }}
         >
-          <Flex
-            justify={"start"}
-            align={"center"}
-            direction="column"
-            py={1}
-            px={{ base: 2, xl: 10 }}
-            gap={10}
-          >
-            {data?.[0]?.[language]?.split("\n").map((text, i) => (
-              <Text
-                key={i}
-                textAlign="justify"
-                color={"text"}
-                fontSize="xl"
-                mb={2}
-              >
-                <Highlight
-                  query="crrhab"
-                  styles={{
-                    color: "text",
-                    px: "2",
-                    py: "1",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {text}
-                </Highlight>
-              </Text>
-            ))}
-          </Flex>
-          <AvatarWithRipple language={language} data={data?.[0]} />
+          <History />
+        </Box>
+        <Divider
+          my={5}
+          _dark={{
+            bg: "secondary",
+            borderColor: "secondary",
+          }}
+          orientation="horizontal"
+          bg={"primary"}
+          // borderWidth={1}
+          w={"90%"}
+          mx={"auto"}
+          borderColor={"primary"}
+        />
+        <Box
+          as={motion.div}
+          initial={{ y: 50 }}
+          animate={inView1 ? { y: 0 } : { y: 50 }}
+          transition={{ duration: 1 }}
+          w="full"
+          bg="background"
+          shadow={"lg"}
+          minH={"30dvh"}
+          mx={"auto"}
+          my={"5dvh"}
+          p={{ base: 2, xl: 0 }}
+        >
+          <Missions />
         </Box>
       </section>
 
@@ -118,10 +117,10 @@ const Content = () => {
           ref={ref2}
         >
           {language === "en"
-            ? "ORGANIZATION OF THE CENTER"
+            ? "ORGANIZATIONAL CHART"
             : language === "fr"
-            ? "ORGANISATION DU CENTRE"
-            : "تنظيم المركز"}
+            ? "ORGANIGRAMME"
+            : "الهيكل التنظيمي"}
         </Heading>
         <Organisation />
       </section>
