@@ -24,5 +24,6 @@ router.put(
   rolesMiddleware.inRole(rolesMiddleware.roles.admin),
   documentControllers.putDocument
 );
+router.get("/documents/:id", documentControllers.getDocumentById);
 
 module.exports = router;

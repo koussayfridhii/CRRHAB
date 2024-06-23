@@ -8,7 +8,7 @@ import {
   Box,
   Flex,
   useToast,
-  Textarea,
+  Select,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -23,7 +23,7 @@ const CreateEvents = () => {
   const [formData, setFormData] = useState({
     title: { fr: "", ar: "", en: "" },
     link: "",
-    category: { fr: "", ar: "", en: "" },
+    category: "open data",
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
@@ -41,7 +41,9 @@ const CreateEvents = () => {
         ...formData,
         [field]: e.target.value,
       });
+      console.log(e.target.value);
     }
+    console.log(lang);
   };
 
   // Gérer le téléchargement de fichier
@@ -75,12 +77,12 @@ const CreateEvents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const dataToSubmit = { ...formData, media: url };
+    const dataToSubmit = { ...formData, link: url };
     try {
       if (id) {
         await axios.put(
           `https://crrhab-3ofe.vercel.app/api/documents/${id}`,
-          dataToSubmit,
+          formData,
           {
             headers: {
               "Content-Type": "application/json",
@@ -107,7 +109,7 @@ const CreateEvents = () => {
         duration: 5000,
         isClosable: true,
       });
-      navigate("/admin/documents");
+      navigate("/admin/downloads");
     } catch (error) {
       setLoading(false);
       toast({
@@ -123,7 +125,7 @@ const CreateEvents = () => {
 
   // Mettre à jour l'URL de l'image dans les données du formulaire
   useEffect(() => {
-    setFormData({ ...formData, media: url });
+    setFormData({ ...formData, link: url });
   }, [url]);
 
   // Récupérer les données du document si en mode édition
@@ -156,14 +158,6 @@ const CreateEvents = () => {
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl>
-              <FormLabel>Lien</FormLabel>
-              <Input
-                type="text"
-                value={formData?.link}
-                onChange={(e) => handleChange(e, null, "link")}
-              />
-            </FormControl>
-            <FormControl>
               <FormLabel>Titre</FormLabel>
               <VStack>
                 <Input
@@ -188,29 +182,16 @@ const CreateEvents = () => {
             </FormControl>
             <FormControl>
               <FormLabel>Catégorie</FormLabel>
-              <VStack>
-                <Input
-                  placeholder="fr"
-                  type="text"
-                  value={formData?.category?.fr}
-                  onChange={(e) => handleChange(e, "fr", "category")}
-                />
-                <Input
-                  placeholder="ar"
-                  type="text"
-                  value={formData?.category?.ar}
-                  onChange={(e) => handleChange(e, "ar", "category")}
-                />
-                <Input
-                  placeholder="en"
-                  type="text"
-                  value={formData?.category?.en}
-                  onChange={(e) => handleChange(e, "en", "category")}
-                />
-              </VStack>
+              <Select
+                value={formData?.category}
+                onChange={(e) => handleChange(e, null, "category")}
+              >
+                <option value="open data">Open Data</option>
+                <option value="downloads">Downloads</option>
+              </Select>
             </FormControl>
             <FormControl>
-              <FormLabel>file</FormLabel>
+              <FormLabel>Fichier</FormLabel>
               <Input type="file" onChange={handleFileChange} />
             </FormControl>
             <Button

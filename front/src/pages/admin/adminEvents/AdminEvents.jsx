@@ -67,7 +67,6 @@ const AdminEvents = () => {
   const getAllData = async () => {
     try {
       const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/events`);
-      console.log(res.data.events);
       setData(res.data.events);
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);

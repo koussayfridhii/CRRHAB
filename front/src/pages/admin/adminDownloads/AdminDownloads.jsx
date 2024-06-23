@@ -136,7 +136,7 @@ const DataTable = ({ data, setData, headers, language }) => {
   };
 
   const updateDocument = (id) => {
-    navigate("/admin/create/documents/" + id);
+    navigate("/admin/create/downloads/" + id);
   };
 
   const getText = (item, language) => item[language] || item.en || "";
@@ -160,7 +160,7 @@ const DataTable = ({ data, setData, headers, language }) => {
           <Tr key={index}>
             <Td>{getText(item.title, language)}</Td>
             <Td>{item.link}</Td>
-            <Td>{getText(item.category, language)}</Td>
+            <Td>{item.category}</Td>
             <Td>{new Date(item.createdAt).toLocaleDateString(language)}</Td>
             <Td>
               <Flex justify={{ md: "end" }} gap={1}>
