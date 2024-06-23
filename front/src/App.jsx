@@ -33,6 +33,8 @@ const DashBoard = lazy(() => import("./pages/admin/DashBoard.jsx"));
 const Create = lazy(() => import("./pages/admin/Create.jsx"));
 const Actualities = lazy(() => import("./pages/Actualities.jsx"));
 const Actuality = lazy(() => import("./pages/Actuality.jsx"));
+const Events = lazy(() => import("./pages/Events.jsx"));
+const Event = lazy(() => import("./pages/Event.jsx"));
 const Map = lazy(() => import("./pages/Map.jsx"));
 const History = lazy(() => import("./pages/History.jsx"));
 const Missions = lazy(() => import("./pages/Missions.jsx"));
@@ -134,6 +136,12 @@ const AdminParagraphLanding = lazy(() =>
 const CreateParagraphLanding = lazy(() =>
   import("./pages/admin/adminLandingParagraph/CreateLandingParagraph.jsx")
 );
+const AdminDownloads = lazy(() =>
+  import("./pages/admin/adminDownloads/AdminDownloads.jsx")
+);
+const CreateDownloads = lazy(() =>
+  import("./pages/admin/adminDownloads/CreateDownloads.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -174,6 +182,19 @@ const router = createBrowserRouter([
           {
             path: "/actualities/:id",
             element: <Actuality />,
+          },
+        ],
+      },
+      {
+        path: "/events",
+        children: [
+          {
+            path: "/events",
+            element: <Events />,
+          },
+          {
+            path: "/events/:id",
+            element: <Event />,
           },
         ],
       },
@@ -303,6 +324,10 @@ const router = createBrowserRouter([
         element: <AdminResearchTeam />,
       },
       {
+        path: "/admin/downloads",
+        element: <AdminDownloads />,
+      },
+      {
         path: "/admin/users",
         element: <AdminUsers />,
       },
@@ -392,6 +417,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/research_team/:id",
                 element: <CreateResearchTeam />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/downloads",
+            element: <CreateDownloads />,
+            children: [
+              {
+                path: "/admin/create/downloads/:id",
+                element: <CreateDownloads />,
               },
             ],
           },

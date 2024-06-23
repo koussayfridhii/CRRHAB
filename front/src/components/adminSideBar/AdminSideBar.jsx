@@ -71,9 +71,14 @@ const LinkItems = [
   { name: "Galerie", icon: FaImages, href: "/admin/gallery" },
   { name: "Vidéo", icon: CiVideoOn, href: "/admin/videos" },
   {
-    name: "Paragraphe Page d'Accueil",
+    name: "Historique",
     icon: MdOutlinePersonSearch,
     href: "/admin/paragraphs",
+  },
+  {
+    name: "Espae téléchargement",
+    icon: MdOutlinePersonSearch,
+    href: "/admin/downloads",
   },
   {
     name: "Utilisateurs",

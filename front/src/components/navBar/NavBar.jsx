@@ -637,7 +637,16 @@ const NAV_ITEMS = [
   },
   {
     label: { fr: "Actualités", en: "News", ar: "المستجدات" },
-    href: "/actualities",
+    children: [
+      {
+        label: { fr: "Actualités", en: "News", ar: "المستجدات" },
+        href: "/actualities",
+      },
+      {
+        label: { fr: "évènements", en: "Events", ar: "الأحداث" },
+        href: "/events",
+      },
+    ],
   },
   {
     label: {

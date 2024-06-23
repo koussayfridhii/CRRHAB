@@ -2,7 +2,7 @@ import { Box, Flex, Image, chakra } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ data, language }) => {
+const Card = ({ data, language, events = false }) => {
   return (
     <>
       <Box
@@ -40,7 +40,7 @@ const Card = ({ data, language }) => {
           w="full"
           fit="cover"
           mt={2}
-          src={data.img}
+          src={data?.img || data?.media}
           alt={data.title?.[language]}
         />
 
@@ -68,7 +68,7 @@ const Card = ({ data, language }) => {
               bg: "gray.400",
             }}
             as={Link}
-            to={"/actualities/" + data._id}
+            to={`${events ? "/events/" : "/actualities/"}${data._id}`}
           >
             {language === "fr"
               ? "voir plus"
