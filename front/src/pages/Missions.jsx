@@ -9,31 +9,20 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useCallApi } from "../hooks/useCallApi";
+import Spinner from "../components/spinner/Spinner";
 
 const Missions = ({ full = false }) => {
   const language = useSelector((state) => state.language.language);
-  const missions = [
-    {
-      fr: `Développement d’un pôle de recherche d’excellence dans les domaines de l’horticulture et de l’agriculture biologique au niveau national et régional (Sousse, Monastir, Mahdia et Sfax) `,
-      en: `Establishment of a center for research excellence in the fields of horticulture and organic agriculture at the national and regional levels (Sousse, Monastir, Mahdia, and Sfax)`,
-      ar: `إنشاء مركز أبحاث متميز في مجالات البستنة والزراعة العضوية على المستوى الوطني والإقليمي (سوسة، المنستير، المهدية، وصفاقس)    `,
-    },
-    {
-      fr: `Contribution au transfert et la diffusion des acquis de la recherche au niveau des régions`,
-      en: `Contribution to the transfer and dissemination of research findings at the regional level`,
-      ar: `المساهمة في نقل ونشر نتائج البحوث على مستوى المناطق`,
-    },
-    {
-      fr: `Formation et encadrement des utilisateurs des résultats de la recherche`,
-      en: `Training and support for users of research results`,
-      ar: `تكوين وتأهيل مستخدمي نتائج البحث`,
-    },
-    {
-      fr: `Offre d’expertise et de conseils scientifiques et techniques aux secteurs public et privé.`,
-      en: `Provision of expertise and scientific and technical advice to the public and private sectors.`,
-      ar: `تقديم الخبرة والمشورة العلمية والفنية للقطاعين العام والخاص.`,
-    },
-  ];
+  const { data, error, isLoading } = useCallApi("missions");
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
   return (
     <Box
       w={{ base: "full" }}
@@ -84,7 +73,7 @@ const Missions = ({ full = false }) => {
         </Highlight>
       </Text>
       <OrderedList mx={5} my={5}>
-        {missions.map((mission) => {
+        {data?.map((mission) => {
           return (
             <ListItem key={mission.fr}>
               <Text textAlign="justify" color={"text"} fontSize="xl" mb={2}>
@@ -99,7 +88,7 @@ const Missions = ({ full = false }) => {
                     fontWeight: "bold",
                   }}
                 >
-                  {mission[language]}
+                  {mission?.description?.[language]}
                 </Highlight>
               </Text>
             </ListItem>

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   FormControl,
   FormLabel,
-  Input,
   Button,
   VStack,
-  HStack,
   Box,
   Flex,
   useToast,
@@ -15,33 +13,29 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { withAuthorization } from "../../../HOC/Protect";
-import useUploadImage from "../../../hooks/useUploadImage";
 
 const CreateParagraphLanding = () => {
   const { pathname } = useLocation();
-  const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    fr: "",
-    ar: "",
-    en: "",
-    directeur: { fr: "", ar: "", en: "", img: "" },
+    description: {
+      fr: "",
+      ar: "",
+      en: "",
+    },
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
-  const path = pathname.replace("/admin/create/paragraphs", "");
-  const handleChange = (e, lang, field) => {
-    if (field === "directeur") {
-      setFormData({
-        ...formData,
-        directeur: { ...formData.directeur, [lang]: e.target.value },
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [lang]: e.target.value,
-      });
-    }
+  const path = pathname.replace("/admin/create/paragraphs/", "");
+  const handleChange = (e) => {
+    e.preventDefault();
+    setFormData({
+      ...formData,
+      description: {
+        ...formData.description,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
   const navigate = useNavigate();
@@ -49,69 +43,35 @@ const CreateParagraphLanding = () => {
     e.preventDefault();
     setLoading(true);
     const payload = { ...formData };
-
-    if (path === "") {
-      try {
-        const response = await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/paragraphs",
-          JSON.stringify(payload),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user?.user?.token}`,
-            },
-          }
-        );
-        setLoading(false);
-        toast({
-          title: "Données soumises avec succès!",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        navigate("/admin/paragraphs");
-      } catch (error) {
-        setLoading(false);
-        toast({
-          title: "Erreur lors de la soumission des données.",
-          description: error.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
-        console.error("Erreur lors de la soumission des données:", error);
-      }
-    } else {
-      try {
-        const response = await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/paragraphs/${formData._id}`,
-          JSON.stringify(payload),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user?.user?.token}`,
-            },
-          }
-        );
-        setLoading(false);
-        toast({
-          title: "Données soumises avec succès!",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        navigate("/admin/paragraphs");
-      } catch (error) {
-        setLoading(false);
-        toast({
-          title: "Erreur lors de la soumission des données.",
-          description: error.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
-        console.error("Erreur lors de la soumission des données:", error);
-      }
+    try {
+      const response = await axios.put(
+        `https://crrhab-3ofe.vercel.app/api/histories/${path}`,
+        JSON.stringify(payload),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.user?.token}`,
+          },
+        }
+      );
+      setLoading(false);
+      toast({
+        title: "Données soumises avec succès!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate("/admin/paragraphs");
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Erreur lors de la soumission des données.",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      console.error("Erreur lors de la soumission des données:", error);
     }
   };
 
@@ -122,7 +82,7 @@ const CreateParagraphLanding = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `https://crrhab-3ofe.vercel.app/api/paragraphs/${path}`
+        `https://crrhab-3ofe.vercel.app/api/histories/${path}`
       );
       setFormData(response.data);
     } catch (error) {
@@ -137,90 +97,52 @@ const CreateParagraphLanding = () => {
       console.error("Erreur lors de la récupération des données:", error);
     }
   };
-  const handleFileChange = async (e) => {
-    e.preventDefault();
-    const imageFile = e.target.files[0];
-    try {
-      setLoading(true);
-      const url = await useUploadImage("media", imageFile);
-      setUrl(url);
-      setLoading(false);
-      toast({
-        title: "File uploaded successfully.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-    } catch (error) {
-      setLoading(false);
-      toast({
-        title: "Failed to upload file.",
-        description: error.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  };
-  useEffect(() => {
-    setFormData({
-      ...formData,
-      directeur: { ...formData.directeur, img: url },
-    });
-  }, [url]);
   return (
     <Flex w="100%" minH="100dvh" justify="center" align="center" py={20}>
-      <Box bg="background" p={8} rounded="md" shadow="lg" mx="auto">
+      <Box
+        bg="background"
+        p={8}
+        minH="100dvh"
+        w="90%"
+        rounded="md"
+        shadow="lg"
+        mx="auto"
+      >
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl>
-              <FormLabel>Paragraphe</FormLabel>
-              <HStack>
+              <FormLabel>Historique</FormLabel>
+              <FormLabel color="red.500">
+                ajouter /n pour le retour à la ligne
+              </FormLabel>
+              <VStack>
                 <Textarea
                   placeholder="fr"
+                  name="fr"
                   type="text"
-                  value={formData.fr}
+                  value={formData?.description?.fr}
                   onChange={(e) => handleChange(e, "fr")}
+                  size="xxl"
+                  rows={10}
                 />
                 <Textarea
                   placeholder="ar"
+                  name="ar"
                   type="text"
-                  value={formData.ar}
+                  value={formData?.description?.ar}
                   onChange={(e) => handleChange(e, "ar")}
+                  rows={10}
                 />
                 <Textarea
                   placeholder="en"
+                  name="en"
                   type="text"
-                  value={formData.en}
+                  value={formData?.description?.en}
                   onChange={(e) => handleChange(e, "en")}
+                  rows={10}
                 />
-              </HStack>
+              </VStack>
             </FormControl>
-            <FormControl>
-              <FormLabel>Directeur</FormLabel>
-              <HStack>
-                <Input
-                  placeholder="Nom en français"
-                  type="text"
-                  value={formData.directeur.fr}
-                  onChange={(e) => handleChange(e, "fr", "directeur")}
-                />
-                <Input
-                  placeholder="Nom en arabe"
-                  type="text"
-                  value={formData.directeur.ar}
-                  onChange={(e) => handleChange(e, "ar", "directeur")}
-                />
-                <Input
-                  placeholder="Nom en anglais"
-                  type="text"
-                  value={formData.directeur.en}
-                  onChange={(e) => handleChange(e, "en", "directeur")}
-                />
-              </HStack>
-            </FormControl>
-            <FormLabel>Image</FormLabel>
-            <Input type="file" onChange={handleFileChange} />
             <Button
               type="submit"
               colorScheme="green"

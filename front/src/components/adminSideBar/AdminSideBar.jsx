@@ -36,43 +36,51 @@ import ThemeToggle from "../ThemeToggle";
 import { logout } from "../../redux/userSlice";
 import axios from "axios";
 const LinkItems = [
-  { name: "Research Team", icon: FaRegUser, href: "/admin/research_team" },
   {
-    name: "Laboratory Members",
+    name: "Équipe de Recherche",
+    icon: FaRegUser,
+    href: "/admin/research_team",
+  },
+  {
+    name: "Membres du Laboratoire",
     icon: FaRegUser,
     href: "/admin/laboratory_members",
   },
-  { name: "Diploma Courses", icon: FaBook, href: "/admin/diploma_course" },
   {
-    name: "Scientific Council",
+    name: "Formations Diplômante",
+    icon: FaBook,
+    href: "/admin/diploma_course",
+  },
+  {
+    name: "Conseil Scientifique",
     icon: MdOutlinePersonSearch,
     href: "/admin/scientific_council",
   },
   {
-    name: "Scientific Productions",
+    name: "Productions Scientifiques",
     icon: GiMaterialsScience,
     href: "/admin/scientific_productions",
   },
   {
-    name: "National Projects",
+    name: "Projets Nationaux",
     icon: GiMaterialsScience,
     href: "/admin/national_projects",
   },
-  { name: "Actualities", icon: FaRegNewspaper, href: "/admin/actualities" },
-  { name: "Events", icon: MdOutlineEvent, href: "/admin/events" },
-  { name: "Gallery", icon: FaImages, href: "/admin/gallery" },
-  { name: "Video", icon: CiVideoOn, href: "/admin/videos" },
+  { name: "Actualités", icon: FaRegNewspaper, href: "/admin/actualities" },
+  { name: "Événements", icon: MdOutlineEvent, href: "/admin/events" },
+  { name: "Galerie", icon: FaImages, href: "/admin/gallery" },
+  { name: "Vidéo", icon: CiVideoOn, href: "/admin/videos" },
   {
-    name: "Paragraph Landing Page",
+    name: "Paragraphe Page d'Accueil",
     icon: MdOutlinePersonSearch,
     href: "/admin/paragraphs",
   },
   {
-    name: "Users",
+    name: "Utilisateurs",
     icon: FaRegUser,
     href: "/admin/users",
   },
-  { name: "Settings", icon: FiSettings, href: "/profile" },
+  { name: "Paramètres", icon: FiSettings, href: "/profile" },
 ];
 
 export default function SimpleSidebar({ children }) {

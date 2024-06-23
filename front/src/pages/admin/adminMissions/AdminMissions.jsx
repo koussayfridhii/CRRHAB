@@ -16,7 +16,7 @@ import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
 import { withAuthorization } from "../../../HOC/Protect";
 
-const AdminLandingParagraph = () => {
+const AdminMissions = () => {
   const [data, setData] = useState([]);
   const headers = [
     {
@@ -30,7 +30,7 @@ const AdminLandingParagraph = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/histories`);
+    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/missions`);
     setData(res.data);
   };
 
@@ -66,7 +66,7 @@ const DataList = ({ data, language }) => {
   const navigate = useNavigate();
 
   const updateOne = (id) => {
-    navigate("/admin/create/paragraphs/" + id);
+    navigate("/admin/create/missions/" + id);
   };
 
   return (
@@ -121,4 +121,4 @@ const DataList = ({ data, language }) => {
   );
 };
 
-export default withAuthorization(AdminLandingParagraph, ["admin"]);
+export default withAuthorization(AdminMissions, ["admin"]);
