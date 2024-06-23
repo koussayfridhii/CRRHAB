@@ -6,6 +6,7 @@ const fetchApiData = async (linkSuffix) => {
   const { data } = await axios.get(
     `https://crrhab-3ofe.vercel.app/api/${linkSuffix}`
   );
+  // console.log(data);
   return data[linkSuffix] !== undefined ? data[linkSuffix] : data;
 };
 

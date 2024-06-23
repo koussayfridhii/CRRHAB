@@ -61,7 +61,7 @@ const History = () => {
             ? "HISTORIQUE"
             : "تاريخ المؤسسة"}
         </Heading>
-        {data[language].split("/n").map((text, i) => {
+        {data?.[0]?.description?.[language]?.split("/n").map((text, i) => {
           return (
             <Text
               textAlign="justify"
