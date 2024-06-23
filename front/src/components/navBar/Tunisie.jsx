@@ -201,7 +201,7 @@ const Tunisie = () => {
         transition={{ duration: 0.5, delay: 1.6 }}
       >
         <chakra.h1
-          fontSize={{ base: "xxl", xl: "xxxl", "2xl": "xxxxl" }}
+          fontSize={{ base: "lg", "2xl": "xxl" }}
           fontWeight={"bold"}
           textAlign={"center"}
           color={"primary"}

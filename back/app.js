@@ -31,6 +31,7 @@ const laboratoryMembersRouter = require("./routes/laboratoryMembers.route");
 const nationalProjectRouter = require("./routes/nationalProject.route");
 const videoRouter = require("./routes/video.route");
 const paragraphLandingPageRoute = require("./routes/paragraphLanding.route");
+const historyRoute = require("./routes/history.route");
 
 //initializing app(express)
 // var app = express();
@@ -88,6 +89,7 @@ app.use("/api", [
   nationalProjectRouter,
   videoRouter,
   paragraphLandingPageRoute,
+  historyRoute,
 ]);
 app.get("/", (req, res) => {
   mongoose
