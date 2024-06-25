@@ -212,6 +212,8 @@ const Card = ({ title, language }) => {
       }}
       mb={5}
       shadow="lg"
+      w="full"
+      // textAlign="center"
     >
       <Box>
         <chakra.h1

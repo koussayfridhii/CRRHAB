@@ -701,9 +701,9 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "Réseau Chercheurs",
-      en: "Research Network",
-      ar: "شبكة الباحثين",
+      fr: "équipe de Recherche",
+      en: "Research Team",
+      ar: "فريق الباحثين",
     },
     href: "/researchteam",
   },
@@ -744,9 +744,9 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "Laboratoire de Recherche",
-      en: "Research Laboratory",
-      ar: "مختبر البحث",
+      fr: "Structures de Recherche",
+      en: "Research Structures",
+      ar: "هياكل البحث",
     },
     children: [
       {
