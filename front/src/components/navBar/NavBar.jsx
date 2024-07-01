@@ -52,13 +52,12 @@ export default function WithSubnavigation() {
         top="0"
         zIndex="300"
         w="100%"
-        bg="red.500"
         color="text"
         shadow={"lg"}
         style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
       >
         <Flex
-          bg={"primary"}
+          bg={"blue.300"}
           _dark={{
             bg: "secondary",
             borderColor: "primary",
@@ -69,7 +68,7 @@ export default function WithSubnavigation() {
           px={{ base: 4 }}
           borderBottom={4}
           borderStyle={"solid"}
-          borderColor="secondary"
+          borderColor="whiteHover"
           align={"center"}
           style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
         >
@@ -156,11 +155,11 @@ export default function WithSubnavigation() {
                 />
               </InputGroup>
             </FormControl> */}
-            <Box display={{ base: "none", xl: "block" }} bg={"primary"}>
+            <Box display={{ base: "none", xl: "block" }} bg={"blue.300"}>
               <Popover
                 trigger={"hover"}
                 placement={"bottom-start"}
-                bg={"primary"}
+                bg={"blue.300"}
               >
                 <PopoverTrigger>
                   <Button
@@ -171,11 +170,11 @@ export default function WithSubnavigation() {
                     _hover={{
                       textDecoration: "none",
                       color: "text",
-                      bg: "primary",
+                      bg: "blue.300",
                     }}
                     align="center"
                     cursor={"pointer"}
-                    bg={"primary"}
+                    bg={"blue.300"}
                     _dark={{
                       bg: "secondary",
                     }}
@@ -190,7 +189,7 @@ export default function WithSubnavigation() {
                   p={4}
                   rounded={"xl"}
                   w={"xs"}
-                  bg={"primary"}
+                  bg={"blue.300"}
                   _dark={{
                     bg: "secondary",
                   }}
@@ -274,7 +273,7 @@ export default function WithSubnavigation() {
                     fontSize={"sm"}
                     fontWeight={600}
                     color={"white"}
-                    bg={"primary"}
+                    bg={"blue.300"}
                     _dark={{
                       bg: "secondary",
                     }}
@@ -314,7 +313,7 @@ export default function WithSubnavigation() {
 const DesktopNav = () => {
   const linkColor = useColorModeValue("white", "gray.200");
   const linkHoverColor = useColorModeValue("whiteHover", "white");
-  const popoverContentBgColor = useColorModeValue("primary", "gray.800");
+  const popoverContentBgColor = useColorModeValue("blue.300", "gray.800");
   const language = useSelector((state) => state.language.language);
   return (
     <Stack direction={"row"} spacing={4}>
@@ -335,7 +334,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
                 whiteSpace="nowrap"
-                textTransform="capitalize"
+                textTransform="unset"
               >
                 {navItem.label[language]}
               </Box>
@@ -409,7 +408,7 @@ const MobileNav = () => {
   const user = useSelector((state) => state.user.user);
   return (
     <Stack
-      bg={"primary"}
+      bg={"blue.300"}
       _dark={{ bg: "secondary" }}
       borderBottom={4}
       borderStyle={"solid"}
@@ -431,7 +430,7 @@ const MobileNav = () => {
               p={2}
               fontSize={"sm"}
               color={"white"}
-              bg={"primary"}
+              bg={"blue.300"}
               _hover={{
                 textDecoration: "none",
                 color: "white",
@@ -542,7 +541,7 @@ const MobileNav = () => {
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
-              bg={"primary"}
+              bg={"blue.300"}
               mb={4}
               _hover={{
                 bg: "primaryHover",
@@ -639,12 +638,16 @@ const NAV_ITEMS = [
     label: { fr: "Actualités", en: "News", ar: "المستجدات" },
     children: [
       {
-        label: { fr: "Actualités", en: "News", ar: "المستجدات" },
+        label: { fr: "Annonces", en: "announces", ar: "-" },
         href: "/actualities",
       },
       {
         label: { fr: "évènements", en: "Events", ar: "الأحداث" },
         href: "/events",
+      },
+      {
+        label: { fr: "Autres", en: "Others", ar: "-" },
+        href: "/actualities",
       },
     ],
   },
@@ -709,14 +712,14 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "Projets",
+      fr: "Projets et Conventions",
       en: "Projects",
       ar: "المشاريع",
     },
     children: [
       {
         label: {
-          fr: "Projets Internationaux",
+          fr: "Projets Internationaux Cloturés",
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
@@ -729,17 +732,56 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Projets Nationaux",
-          en: "National Projects",
+          fr: "Projets Internationaux en cours",
+          en: "International Projects",
           ar: "الدولية المشاريع",
         },
         subLabel: {
-          fr: "Projets Nationaux",
-          en: "National Projects",
+          fr: "Projets Internationaux",
+          en: "International Projects",
           ar: "الدولية المشاريع",
         },
-        href: "/projects/national",
+        href: "/projects/international",
       },
+      {
+        label: {
+          fr: "Collaborations Internationaux Cloturés",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/international",
+      },
+      {
+        label: {
+          fr: "Collaborations Internationaux en cours",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/international",
+      },
+      // {
+      //   label: {
+      //     fr: "Projets Nationaux",
+      //     en: "National Projects",
+      //     ar: "الدولية المشاريع",
+      //   },
+      //   subLabel: {
+      //     fr: "Projets Nationaux",
+      //     en: "National Projects",
+      //     ar: "الدولية المشاريع",
+      //   },
+      //   href: "/projects/national",
+      // },
     ],
   },
   {
@@ -806,10 +848,7 @@ const NAV_ITEMS = [
     },
     href: "/specialized_units",
   },
-  {
-    label: { fr: "Galerie", en: "Gallery", ar: "مكتبة الوسائط" },
-    href: "/gallery/imgs",
-  },
+  
 
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
@@ -820,7 +859,7 @@ const NAV_ITEMS = [
     children: [
       {
         label: {
-          fr: "Accés à l’information",
+          fr: "Textes Réglementaires",
           en: "Open Data",
           ar: "النفاذ للمعلومة",
         },
@@ -828,10 +867,22 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Espace de téléchargement",
+          fr: "Rapports d'Activités",
           en: "Download area",
           ar: "منطقة التحميل",
         },
+        href: "/open_data",
+      },
+      {
+        label: { fr: "Bibliographie", en: "-", ar: "-" },
+        href: "/open_data",
+      },
+      {
+        label: { fr: "Galerie", en: "Gallery", ar: "مكتبة الوسائط" },
+        href: "/gallery/imgs",
+      },
+      {
+        label: { fr: "Formulaires Administratives", en: "-", ar: "-" },
         href: "/open_data",
       },
     ],

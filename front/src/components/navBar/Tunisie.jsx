@@ -61,7 +61,7 @@ const Tunisie = () => {
             >
               <Image
                 boxSize="15vh"
-                w={"25vh"}
+                w={"35vh"}
                 objectFit="contain"
                 src="/assets/images/logoIRESA_couleur_fr.png"
                 fallbackSrc="https://via.placeholder.com/150"
@@ -78,7 +78,7 @@ const Tunisie = () => {
               <Image
                 objectFit="contain"
                 boxSize="15vh"
-                w={"25vh"}
+                w={"35vh"}
                 src="/assets/images/crrhab.png"
                 fallbackSrc="https://via.placeholder.com/150"
                 mx={"auto"}
@@ -90,8 +90,7 @@ const Tunisie = () => {
           columns={4}
           gap={3}
           display={{ base: "none", xl: "grid" }}
-          fontWeight={"bold"}
-          fontSize={"sm"}
+          fontSize={"xs"}
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +122,7 @@ const Tunisie = () => {
               {language === "fr" ? (
                 <>
                   Ministère de l’Agriculture, <br />
-                  des Ressources Hydrauliques <br />
+                  des Ressources Hydrauliques 
                   et de la Pêche
                 </>
               ) : language === "ar" ? (
@@ -136,9 +135,7 @@ const Tunisie = () => {
               ) : (
                 <>
                   The Minister of Agriculture,
-                  <br />
                   Hydraulic Resources
-                  <br />
                   and fishing
                 </>
               )}
@@ -149,7 +146,7 @@ const Tunisie = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.2 }}
           >
-            <Text textAlign={"center"}>
+            {/* <Text textAlign={"center"}>
               {language === "fr" ? (
                 <>
                   Institution de la Recherche <br />
@@ -167,14 +164,14 @@ const Tunisie = () => {
                   Research and Higher Education
                 </>
               )}
-            </Text>
+            </Text> */}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.4 }}
           >
-            <Text textAlign={"center"}>
+            {/* <Text textAlign={"center"}>
               {language === "fr" ? (
                 <>
                   Centre Régional des <br /> Recherches en Horticulture <br />
@@ -191,7 +188,7 @@ const Tunisie = () => {
                   المركز الجهوي للبحوث <br /> في البستنة و الفلاحة البيولوجية
                 </>
               )}
-            </Text>
+            </Text> */}
           </motion.div>
         </SimpleGrid>
       </SimpleGrid>
