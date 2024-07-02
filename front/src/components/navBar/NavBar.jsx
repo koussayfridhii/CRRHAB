@@ -639,10 +639,10 @@ const NAV_ITEMS = [
     children: [
       {
         label: { fr: "Annonces", en: "announces", ar: "-" },
-        href: "/actualities",
+        href: "/advertisements",
       },
       {
-        label: { fr: "évènements", en: "Events", ar: "الأحداث" },
+        label: { fr: "Évènements", en: "Events", ar: "الأحداث" },
         href: "/events",
       },
       {
@@ -704,7 +704,7 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "équipe de Recherche",
+      fr: "Équipe de Recherche",
       en: "Research Team",
       ar: "فريق الباحثين",
     },
@@ -719,7 +719,7 @@ const NAV_ITEMS = [
     children: [
       {
         label: {
-          fr: "Projets Internationaux Cloturés",
+          fr: "Projets Internationaux Clos",
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
@@ -745,7 +745,33 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Collaborations Internationaux Cloturés",
+          fr: "Projets Nationaux Clos",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/national",
+      },
+      {
+        label: {
+          fr: "Projets Nationaux en cours",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        subLabel: {
+          fr: "Projets Internationaux",
+          en: "International Projects",
+          ar: "الدولية المشاريع",
+        },
+        href: "/projects/national",
+      },
+      {
+        label: {
+          fr: "Conventions Closes",
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
@@ -758,7 +784,7 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Collaborations Internationaux en cours",
+          fr: "Conventions en cours",
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
@@ -855,7 +881,7 @@ const NAV_ITEMS = [
     href: "/contact",
   },
   {
-    label: { fr: "Voir Plus", en: "More", ar: "المزيد" },
+    label: { fr: "Voir plus", en: "More", ar: "المزيد" },
     children: [
       {
         label: {
@@ -874,7 +900,7 @@ const NAV_ITEMS = [
         href: "/open_data",
       },
       {
-        label: { fr: "Bibliographie", en: "-", ar: "-" },
+        label: { fr: "Bibliothèque", en: "-", ar: "-" },
         href: "/open_data",
       },
       {
@@ -882,7 +908,7 @@ const NAV_ITEMS = [
         href: "/gallery/imgs",
       },
       {
-        label: { fr: "Formulaires Administratives", en: "-", ar: "-" },
+        label: { fr: "Formulaires Administratifs", en: "-", ar: "-" },
         href: "/open_data",
       },
     ],

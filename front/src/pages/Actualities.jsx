@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex, chakra, Wrap, WrapItem } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Card from "../components/cards/cardV4/Card";
 import Spinner from "../components/spinner/Spinner";
 import { useCallApi } from "../hooks/useCallApi";
+import { useLocation } from "react-router-dom";
 
 const Actualities = () => {
   const language = useSelector((state) => state.language.language);
+  const { pathname } = useLocation();
   const { data, error, isLoading } = useCallApi("news");
-
+  // useEffect(()=>{
+  // },[data])
   if (isLoading) {
     return <Spinner />;
   }
@@ -55,11 +58,16 @@ const Actualities = () => {
               color: "gray.900",
             }}
           >
-            {language === "fr"
+            {pathname==="/actualities" && (language === "fr"
               ? "Actualités"
               : language === "en"
               ? "News"
-              : "الأخبار "}
+              : "الأخبار ")}
+            {pathname!=="/actualities" && (language === "fr"
+              ? "Annonces"
+              : language === "en"
+              ? "advertisements"
+              : "إعلانات")}
           </chakra.p>
         </Box>
         <Wrap>

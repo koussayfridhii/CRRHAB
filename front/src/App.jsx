@@ -186,6 +186,10 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/advertisements",
+        element: <Actualities />
+      },
+      {
         path: "/events",
         children: [
           {

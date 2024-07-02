@@ -1,4 +1,4 @@
-import { Box, Image, SimpleGrid, Text, chakra } from "@chakra-ui/react";
+import { Box, Flex, Image, SimpleGrid, Text, chakra } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion"; // Importer framer-motion pour les animations
@@ -21,8 +21,8 @@ const Tunisie = () => {
         mx={"auto"}
         h={"fit-content"}
       >
-        <SimpleGrid columns={4} gap={3}>
-          <Box w="full">
+        <Flex columns={4} gap={3} align="center">
+          <Flex w="full" justify="center"  gap={2} align="end" >
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -37,22 +37,72 @@ const Tunisie = () => {
                 mx={"auto"}
               />
             </motion.div>
-          </Box>
-          <Box w="full">
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <Text textAlign={"justify"} fontWeight="bold" fontSize="sm" py={3}>
+              {language === "fr" ? (
+                <>
+                  République Tunisienne <br />
+                </>
+              ) : language === "ar" ? (
+                <>
+                  الجمهورية التونسية <br />
+                </>
+              ) : (
+                <>
+                  Tunisian Republic <br />
+                </>
+              )}
+            </Text>
+          </motion.div>
+          </Flex>
+          <Flex w="full" justify="center" align="center" gap={2}>
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Image
-                boxSize="15vh"
+                boxSize="25vh"
                 objectFit="contain"
                 src="/assets/images/Logo_Ministère_de_l'Agriculture_(Tunisie).png"
                 fallbackSrc="https://via.placeholder.com/150"
                 mx={"auto"}
               />
             </motion.div>
-          </Box>
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            >
+            
+            <Text fontWeight="bold" fontSize="sm" textAlign={"justify"}>
+              {language === "fr" ? (
+                <>
+                  Ministère de l’Agriculture, 
+                  des Ressources Hydrauliques 
+                  et de la Pêche
+                </>
+              ) : language === "ar" ? (
+                <>
+                  وزارة الــفــلاحــة <br />
+                  والموارد المائية
+                  <br />
+                  والصيد البحري
+                </>
+              ) : (
+                <>
+                  The Minister of Agriculture,
+                  Hydraulic Resources
+                  and fishing
+                </>
+              )}
+            </Text>
+          </motion.div>
+          </Flex>
           <Box w="full">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -85,112 +135,7 @@ const Tunisie = () => {
               />
             </motion.div>
           </Box>
-        </SimpleGrid>
-        <SimpleGrid
-          columns={4}
-          gap={3}
-          display={{ base: "none", xl: "grid" }}
-          fontSize={"xs"}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            <Text textAlign={"center"}>
-              {language === "fr" ? (
-                <>
-                  République Tunisienne <br />
-                </>
-              ) : language === "ar" ? (
-                <>
-                  الجمهورية التونسية <br />
-                </>
-              ) : (
-                <>
-                  Tunisian Republic <br />
-                </>
-              )}
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-          >
-            <Text textAlign={"center"}>
-              {language === "fr" ? (
-                <>
-                  Ministère de l’Agriculture, <br />
-                  des Ressources Hydrauliques 
-                  et de la Pêche
-                </>
-              ) : language === "ar" ? (
-                <>
-                  وزارة الــفــلاحــة <br />
-                  والموارد المائية
-                  <br />
-                  والصيد البحري
-                </>
-              ) : (
-                <>
-                  The Minister of Agriculture,
-                  Hydraulic Resources
-                  and fishing
-                </>
-              )}
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-          >
-            {/* <Text textAlign={"center"}>
-              {language === "fr" ? (
-                <>
-                  Institution de la Recherche <br />
-                  et de l'Enseignement <br />
-                  Supérieur Agricoles
-                </>
-              ) : language === "ar" ? (
-                <>
-                  مؤسسة البحث والتعليم <br />
-                  العالي الفلاحي
-                </>
-              ) : (
-                <>
-                  Institution of Agricultural <br />
-                  Research and Higher Education
-                </>
-              )}
-            </Text> */}
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.4 }}
-          >
-            {/* <Text textAlign={"center"}>
-              {language === "fr" ? (
-                <>
-                  Centre Régional des <br /> Recherches en Horticulture <br />
-                  et Agriculture Biologique
-                </>
-              ) : language === "en" ? (
-                <>
-                  Regional Research Center
-                  <br />
-                  in Horticulture and Organic Agriculture
-                </>
-              ) : (
-                <>
-                  المركز الجهوي للبحوث <br /> في البستنة و الفلاحة البيولوجية
-                </>
-              )}
-            </Text> */}
-          </motion.div>
-        </SimpleGrid>
+        </Flex>
       </SimpleGrid>
       <motion.div
         initial={{ opacity: 0, y: 20 }}

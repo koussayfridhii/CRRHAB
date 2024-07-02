@@ -56,10 +56,10 @@ const Events = () => {
             }}
           >
             {language === "fr"
-              ? "Actualités"
+              ? "Évènements"
               : language === "en"
-              ? "News"
-              : "الأخبار "}
+              ? "Events"
+              : "الأحداث "}
           </chakra.p>
         </Box>
         <Wrap>
