@@ -115,7 +115,7 @@ const Milestones = () => {
         spacing={5}
         rounded="lg"
         alignItems="center"
-        w={"50%"}
+        w={"35%"}
         mx={"auto"}
         my={5}
         shadow="lg"
