@@ -57,7 +57,7 @@ export default function WithSubnavigation() {
         style={{ direction: `${language === "ar" ? "rtl" : "ltr"}` }}
       >
         <Flex
-          bg={"blue.300"}
+          bg={"#1F93CD"}
           _dark={{
             bg: "secondary",
             borderColor: "primary",
@@ -155,11 +155,11 @@ export default function WithSubnavigation() {
                 />
               </InputGroup>
             </FormControl> */}
-            <Box display={{ base: "none", xl: "block" }} bg={"blue.300"}>
+            <Box display={{ base: "none", xl: "block" }} bg={"#1F93CD"}>
               <Popover
                 trigger={"hover"}
                 placement={"bottom-start"}
-                bg={"blue.300"}
+                bg={"#1F93CD"}
               >
                 <PopoverTrigger>
                   <Button
@@ -170,11 +170,11 @@ export default function WithSubnavigation() {
                     _hover={{
                       textDecoration: "none",
                       color: "text",
-                      bg: "blue.300",
+                      bg: "#1F93CD",
                     }}
                     align="center"
                     cursor={"pointer"}
-                    bg={"blue.300"}
+                    bg={"#1F93CD"}
                     _dark={{
                       bg: "secondary",
                     }}
@@ -189,7 +189,7 @@ export default function WithSubnavigation() {
                   p={4}
                   rounded={"xl"}
                   w={"xs"}
-                  bg={"blue.300"}
+                  bg={"#1F93CD"}
                   _dark={{
                     bg: "secondary",
                   }}
@@ -273,7 +273,7 @@ export default function WithSubnavigation() {
                     fontSize={"sm"}
                     fontWeight={600}
                     color={"white"}
-                    bg={"blue.300"}
+                    bg={"#1F93CD"}
                     _dark={{
                       bg: "secondary",
                     }}
@@ -313,7 +313,7 @@ export default function WithSubnavigation() {
 const DesktopNav = () => {
   const linkColor = useColorModeValue("white", "gray.200");
   const linkHoverColor = useColorModeValue("whiteHover", "white");
-  const popoverContentBgColor = useColorModeValue("blue.300", "gray.800");
+  const popoverContentBgColor = useColorModeValue("#1F93CD", "gray.800");
   const language = useSelector((state) => state.language.language);
   return (
     <Stack direction={"row"} spacing={4}>
@@ -408,7 +408,7 @@ const MobileNav = () => {
   const user = useSelector((state) => state.user.user);
   return (
     <Stack
-      bg={"blue.300"}
+      bg={"#1F93CD"}
       _dark={{ bg: "secondary" }}
       borderBottom={4}
       borderStyle={"solid"}
@@ -430,7 +430,7 @@ const MobileNav = () => {
               p={2}
               fontSize={"sm"}
               color={"white"}
-              bg={"blue.300"}
+              bg={"#1F93CD"}
               _hover={{
                 textDecoration: "none",
                 color: "white",
@@ -541,7 +541,7 @@ const MobileNav = () => {
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
-              bg={"blue.300"}
+              bg={"#1F93CD"}
               mb={4}
               _hover={{
                 bg: "primaryHover",
