@@ -819,7 +819,7 @@ const NAV_ITEMS = [
     children: [
       {
         label: {
-          fr: "Thématiques de Recherches",
+          fr: "Thématique de Recherche",
           en: "Research  Topics",
           ar: "مواضيع البحث",
         },
@@ -840,8 +840,8 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Productions Scientifiques",
-          en: "Scientific Productions",
+          fr: "Production Scientifique",
+          en: "Scientific Production",
           ar: "الانتاجات العلمية",
         },
         subLabel: {

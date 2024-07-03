@@ -107,7 +107,7 @@ const Milestones = () => {
   return (
     <SimpleGrid columns={1}>
       <HStack
-        px={{ base: 3, sm: 5 }}
+        px={{ base: 3, sm: 3 }}
         py={3}
         bg={useColorModeValue("primary", "gray.800")}
         _dark={{ bg: "secondary" }}
