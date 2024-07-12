@@ -78,6 +78,7 @@ const CreateGallery = lazy(() =>
   import("./pages/admin/adminGallerie/CreateGallerie.jsx")
 );
 const Projects = lazy(() => import("./pages/Projects.jsx"));
+const Library = lazy(() => import("./pages/Library.jsx"));
 const NationalProjects = lazy(() => import("./pages/NationalProjects.jsx"));
 const LaboResearchTeam = lazy(() => import("./pages/LaboResearchMembers.jsx"));
 const LaboExecutiveMembers = lazy(() =>
@@ -207,6 +208,10 @@ const router = createBrowserRouter([
         element: <UserProfile />,
       },
       {
+        path: "/library",
+        element: <Library />,
+      },
+      {
         path: "/laboratory_researchers",
         element: <LaboResearchTeam />,
       },
@@ -284,6 +289,18 @@ const router = createBrowserRouter([
       },
       {
         path: "/open_data",
+        element: <OpenData />,
+      },
+      {
+        path: "/activity_reports",
+        element: <OpenData />,
+      },
+      {
+        path: "/administrative_forms",
+        element: <OpenData />,
+      },
+      {
+        path: "/flyers",
         element: <OpenData />,
       },
       {

@@ -638,7 +638,7 @@ const NAV_ITEMS = [
     label: { fr: "Actualités", en: "News", ar: "المستجدات" },
     children: [
       {
-        label: { fr: "Annonces", en: "announces", ar: "-" },
+        label: { fr: "Annonces", en: "Announcements", ar: "-" },
         href: "/advertisements",
       },
       {
@@ -713,14 +713,14 @@ const NAV_ITEMS = [
   {
     label: {
       fr: "Projets et Conventions",
-      en: "Projects",
+      en: "Projects & Conventions",
       ar: "المشاريع",
     },
     children: [
       {
         label: {
           fr: "Projets Internationaux Clos",
-          en: "International Projects",
+          en: "International Projects closed",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -733,7 +733,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Projets Internationaux en cours",
-          en: "International Projects",
+          en: "International Projects in Progress",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -746,7 +746,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Projets Nationaux Clos",
-          en: "International Projects",
+          en: "National Projects Closed",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -759,7 +759,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Projets Nationaux en cours",
-          en: "International Projects",
+          en: "National Projects in Progress",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -772,7 +772,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Conventions Closes",
-          en: "International Projects",
+          en: "Conventions Closed",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -785,7 +785,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Conventions en cours",
-          en: "International Projects",
+          en: "Conventions in Progress",
           ar: "الدولية المشاريع",
         },
         subLabel: {
@@ -854,7 +854,7 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Formation Diplômante",
-          en: "Training Diploma",
+          en: "Academic Supervision",
           ar: "تدريب مؤهل",
         },
         subLabel: {
@@ -881,12 +881,12 @@ const NAV_ITEMS = [
     href: "/contact",
   },
   {
-    label: { fr: "Voir plus", en: "More", ar: "المزيد" },
+    label: { fr: "Voir plus", en: "See More", ar: "المزيد" },
     children: [
       {
         label: {
           fr: "Textes Réglementaires",
-          en: "Open Data",
+          en: "Regulatory Texts",
           ar: "النفاذ للمعلومة",
         },
         href: "/open_data",
@@ -894,22 +894,26 @@ const NAV_ITEMS = [
       {
         label: {
           fr: "Rapports d'Activités",
-          en: "Download area",
+          en: "Activity Reports",
           ar: "منطقة التحميل",
         },
-        href: "/open_data",
+        href: "/activity_reports",
       },
       {
-        label: { fr: "Bibliothèque", en: "-", ar: "-" },
-        href: "/open_data",
+        label: { fr: "Bibliothèque", en: "Library", ar: "-" },
+        href: "/library",
       },
       {
-        label: { fr: "Galerie", en: "Gallery", ar: "مكتبة الوسائط" },
+        label: { fr: "Galerie", en: "Photo Gallery", ar: "مكتبة الوسائط" },
         href: "/gallery/imgs",
       },
       {
-        label: { fr: "Formulaires Administratifs", en: "-", ar: "-" },
-        href: "/open_data",
+        label: { fr: "Formulaires Administratifs", en: "Administrative forms", ar: "-" },
+        href: "/administrative_forms",
+      },
+      {
+        label: { fr: "Brochures et Dépliants", en: "Flyers and Booklets", ar: "-" },
+        href: "flyers",
       },
     ],
   },
