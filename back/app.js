@@ -33,6 +33,7 @@ const videoRouter = require("./routes/video.route");
 const paragraphLandingPageRoute = require("./routes/paragraphLanding.route");
 const historyRoute = require("./routes/history.route");
 const missionRoute = require("./routes/mission.route");
+const openDataRoute = require("./routes/openData.route");
 
 //initializing app(express)
 // var app = express();
@@ -92,6 +93,7 @@ app.use("/api", [
   paragraphLandingPageRoute,
   historyRoute,
   missionRoute,
+  openDataRoute
 ]);
 app.get("/", (req, res) => {
   mongoose
