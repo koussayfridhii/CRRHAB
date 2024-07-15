@@ -108,17 +108,17 @@ const OpenData = () => {
     {
       type:"flyers",
       title: {
-        fr: "Fruits de Tunisie Bulletin, Numéro 14",
-        en: "Tunisian Fruits Newsletter, Issue No. 14",
-        ar: "غلال تونس نشرية عدد 14",      },
+        fr: "Les insectes les plus importants qui affectent les fruits de figuier et les méthodes de contrôle en Tunisie (Ficus Carica)",
+        en: "Most important insects affecting fig fruits and methods of control in Tunisia (Ficus Carica)",
+        ar: "أهم الحشرات التي تصيب ثمار التين و طرق مكافحتها في تونس (Ficus Carica)",      },
       link: "Insectes du Figuier RevueGIF_2023.pdf",
     },
     {
       type:"flyers",
       title: {
-        fr: "Fruits de Tunisie Bulletin, Numéro 15",
-        en: "Tunisian Fruits Newsletter, Issue No. 15",
-        ar: "غلال تونس نشرية عدد 15",      },
+        fr: "Les insectes les plus importants qui affectent les fruits de pistache et les méthodes de lutte",
+        en: "Most important insects affecting pistachio fruits and methods of control",
+        ar: "أهم الحشرات التي تصيب فاكهة الفستق و طرق مكافحتها",      },
       link: "Insectes du p stachier RevueGIF_2023 (1).pdf",
     },
   ];
