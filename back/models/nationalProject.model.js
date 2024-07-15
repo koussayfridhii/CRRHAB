@@ -23,6 +23,10 @@ const nationalProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  closed:{
+    type: Boolean,
+    default: false,
+  }
 });
 module.exports.nationalProjectModel = mongoose.model(
   "nationalProject",

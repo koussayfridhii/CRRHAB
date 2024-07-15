@@ -728,7 +728,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "مشاريع دولية بصدد الانجاز",
         },
-        href: "/projects/international",
+        href: "/projects/international/closed",
       },
       {
         label: {
@@ -741,7 +741,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "مشاريع وطنية بصدد الانجاز",
         },
-        href: "/projects/international",
+        href: "/projects/international/current",
       },
       {
         label: {
@@ -754,7 +754,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
-        href: "/projects/national",
+        href: "/projects/national/closed",
       },
       {
         label: {
@@ -767,7 +767,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
-        href: "/projects/national",
+        href: "/projects/national/current",
       },
       {
         label: {
@@ -780,7 +780,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
-        href: "/projects/international",
+        href: "/conventions/closed",
       },
       {
         label: {
@@ -793,7 +793,7 @@ const NAV_ITEMS = [
           en: "International Projects",
           ar: "الدولية المشاريع",
         },
-        href: "/projects/international",
+        href: "/conventions/current",
       },
       // {
       //   label: {

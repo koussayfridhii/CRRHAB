@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Image, List, ListIcon, ListItem, Text, chakra } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import PartnersSlider from "../components/PartnenrsSlider";
+// import PartnersSlider from "../components/PartnenrsSlider";
 import { useLocation } from "react-router-dom";
+import { MdCheckCircle } from "react-icons/md";
 
 const Projects = () => {
   const language = useSelector((state) => state.language.language);
-  const data = {
-    international: [
+    const data= [
       {
         title: {
           fr: "iGUESSmed",
@@ -20,7 +20,7 @@ const Projects = () => {
           ar: "",
         },
         link: "https://www.iguessmed.com/",
-        img: "/assets/images/iguessmed.png",
+        closed: false
       },
       {
         title: {
@@ -34,7 +34,7 @@ const Projects = () => {
           ar: "",
         },
         link: "https://www.4biolive.eu/",
-        img: "/assets/images/biolive.png",
+        closed: false
       },
       {
         title: {
@@ -48,7 +48,7 @@ const Projects = () => {
           ar: "",
         },
         link: "https://www.enicbcmed.eu/fr/projets/fruitflynet-ii#:~:text=A%20propos%20du%20projet&text=Le%20projet%20FruitFlynet%2Dii%20vise,des%20fruits%20(Ceratitis%20capitata)",
-        img: "/assets/images/fruitFlyNet.png",
+        closed: true
       },
       {
         title: {
@@ -62,31 +62,36 @@ const Projects = () => {
           ar: "",
         },
         link: "https://kafaci.org/site/project/02020300/view?pageId=02020300&pageName=Horticulture",
-        img: "/assets/images/kafaci.png",
+        closed: false
       },
-    ],
-    national: [],
-  };
-  const slides = [
-    {
-      img: "/assets/images/cartina-nuova-4biolove-rev-02.jpg",
-      title: {
-        fr: "",
-        en: "",
-        ar: "",
-      },
-    },
-    {
-      img: "/assets/images/iguessmed coordinators.png",
-      title: {
-        fr: "",
-        en: "",
-        ar: "",
-      },
-    },
-  ];
+    ]
+  // const slides = [
+  //   {
+  //     img: "/assets/images/cartina-nuova-4biolove-rev-02.jpg",
+  //     title: {
+  //       fr: "",
+  //       en: "",
+  //       ar: "",
+  //     },
+  //   },
+  //   {
+  //     img: "/assets/images/iguessmed coordinators.png",
+  //     title: {
+  //       fr: "",
+  //       en: "",
+  //       ar: "",
+  //     },
+  //   },
+  // ];
   const { pathname } = useLocation();
-
+  const [dataToSHow, setDataToSHow] = useState([]);
+  useEffect(()=>{
+    if("/projects/international/closed" === pathname){
+      setDataToSHow(data?.filter(item=>item.closed))
+    }else{
+      setDataToSHow(data?.filter(item=>!item.closed))
+    }
+  },[pathname, data])
   return (
     <Box dir={language === "ar" ? "rtl" : "ltr"}>
       <Box
@@ -109,30 +114,44 @@ const Projects = () => {
           fontWeight={400}
           borderTopRadius={"lg"}
         >
-          {pathname === "/projects/international"
-            ? language === "en"
+          { language === "en"
               ? "International Projects"
               : language === "fr"
               ? "Projets Internationaux"
-              : "المشاريع الدولية"
-            : language === "en"
-            ? "National  Projects"
-            : language === "fr"
-            ? "Projets Nationaux "
-            : "المشاريع الوطنية"}
+              : "المشاريع الدولية"}
         </Heading>
-        {
-          <Slider
-            language={language}
-            data={
-              pathname === "/projects/international"
-                ? data.international
-                : data.national
-            }
-          />
-        }
+        <Card bg="background" px={5} py={10}>
+        <List spacing={5}>
+          {dataToSHow?.map((doc) => {
+            return (
+              <ListItem
+                _hover={{
+                  color: "secondary",
+                  fontSize: "xl",
+                  _dark: { color: "primary" },
+                }}
+                color="primary"
+                _dark={{ color: "text" }}
+                fontSize={"lg"}
+                key={doc.link + doc.title.fr}
+              >
+                <ListIcon as={MdCheckCircle} />
+                <chakra.a
+                  href={doc.link}
+                  target="_blank"
+                  _visited={{
+                    color: "red.500",
+                  }}
+                >
+                  {doc.title?.[language]}
+                </chakra.a>
+              </ListItem>
+            );
+          })}
+        </List>
+        </Card>
       </Box>
-      <Box
+      {/* <Box
         minH={"25dvh"}
         bg={"background"}
         borderRadius={"lg"}
@@ -142,7 +161,7 @@ const Projects = () => {
         my={10}
       >
         <PartnersSlider data={slides} title={false} language={language} />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

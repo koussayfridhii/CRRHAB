@@ -38,6 +38,7 @@ const Event = lazy(() => import("./pages/Event.jsx"));
 const Map = lazy(() => import("./pages/Map.jsx"));
 const History = lazy(() => import("./pages/History.jsx"));
 const Missions = lazy(() => import("./pages/Missions.jsx"));
+const      Conventions = lazy(() => import("./pages/Conventions.jsx"));
 const ScientificOrganization = lazy(() =>
   import("./pages/ScientificOrganization.jsx")
 );
@@ -318,14 +319,45 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/projects/international",
-            element: <Projects />,
+            children:[
+              {
+                path: "/projects/international/closed",
+                element: <Projects />,
+              },
+              {
+                path: "/projects/international/current",
+                element: <Projects />,
+              },
+            ]
           },
           {
             path: "/projects/national",
-            element: <NationalProjects />,
+            children:[
+              {
+                path: "/projects/national/closed",
+                element: <NationalProjects />,
+              },
+              {
+                path: "/projects/national/current",
+                element: <NationalProjects />,
+              },
+            ]
           },
         ],
       },
+      {
+        path:"/conventions",
+        children: [
+          {
+            path: "/conventions/closed",
+            element: <Conventions />,
+          },
+          {
+            path: "/conventions/current",
+            element: <Conventions />,
+          },
+        ]
+      }
     ],
   },
   {

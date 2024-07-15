@@ -10,6 +10,7 @@ import PartnersSlider from "../../components/PartnenrsSlider";
 import UsefulLinks from "../../components/UtilLinks";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import ODD from "../ODD";
 
 const Landing = () => {
   const language = useSelector((state) => state.language.language);
@@ -261,6 +262,19 @@ const Landing = () => {
           <UsefulLinks data={utilLinks} language={language} />
         </motion.div>
       </Box>
+      <Divider
+        my={5}
+        _dark={{
+          bg: "secondary",
+          borderColor: "secondary",
+        }}
+        orientation="horizontal"
+        bg={"primary"}
+        w={"90%"}
+        mx={"auto"}
+        borderColor={"primary"}
+      />
+      <ODD />
       <Divider
         my={5}
         _dark={{

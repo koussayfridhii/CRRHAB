@@ -10,15 +10,25 @@ import {
   Tr,
   useColorMode,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useCallApi } from "../hooks/useCallApi";
 import Spinner from "../components/spinner/Spinner";
+import { useLocation } from "react-router-dom";
 
 const NationalProjects = () => {
   const language = useSelector((state) => state.language.language);
+  const { pathname } = useLocation();
+  const [dataToShow, setDataToShow]= useState([])
   const { data, error, isLoading } = useCallApi("national_projects");
 
+  useEffect(()=>{
+    if("/projects/national/closed" === pathname) {
+      setDataToShow(data?.filter(item => item.closed))
+    }else{
+      setDataToShow(data?.filter(item => !item.closed))
+    }
+  },[pathname,data])
   if (isLoading) {
     return <Spinner />;
   }
@@ -59,7 +69,7 @@ const NationalProjects = () => {
           ? "Projets Nationaux "
           : "المشاريع الوطنية"}
       </Heading>
-      <DataTable data={data} language={language} />
+      <DataTable data={dataToShow} language={language} />
     </Box>
   );
 };
@@ -101,7 +111,7 @@ const DataTable = ({ data, language }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {data.map((row, index) => (
+          {data?.map((row, index) => (
             <Tr key={index}>
               <Td
                 display="flex"
