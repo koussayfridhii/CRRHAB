@@ -143,6 +143,12 @@ const AdminDownloads = lazy(() =>
 const CreateDownloads = lazy(() =>
   import("./pages/admin/adminDownloads/CreateDownloads.jsx")
 );
+  const AdminOpenData = lazy(() =>
+    import("./pages/admin/adminOpenData/AdminOpenData.jsx")
+  );
+  const CreateOpenData = lazy(() =>
+    import("./pages/admin/adminOpenData/CreateOpenData.jsx")
+  );
 const Layout = () => {
   return (
     <div className="app">
@@ -345,6 +351,10 @@ const router = createBrowserRouter([
         element: <AdminResearchTeam />,
       },
       {
+        path: "/admin/open_data",
+        element: <AdminOpenData />,
+      },
+      {
         path: "/admin/downloads",
         element: <AdminDownloads />,
       },
@@ -448,6 +458,16 @@ const router = createBrowserRouter([
               {
                 path: "/admin/create/downloads/:id",
                 element: <CreateDownloads />,
+              },
+            ],
+          },
+          {
+            path: "/admin/create/open_data",
+            element: <CreateOpenData />,
+            children: [
+              {
+                path: "/admin/create/open_data/:id",
+                element: <CreateOpenData />,
               },
             ],
           },

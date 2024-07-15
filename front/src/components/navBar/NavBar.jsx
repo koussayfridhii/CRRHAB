@@ -638,15 +638,15 @@ const NAV_ITEMS = [
     label: { fr: "Actualités", en: "News", ar: "المستجدات" },
     children: [
       {
-        label: { fr: "Annonces", en: "Announcements", ar: "-" },
+        label: { fr: "Annonces", en: "Announcements", ar: "الإعلانات" },
         href: "/advertisements",
       },
       {
-        label: { fr: "Évènements", en: "Events", ar: "الأحداث" },
+        label: { fr: "Évènements", en: "Events", ar: "التظاهرات" },
         href: "/events",
       },
       {
-        label: { fr: "Autres", en: "Others", ar: "-" },
+        label: { fr: "Autres", en: "Others", ar: "مستجدات أخرى" },
         href: "/actualities",
       },
     ],
@@ -655,7 +655,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Organisation Scientifique",
       en: "Scientific Organization",
-      ar: "التنظيم العلمي",
+      ar: "التنظيم العلمي للمركز",
     },
     href: "/scientific_organization",
     // children: [
@@ -706,7 +706,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Équipe de Recherche",
       en: "Research Team",
-      ar: "فريق الباحثين",
+      ar: "فريق البحث",
     },
     href: "/researchteam",
   },
@@ -714,19 +714,19 @@ const NAV_ITEMS = [
     label: {
       fr: "Projets et Conventions",
       en: "Projects & Conventions",
-      ar: "المشاريع",
+      ar: "المشاريع والإتفاقيات",
     },
     children: [
       {
         label: {
           fr: "Projets Internationaux Clos",
           en: "International Projects closed",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع دولية سابقة",
         },
         subLabel: {
           fr: "Projets Internationaux",
           en: "International Projects",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع دولية بصدد الانجاز",
         },
         href: "/projects/international",
       },
@@ -734,12 +734,12 @@ const NAV_ITEMS = [
         label: {
           fr: "Projets Internationaux en cours",
           en: "International Projects in Progress",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع دولية بصدد الانجاز",
         },
         subLabel: {
           fr: "Projets Internationaux",
           en: "International Projects",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع وطنية بصدد الانجاز",
         },
         href: "/projects/international",
       },
@@ -747,7 +747,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Projets Nationaux Clos",
           en: "National Projects Closed",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع وطنية سابقة",
         },
         subLabel: {
           fr: "Projets Internationaux",
@@ -760,7 +760,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Projets Nationaux en cours",
           en: "National Projects in Progress",
-          ar: "الدولية المشاريع",
+          ar: "مشاريع وطنية بصدد الانجاز",
         },
         subLabel: {
           fr: "Projets Internationaux",
@@ -773,7 +773,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Conventions Closes",
           en: "Conventions Closed",
-          ar: "الدولية المشاريع",
+          ar: "إتفاقيات سابقة",
         },
         subLabel: {
           fr: "Projets Internationaux",
@@ -786,7 +786,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Conventions en cours",
           en: "Conventions in Progress",
-          ar: "الدولية المشاريع",
+          ar: "إتفاقيات قائمة ",
         },
         subLabel: {
           fr: "Projets Internationaux",
@@ -814,7 +814,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Structure de Recherche",
       en: "Research Structure",
-      ar: "هياكل البحث",
+      ar: "هياكل البحث الحالية",
     },
     children: [
       {
@@ -834,7 +834,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Membres du Laboratoire",
           en: "Members of The Laboratory",
-          ar: "أعضاء المختبر",
+          ar: "أعضاء المخبر",
         },
         href: "/laboratory_members",
       },
@@ -842,7 +842,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Production Scientifique",
           en: "Scientific Production",
-          ar: "الانتاجات العلمية",
+          ar: "الإنتاج العلمي",
         },
         subLabel: {
           fr: "Productions Scientifiques",
@@ -855,7 +855,7 @@ const NAV_ITEMS = [
         label: {
           fr: "Formation Diplômante",
           en: "Academic Supervision",
-          ar: "تدريب مؤهل",
+          ar: "التأطير الأكاديمي",
         },
         subLabel: {
           fr: "Formation Diplômante",
@@ -870,7 +870,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Unités Spécialisées",
       en: "Specialized Units",
-      ar: "فرق مختصة",
+      ar: "الوحدات المتخصصة",
     },
     href: "/specialized_units",
   },
@@ -881,13 +881,13 @@ const NAV_ITEMS = [
     href: "/contact",
   },
   {
-    label: { fr: "Voir plus", en: "See More", ar: "المزيد" },
+    label: { fr: "Voir plus", en: "See More", ar: "شاهد أكثر" },
     children: [
       {
         label: {
           fr: "Textes Réglementaires",
           en: "Regulatory Texts",
-          ar: "النفاذ للمعلومة",
+          ar: "نصوص قانونية",
         },
         href: "/open_data",
       },
@@ -895,24 +895,24 @@ const NAV_ITEMS = [
         label: {
           fr: "Rapports d'Activités",
           en: "Activity Reports",
-          ar: "منطقة التحميل",
+          ar: "تقارير أنشطة البحث",
         },
         href: "/activity_reports",
       },
       {
-        label: { fr: "Bibliothèque", en: "Library", ar: "-" },
+        label: { fr: "Bibliothèque", en: "Library", ar: "المكتبة" },
         href: "/library",
       },
       {
-        label: { fr: "Galerie", en: "Photo Gallery", ar: "مكتبة الوسائط" },
+        label: { fr: "Galerie", en: "Photo Gallery", ar: "معرض الصور" },
         href: "/gallery/imgs",
       },
       {
-        label: { fr: "Formulaires Administratifs", en: "Administrative forms", ar: "-" },
+        label: { fr: "Formulaires Administratifs", en: "Administrative forms", ar: "وثائق إدارية" },
         href: "/administrative_forms",
       },
       {
-        label: { fr: "Brochures et Dépliants", en: "Flyers and Booklets", ar: "-" },
+        label: { fr: "Brochures et Dépliants", en: "Flyers and Booklets", ar: "كتيبات و نشريات" },
         href: "flyers",
       },
     ],

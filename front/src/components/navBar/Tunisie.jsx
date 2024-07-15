@@ -42,7 +42,7 @@ const Tunisie = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            <Text textAlign={"justify"} fontWeight="bold" fontSize="sm" py={3}>
+            <Text display={{base:"none", xl:"block"}} textAlign={"justify"} fontWeight="500" fontStyle="italic" fontSize="sm" py={5} color="secondary">
               {language === "fr" ? (
                 <>
                   République Tunisienne <br />
@@ -59,14 +59,14 @@ const Tunisie = () => {
             </Text>
           </motion.div>
           </Flex>
-          <Flex w="full" justify="center" align="center" gap={2}>
+          <Flex w="full" justify="center" align="end" gap={2}>
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Image
-                boxSize="25vh"
+                boxSize={"ar" === language ? "15vh" :  "25vh"}
                 objectFit="contain"
                 src="/assets/images/Logo_Ministère_de_l'Agriculture_(Tunisie).png"
                 fallbackSrc="https://via.placeholder.com/150"
@@ -77,9 +77,10 @@ const Tunisie = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
+            
             >
             
-            <Text fontWeight="bold" fontSize="sm" textAlign={"justify"}>
+            <Text display={{base:"none", xl:"block"}}  fontWeight="500" fontStyle="italic" fontSize="sm" my={12}  color="secondary">
               {language === "fr" ? (
                 <>
                   Ministère de l’Agriculture, 

@@ -120,7 +120,7 @@ const Content = () => {
             ? "ORGANIZATIONAL CHART"
             : language === "fr"
             ? "ORGANIGRAMME"
-            : "الهيكل التنظيمي"}
+            : "الهيكل التنظيمي للمركز"}
         </Heading>
         <Organisation />
       </section>

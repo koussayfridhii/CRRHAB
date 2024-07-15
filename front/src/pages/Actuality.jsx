@@ -8,6 +8,8 @@ const Actuality = () => {
   const { id } = useParams();
   const { data, error, isLoading } = useCallApi("news");
 
+  const actuality = data?.find((actuality) => actuality._id == id);
+  const language = useSelector((state) => state.language.language);
   if (isLoading) {
     return <Spinner />;
   }
@@ -15,8 +17,6 @@ const Actuality = () => {
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
-  const actuality = data.find((actuality) => actuality._id == id);
-  const language = useSelector((state) => state.language.language);
   return (
     <SimpleGrid
       columns={{

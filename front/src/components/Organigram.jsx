@@ -28,7 +28,7 @@ const administrativeOrganization = [
     title: {
       fr: "Secrétaire Principal", // French translation
       en: "Principal Secretary", // English translation
-      ar: "السكرتير الرئيسي", // Arabic translation
+      ar: "الكاتب الأول", // Arabic translation
     },
     color: "#C0504D", // Color associated with this role
   },
@@ -37,7 +37,7 @@ const administrativeOrganization = [
     title: {
       fr: "Secrétaire d’établissement", // French translation
       en: "School Secretary", // English translation
-      ar: "سكرتير المؤسسة", // Arabic translation
+      ar: "كاتب المؤسسة", // Arabic translation
     },
     color: "#8064A2", // Color associated with this role
   },
@@ -58,7 +58,7 @@ const scientificOrganization = [
     title: {
       fr: "Laboratoire de Recherche", // French translation
       en: "Research Laboratory", // English translation
-      ar: "مختبر البحوث", // Arabic translation
+      ar: "مخابر ووحدات البحث", // Arabic translation
     },
     color: "#4F81BD", // Color associated with this role
   },
@@ -85,7 +85,7 @@ const scientificOrganization = [
     title: {
       fr: "Unité d’information et de documentation scientifique", // French translation
       en: "Scientific Information and Documentation Unit", // English translation
-      ar: "وحدة المعلومات والتوثيق العلمي", // Arabic translation
+      ar: "وحدة الإعلام والتوثيق العلمي", // Arabic translation
     },
     color: "#F79646", // Color associated with this role
   },
@@ -100,7 +100,7 @@ const Milestones = () => {
     title: {
       fr: "Directeur Général", // French translation
       en: "Director General", // English translation
-      ar: "المدير العام", // Arabic translation
+      ar: "مدير المركز", // Arabic translation
     },
     color: "#9BBB59", // Color associated with this role
   };

@@ -75,10 +75,15 @@ const LinkItems = [
     icon: MdOutlinePersonSearch,
     href: "/admin/paragraphs",
   },
+  // {
+  //   name: "Espae téléchargement",
+  //   icon: MdOutlinePersonSearch,
+  //   href: "/admin/downloads",
+  // },
   {
-    name: "Espae téléchargement",
+    name: "Accés à l'informations",
     icon: MdOutlinePersonSearch,
-    href: "/admin/downloads",
+    href: "/admin/open_data",
   },
   {
     name: "Utilisateurs",

@@ -69,7 +69,7 @@ const Missions = ({ full = false }) => {
           recherche, adoptée par l’IRESA :`
             : language === "en"
             ? `The missions of the Regional Center for Research in Horticulture and Organic Agriculture (CRRHAB) are part of the regionalization and decentralization strategy for research adopted by the Arab Organization for Agricultural Research (AORA):`
-            : `تندرج مهام المركز الجهوي للبحوث في البستنة والزراعة العضوية (CRRHAB) في إطار استراتيجية اللامركزية واللامركزية للأبحاث التي اعتمدتها المنظمة العربية للبحوث الزراعية (إريسا):`}
+            : `في إطار استراتيجية اللامركزية والتخصص الجهوي للبحوث التي اعتمدتها مؤسسة البحث والتعليم العالي الفلاحي، وطبقا لمرسوم إنشائه، يقوم المركز بكل أنشطة البحث والتجارب في البستنة والفلاحة البيولوجية وتتلخص مهامه في:`}
         </Highlight>
       </Text>
       <OrderedList mx={5} my={5}>
@@ -111,7 +111,7 @@ const Missions = ({ full = false }) => {
             d’étudiantes et étudiants.`
             : language === "en"
             ? `In addition, the CRRHAB is heavily involved in training through research, through internships, doctoral theses, and postdoctoral training for young scientists and students.`
-            : `بالإضافة إلى ذلك، يشارك المركز الجهوي للبحوث في البستنة والزراعة العضوية بشكل كبير في التدريب من خلال البحث، من خلال التدريبات، وأطروحات الدكتوراه، وما بعد الدكتوراه للعلماء الشباب، وكذلك الطلاب.`}
+            : `بالإضافة إلى ذلك، يشارك المركز  بشكل فعال في التدريب من خلال البحث والتكوين المستمر لفائدة الفنيين والتكوين الإشهادي بتأطير طلبة التعليم العالي بمختلف مراحل التعليم العالي.`}
         </Highlight>
       </Text>
     </Box>

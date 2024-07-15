@@ -67,10 +67,10 @@ const OpenData = () => {
         mb={6}
       >
         {language === "en"
-          ? "Open Data"
+          ? "Library"
           : language === "fr"
-          ? "Accés à l’information"
-          : "النفاذ للمعلومة"}
+          ? "Bibliothèque"
+          : "المكتبة"}
       </Heading>
       <>
         <Table variant="striped" colorScheme='teal'>

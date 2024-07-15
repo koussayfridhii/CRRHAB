@@ -59,7 +59,7 @@ const History = () => {
             ? "HISTORY"
             : language === "fr"
             ? "HISTORIQUE"
-            : "تاريخ المؤسسة"}
+            : "لمحة عن المركز"}
         </Heading>
         {data?.[0]?.description?.[language]?.split("/n").map((text, i) => {
           return (

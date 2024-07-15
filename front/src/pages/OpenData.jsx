@@ -105,7 +105,20 @@ const OpenData = () => {
   useEffect(() => {
    setDataToShow(data.filter((doc) => doc.type === path)) 
   }, [data, path]);
-
+const titles= {
+  opendata: {
+    fr: "Textes Réglementaires",
+    en: "Regulatory Texts",
+    ar: "النفاذ للمعلومة",
+  },
+  activityreports: {
+    fr: "Rapports d'Activités",
+    en: "Activity Reports",
+    ar: "تقارير أنشطة البحث",
+  },
+  administrativeforms:{ fr: "Formulaires Administratifs", en: "Administrative forms", ar: "وثائق إدارية" },
+  flyers:{ fr: "Brochures et Dépliants", en: "Flyers and Booklets", ar: "كتيبات و نشريات" }
+}
   return (
     <Box
       w={{ base: "full", xl: "80dvw" }}
@@ -132,11 +145,7 @@ const OpenData = () => {
         borderRadius={"lg"}
         mb={6}
       >
-        {language === "en"
-          ? "Open Data"
-          : language === "fr"
-          ? "Accés à l’information"
-          : "النفاذ للمعلومة"}
+        {titles?.[path]?.[language]}
       </Heading>
       <Card p={4}>
         <List spacing={5}>

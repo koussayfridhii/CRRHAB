@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { Box, Flex, chakra, Wrap, WrapItem } from "@chakra-ui/react";
+import React from "react";
+import { Box, Flex, chakra, List, ListItem, ListIcon } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Card from "../components/cards/cardV4/Card";
 import Spinner from "../components/spinner/Spinner";
 import { useCallApi } from "../hooks/useCallApi";
 import { useLocation } from "react-router-dom";
+import { MdCheckCircle } from "react-icons/md";
 
 const Actualities = () => {
   const language = useSelector((state) => state.language.language);
@@ -27,7 +28,7 @@ const Actualities = () => {
         bg: "background",
       }}
       p={{ base: 0, md: 20 }}
-      w="auto"
+      w="full"
       justifyContent="center"
       alignItems="center"
       dir={language === "ar" ? "rtl" : "ltr"}
@@ -39,11 +40,13 @@ const Actualities = () => {
         bg="background"
         shadow="xl"
         borderRadius={"lg"}
+        w="90%"
       >
         <Box
           textAlign={{
             lg: "center",
           }}
+          mb={5}
         >
           <chakra.p
             mt={2}
@@ -70,13 +73,22 @@ const Actualities = () => {
               : "إعلانات")}
           </chakra.p>
         </Box>
-        <Wrap>
-          {data?.map((e, i) => (
-            <WrapItem key={i}>
-              <Card data={e} language={language} />
-            </WrapItem>
+        <List>
+          {data?.map((doc, i) => (
+            <ListItem key={i} color="primary" _dark={{color:"secondary"}}>
+              {/* <Card data={e} language={language} /> */}
+              <ListIcon as={MdCheckCircle} />
+                <chakra.a
+                  href={`actualities/${doc._id}`}
+                  _visited={{
+                    color: "red.500",
+                  }}
+                >
+                  {doc.title?.[language]}
+                </chakra.a>
+            </ListItem>
           ))}
-        </Wrap>
+        </List>
       </Box>
     </Flex>
   );

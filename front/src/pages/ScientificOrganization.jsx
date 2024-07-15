@@ -463,13 +463,13 @@ const ScientificOrganization = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  التنظيم العلمي للمركز يشمل:
+                 يشتمل التنظيم العلمي للمركز على:
                 </Highlight>
               </Text>
               <UnorderedList>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    مختبر أبحاث.
+                  مخبر البحوث، كهيكل بحث وحيد في الوقت الحالي
                   </Text>
                 </ListItem>
                 <ListItem>
@@ -484,20 +484,18 @@ const ScientificOrganization = () => {
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    وحدة المعلومات والتوثيق العلمي.
+                  وحدة الاعلام والتوثيق العلمي.
                   </Text>
                 </ListItem>
                 <ListItem>
                   <Text textAlign="justify" color={"text"} fontSize="lg" mb={2}>
-                    مجلس علمي (المادة 4 من المرسوم رقم 2006-3057 المؤرخ 20
-                    نوفمبر 2006).
+                  المجلس العلمي للمركز (المادة 4 من الأمر عدد 2006-3057 المؤرخ 20 نوفمبر 2006)
                   </Text>
                 </ListItem>
               </UnorderedList>
               <br />
               <Text fontSize={"lg"} color={"text"} mb={4}>
-                المجلس العلمي هو الهيئة المسؤولة عن التفكير وتقديم الاقتراحات
-                حول السياسة العلمية للمؤسسة. ولهذا الغرض، فهو مكلف بـ:
+              المجلس العلمي هو الهيئة المسؤولة عن التفكير وتقديم الاقتراحات حول السياسة العلمية للمؤسسة. ولهذا الغرض، فهو مكلف بـ:
               </Text>
               <UnorderedList spacing={4} mb={5}>
                 <ListItem mx={1}>
@@ -513,8 +511,7 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      إبداء الآراء حول جميع المسائل المتعلقة بالسياسة العلمية
-                      للمؤسسة، وخاصة برامج البحث التي يتعين القيام بها.
+                    إبداء الآراء حول جميع المسائل المتعلقة بالسياسة العلمية للمؤسسة، وخاصة برامج البحث التي يتعين القيام بها.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -548,8 +545,8 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      اقتراح أنشطة التثمين وتطبيق نتائج البحث بالإضافة إلى أنشطة
-                      المعلومات والتوثيق العلمي.
+اقتراح أنشطة التثمين وتطبيق نتائج البحث بالإضافة إلى أنشطةالاعلام والتوثيق العلمي.
+
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -624,11 +621,7 @@ const ScientificOrganization = () => {
                 </ListItem>
               </UnorderedList>
               <Text fontSize={"lg"} color={"text"} my={4}>
-                بالإضافة إلى جلساته العادية المذكورة في المادة 6 من المرسوم رقم
-                97-938، يعقد المجلس العلمي للمركز جلسة سنوية لتقييم الأنشطة
-                العلمية للمؤسسة. يجتمع المجلس العلمي للمركز وفقاً لأحكام المرسوم
-                رقم 97-938 المؤرخ 19 مايو 1997 ويمارس المهام المسندة إليه بموجب
-                المرسوم المذكور.
+              بالإضافة إلى جلساته العادية المذكورة في المادة 6 من الأمر عدد 97-938 المؤرخ 19 ماي 1997، يعقد المجلس العلمي للمركز جلسة سنوية لتقييم الأنشطة العلمية للمؤسسة. 
               </Text>
             </>
           )}
@@ -662,7 +655,7 @@ const ScientificOrganization = () => {
               ? "Composition of the CRRHAB scientific council"
               : language === "fr"
               ? "Composition du conseil scientifique du CRRHAB"
-              : "تكوين المجلس العلمي CRRRHAB"}
+              : "تركيبة المجلس العلمي للمركز:"}
           </chakra.h2>
           <Flex
             direction={"column"}
@@ -714,7 +707,7 @@ const ScientificOrganization = () => {
                     ? "Rapporteur"
                     : language === "fr"
                     ? "Rapporteur"
-                    : "مقرر"}
+                    : "المقرر"}
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
@@ -740,7 +733,7 @@ const ScientificOrganization = () => {
                     ? "Heads of R&D Structures"
                     : language === "fr"
                     ? "Responsables des structures RDI"
-                    : "رؤساء الهياكل البحث والتطوير (ب&ت)"}
+                    : "رؤساء الهياكل البحث والتطوير"}
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
@@ -835,7 +828,7 @@ const ScientificOrganization = () => {
                     ? "IRESA Representative"
                     : language === "fr"
                     ? "Représentant de l'IRESA"
-                    : "ممثل الإريسا"}
+                    : "ممثل عن مؤسسة البحث والتعليم العالي الفلاحي IRESA"}
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
@@ -863,7 +856,7 @@ const ScientificOrganization = () => {
                     ? "Representatives of RESA Institutions"
                     : language === "fr"
                     ? "Représentants des établissements RESA"
-                    : "ممثلو مؤسسات الشبكة الإقليمية للتعليم والبحث الزراعي"}
+                    : "ممثلو مؤسسات التعليم العالي والبحث الفلاحي"}
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
@@ -897,7 +890,7 @@ const ScientificOrganization = () => {
                     ? "Scientific Figures"
                     : language === "fr"
                     ? "Personnalités scientifiques"
-                    : "شخصيات علمية"}
+                    : "شخصيات من الوسط العلمي"}
                 </chakra.h4>
               </Card>
               <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
