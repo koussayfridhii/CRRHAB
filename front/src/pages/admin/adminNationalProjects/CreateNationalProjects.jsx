@@ -9,6 +9,7 @@ import {
   Box,
   Flex,
   useToast,
+  Checkbox,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -22,6 +23,7 @@ const CreateNationalProject = () => {
     title: { fr: "", ar: "", en: "" },
     cordinator: { fr: "", ar: "", en: "" },
     duration: "",
+    closed:false,
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
@@ -175,6 +177,17 @@ const CreateNationalProject = () => {
                 value={formData.duration}
                 onChange={(e) => handleChange(e, null, "duration")}
               />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Closed</FormLabel>
+              <Checkbox
+                isChecked={formData.closed}
+                onChange={(e) =>
+                  setFormData({ ...formData, closed: !formData.closed })
+                }
+              >
+                closed
+              </Checkbox>
             </FormControl>
             <Button
               type="submit"

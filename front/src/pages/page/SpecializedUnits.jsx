@@ -42,40 +42,40 @@ const NationalProjects = () => {
   const data = [
     {
       title: {
-        en: "Agricultural Experimentation Unit in Chott Mériem, Sousse",
+        en: "Unit of Agricultural Experimentation of Chott-Mariem, Sousse",
         fr: "Unité d'expérimentation agricole à Chott Mériem, Sousse",
-        ar: "وحدة التجارب الزراعية في شط مريم، سوسة",
+        ar: "محطة التجارب بشط مريم، سوسة",
       },
       activity: {
-        en: "Horticulture: Vegetable Crops and Fruit Tree Cultivation conducted in Conventional and Organic modes",
+        en: " Horticulture: Vegetable Crops and Fruit Tree Cultivation under Conventional and Organic farming systems",
         fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en mode conventionnel et Biologique",
-        ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية",
+        ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية"
       },
       superficie: "9.5 ha",
     },
     {
       title: {
-        en: "Agricultural Experimentation Unit in Sahline, Monastir",
+        en: "Unit of Agricultural Experimentation of Sahline, Monastir",
         fr: "Unité d'expérimentation agricole à Sahline, Monastir",
-        ar: "وحدة التجارب الزراعية في ساحلين، المنستير",
+        ar: "محطة التجارب بالساحلين، المنستير",
       },
       activity: {
-        en: "Vegetable Crops and Fruit Tree Cultivation conducted in Conventional modes",
+        en: " Vegetable Crops and Fruit Tree Cultivation under Conventional cropping system",
         fr: "Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel",
-        ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية",
+        ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية"
       },
       superficie: "5.8 ha",
     },
     {
       title: {
-        en: "Agricultural Experimentation Unit in Teboulba, Monastir",
+        en: "Unit of Agricultural Experimentation of Teboulba, Monastir",
         fr: "Unité d'expérimentation agricole à Teboulba, Monastir",
-        ar: "وحدة التجارب الزراعية في طبلبة، المنستير",
+        ar: "محطة التجارب بطبلبة، المنستير",
       },
       activity: {
-        en: "Greenhouse and open field Vegetable Crops",
+        en: "Greenhouse and open field Vegetable Crops under Conventional cropping system",
         fr: "Cultures maraichères sous abri-serre et en plein champ",
-        ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة",
+        ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة"
       },
       superficie: "3.7 ha",
     },
@@ -124,7 +124,7 @@ const NationalProjects = () => {
             bg="#C6F6D5"
             _dark={{ bg: "#2C5282" }}
           >
-            Unité d’information et de documentation
+            {"fr" === language ? 'Unité d’information et de documentation' : "en" === language ? "Unit of Information and Documentation" : "وحدة الاعلام والتوثيق العلمي"}
           </ListItem>
           <ListItem
             fontSize="lg"
@@ -133,8 +133,9 @@ const NationalProjects = () => {
             bg="background"
             borderBottom={"2px"}
             borderColor="primary"
-          >
-            Unité de valorisation des résultats de la recherche
+            >
+            {"fr" === language ? 'Unité de valorisation des résultats de la recherche' : "en" === language ? "Unit of Research results valorization" : "وحدة تثمين نتائج البحث"}
+            
           </ListItem>
         </List>
         <DataTable data={data} language={language} />

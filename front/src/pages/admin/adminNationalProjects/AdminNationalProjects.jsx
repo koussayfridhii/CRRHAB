@@ -50,6 +50,13 @@ const AdminNationalProjects = () => {
         ar: "المدة",
       },
     },
+    {
+      title: {
+        fr: "Closed",
+        en: "closed",
+        ar: "المدة",
+      },
+    },
   ];
 
   const { data, error, isLoading } = useCallApi("national_projects");
@@ -167,6 +174,7 @@ const DataTable = ({ data, headers, language }) => {
               </Td>
               <Td>{getText(row.cordinator, language)}</Td>
               <Td>{row.duration}</Td>
+              <Td>{row?.closed ? "Closed" : "En cours"}</Td>
               <Td>
                 <Flex justify={{ md: "end" }}>
                   <ButtonGroup variant="solid" size="sm" spacing={3}>

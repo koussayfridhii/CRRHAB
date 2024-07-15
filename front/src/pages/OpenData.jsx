@@ -92,9 +92,34 @@ const OpenData = () => {
       title: {
         fr: "Rapport d'activités 2023",
         en: "Activity Report 2023",
-        ar: "|",
+        ar: "تقرير الأنشطة لعام 2023",
       },
-      link: "Création des Pôles de Recherche_Décret n°95-999 du 5 juin 1995.pdf",
+      link: "Rapport Activités CRRHAB 2023).pdf",
+    },
+    {  
+      type:"administrativeforms",
+      title: {
+        fr: "Demande de fourniture ou d'exécution de travaux",
+        en: "Request for supply or execution of works",
+        ar: "طلب تزود أو القيام بأشغال",
+      },
+      link: "formulaires administratifs.pdf",
+    },
+    {
+      type:"flyers",
+      title: {
+        fr: "Fruits de Tunisie Bulletin, Numéro 14",
+        en: "Tunisian Fruits Newsletter, Issue No. 14",
+        ar: "غلال تونس نشرية عدد 14",      },
+      link: "Insectes du Figuier RevueGIF_2023.pdf",
+    },
+    {
+      type:"flyers",
+      title: {
+        fr: "Fruits de Tunisie Bulletin, Numéro 15",
+        en: "Tunisian Fruits Newsletter, Issue No. 15",
+        ar: "غلال تونس نشرية عدد 15",      },
+      link: "Insectes du p stachier RevueGIF_2023 (1).pdf",
     },
   ];
   const [dataToShow, setDataToShow] = useState([])

@@ -42,7 +42,7 @@ const Tunisie = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            <Text display={{base:"none", xl:"block"}} textAlign={"justify"} fontWeight="500" fontStyle="italic" fontSize="sm" py={5} color="secondary">
+            <Text display={{base:"none", xl:"block"}} textAlign={"justify"} fontWeight="500" fontStyle="italic" fontSize="xs" py={5} color="secondary">
               {language === "fr" ? (
                 <>
                   République Tunisienne <br />
@@ -53,7 +53,7 @@ const Tunisie = () => {
                 </>
               ) : (
                 <>
-                  Tunisian Republic <br />
+                  Republic of Tunisia <br />
                 </>
               )}
             </Text>
@@ -80,7 +80,7 @@ const Tunisie = () => {
             
             >
             
-            <Text display={{base:"none", xl:"block"}}  fontWeight="500" fontStyle="italic" fontSize="sm" my={12}  color="secondary">
+            <Text display={{base:"none", xl:"block"}}  fontWeight="500" fontStyle="italic" fontSize="xs" my={12}  color="secondary">
               {language === "fr" ? (
                 <>
                   Ministère de l’Agriculture, 
@@ -96,7 +96,7 @@ const Tunisie = () => {
                 </>
               ) : (
                 <>
-                  The Minister of Agriculture,
+                  Minister of Agriculture,
                   Hydraulic Resources
                   and fishing
                 </>
