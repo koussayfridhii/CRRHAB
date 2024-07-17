@@ -56,8 +56,8 @@ const scientificOrganization = [
   {
     id: 7,
     title: {
-      fr: "Laboratoire de Recherche", // French translation
-      en: "Research Laboratory", // English translation
+      fr: "Structures de Recherche", // French translation
+      en: "Research Structures", // English translation
       ar: "مخابر ووحدات البحث", // Arabic translation
     },
     color: "#4F81BD", // Color associated with this role

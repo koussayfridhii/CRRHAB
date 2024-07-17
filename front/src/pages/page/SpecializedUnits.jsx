@@ -174,7 +174,7 @@ const DataTable = ({ data, language }) => {
               {language === "en"
                 ? "Unit"
                 : language === "fr"
-                ? "Unité d'expérimentation"
+                ? "Unités d'expérimentation"
                 : "الوحدة"}
             </Th>
             <Th color={"white"}>
