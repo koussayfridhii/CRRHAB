@@ -56,7 +56,7 @@ const scientificOrganization = [
   {
     id: 7,
     title: {
-      fr: "Structures de Recherche", // French translation
+      fr: "Structures de la Recherche", // French translation
       en: "Research Structures", // English translation
       ar: "مخابر ووحدات البحث", // Arabic translation
     },
@@ -65,7 +65,7 @@ const scientificOrganization = [
   {
     id: 8,
     title: {
-      fr: "Unités d’expérimentations agricoles", // French translation
+      fr: "Unités d’expérimentation agricole", // French translation
       en: "Agricultural Experimentation Units", // English translation
       ar: "وحدات التجارب الزراعية", // Arabic translation
     },
@@ -74,7 +74,7 @@ const scientificOrganization = [
   {
     id: 9,
     title: {
-      fr: "Unité de valorisation des résultats de recherche", // French translation
+      fr: "Unité de valorisation des résultats de la recherche", // French translation
       en: "Research Results Valorization Unit", // English translation
       ar: "وحدة تثمين نتائج البحث", // Arabic translation
     },

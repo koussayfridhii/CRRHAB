@@ -43,7 +43,7 @@ const NationalProjects = () => {
     {
       title: {
         en: "Unit of Agricultural Experimentation of Chott-Mariem, Sousse",
-        fr: "Unité d'expérimentation agricole à Chott Mériem, Sousse",
+        fr: "Unité d'expérimentation agricole à Chott Mariem, Sousse",
         ar: "محطة التجارب بشط مريم، سوسة",
       },
       activity: {
@@ -98,7 +98,7 @@ const NationalProjects = () => {
       >
         <Heading
           _dark={{
-            bg: "secondary",
+              bg: "secondary",
           }}
           fontSize={"xxl"}
           fontFamily={"body"}

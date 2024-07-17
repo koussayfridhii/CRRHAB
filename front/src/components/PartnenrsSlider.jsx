@@ -62,7 +62,7 @@ const PartnersSlider = ({ data, language, title = true }) => {
               {language === "en"
                 ? "Our International Projects"
                 : language === "fr"
-                ? "Nos Projets Inertnationaux"
+                ? "Nos Projets Internationaux"
                 : "مشاريعنا الدولية"}
             </Heading>
           </Box>
