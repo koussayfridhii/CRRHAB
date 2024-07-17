@@ -47,7 +47,7 @@ const NationalProjects = () => {
         ar: "محطة التجارب بشط مريم، سوسة",
       },
       activity: {
-        en: " Horticulture: Vegetable Crops and Fruit Tree Cultivation under Conventional and Organic farming systems",
+        en: "Horticulture: Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel et Biologique",
         fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en mode conventionnel et Biologique",
         ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية"
       },
@@ -74,7 +74,7 @@ const NationalProjects = () => {
       },
       activity: {
         en: "Greenhouse and open field Vegetable Crops under Conventional cropping system",
-        fr: "Cultures maraichères sous abri-serre et en plein champ",
+        fr: "Cultures maraichères sous abri-serre et en plein champ conduites en mode Conventionnel",
         ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة"
       },
       superficie: "3.7 ha",

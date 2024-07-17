@@ -812,8 +812,8 @@ const NAV_ITEMS = [
   },
   {
     label: {
-      fr: "Structure de Recherche",
-      en: "Research Structure",
+      fr: "Structures de Recherche",
+      en: "Research Structures",
       ar: "هياكل البحث الحالية",
     },
     children: [
