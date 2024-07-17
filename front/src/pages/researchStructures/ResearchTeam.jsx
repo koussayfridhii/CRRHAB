@@ -84,7 +84,7 @@ const ResearchTeam = ({ add = false }) => {
         {language === "en"
           ? "Research Network"
           : language === "fr"
-          ? "Réseau Chercheurs"
+          ? "Liste des Chercheurs"
           : "شبكة الباحثين"}
       </Heading>
       <AutoComplete
