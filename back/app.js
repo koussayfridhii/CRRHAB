@@ -1,10 +1,11 @@
-var express = require("express");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cors = require("cors");
 const { app, server } = require("./socket/socket");
+
 //routes
 const pagesRouter = require("./routes/pages.route");
 const userRouter = require("./routes/user.route");
@@ -35,36 +36,27 @@ const historyRoute = require("./routes/history.route");
 const missionRoute = require("./routes/mission.route");
 const openDataRoute = require("./routes/openData.route");
 
-//initializing app(express)
-// var app = express();
-
 //middlewares
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
-// Configuration de CORS pour accepter les requêtes de n'importe quelle source
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*" })); // Configuration of CORS to accept requests from any origin
 
 require("./middlewares/passport")(passport);
 
-//db Connection
+// Database connection
+mongoose
+  .connect(process.env.MONGO_URI , { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("DB Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-//routes usage
-
-server.listen(process.env.Port, () => {
-  console.log(`Server Running on port ${process.env.PORT}`);
-  mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-      console.log("DB Connected");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-// module.exports = app;
+// Routes usage
 app.use("/api", [
   pagesRouter,
   userRouter,
@@ -95,13 +87,13 @@ app.use("/api", [
   missionRoute,
   openDataRoute
 ]);
+
 app.get("/", (req, res) => {
-  mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-      res.json("DB Connected");
-    })
-    .catch((err) => {
-      res.json(err);
-    });
+  res.json("Welcome to the API");
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`Server Running on port ${PORT}`);
 });

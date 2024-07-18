@@ -99,7 +99,7 @@ const AdminLaboratoryExecutiveMembers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://193.95.21.154/api/laboratory_members`
+      `https://crrhab-3ofe.vercel.app/api/laboratory_members`
     );
     setExecutiveData(res.data.filter((member) => member.executive === true));
     setResearchData(res.data.filter((member) => member.executive === false));
@@ -188,7 +188,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://193.95.21.154/api/laboratory_members/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/laboratory_members/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
@@ -284,7 +284,7 @@ const ResearchDataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://193.95.21.154/api/laboratory_members/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/laboratory_members/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

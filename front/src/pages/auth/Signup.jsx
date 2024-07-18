@@ -131,7 +131,7 @@ const Login = () => {
     if (pathname === "/signup") {
       setLoading(true);
       await axios
-        .post(`http://193.95.21.154/api/users/signup`, data)
+        .post(`https://crrhab-3ofe.vercel.app/api/users/signup`, data)
         .then((res) => {
           setLoading(false);
 
@@ -144,7 +144,7 @@ const Login = () => {
       setLoading(true);
       await axios
         .put(
-          `http://193.95.21.154/api/users/${user?._id}`,
+          `https://crrhab-3ofe.vercel.app/api/users/${user?._id}`,
           { data },
           {
             headers: {

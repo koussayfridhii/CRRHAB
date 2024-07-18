@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `http://193.95.21.154/api/opendata/${id}`,
+          `https://crrhab-3ofe.vercel.app/api/opendata/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "http://193.95.21.154/api/opendata",
+          "https://crrhab-3ofe.vercel.app/api/opendata",
           dataToSubmit,
           {
             headers: {
@@ -132,7 +132,7 @@ const CreateEvents = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://193.95.21.154/api/opendata/${id}`, {
+        .get(`https://crrhab-3ofe.vercel.app/api/opendata/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

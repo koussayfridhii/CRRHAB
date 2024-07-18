@@ -61,7 +61,7 @@ const AdminEvents = () => {
   const getAllData = async () => {
     try {
       const res = await axios.get(
-        `http://193.95.21.154/api/documents`
+        `https://crrhab-3ofe.vercel.app/api/documents`
       );
       setData(res.data.document);
       console.log(res.data);
@@ -111,7 +111,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((item) => item._id !== id));
 
     try {
-      await axios.delete(`http://193.95.21.154/api/documents/${id}`, {
+      await axios.delete(`https://crrhab-3ofe.vercel.app/api/documents/${id}`, {
         headers: {
           Authorization: `Bearer ${user?.user?.token}`,
         },
