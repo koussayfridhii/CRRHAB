@@ -96,9 +96,9 @@ const Tunisie = () => {
                 </>
               ) : (
                 <>
-                  Minister of Agriculture,
-                  Hydraulic Resources
-                  and fishing
+                  Ministry of Agriculture,
+                  Water Resources
+                  and fisheries
                 </>
               )}
             </Text>
