@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `http://localhost:5000/api/documents/${id}`,
+          `http://193.95.21.154/apiapi/documents/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "http://localhost:5000/api/documents",
+          "http://193.95.21.154/apiapi/documents",
           dataToSubmit,
           {
             headers: {
@@ -132,7 +132,7 @@ const CreateEvents = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:5000/api/documents/${id}`, {
+        .get(`http://193.95.21.154/apiapi/documents/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

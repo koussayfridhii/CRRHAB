@@ -30,7 +30,7 @@ const AdminMissions = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000/api/missions`);
+    const res = await axios.get(`http://193.95.21.154/apiapi/missions`);
     setData(res.data);
   };
 

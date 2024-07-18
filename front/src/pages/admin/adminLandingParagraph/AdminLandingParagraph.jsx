@@ -30,7 +30,7 @@ const AdminLandingParagraph = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000/api/histories`);
+    const res = await axios.get(`http://193.95.21.154/apiapi/histories`);
     setData(res.data);
   };
 

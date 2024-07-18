@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchNews = async () => {
-  const { data } = await axios.get("http://localhost:5000/api/news");
+  const { data } = await axios.get("http://193.95.21.154/apiapi/news");
   return data.news;
 };
 

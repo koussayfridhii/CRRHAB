@@ -53,7 +53,7 @@ const CreateParagraphLanding = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/histories",
+          "http://193.95.21.154/apiapi/histories",
           JSON.stringify(payload),
           {
             headers: {
@@ -84,7 +84,7 @@ const CreateParagraphLanding = () => {
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/histories/${formData._id}`,
+          `http://193.95.21.154/apiapi/histories/${formData._id}`,
           JSON.stringify(payload),
           {
             headers: {
@@ -122,7 +122,7 @@ const CreateParagraphLanding = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/histories/${path}`
+        `http://193.95.21.154/apiapi/histories/${path}`
       );
       setFormData(response.data);
     } catch (error) {

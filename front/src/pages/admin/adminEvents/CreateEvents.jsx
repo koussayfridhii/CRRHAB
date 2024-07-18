@@ -78,7 +78,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `http://localhost:5000/api/events/${id}`,
+          `http://193.95.21.154/apiapi/events/${id}`,
           dataToSubmit,
           {
             headers: {
@@ -89,7 +89,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "http://localhost:5000/api/events",
+          "http://193.95.21.154/apiapi/events",
           dataToSubmit,
           {
             headers: {
@@ -128,7 +128,7 @@ const CreateEvents = () => {
     if (id) {
       // Récupérer les données des évènnements pour le mode édition
       axios
-        .get(`http://localhost:5000/api/events/${id}`, {
+        .get(`http://193.95.21.154/apiapi/events/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

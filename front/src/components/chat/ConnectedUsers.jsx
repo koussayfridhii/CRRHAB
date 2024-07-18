@@ -27,7 +27,7 @@ const ConnectedUsers = ({ setCurrentConversationId }) => {
   const headers = { Authorization: `Bearer ${token}` };
   const fun = async () => {
     await axios
-      .get(`http://localhost:5000/api/users/${userId}`, {
+      .get(`http://193.95.21.154/apiapi/users/${userId}`, {
         headers,
       })
       .then((res) => {

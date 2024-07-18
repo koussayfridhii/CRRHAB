@@ -66,7 +66,7 @@ const AdminEvents = () => {
 
   const getAllData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/events`);
+      const res = await axios.get(`http://193.95.21.154/apiapi/events`);
       setData(res.data.events);
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
@@ -120,7 +120,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((item) => item._id !== id));
 
     try {
-      await axios.delete(`http://localhost:5000/api/events/${id}`, {
+      await axios.delete(`http://193.95.21.154/apiapi/events/${id}`, {
         headers: {
           Authorization: `Bearer ${user?.user?.token}`,
         },
