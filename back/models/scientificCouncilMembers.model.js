@@ -26,21 +26,21 @@ const scientificCouncilSchema = new mongoose.Schema(
         ar: String,
       },
     ],
-    representativesOfResearchers: {
+    representativesOfResearchers: [{
       fr: String,
       en: String,
       ar: String,
-    },
+    }],
     representativeOfIresa: {
       fr: String,
       en: String,
       ar: String,
     },
-    representativesOfAgriculturalResearchAndHigherEducationEstablishments: {
+    representativesOfAgriculturalResearchAndHigherEducationEstablishments: [{
       fr: String,
       en: String,
       ar: String,
-    },
+    }],
     representativeOfInrat:{
       fr: String,
       en: String,

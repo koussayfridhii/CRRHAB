@@ -26,9 +26,7 @@ const CreateScientificCouncilMembers = () => {
     managersOfSpecializedUnits: [{ fr: "", ar: "", en: "" }],
     representativesOfResearchers: [{ fr: "", ar: "", en: "" }],
     representativeOfIresa: { fr: "", ar: "", en: "" },
-    representativesOfAgriculturalResearchAndHigherEducationEstablishments: [
-      { fr: "", ar: "", en: "" },
-    ],
+    representativesOfAgriculturalResearchAndHigherEducationEstablishments: [{ fr: "", ar: "", en: "" }],
     representativeOfInrat: { fr: "", ar: "", en: "" },
     representativeOfINRGREF: { fr: "", ar: "", en: "" },
     representativeOfIO: { fr: "", ar: "", en: "" },
@@ -37,20 +35,16 @@ const CreateScientificCouncilMembers = () => {
   const user = useSelector((state) => state.user);
   const toast = useToast();
   const path = pathname.replace("/admin/create/scientific_council", "");
+
   const handleChange = (e, lang, field, index = null) => {
     if (index !== null) {
       const updatedArray = [...formData[field]];
       updatedArray[index] = { ...updatedArray[index], [lang]: e.target.value };
       setFormData({ ...formData, [field]: updatedArray });
-    } else if (lang) {
-      setFormData({
-        ...formData,
-        [field]: { ...formData[field], [lang]: e.target.value },
-      });
     } else {
       setFormData({
         ...formData,
-        [field]: e.target.value,
+        [field]: { ...formData[field], [lang]: e.target.value },
       });
     }
   };
@@ -61,8 +55,8 @@ const CreateScientificCouncilMembers = () => {
     setLoading(true);
     const payload = { ...formData, cv: url };
 
-    if (path === "") {
-      try {
+    try {
+      if (path === "") {
         await axios.post(
           "https://crrhab-3ofe.vercel.app/api/scientific_council",
           JSON.stringify(payload),
@@ -73,27 +67,7 @@ const CreateScientificCouncilMembers = () => {
             },
           }
         );
-        setLoading(false);
-        toast({
-          title: "Data submitted successfully!",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        navigate("/admin/scientific_council");
-      } catch (error) {
-        setLoading(false);
-        toast({
-          title: "Error submitting data.",
-          description: error.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
-        console.error("Error submitting data:", error);
-      }
-    } else {
-      try {
+      } else {
         await axios.put(
           `https://crrhab-3ofe.vercel.app/api/scientific_council/${formData._id}`,
           JSON.stringify(payload),
@@ -104,25 +78,25 @@ const CreateScientificCouncilMembers = () => {
             },
           }
         );
-        setLoading(false);
-        toast({
-          title: "Data submitted successfully!",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        navigate("/admin/scientific_council");
-      } catch (error) {
-        setLoading(false);
-        toast({
-          title: "Error submitting data.",
-          description: error.message,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
-        console.error("Error submitting data:", error);
       }
+      setLoading(false);
+      toast({
+        title: "Data submitted successfully!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate("/admin/scientific_council");
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Error submitting data.",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      console.error("Error submitting data:", error);
     }
   };
 
@@ -163,11 +137,10 @@ const CreateScientificCouncilMembers = () => {
 
   useEffect(() => {
     if (path !== "") firstApiCall(path.replace("/", ""));
-    console.log(formData);
   }, [path]);
 
   return (
-    <Flex w="100%" minH="100dvh" justify="center" align="center" py={20}>
+    <Flex w="100%" minH="100vh" justify="center" align="center" py={20}>
       <Box bg="background" p={8} rounded="md" shadow="lg" maxW="2xl" mx="auto">
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
@@ -179,7 +152,7 @@ const CreateScientificCouncilMembers = () => {
               "representativeOfINRGREF",
               "representativeOfIO",
               "representativeOfCtab",
-            ]?.map((field) => (
+            ].map((field) => (
               <FormControl key={field}>
                 <FormLabel>
                   {field
@@ -213,12 +186,10 @@ const CreateScientificCouncilMembers = () => {
               "representativesOfAgriculturalResearchAndHigherEducationEstablishments",
               "Responsables_des_structures_RDI",
               "managersOfSpecializedUnits",
-            ]?.map((field) => (
+            ].map((field) => (
               <FormControl key={field}>
                 <FormLabel>
-                  {field
-                    .replace(/([A-Z])/g, " $1")
-                    .replace(/^./, (str) => str.toUpperCase())}
+                  {field}
                 </FormLabel>
                 {formData?.[field]?.map((item, index) => (
                   <HStack key={index} mb={2}>
