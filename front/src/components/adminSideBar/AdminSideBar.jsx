@@ -47,7 +47,7 @@ const LinkItems = [
     href: "/admin/laboratory_members",
   },
   {
-    name: "Formations Diplômante",
+    name: "Supervision Académique",
     icon: FaBook,
     href: "/admin/diploma_course",
   },
