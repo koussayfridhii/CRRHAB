@@ -30,7 +30,7 @@ const AdminMissions = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/missions`);
+    const res = await axios.get(`http://localhost:5000/api/missions`);
     setData(res.data);
   };
 

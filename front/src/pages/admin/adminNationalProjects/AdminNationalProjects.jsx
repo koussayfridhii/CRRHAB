@@ -110,7 +110,7 @@ const DataTable = ({ data, headers, language }) => {
     e.preventDefault();
     try {
       await axios.delete(
-        `https://crrhab-3ofe.vercel.app/api/national_projects/${id}`,
+        `http://localhost:5000/api/national_projects/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

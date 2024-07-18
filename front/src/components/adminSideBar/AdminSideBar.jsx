@@ -96,7 +96,7 @@ const LinkItems = [
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const pingOnBack = async () => {
-    const { data } = await axios.get("https://crrhab-3ofe.vercel.app/");
+    const { data } = await axios.get("http://localhost:5000/");
   };
   useEffect(() => {
     pingOnBack();

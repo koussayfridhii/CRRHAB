@@ -76,7 +76,7 @@ const CreateVideo = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/videos/${id}`,
+          `http://localhost:5000/api/videos/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateVideo = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/videos",
+          "http://localhost:5000/api/videos",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateVideo = () => {
     if (id) {
       // Fetch videos data for edit mode
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/videos/${id}`, {
+        .get(`http://localhost:5000/api/videos/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

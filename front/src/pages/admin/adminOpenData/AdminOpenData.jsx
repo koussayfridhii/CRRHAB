@@ -56,7 +56,7 @@ const AdminOpenData = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `https://crrhab-3ofe.vercel.app/api/opendata`
+      `http://localhost:5000/api/opendata`
     );
     setData(res.data);
   };
@@ -102,7 +102,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `https://crrhab-3ofe.vercel.app/api/opendata/${id}`,
+        `http://localhost:5000/api/opendata/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

@@ -61,7 +61,7 @@ const AdminGallerie = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/videos`);
+    const res = await axios.get(`http://localhost:5000/api/videos`);
     setData(res.data.videos);
   };
   useEffect(() => {
@@ -113,7 +113,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `https://crrhab-3ofe.vercel.app/api/videos/${id}`,
+        `http://localhost:5000/api/videos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

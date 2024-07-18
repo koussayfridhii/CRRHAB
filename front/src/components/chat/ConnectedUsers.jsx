@@ -27,7 +27,7 @@ const ConnectedUsers = ({ setCurrentConversationId }) => {
   const headers = { Authorization: `Bearer ${token}` };
   const fun = async () => {
     await axios
-      .get(`https://crrhab-3ofe.vercel.app/api/users/${userId}`, {
+      .get(`http://localhost:5000/api/users/${userId}`, {
         headers,
       })
       .then((res) => {

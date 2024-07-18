@@ -5,7 +5,7 @@ let data = [];
 const fetchData = async () => {
   try {
     // Make a GET request to the API endpoint
-    const response = await axios.get("https://crrhab-3ofe.vercel.app/api/news");
+    const response = await axios.get("http://localhost:5000/api/news");
 
     // Extract data from the response
     data = response.data?.news;

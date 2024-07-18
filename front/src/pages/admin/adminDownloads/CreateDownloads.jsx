@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/documents/${id}`,
+          `http://localhost:5000/api/documents/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/documents",
+          "http://localhost:5000/api/documents",
           dataToSubmit,
           {
             headers: {
@@ -132,7 +132,7 @@ const CreateEvents = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/documents/${id}`, {
+        .get(`http://localhost:5000/api/documents/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,
