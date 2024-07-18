@@ -806,9 +806,11 @@ const ScientificOrganization = () => {
             </chakra.h4>
           </Card>
           <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-            <chakra.h5>
-              {data[0].representativesOfResearchers?.[language]}
-            </chakra.h5>
+            {data[0].representativesOfResearchers?.map((item=>(
+              <chakra.h5>
+              {item?.[language]}
+              </chakra.h5>
+            )))}
           </Card>
         </Flex>
 
