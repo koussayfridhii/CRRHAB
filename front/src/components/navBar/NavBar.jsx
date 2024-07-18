@@ -853,7 +853,7 @@ const NAV_ITEMS = [
       },
       {
         label: {
-          fr: "Formation Diplômante",
+          fr: "Supervision Académique",
           en: "Academic Supervision",
           ar: "التأطير الأكاديمي",
         },

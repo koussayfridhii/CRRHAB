@@ -24,16 +24,15 @@ const CreateScientificCouncilMembers = () => {
     rapporteur: { fr: "", ar: "", en: "" },
     Responsables_des_structures_RDI: [{ fr: "", ar: "", en: "" }],
     managersOfSpecializedUnits: [{ fr: "", ar: "", en: "" }],
-    representativesOfResearchers: { fr: "", ar: "", en: "" },
+    representativesOfResearchers: [{ fr: "", ar: "", en: "" }],
     representativeOfIresa: { fr: "", ar: "", en: "" },
-    representativesOfAgriculturalResearchAndHigherEducationEstablishments: {
-      fr: "",
-      ar: "",
-      en: "",
-    },
-    scientificPersonalitiesFromTheAcademicAndScientificResearchWorld: [
+    representativesOfAgriculturalResearchAndHigherEducationEstablishments: [
       { fr: "", ar: "", en: "" },
     ],
+    representativeOfInrat: { fr: "", ar: "", en: "" },
+    representativeOfINRGREF: { fr: "", ar: "", en: "" },
+    representativeOfIO: { fr: "", ar: "", en: "" },
+    representativeOfCtab: { fr: "", ar: "", en: "" },
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
@@ -64,7 +63,7 @@ const CreateScientificCouncilMembers = () => {
 
     if (path === "") {
       try {
-        const response = await axios.post(
+        await axios.post(
           "https://crrhab-3ofe.vercel.app/api/scientific_council",
           JSON.stringify(payload),
           {
@@ -95,7 +94,7 @@ const CreateScientificCouncilMembers = () => {
       }
     } else {
       try {
-        const response = await axios.put(
+        await axios.put(
           `https://crrhab-3ofe.vercel.app/api/scientific_council/${formData._id}`,
           JSON.stringify(payload),
           {
@@ -164,6 +163,7 @@ const CreateScientificCouncilMembers = () => {
 
   useEffect(() => {
     if (path !== "") firstApiCall(path.replace("/", ""));
+    console.log(formData);
   }, [path]);
 
   return (
@@ -174,10 +174,12 @@ const CreateScientificCouncilMembers = () => {
             {[
               "president",
               "rapporteur",
-              "representativesOfResearchers",
               "representativeOfIresa",
-              "representativesOfAgriculturalResearchAndHigherEducationEstablishments",
-            ].map((field) => (
+              "representativeOfInrat",
+              "representativeOfINRGREF",
+              "representativeOfIO",
+              "representativeOfCtab",
+            ]?.map((field) => (
               <FormControl key={field}>
                 <FormLabel>
                   {field
@@ -207,17 +209,18 @@ const CreateScientificCouncilMembers = () => {
               </FormControl>
             ))}
             {[
+              "representativesOfResearchers",
+              "representativesOfAgriculturalResearchAndHigherEducationEstablishments",
               "Responsables_des_structures_RDI",
               "managersOfSpecializedUnits",
-              "scientificPersonalitiesFromTheAcademicAndScientificResearchWorld",
-            ].map((field) => (
+            ]?.map((field) => (
               <FormControl key={field}>
                 <FormLabel>
                   {field
                     .replace(/([A-Z])/g, " $1")
                     .replace(/^./, (str) => str.toUpperCase())}
                 </FormLabel>
-                {formData[field].map((item, index) => (
+                {formData?.[field]?.map((item, index) => (
                   <HStack key={index} mb={2}>
                     <Input
                       placeholder="fr"

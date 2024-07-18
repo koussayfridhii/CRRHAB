@@ -79,11 +79,35 @@ const AdminScientificCouncilMembers = () => {
     },
     {
       title: {
-        fr: "Personnalités scientifiques du monde académique et de la recherche",
-        en: "Scientific Personalities from the Academic and Research World",
-        ar: "شخصيات علمية من عالم الأكاديمية والبحث",
+        fr: "Représentant de l'INRAT",
+        en: "Representative of INRAT",
+        ar: "ممثل عن INRAT",
       },
-      key: "scientificPersonalitiesFromTheAcademicAndScientificResearchWorld",
+      key: "representativeOfInrat",
+    },
+    {
+      title: {
+        fr: "Représentant de l'INRGREF",
+        en: "Representative of INRGREF",
+        ar: "ممثل عن INRGREF",
+      },
+      key: "representativeOfINRGREF",
+    },
+    {
+      title: {
+        fr: "Représentant de l'IO",
+        en: "Representative of IO",
+        ar: "ممثل عن IO",
+      },
+      key: "representativeOfIO",
+    },
+    {
+      title: {
+        fr: "Représentant de CTAB",
+        en: "Representative of CTAB",
+        ar: "ممثل عن CTAB",
+      },
+      key: "representativeOfCtab",
     },
   ];
 
@@ -99,7 +123,7 @@ const AdminScientificCouncilMembers = () => {
   }, []);
 
   return (
-    <Wrap height="100dvh" dir={{ base: "column", xl: "row" }}>
+    <Wrap height="100dvh" direction={{ base: "column", xl: "row" }}>
       <SimpleSidebar />
       <Box
         bg="background"
@@ -139,7 +163,7 @@ const DataList = ({ data, setData, headers, language }) => {
     e.preventDefault();
     setData(data.filter((element) => element._id !== id));
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://crrhab-3ofe.vercel.app/api/scientific_council/${id}`,
         {
           headers: {

@@ -30,7 +30,7 @@ import Spinner from "../components/spinner/Spinner";
 const ScientificOrganization = () => {
   const language = useSelector((state) => state.language.language);
   const { data, error, isLoading } = useCallApi("scientific_council");
-
+  
   if (isLoading) {
     return <Spinner />;
   }
@@ -640,273 +640,355 @@ const ScientificOrganization = () => {
           mx={"auto"}
           borderColor={"primary"}
         />
-        <Box>
-          <chakra.h2
-            fontSize={"xxl"}
-            color={"white"}
-            px={4}
+       <Box>
+      <chakra.h2
+        fontSize={"xxl"}
+        color={"white"}
+        px={4}
+        py={1}
+        _dark={{ bg: "secondary" }}
+        mb={10}
+        bg="primary"
+        borderRadius={"lg"}
+      >
+        {language === "en"
+          ? "Composition of the CRRHAB scientific council"
+          : language === "fr"
+          ? "Composition du conseil scientifique du CRRHAB"
+          : "تركيبة المجلس العلمي للمركز:"}
+      </chakra.h2>
+      <Flex
+        direction={"column"}
+        w={{ base: "full", xl: "80dvw", "2xl": "60dvw" }}
+        mx="auto"
+        fontSize={{ base: "sm", xl: "lg" }}
+        gap={5}
+      >
+        {/* President */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
             py={1}
-            _dark={{ bg: "secondary" }}
-            mb={10}
-            bg="primary"
-            borderRadius={"lg"}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
           >
-            {language === "en"
-              ? "Composition of the CRRHAB scientific council"
-              : language === "fr"
-              ? "Composition du conseil scientifique du CRRHAB"
-              : "تركيبة المجلس العلمي للمركز:"}
-          </chakra.h2>
-          <Flex
-            direction={"column"}
-            w={{ base: "full", xl: "80dvw", "2xl": "60dvw" }}
-            mx="auto"
-            fontSize={{ base: "sm", xl: "lg" }}
-            gap={5}
+            <chakra.h4>
+              {language === "en"
+                ? "Chairman"
+                : language === "fr"
+                ? "Président"
+                : "رئيس المجلس"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>{data[0].president?.[language]}</chakra.h5>
+          </Card>
+        </Flex>
+
+        {/* Rapporteur */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
           >
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Chairman"
-                    : language === "fr"
-                    ? "Président"
-                    : "رئيس المجلس"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                <chakra.h5>{data[0].president?.[language]}</chakra.h5>
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Rapporteur"
-                    : language === "fr"
-                    ? "Rapporteur"
-                    : "المقرر"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                <chakra.h5>{data[0].rapporteur?.[language]}</chakra.h5>
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-                justify={"center"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Heads of R&D Structures"
-                    : language === "fr"
-                    ? "Responsables des structures RDI"
-                    : "رؤساء الهياكل البحث والتطوير"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {data[0].Responsables_des_structures_RDI.map((responsable) => {
-                  return (
-                    <chakra.h5 key={responsable.fr}>
-                      {responsable?.[language]}
-                    </chakra.h5>
-                  );
-                })}
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-                justify={"center"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Heads of Specialized Units"
-                    : language === "fr"
-                    ? "Responsables des unités spécialisées"
-                    : "رؤساء الوحدات المتخصصة"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {data[0].managersOfSpecializedUnits.map((responsable) => {
-                  return (
-                    <chakra.h5 key={responsable.fr}>
-                      {responsable?.[language]}
-                    </chakra.h5>
-                  );
-                })}
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-                justify={"center"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Elected Researcher Representatives"
-                    : language === "fr"
-                    ? "Représentants des Chercheurs (Membres élus)"
-                    : "ممثلو الباحثين (أعضاء منتخبون)"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {data[0].representativesOfResearchers.map((responsable) => {
-                  return (
-                    <chakra.h5 key={responsable.fr}>
-                      {responsable?.[language]}
-                    </chakra.h5>
-                  );
-                })}
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "IRESA Representative"
-                    : language === "fr"
-                    ? "Représentant de l'IRESA"
-                    : "ممثل عن مؤسسة البحث والتعليم العالي الفلاحي IRESA"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                <chakra.h5>
-                  {data[0].representativeOfIresa?.[language]}
-                </chakra.h5>
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-                justify={"center"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Representatives of RESA Institutions"
-                    : language === "fr"
-                    ? "Représentants des établissements RESA"
-                    : "ممثلو مؤسسات التعليم العالي والبحث الفلاحي"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {data[0].representativesOfAgriculturalResearchAndHigherEducationEstablishments.map(
-                  (responsable) => {
-                    return (
-                      <chakra.h5 key={responsable.fr}>
-                        {responsable?.[language]}
-                      </chakra.h5>
-                    );
-                  }
-                )}
-              </Card>
-            </Flex>
-            <Flex gap={1}>
-              <Card
-                bg="blue.500"
-                gap={3}
-                flex={3}
-                minH={"5dvh"}
-                px={5}
-                py={1}
-                fontWeight={"Bold"}
-                color="white"
-                letterSpacing={1}
-                shadow={"lg"}
-                justify={"center"}
-              >
-                <chakra.h4>
-                  {language === "en"
-                    ? "Scientific Figures"
-                    : language === "fr"
-                    ? "Personnalités scientifiques"
-                    : "شخصيات من الوسط العلمي"}
-                </chakra.h4>
-              </Card>
-              <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
-                {data[0].scientificPersonalitiesFromTheAcademicAndScientificResearchWorld.map(
-                  (responsable) => {
-                    return (
-                      <chakra.h5 key={responsable.fr}>
-                        {responsable?.[language]}
-                      </chakra.h5>
-                    );
-                  }
-                )}
-              </Card>
-            </Flex>
-          </Flex>
-        </Box>
+            <chakra.h4>
+              {language === "en"
+                ? "Rapporteur"
+                : language === "fr"
+                ? "Rapporteur"
+                : "المقرر"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>{data[0].rapporteur?.[language]}</chakra.h5>
+          </Card>
+        </Flex>
+
+        {/* Responsables des structures RDI */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+            justify={"center"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "Heads of R&D Structures"
+                : language === "fr"
+                ? "Responsables des structures RDI"
+                : "رؤساء الهياكل البحث والتطوير"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            {data[0]?.Responsables_des_structures_RDI?.map((responsable) => (
+              <chakra.h5 key={responsable.fr}>
+                {responsable?.[language]}
+              </chakra.h5>
+            ))}
+          </Card>
+        </Flex>
+
+        {/* Managers of Specialized Units */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+            justify={"center"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "Heads of Specialized Units"
+                : language === "fr"
+                ? "Responsables des unités spécialisées"
+                : "رؤساء الوحدات المتخصصة"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            {data[0]?.managersOfSpecializedUnits?.map((responsable) => (
+              <chakra.h5 key={responsable.fr}>
+                {responsable?.[language]}
+              </chakra.h5>
+            ))}
+          </Card>
+        </Flex>
+
+        {/* Representatives of Researchers */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+            justify={"center"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "Elected Researcher Representatives"
+                : language === "fr"
+                ? "Représentants des Chercheurs (Membres élus)"
+                : "ممثلو الباحثين (أعضاء منتخبون)"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativesOfResearchers?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+
+        
+
+        {/* Representatives of Agricultural Research and Higher Education Establishments */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+            justify={"center"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "Representatives of the academic world of scientific research and the socio-economic sector"
+                : language === "fr"
+                ? "Représentants du monde universitaire de la recherche scientifique et du secteur socio-économique"
+                : "ممثلو العالم الأكاديمي للبحث العلمي والقطاع الاجتماعي والاقتصادي"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativesOfAgriculturalResearchAndHigherEducationEstablishments?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+        {/* Representative of IRESA */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+            justify={"center"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "IRESA Representative"
+                : language === "fr"
+                ? "Représentant de l'IRESA"
+                : "ممثل عن مؤسسة البحث والتعليم العالي الفلاحي IRESA"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativeOfIresa?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+        {/* Representative of INRAT */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "INRAT Representative"
+                : language === "fr"
+                ? "Représentant de l'INRAT"
+                : "ممثل عن INRAT"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativeOfInrat?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+
+        {/* Representative of INRGREF */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "INRGREF Representative"
+                : language === "fr"
+                ? "Représentant de l'INRGREF"
+                : "ممثل عن INRGREF"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativeOfINRGREF?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+
+        {/* Representative of IO */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "IO Representative"
+                : language === "fr"
+                ? "Représentant de l'IO"
+                : "ممثل عن IO"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativeOfIO?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+
+        {/* Representative of CTAB */}
+        <Flex gap={1}>
+          <Card
+            bg="blue.500"
+            gap={3}
+            flex={3}
+            minH={"5dvh"}
+            px={5}
+            py={1}
+            fontWeight={"Bold"}
+            color="white"
+            letterSpacing={1}
+            shadow={"lg"}
+          >
+            <chakra.h4>
+              {language === "en"
+                ? "CTAB Representative"
+                : language === "fr"
+                ? "Représentant de la CTAB"
+                : "ممثل عن CTAB"}
+            </chakra.h4>
+          </Card>
+          <Card bg="#8fa8c1" flex={5} gap={3} minH={"5dvh"} px={5} py={1}>
+            <chakra.h5>
+              {data[0].representativeOfCtab?.[language]}
+            </chakra.h5>
+          </Card>
+        </Flex>
+      </Flex>
+    </Box>
         <Divider
           my={5}
           _dark={{

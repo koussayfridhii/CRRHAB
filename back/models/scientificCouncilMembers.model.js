@@ -41,13 +41,27 @@ const scientificCouncilSchema = new mongoose.Schema(
       en: String,
       ar: String,
     },
-    scientificPersonalitiesFromTheAcademicAndScientificResearchWorld: [
-      {
-        fr: String,
-        en: String,
-        ar: String,
-      },
-    ],
+    representativeOfInrat:{
+      fr: String,
+      en: String,
+      ar: String,  
+    },
+    representativeOfINRGREF:{
+      fr: String,
+      en: String,
+      ar: String,  
+    },
+    representativeOfIO:{
+      fr: String,
+      en: String,
+      ar: String,  
+    },
+    representativeOfCtab:{
+      fr: String,
+      en: String,
+      ar: String,  
+    },
+
   },
   {
     toJSON: { virtuals: true },
