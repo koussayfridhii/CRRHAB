@@ -53,7 +53,7 @@ const CreateNationalProject = () => {
       console.log("Submitting data:", formData); // Log the data to be sent
       if (path === "") {
         await axios.post(
-          "http://193.95.21.154/apiapi/national_projects",
+          "http://193.95.21.154/api/national_projects",
           JSON.stringify(formData),
           {
             headers: {
@@ -64,7 +64,7 @@ const CreateNationalProject = () => {
         );
       } else {
         await axios.put(
-          `http://193.95.21.154/apiapi/national_projects/${formData._id}`,
+          `http://193.95.21.154/api/national_projects/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {
@@ -99,7 +99,7 @@ const CreateNationalProject = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://193.95.21.154/apiapi/national_projects/${path}`
+        `http://193.95.21.154/api/national_projects/${path}`
       );
       setFormData(response.data);
     } catch (error) {

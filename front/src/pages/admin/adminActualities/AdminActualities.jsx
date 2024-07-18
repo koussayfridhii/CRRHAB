@@ -62,7 +62,7 @@ const AdminResearchTeam = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://193.95.21.154/apiapi/news`);
+    const res = await axios.get(`http://193.95.21.154/api/news`);
     setData(res.data.news);
   };
   useEffect(() => {
@@ -113,7 +113,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://193.95.21.154/apiapi/news/${id}`,
+        `http://193.95.21.154/api/news/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

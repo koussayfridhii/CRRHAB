@@ -40,7 +40,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`http://193.95.21.154/apiapi/users/signin`, data)
+      .post(`http://193.95.21.154/api/users/signin`, data)
       .then((res) => {
         setLoading(false);
         console.log(res.data);
