@@ -125,11 +125,11 @@ const OpenData = () => {
   const [dataToShow, setDataToShow] = useState([])
   const { pathname } = useLocation();
   let path =pathname.replace("_", "");
-   
+
   path = path.replace("/", "");
   useEffect(() => {
     data.reverse()
-   setDataToShow(data.filter((doc) => doc.type === path)) 
+    setDataToShow(data.filter((doc) => doc.type === path)) 
   }, [ path]);
 const titles= {
   opendata: {

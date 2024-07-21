@@ -1,24 +1,29 @@
-const mongoose = require("mongoose");
+// Import necessary modules
+const mongoose = require('mongoose');
 
-// Function to search all collections for a specific query
-async function searchAllCollections(query) {
-  console.log(query);
-  const collections = await mongoose.connection.db.collections();
-  const searchResults = {};
+// Define search function
+const searchAllCollections = async (req, res) => {
+    try {
+        // Get all collections in the database
+        const collections = await mongoose.connection.db.listCollections().toArray();
 
-  for (let collection of collections) {
-    const collectionName = collection.collectionName;
-    const Model = mongoose.model(
-      collectionName,
-      new mongoose.Schema({}, { strict: false })
-    );
-    const results = await Model.find(query).exec();
-    searchResults[collectionName] = results;
-  }
+        // Initialize an empty array to store search results
+        const results = [];
 
-  return searchResults;
-}
+        // Loop through each collection and search for the query
+        for (const collection of collections) {
+            const col = mongoose.connection.db.collection(collection.name);
+            const data = await col.find(req.query).toArray();
+            if (data.length > 0) {
+                results.push({ collection: collection.name, data });
+            }
+        }
 
-// Route to handle search requests
+        // Send the search results as the response
+        res.status(200).json(results);
+    } catch (err) {
+        res.status(500).json({ message: 'Server Error', error: err.message });
+    }
+};
 
-module.exports.searchAllCollectionsControllers = { searchAllCollections };
+module.exports = { searchAllCollections };

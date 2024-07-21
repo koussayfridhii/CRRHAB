@@ -35,6 +35,7 @@ const paragraphLandingPageRoute = require("./routes/paragraphLanding.route");
 const historyRoute = require("./routes/history.route");
 const missionRoute = require("./routes/mission.route");
 const openDataRoute = require("./routes/openData.route");
+const searchRoute = require("./routes/search.route");
 
 //middlewares
 app.use(logger("dev"));
@@ -85,7 +86,8 @@ app.use("/api", [
   paragraphLandingPageRoute,
   historyRoute,
   missionRoute,
-  openDataRoute
+  openDataRoute,
+  searchRoute
 ]);
 
 app.get("/", (req, res) => {
