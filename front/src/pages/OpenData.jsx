@@ -131,9 +131,6 @@ const OpenData = () => {
     data.reverse()
    setDataToShow(data.filter((doc) => doc.type === path)) 
   }, [ path]);
-  useEffect(() => {
-   
-  }, [data, path]);
 const titles= {
   opendata: {
     fr: "Textes Réglementaires",
