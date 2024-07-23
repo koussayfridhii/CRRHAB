@@ -7,6 +7,7 @@ services:
       - "3000:3000"
     depends_on:
       - server
+    restart: unless-stopped  # Ensures the container restarts on server reboot
 
   server:
     build:
@@ -15,11 +16,11 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - PORT=5000
-      - MONGO_URI=mongodb+srv://chch:azerty@cluster0.df9pco0.mongodb.net/
-      - JWT_SECRET=vg1x#2L?K39TTXpQ3#
-      - JWT_EXPIRES_IN=1h
-      - NODE_MAILER_USER=koussayfridhiaziz@gmail.com
-      - NODE_MAILER_PASS=ltmnfpfowpzbuetl
-      - FRONT_URL=http://localhost:3000/
-      restart: unless-stopped  # Ensures the container restarts on server reboot
+      - PORT=${PORT}
+      - MONGO_URI=${MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - NODE_MAILER_USER=${NODE_MAILER_USER}
+      - NODE_MAILER_PASS=${NODE_MAILER_PASS}
+      - FRONT_URL=${FRONT_URL}
+    restart: unless-stopped  # Ensures the container restarts on server reboot
