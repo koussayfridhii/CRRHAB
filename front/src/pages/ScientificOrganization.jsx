@@ -980,7 +980,7 @@ const ScientificOrganization = () => {
               {language === "en"
                 ? "CTAB Representative"
                 : language === "fr"
-                ? "Représentant de la CTAB"
+                ? "Représentant du CTAB"
                 : "ممثل عن CTAB"}
             </chakra.h4>
           </Card>

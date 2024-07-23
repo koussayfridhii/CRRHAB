@@ -51,7 +51,7 @@ const NationalProjects = () => {
         fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en modes conventionnel et Biologique",
         ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية"
       },
-      superficie: "9.5 ha",
+      superficie: "9,5 ha",
     },
     {
       title: {
@@ -64,7 +64,7 @@ const NationalProjects = () => {
         fr: "Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel",
         ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية"
       },
-      superficie: "5.8 ha",
+      superficie: "5,8 ha",
     },
     {
       title: {
@@ -77,7 +77,7 @@ const NationalProjects = () => {
         fr: "Cultures maraichères sous abri-serre et en plein champ conduites en mode Conventionnel",
         ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة"
       },
-      superficie: "3.7 ha",
+      superficie: "3,7 ha",
     },
   ];
 

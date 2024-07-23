@@ -655,7 +655,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Organisation Scientifique",
       en: "Scientific Organization",
-      ar: "التنظيم العلمي للمركز",
+      ar: "التنظيم العلمي",
     },
     href: "/scientific_organization",
     // children: [
@@ -814,7 +814,7 @@ const NAV_ITEMS = [
     label: {
       fr: "Structures de Recherche",
       en: "Research Structures",
-      ar: "هياكل البحث الحالية",
+      ar: "هياكل البحث",
     },
     children: [
       {
