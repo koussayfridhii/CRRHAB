@@ -77,7 +77,7 @@ const CreateNews = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/news/${id}`,
+          `http://193.95.21.154/api/news/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateNews = () => {
           }
         );
       } else {
-        await axios.post("https://crrhab-3ofe.vercel.app/api/news", formData, {
+        await axios.post("http://193.95.21.154/api/news", formData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,
@@ -123,7 +123,7 @@ const CreateNews = () => {
     if (id) {
       // Fetch news data for edit mode
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/news/${id}`)
+        .get(`http://193.95.21.154/api/news/${id}`)
         .then((response) => setFormData(response.data.news))
         .catch((error) => {
           toast({

@@ -113,7 +113,7 @@ const AdminScientificCouncilMembers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `https://crrhab-3ofe.vercel.app/api/scientific_council`
+      `http://193.95.21.154/api/scientific_council`
     );
     setData(res.data);
   };
@@ -164,7 +164,7 @@ const DataList = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `https://crrhab-3ofe.vercel.app/api/scientific_council/${id}`,
+        `http://193.95.21.154/api/scientific_council/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

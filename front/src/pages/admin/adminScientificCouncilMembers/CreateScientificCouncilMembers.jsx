@@ -58,7 +58,7 @@ const CreateScientificCouncilMembers = () => {
     try {
       if (path === "") {
         await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/scientific_council",
+          "http://193.95.21.154/api/scientific_council",
           JSON.stringify(payload),
           {
             headers: {
@@ -69,7 +69,7 @@ const CreateScientificCouncilMembers = () => {
         );
       } else {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/scientific_council/${formData._id}`,
+          `http://193.95.21.154/api/scientific_council/${formData._id}`,
           JSON.stringify(payload),
           {
             headers: {
@@ -119,7 +119,7 @@ const CreateScientificCouncilMembers = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `https://crrhab-3ofe.vercel.app/api/scientific_council/${path}`
+        `http://193.95.21.154/api/scientific_council/${path}`
       );
       setFormData(response.data);
     } catch (error) {

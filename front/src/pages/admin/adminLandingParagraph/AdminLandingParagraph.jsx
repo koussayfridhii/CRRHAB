@@ -30,7 +30,7 @@ const AdminLandingParagraph = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`https://crrhab-3ofe.vercel.app/api/histories`);
+    const res = await axios.get(`http://193.95.21.154/api/histories`);
     setData(res.data);
   };
 

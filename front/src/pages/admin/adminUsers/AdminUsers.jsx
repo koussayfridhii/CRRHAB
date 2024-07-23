@@ -85,7 +85,7 @@ const AdminUsers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `https://crrhab-3ofe.vercel.app/api/users/${user.user._id}`
+      `http://193.95.21.154/api/users/${user.user._id}`
     );
     setData(res.data);
   };
@@ -137,7 +137,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
     const dataToUpdate = { role };
     try {
       const response = await axios.put(
-        `https://crrhab-3ofe.vercel.app/api/users/role/${id}`,
+        `http://193.95.21.154/api/users/role/${id}`,
         dataToUpdate,
         {
           headers: {
@@ -174,7 +174,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
       let response;
       if (row.isActive) {
         response = await axios.delete(
-          `https://crrhab-3ofe.vercel.app/api/users/${row._id}`,
+          `http://193.95.21.154/api/users/${row._id}`,
           {
             headers: {
               Authorization: `Bearer ${user?.user?.token}`,
@@ -183,7 +183,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
         );
       } else {
         response = await axios.post(
-          `https://crrhab-3ofe.vercel.app/api/users/restore`,
+          `http://193.95.21.154/api/users/restore`,
           {
             email: row?.email,
           },

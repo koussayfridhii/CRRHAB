@@ -39,7 +39,7 @@ const AdminScientificProductions = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `https://crrhab-3ofe.vercel.app/api/scientific_productions`
+      `http://193.95.21.154/api/scientific_productions`
     );
     setData(res.data);
   };
@@ -94,7 +94,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `https://crrhab-3ofe.vercel.app/api/scientific_productions/${id}`,
+        `http://193.95.21.154/api/scientific_productions/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

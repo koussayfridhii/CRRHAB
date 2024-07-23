@@ -76,7 +76,7 @@ const CreateGallery = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/media/${id}`,
+          `http://193.95.21.154/api/media/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateGallery = () => {
         );
       } else {
         const res = await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/media",
+          "http://193.95.21.154/api/media",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateGallery = () => {
     if (id) {
       // Fetch media data for edit mode
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/media/${id}`, {
+        .get(`http://193.95.21.154/api/media/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

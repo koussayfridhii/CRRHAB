@@ -78,7 +78,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/events/${id}`,
+          `http://193.95.21.154/api/events/${id}`,
           dataToSubmit,
           {
             headers: {
@@ -89,7 +89,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/events",
+          "http://193.95.21.154/api/events",
           dataToSubmit,
           {
             headers: {
@@ -128,7 +128,7 @@ const CreateEvents = () => {
     if (id) {
       // Récupérer les données des évènnements pour le mode édition
       axios
-        .get(`https://crrhab-3ofe.vercel.app/api/events/${id}`, {
+        .get(`http://193.95.21.154/api/events/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,
