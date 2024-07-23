@@ -137,9 +137,8 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Provide advice on all matters related to the scientific
-                      policy of the establishment, including research programs
-                      to be undertaken.
+                      Provide opinions on all questions related to the scientific policy of the establishment, including
+                      research programs to be undertaken.
                     </Highlight>
                   </Text>
                 </ListItem>
@@ -156,7 +155,7 @@ const ScientificOrganization = () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Monitor the research activities of the establishment.
+                      Ensure the monitoring of the research activities of the establishment.
                     </Highlight>
                   </Text>
                 </ListItem>

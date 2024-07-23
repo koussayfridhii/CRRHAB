@@ -15,7 +15,7 @@ const ResearchThemes = ({ full = false }) => {
   const themes = [
     {
       fr: "Recherche et développement de biopesticides et de biostimulants",
-      en: "Research and development of biopesticides and biostimulants",
+      en: "Research and development of biopesticides and bio-stimulants",
       ar: "بحث وتطوير المبيدات والمنشطات الحيوية",
     },
     {
@@ -30,7 +30,7 @@ const ResearchThemes = ({ full = false }) => {
     },
     {
       fr: "Gestion intégrée des bio-agresseurs (existants et émergents) associés aux espèces arboricoles",
-      en: "Integrated management of bio-aggressors (existing and emerging) associated with tree species",
+      en: "Integrated management of bio-aggressors (existing and emerging) associated with fruit tree species",
       ar: "الإدارة المتكاملة للآفات (القائمة والوافدة) المرتبطة بالأنواع الشجرية",
     },
   ];
@@ -55,15 +55,12 @@ const ResearchThemes = ({ full = false }) => {
         du Centre-Est de la Tunisie dans le respect de l’environnement, la santé
         de l’agriculteur et du consommateur par l’usage raisonné des intrants
         chimiques et des ressources naturelles et en s'adaptant aux changements
-        climatiques.`) : language === "en" ? (`The “Production and Protection for Sustainable Horticulture” laboratory:
-        2PHD (LR21AGR03) is associated with the University of Sousse. The objective
-        strategic strategy of the laboratory is to develop a production system
-        integrated sustainable, even organic, dominant horticultural species
-        (mainly arboreal and market gardening species) in the region
-        of Central-Eastern Tunisia in respect of the environment, health
-        of the farmer and the consumer through the reasoned use of inputs
-        chemicals and natural resources and adapting to changes
-        climatic.`) : (`يرتبط مخبر البحث "إنتاج وحماية من أجل بستنة مستدامة":2PHD (LR21AGR03)  بجامعة سوسة.
+        climatiques.`) : language === "en" ? (`The “Production and Protection for Sustainable Horticulture” research laboratory: 2PHD (LR21AGR03)
+is affiliated to IRESA-University of Sousse. The strategic objective of the laboratory is to develop an
+integrated and sustainable production system, even organic, of the dominant horticultural species
+(mainly fruit tree and vegetable species) in Centre-East of Tunisia with respect to environment and
+health of farmers and consumers through the rational use of chemical inputs and natural resources and
+adaptation to climate changes.`) : (`يرتبط مخبر البحث "إنتاج وحماية من أجل بستنة مستدامة":2PHD (LR21AGR03)  بجامعة سوسة.
 الهدف الاستراتيجي لهذا المخبر هو تطوير نظم إنتاج مستدامة،عادية وعضوية، متكاملة للأنواع البستنية (خاصة الخضروات والاشجار المثمرة) السائدة في المنطقة الوسطى الشرقية من البلاد التونسية، في احترام للبيئة وصحة المنتج والمستهلك من خلال الاستخدام الرشيد للمدخلات الكيميائية والموارد الطبيعية والتكيف مع التغيرات المناخية.
 `)}
       </Text>

@@ -3,27 +3,21 @@ const mongoose = require('mongoose');
 
 // Define search function
 const searchAllCollections = async (req, res) => {
-    try {
-        // Get all collections in the database
-        const collections = await mongoose.connection.db.listCollections().toArray();
+  const query = req.query.q; // Get the search query from the request
+  console.log(query);
+  try {
+    // Search all collections
+    const results1 = await Collection1.find({ $text: { $search: query } });
+    const results2 = await Collection2.find({ $text: { $search: query } });
+    // Add search for all other collections...
 
-        // Initialize an empty array to store search results
-        const results = [];
+    const results = [...results1, ...results2]; // Combine results from all collections
 
-        // Loop through each collection and search for the query
-        for (const collection of collections) {
-            const col = mongoose.connection.db.collection(collection.name);
-            const data = await col.find(req.query).toArray();
-            if (data.length > 0) {
-                results.push({ collection: collection.name, data });
-            }
-        }
-
-        // Send the search results as the response
-        res.status(200).json(results);
-    } catch (err) {
-        res.status(500).json({ message: 'Server Error', error: err.message });
-    }
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 };
 
 module.exports = { searchAllCollections };

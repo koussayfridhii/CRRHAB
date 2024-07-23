@@ -42,13 +42,13 @@ const NationalProjects = () => {
   const data = [
     {
       title: {
-        en: "Unit of Agricultural Experimentation of Chott-Mariem, Sousse",
+        en: "Unit of Agricultural Experimentation of Chott Mariem, Sousse",
         fr: "Unité d'expérimentation agricole à Chott Mariem, Sousse",
         ar: "محطة التجارب بشط مريم، سوسة",
       },
       activity: {
-        en: "Horticulture: Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel et Biologique",
-        fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en mode conventionnel et Biologique",
+        en: "Horticulture: Vegetable Crops and Fruit Tree Cultivation under Conventional and Organic cropping systems",
+        fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en modes conventionnel et Biologique",
         ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية"
       },
       superficie: "9.5 ha",

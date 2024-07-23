@@ -98,7 +98,7 @@ const Tunisie = () => {
                 <>
                   Ministry of Agriculture,
                   Water Resources
-                  and fisheries
+                  and Fisheries
                 </>
               )}
             </Text>
@@ -161,7 +161,7 @@ const Tunisie = () => {
             </>
           ) : language === "en" ? (
             <>
-              Regional Research Center in Horticulture and Organic Agriculture
+              Regional Research Center on Horticulture and Organic Agriculture
             </>
           ) : (
             <>المركز الجهوي للبحوث في البستنة و الفلاحة البيولوجية</>

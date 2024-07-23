@@ -18,7 +18,7 @@ const administrativeOrganization = [
     id: 2,
     title: {
       fr: "Conseil d’administration", // French translation
-      en: "Board of Directors", // English translation
+      en: "Administration council", // English translation
       ar: "مجلس الإدارة", // Arabic translation
     },
     color: "#4F81BD", // Color associated with this role
