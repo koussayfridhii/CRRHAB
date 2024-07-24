@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(cors({ origin: "http://193.95.21.154" })); // Configuration of CORS to accept requests from any origin
+app.use(cors({ origin: "http://crrhab.agrinet.tn/" })); // Configuration of CORS to accept requests from any origin
 
 require("./middlewares/passport")(passport);
 
