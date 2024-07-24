@@ -96,7 +96,7 @@ const LinkItems = [
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const pingOnBack = async () => {
-    const { data } = await axios.get("http://193.95.21.154/");
+    const { data } = await axios.get("http://crrhab.agrinet.tn/");
   };
   useEffect(() => {
     pingOnBack();

@@ -61,7 +61,7 @@ const AdminResearchTeam = () => {
   ];
   const getAllData = async () => {
     const res = await axios.get(
-      `http://193.95.21.154/api/research_team`
+      `http://crrhab.agrinet.tn/api/research_team`
     );
     setData(res.data.research_team);
   };
@@ -110,7 +110,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element.orcid !== orcid));
     try {
       const response = await axios.delete(
-        `http://193.95.21.154/api/research_team/${orcid}`,
+        `http://crrhab.agrinet.tn/api/research_team/${orcid}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

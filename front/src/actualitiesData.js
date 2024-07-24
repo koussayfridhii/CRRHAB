@@ -5,7 +5,7 @@ let data = [];
 const fetchData = async () => {
   try {
     // Make a GET request to the API endpoint
-    const response = await axios.get("http://193.95.21.154/api/news");
+    const response = await axios.get("http://crrhab.agrinet.tn/api/news");
 
     // Extract data from the response
     data = response.data?.news;

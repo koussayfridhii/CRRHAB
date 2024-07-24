@@ -110,7 +110,7 @@ const DataTable = ({ data, headers, language }) => {
     e.preventDefault();
     try {
       await axios.delete(
-        `http://193.95.21.154/api/national_projects/${id}`,
+        `http://crrhab.agrinet.tn/api/national_projects/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

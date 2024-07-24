@@ -39,7 +39,7 @@ export default function WithSubnavigation() {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const pingOnBack = async () => {
-    const { data } = await axios.get("http://193.95.21.154/");
+    const { data } = await axios.get("http://crrhab.agrinet.tn/");
   };
   useEffect(() => {
     pingOnBack();
