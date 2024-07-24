@@ -10,7 +10,7 @@ const { ScientificProduction } = require("../models/scientificProduction.model")
  
 // Define search function
 const searchAllCollections = async (req, res) => {
-  const query = req.query.q; // Get the search query from the request
+  const query = req.body.query; // Get the search query from the request
   const searchPattern = new RegExp(query, 'i');
   let result = {
     laboratoryMembers: [],
