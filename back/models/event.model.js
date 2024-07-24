@@ -28,4 +28,15 @@ const eventSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
+// Create a text index on the fields you want to search
+eventSchema.index({
+  'title.fr': 'text',
+  'title.ar': 'text',
+  'title.en': 'text',
+  'description.fr': 'text',
+  'description.ar': 'text',
+  'description.en': 'text',
+});
+
 module.exports.eventModel = mongoose.model("events", eventSchema);

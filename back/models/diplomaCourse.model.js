@@ -40,6 +40,26 @@ const diplomaCourseSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+diplomaCourseSchema.index({
+  'type.ar': 'text',
+  'type.fr': 'text',
+  'type.en': 'text',
+  'auteur.ar': 'text',
+  'auteur.fr': 'text',
+  'auteur.en': 'text',
+  'titre.ar': 'text',
+  'titre.fr': 'text',
+  'titre.en': 'text',
+  'specialite.ar': 'text',
+  'specialite.fr': 'text',
+  'specialite.en': 'text',
+  'directeur.ar': 'text',
+  'directeur.fr': 'text',
+  'directeur.en': 'text',
+  'etablissement.ar': 'text',
+  'etablissement.fr': 'text',
+  'etablissement.en': 'text',
+});
 
 module.exports.DiplomaCourse = mongoose.model(
   "diplomaCourse",

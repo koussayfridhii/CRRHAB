@@ -31,7 +31,20 @@ const laboratoryMemberSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports.researcherModel = mongoose.model(
+laboratoryMemberSchema.index({
+  'name.ar': 'text',
+  'name.fr': 'text',
+  'name.en': 'text',
+  email: 'text',
+  orcid: 'text',
+  'grade.ar': 'text',
+  'grade.fr': 'text',
+  'grade.en': 'text',
+  affiliation: 'text'
+});
+
+
+module.exports.laboratoryMembersModel = mongoose.model(
   "laboratoryMember",
   laboratoryMemberSchema
 );

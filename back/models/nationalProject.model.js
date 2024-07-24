@@ -28,6 +28,19 @@ const nationalProjectSchema = new mongoose.Schema({
     default: false,
   }
 });
+
+// Create a text index on the fields you want to search
+nationalProjectSchema.index({
+  'title.fr': 'text',
+  'title.ar': 'text',
+  'title.en': 'text',
+  'cordinator.fr': 'text',
+  'cordinator.ar': 'text',
+  'cordinator.en': 'text',
+  'duration': 'text',
+});
+
+
 module.exports.nationalProjectModel = mongoose.model(
   "nationalProject",
   nationalProjectSchema

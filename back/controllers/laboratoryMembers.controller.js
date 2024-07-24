@@ -1,9 +1,9 @@
-const { researcherModel } = require("../models/laboratoryMembers.model");
+const { laboratoryMembersModel } = require("../models/laboratoryMembers.model");
 
 // Create a new laboratory member
 const createMember = async (req, res) => {
   try {
-    const newMember = new researcherModel(req.body);
+    const newMember = new laboratoryMembersModel(req.body);
     console.log(req.body);
     await newMember.save();
     res.status(201).json(newMember);
@@ -15,7 +15,7 @@ const createMember = async (req, res) => {
 // Get all laboratory members
 const getAllMembers = async (req, res) => {
   try {
-    const members = await researcherModel.find();
+    const members = await laboratoryMembersModel.find();
     res.status(200).json(members);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -25,7 +25,7 @@ const getAllMembers = async (req, res) => {
 // Get a laboratory member by ID
 const getMemberById = async (req, res) => {
   try {
-    const member = await researcherModel.findById(req.params.id);
+    const member = await laboratoryMembersModel.findById(req.params.id);
     if (!member) return res.status(404).json({ message: "Member not found" });
     res.status(200).json(member);
   } catch (error) {
@@ -36,7 +36,7 @@ const getMemberById = async (req, res) => {
 // Update a laboratory member by ID
 const updateMemberById = async (req, res) => {
   try {
-    const updatedMember = await researcherModel.findByIdAndUpdate(
+    const updatedMember = await laboratoryMembersModel.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true, runValidators: true }
@@ -52,7 +52,7 @@ const updateMemberById = async (req, res) => {
 // Delete a laboratory member by ID
 const deleteMemberById = async (req, res) => {
   try {
-    const deletedMember = await researcherModel.findByIdAndDelete(
+    const deletedMember = await laboratoryMembersModel.findByIdAndDelete(
       req.params.id
     );
     if (!deletedMember)

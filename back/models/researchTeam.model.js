@@ -25,6 +25,18 @@ const researcherSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+researcherSchema.index({
+  'name.ar': 'text',
+  'name.fr': 'text',
+  'name.en': 'text',
+  email: 'text',
+  orcid: 'text',
+  cv: 'text',
+  'speciality.ar': 'text',
+  'speciality.fr': 'text',
+  'speciality.en': 'text'
+});
+
 
 module.exports.researcherModel = mongoose.model(
   "researcherTeam",

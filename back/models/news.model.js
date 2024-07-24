@@ -31,4 +31,17 @@ const newsSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Create a text index on the fields you want to search
+newsSchema.index({
+  'title.fr': 'text',
+  'title.ar': 'text',
+  'title.en': 'text',
+  'description.fr': 'text',
+  'description.ar': 'text',
+  'description.en': 'text',
+});
+
+
+
 module.exports.newsModel = mongoose.model("news", newsSchema);

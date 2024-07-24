@@ -38,6 +38,20 @@ const scientificProductionSchema = mongoose.Schema(
   },
   { timestamps: true } // Automatically add createdAt and updatedAt timestamps
 );
+scientificProductionSchema.index({
+  'title.ar': 'text',
+  'title.fr': 'text',
+  'title.en': 'text',
+  'authors.ar': 'text',
+  'authors.fr': 'text',
+  'authors.en': 'text',
+  'journal.name.ar': 'text',
+  'journal.name.fr': 'text',
+  'journal.name.en': 'text',
+  'published_date.ar': 'text',
+  'published_date.fr': 'text',
+  'published_date.en': 'text',
+});
 
 module.exports.ScientificProduction = mongoose.model(
   "scientificProduction",

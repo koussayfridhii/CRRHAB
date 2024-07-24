@@ -69,6 +69,43 @@ const scientificCouncilSchema = new mongoose.Schema(
   }
 );
 
+scientificCouncilSchema.index({
+  'president.fr': 'text',
+  'president.en': 'text',
+  'president.ar': 'text',
+  'rapporteur.fr': 'text',
+  'rapporteur.en': 'text',
+  'rapporteur.ar': 'text',
+  'Responsables_des_structures_RDI.fr': 'text',
+  'Responsables_des_structures_RDI.en': 'text',
+  'Responsables_des_structures_RDI.ar': 'text',
+  'managersOfSpecializedUnits.fr': 'text',
+  'managersOfSpecializedUnits.en': 'text',
+  'managersOfSpecializedUnits.ar': 'text',
+  'representativesOfResearchers.fr': 'text',
+  'representativesOfResearchers.en': 'text',
+  'representativesOfResearchers.ar': 'text',
+  'representativeOfIresa.fr': 'text',
+  'representativeOfIresa.en': 'text',
+  'representativeOfIresa.ar': 'text',
+  'representativesOfAgriculturalResearchAndHigherEducationEstablishments.fr': 'text',
+  'representativesOfAgriculturalResearchAndHigherEducationEstablishments.en': 'text',
+  'representativesOfAgriculturalResearchAndHigherEducationEstablishments.ar': 'text',
+  'representativeOfInrat.fr': 'text',
+  'representativeOfInrat.en': 'text',
+  'representativeOfInrat.ar': 'text',
+  'representativeOfINRGREF.fr': 'text',
+  'representativeOfINRGREF.en': 'text',
+  'representativeOfINRGREF.ar': 'text',
+  'representativeOfIO.fr': 'text',
+  'representativeOfIO.en': 'text',
+  'representativeOfIO.ar': 'text',
+  'representativeOfCtab.fr': 'text',
+  'representativeOfCtab.en': 'text',
+  'representativeOfCtab.ar': 'text',
+});
+
+
 module.exports.ScientificCouncilMembersModel = mongoose.model(
   "ScientificCouncilMember",
   scientificCouncilSchema
