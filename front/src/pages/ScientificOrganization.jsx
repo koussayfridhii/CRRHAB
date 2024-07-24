@@ -72,7 +72,7 @@ const ScientificOrganization = () => {
               ? "Scientific Organization of CRRHAB"
               : language === "fr"
               ? "ORGANISATION SCIENTIFIQUE DU CRRHAB"
-              : "التنظيم العلمي للمركز CRRRHAB"}
+              : "التنظيم العلمي للمركز CRRHAB"}
           </chakra.h2>
           {language === "en" ? (
             <>

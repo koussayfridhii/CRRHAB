@@ -6,7 +6,6 @@ const fetchApiData = async (linkSuffix) => {
   const { data } = await axios.get(
     `http://crrhab.agrinet.tn/api/${linkSuffix}`
   );
-  console.log(data);
   return data[linkSuffix] !== undefined ? data[linkSuffix] : data;
 };
 
