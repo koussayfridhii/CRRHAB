@@ -6,10 +6,13 @@ export default defineConfig({
   plugins: [react()],
   base: "/",
   server: {
+    host: '0.0.0.0', // Bind to all network interfaces
     port: 3000,
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "http://server:5000", // Use Docker service name to proxy requests
+        changeOrigin: true,
+        secure: false,
       },
     },
   },
