@@ -61,7 +61,7 @@ const AdminGallerie = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://localhost:5000api/videos`);
+    const res = await axios.get(`http://127.0.0.1:5000api/videos`);
     setData(res.data.videos);
   };
   useEffect(() => {
@@ -113,7 +113,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000api/videos/${id}`,
+        `http://127.0.0.1:5000api/videos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

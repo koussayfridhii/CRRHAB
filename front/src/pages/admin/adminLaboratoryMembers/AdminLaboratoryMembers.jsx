@@ -99,7 +99,7 @@ const AdminLaboratoryExecutiveMembers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://localhost:5000api/laboratory_members`
+      `http://127.0.0.1:5000api/laboratory_members`
     );
     setExecutiveData(res.data.filter((member) => member.executive === true));
     setResearchData(res.data.filter((member) => member.executive === false));
@@ -188,7 +188,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://localhost:5000api/laboratory_members/${id}`,
+        `http://127.0.0.1:5000api/laboratory_members/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
@@ -284,7 +284,7 @@ const ResearchDataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://localhost:5000api/laboratory_members/${id}`,
+        `http://127.0.0.1:5000api/laboratory_members/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

@@ -40,7 +40,7 @@ const SideBar = () => {
   const [resultsLength, setResultsLength] = useState(0);
   const handleSearch = async () => {
     try {
-      const response = await axios.post("http://localhost:5000api/search", {
+      const response = await axios.post("http://127.0.0.1:5000api/search", {
         query: searchKey,
       });
       setResults(response.data); // assuming the response data contains the search results

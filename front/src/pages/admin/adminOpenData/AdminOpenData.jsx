@@ -56,7 +56,7 @@ const AdminOpenData = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://localhost:5000api/opendata`
+      `http://127.0.0.1:5000api/opendata`
     );
     setData(res.data);
   };
@@ -102,7 +102,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `http://localhost:5000api/opendata/${id}`,
+        `http://127.0.0.1:5000api/opendata/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

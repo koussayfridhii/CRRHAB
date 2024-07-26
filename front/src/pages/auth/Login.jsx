@@ -40,7 +40,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`http://localhost:5000api/users/signin`, data)
+      .post(`http://127.0.0.1:5000api/users/signin`, data)
       .then((res) => {
         setLoading(false);
         console.log(res.data);
