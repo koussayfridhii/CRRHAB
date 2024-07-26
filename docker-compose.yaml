@@ -1,3 +1,4 @@
+version: '3'
 services:
   client:
     build:
@@ -7,7 +8,7 @@ services:
       - "3000:3000"
     depends_on:
       - server
-    restart: unless-stopped  # Ensures the container restarts on server reboot
+    restart: unless-stopped
 
   server:
     build:
@@ -23,4 +24,15 @@ services:
       - NODE_MAILER_USER=koussayfridhiaziz@gmail.com
       - NODE_MAILER_PASS=ltmnfpfowpzbuetl
       - FRONT_URL=http://localhost:3000/
-    restart: unless-stopped  # Ensures the container restarts on server reboot
+    restart: unless-stopped
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - client
+      - server
+    restart: unless-stopped
