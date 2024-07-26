@@ -100,7 +100,7 @@ const CreateScientificProduction = () => {
       const response =
         path === ""
           ? await axios.post(
-              "http://crrhab.agrinet.tn/api/scientific_productions",
+              "http://server:5000api/scientific_productions",
               JSON.stringify(formData),
               {
                 headers: {
@@ -110,7 +110,7 @@ const CreateScientificProduction = () => {
               }
             )
           : await axios.put(
-              `http://crrhab.agrinet.tn/api/scientific_productions/${formData._id}`,
+              `http://server:5000api/scientific_productions/${formData._id}`,
               JSON.stringify(formData),
               {
                 headers: {
@@ -144,7 +144,7 @@ const CreateScientificProduction = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://crrhab.agrinet.tn/api/scientific_productions/${path}`
+        `http://server:5000api/scientific_productions/${path}`
       );
       setFormData(response.data);
     } catch (error) {

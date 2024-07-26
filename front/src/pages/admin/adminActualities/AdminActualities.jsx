@@ -62,7 +62,7 @@ const AdminResearchTeam = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://crrhab.agrinet.tn/api/news`);
+    const res = await axios.get(`http://server:5000api/news`);
     setData(res.data.news);
   };
   useEffect(() => {
@@ -113,7 +113,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://crrhab.agrinet.tn/api/news/${id}`,
+        `http://server:5000api/news/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

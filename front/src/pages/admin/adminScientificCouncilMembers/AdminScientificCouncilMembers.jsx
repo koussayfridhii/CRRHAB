@@ -113,7 +113,7 @@ const AdminScientificCouncilMembers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://crrhab.agrinet.tn/api/scientific_council`
+      `http://server:5000api/scientific_council`
     );
     setData(res.data);
   };
@@ -164,7 +164,7 @@ const DataList = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `http://crrhab.agrinet.tn/api/scientific_council/${id}`,
+        `http://server:5000api/scientific_council/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

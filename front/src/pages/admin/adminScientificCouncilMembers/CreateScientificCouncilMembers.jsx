@@ -58,7 +58,7 @@ const CreateScientificCouncilMembers = () => {
     try {
       if (path === "") {
         await axios.post(
-          "http://crrhab.agrinet.tn/api/scientific_council",
+          "http://server:5000api/scientific_council",
           JSON.stringify(payload),
           {
             headers: {
@@ -69,7 +69,7 @@ const CreateScientificCouncilMembers = () => {
         );
       } else {
         await axios.put(
-          `http://crrhab.agrinet.tn/api/scientific_council/${formData._id}`,
+          `http://server:5000api/scientific_council/${formData._id}`,
           JSON.stringify(payload),
           {
             headers: {
@@ -119,7 +119,7 @@ const CreateScientificCouncilMembers = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://crrhab.agrinet.tn/api/scientific_council/${path}`
+        `http://server:5000api/scientific_council/${path}`
       );
       setFormData(response.data);
     } catch (error) {

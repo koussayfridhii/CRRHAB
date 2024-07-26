@@ -61,7 +61,7 @@ const AdminEvents = () => {
   const getAllData = async () => {
     try {
       const res = await axios.get(
-        `http://crrhab.agrinet.tn/api/documents`
+        `http://server:5000api/documents`
       );
       setData(res.data.document);
       console.log(res.data);
@@ -111,7 +111,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((item) => item._id !== id));
 
     try {
-      await axios.delete(`http://crrhab.agrinet.tn/api/documents/${id}`, {
+      await axios.delete(`http://server:5000api/documents/${id}`, {
         headers: {
           Authorization: `Bearer ${user?.user?.token}`,
         },

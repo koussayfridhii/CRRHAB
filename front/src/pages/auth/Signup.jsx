@@ -131,7 +131,7 @@ const Login = () => {
     if (pathname === "/signup") {
       setLoading(true);
       await axios
-        .post(`http://crrhab.agrinet.tn/api/users/signup`, data)
+        .post(`http://server:5000api/users/signup`, data)
         .then((res) => {
           setLoading(false);
 
@@ -144,7 +144,7 @@ const Login = () => {
       setLoading(true);
       await axios
         .put(
-          `http://crrhab.agrinet.tn/api/users/${user?._id}`,
+          `http://server:5000api/users/${user?._id}`,
           { data },
           {
             headers: {

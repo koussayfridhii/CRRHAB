@@ -61,7 +61,7 @@ const AdminGallerie = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://crrhab.agrinet.tn/api/videos`);
+    const res = await axios.get(`http://server:5000api/videos`);
     setData(res.data.videos);
   };
   useEffect(() => {
@@ -113,7 +113,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://crrhab.agrinet.tn/api/videos/${id}`,
+        `http://server:5000api/videos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
