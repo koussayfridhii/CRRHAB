@@ -58,7 +58,7 @@ const CreateScientificCouncilMembers = () => {
     try {
       if (path === "") {
         await axios.post(
-          "http://127.0.0.1:5000api/scientific_council",
+          "127.0.0.1:5000api/scientific_council",
           JSON.stringify(payload),
           {
             headers: {
@@ -69,7 +69,7 @@ const CreateScientificCouncilMembers = () => {
         );
       } else {
         await axios.put(
-          `http://127.0.0.1:5000api/scientific_council/${formData._id}`,
+          `127.0.0.1:5000api/scientific_council/${formData._id}`,
           JSON.stringify(payload),
           {
             headers: {
@@ -119,7 +119,7 @@ const CreateScientificCouncilMembers = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000api/scientific_council/${path}`
+        `127.0.0.1:5000api/scientific_council/${path}`
       );
       setFormData(response.data);
     } catch (error) {

@@ -85,7 +85,7 @@ const AdminUsers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://127.0.0.1:5000api/users/${user.user._id}`
+      `127.0.0.1:5000api/users/${user.user._id}`
     );
     setData(res.data);
   };
@@ -137,7 +137,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
     const dataToUpdate = { role };
     try {
       const response = await axios.put(
-        `http://127.0.0.1:5000api/users/role/${id}`,
+        `127.0.0.1:5000api/users/role/${id}`,
         dataToUpdate,
         {
           headers: {
@@ -174,7 +174,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
       let response;
       if (row.isActive) {
         response = await axios.delete(
-          `http://127.0.0.1:5000api/users/${row._id}`,
+          `127.0.0.1:5000api/users/${row._id}`,
           {
             headers: {
               Authorization: `Bearer ${user?.user?.token}`,
@@ -183,7 +183,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
         );
       } else {
         response = await axios.post(
-          `http://127.0.0.1:5000api/users/restore`,
+          `127.0.0.1:5000api/users/restore`,
           {
             email: row?.email,
           },

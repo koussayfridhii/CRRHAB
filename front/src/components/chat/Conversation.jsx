@@ -59,7 +59,7 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
   const sendMsg = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:5000api/messages/send/${currentConversationId._id}`,
+        `127.0.0.1:5000api/messages/send/${currentConversationId._id}`,
         {
           message: text,
         },
@@ -77,7 +77,7 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
     if (!currentConversationId._id) return;
     await axios
       .get(
-        `http://127.0.0.1:5000api/messages/${currentConversationId._id}`,
+        `127.0.0.1:5000api/messages/${currentConversationId._id}`,
         {
           headers,
         }

@@ -76,7 +76,7 @@ const CreateGallery = () => {
     try {
       if (id) {
         await axios.put(
-          `http://127.0.0.1:5000api/media/${id}`,
+          `127.0.0.1:5000api/media/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateGallery = () => {
         );
       } else {
         const res = await axios.post(
-          "http://127.0.0.1:5000api/media",
+          "127.0.0.1:5000api/media",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateGallery = () => {
     if (id) {
       // Fetch media data for edit mode
       axios
-        .get(`http://127.0.0.1:5000api/media/${id}`, {
+        .get(`127.0.0.1:5000api/media/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

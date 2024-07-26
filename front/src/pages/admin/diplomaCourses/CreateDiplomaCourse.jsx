@@ -54,7 +54,7 @@ const CreateDiplomaCourse = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000api/diploma_courses",
+          "127.0.0.1:5000api/diploma_courses",
           JSON.stringify(formData),
           {
             headers: {
@@ -85,7 +85,7 @@ const CreateDiplomaCourse = () => {
     } else {
       try {
         const response = await axios.put(
-          `http://127.0.0.1:5000api/diploma_courses/${formData._id}`,
+          `127.0.0.1:5000api/diploma_courses/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {
@@ -122,7 +122,7 @@ const CreateDiplomaCourse = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000api/diploma_courses/${path}`
+        `127.0.0.1:5000api/diploma_courses/${path}`
       );
       setFormData(response.data);
     } catch (error) {

@@ -76,7 +76,7 @@ const CreateVideo = () => {
     try {
       if (id) {
         await axios.put(
-          `http://127.0.0.1:5000api/videos/${id}`,
+          `127.0.0.1:5000api/videos/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateVideo = () => {
         );
       } else {
         await axios.post(
-          "http://127.0.0.1:5000api/videos",
+          "127.0.0.1:5000api/videos",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateVideo = () => {
     if (id) {
       // Fetch videos data for edit mode
       axios
-        .get(`http://127.0.0.1:5000api/videos/${id}`, {
+        .get(`127.0.0.1:5000api/videos/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

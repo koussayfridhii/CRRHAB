@@ -76,7 +76,7 @@ const CreateResearchTeam = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000api/research_team",
+          "127.0.0.1:5000api/research_team",
           JSON.stringify(formData),
           {
             headers: {
@@ -107,7 +107,7 @@ const CreateResearchTeam = () => {
     } else {
       try {
         const response = await axios.put(
-          `http://127.0.0.1:5000api/research_team/${formData._id}`,
+          `127.0.0.1:5000api/research_team/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {
@@ -144,7 +144,7 @@ const CreateResearchTeam = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000api/research_team/${path}`
+        `127.0.0.1:5000api/research_team/${path}`
       );
       setFormData(response.data);
     } catch (error) {

@@ -113,7 +113,7 @@ const AdminScientificCouncilMembers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://127.0.0.1:5000api/scientific_council`
+      `127.0.0.1:5000api/scientific_council`
     );
     setData(res.data);
   };
@@ -164,7 +164,7 @@ const DataList = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `http://127.0.0.1:5000api/scientific_council/${id}`,
+        `127.0.0.1:5000api/scientific_council/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
