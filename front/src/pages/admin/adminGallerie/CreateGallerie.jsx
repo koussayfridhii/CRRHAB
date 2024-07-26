@@ -76,7 +76,7 @@ const CreateGallery = () => {
     try {
       if (id) {
         await axios.put(
-          `127.0.0.1:5000api/media/${id}`,
+          `http://crrhab.agrinet.tn/api/media/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateGallery = () => {
         );
       } else {
         const res = await axios.post(
-          "127.0.0.1:5000api/media",
+          "http://crrhab.agrinet.tn/api/media",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateGallery = () => {
     if (id) {
       // Fetch media data for edit mode
       axios
-        .get(`127.0.0.1:5000api/media/${id}`, {
+        .get(`http://crrhab.agrinet.tn/api/media/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

@@ -85,7 +85,7 @@ const AdminUsers = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `127.0.0.1:5000api/users/${user.user._id}`
+      `http://crrhab.agrinet.tn/api/users/${user.user._id}`
     );
     setData(res.data);
   };
@@ -137,7 +137,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
     const dataToUpdate = { role };
     try {
       const response = await axios.put(
-        `127.0.0.1:5000api/users/role/${id}`,
+        `http://crrhab.agrinet.tn/api/users/role/${id}`,
         dataToUpdate,
         {
           headers: {
@@ -174,7 +174,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
       let response;
       if (row.isActive) {
         response = await axios.delete(
-          `127.0.0.1:5000api/users/${row._id}`,
+          `http://crrhab.agrinet.tn/api/users/${row._id}`,
           {
             headers: {
               Authorization: `Bearer ${user?.user?.token}`,
@@ -183,7 +183,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
         );
       } else {
         response = await axios.post(
-          `127.0.0.1:5000api/users/restore`,
+          `http://crrhab.agrinet.tn/api/users/restore`,
           {
             email: row?.email,
           },

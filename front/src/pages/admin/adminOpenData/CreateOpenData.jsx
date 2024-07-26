@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `127.0.0.1:5000api/opendata/${id}`,
+          `http://crrhab.agrinet.tn/api/opendata/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "127.0.0.1:5000api/opendata",
+          "http://crrhab.agrinet.tn/api/opendata",
           dataToSubmit,
           {
             headers: {
@@ -132,7 +132,7 @@ const CreateEvents = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`127.0.0.1:5000api/opendata/${id}`, {
+        .get(`http://crrhab.agrinet.tn/api/opendata/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

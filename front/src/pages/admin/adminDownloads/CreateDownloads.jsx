@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `127.0.0.1:5000api/documents/${id}`,
+          `http://crrhab.agrinet.tn/api/documents/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "127.0.0.1:5000api/documents",
+          "http://crrhab.agrinet.tn/api/documents",
           dataToSubmit,
           {
             headers: {
@@ -132,7 +132,7 @@ const CreateEvents = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`127.0.0.1:5000api/documents/${id}`, {
+        .get(`http://crrhab.agrinet.tn/api/documents/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

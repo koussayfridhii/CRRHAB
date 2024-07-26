@@ -60,7 +60,7 @@ const AdminGallerie = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`127.0.0.1:5000api/media`);
+    const res = await axios.get(`http://crrhab.agrinet.tn/api/media`);
     setData(res.data.media);
   };
   useEffect(() => {
@@ -112,7 +112,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `127.0.0.1:5000api/media/${id}`,
+        `http://crrhab.agrinet.tn/api/media/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
