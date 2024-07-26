@@ -131,7 +131,7 @@ const Login = () => {
     if (pathname === "/signup") {
       setLoading(true);
       await axios
-        .post(`http://server:5000api/users/signup`, data)
+        .post(`http://localhost:5000api/users/signup`, data)
         .then((res) => {
           setLoading(false);
 
@@ -144,7 +144,7 @@ const Login = () => {
       setLoading(true);
       await axios
         .put(
-          `http://server:5000api/users/${user?._id}`,
+          `http://localhost:5000api/users/${user?._id}`,
           { data },
           {
             headers: {

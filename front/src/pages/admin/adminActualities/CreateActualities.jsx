@@ -77,7 +77,7 @@ const CreateNews = () => {
     try {
       if (id) {
         await axios.put(
-          `http://server:5000api/news/${id}`,
+          `http://localhost:5000api/news/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateNews = () => {
           }
         );
       } else {
-        await axios.post("http://server:5000api/news", formData, {
+        await axios.post("http://localhost:5000api/news", formData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,
@@ -123,7 +123,7 @@ const CreateNews = () => {
     if (id) {
       // Fetch news data for edit mode
       axios
-        .get(`http://server:5000api/news/${id}`)
+        .get(`http://localhost:5000api/news/${id}`)
         .then((response) => setFormData(response.data.news))
         .catch((error) => {
           toast({

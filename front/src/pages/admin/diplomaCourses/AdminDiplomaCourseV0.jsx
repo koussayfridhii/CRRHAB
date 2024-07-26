@@ -90,7 +90,7 @@ const AdminDiplomaCourseV0 = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://server:5000api/diploma_courses`
+      `http://localhost:5000api/diploma_courses`
     );
     setData(res.data);
   };
@@ -139,7 +139,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://server:5000api/diploma_courses/${id}`,
+        `http://localhost:5000api/diploma_courses/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

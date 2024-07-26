@@ -69,7 +69,7 @@ const CreateLaboratoryMembers = () => {
     try {
       if (path === "") {
         await axios.post(
-          "http://server:5000api/laboratory_members",
+          "http://localhost:5000api/laboratory_members",
           JSON.stringify(formDataToSend),
           {
             headers: {
@@ -80,7 +80,7 @@ const CreateLaboratoryMembers = () => {
         );
       } else {
         await axios.put(
-          `http://server:5000api/laboratory_members/${formData._id}`,
+          `http://localhost:5000api/laboratory_members/${formData._id}`,
           JSON.stringify(formDataToSend),
           {
             headers: {
@@ -119,7 +119,7 @@ const CreateLaboratoryMembers = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://server:5000api/laboratory_members/${path}`
+        `http://localhost:5000api/laboratory_members/${path}`
       );
       setFormData(response.data);
     } catch (error) {

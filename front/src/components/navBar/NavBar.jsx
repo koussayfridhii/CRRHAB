@@ -39,7 +39,7 @@ export default function WithSubnavigation() {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const pingOnBack = async () => {
-    const { data } = await axios.get("http://server:5000");
+    const { data } = await axios.get("http://localhost:5000");
   };
   useEffect(() => {
     pingOnBack();

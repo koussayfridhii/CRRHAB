@@ -39,7 +39,7 @@ const AdminScientificProductions = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://server:5000api/scientific_productions`
+      `http://localhost:5000api/scientific_productions`
     );
     setData(res.data);
   };
@@ -94,7 +94,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `http://server:5000api/scientific_productions/${id}`,
+        `http://localhost:5000api/scientific_productions/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

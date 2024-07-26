@@ -28,7 +28,7 @@ const SocialProfileWithImage = () => {
     const data = { ...user, news: !user.news };
     await axios
       .put(
-        `http://server:5000api/users/${user?._id}`,
+        `http://localhost:5000api/users/${user?._id}`,
         { data },
         {
           headers: {

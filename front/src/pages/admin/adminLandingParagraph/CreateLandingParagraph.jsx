@@ -45,7 +45,7 @@ const CreateParagraphLanding = () => {
     const payload = { ...formData };
     try {
       const response = await axios.put(
-        `http://server:5000api/histories/${path}`,
+        `http://localhost:5000api/histories/${path}`,
         JSON.stringify(payload),
         {
           headers: {
@@ -82,7 +82,7 @@ const CreateParagraphLanding = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://server:5000api/histories/${path}`
+        `http://localhost:5000api/histories/${path}`
       );
       setFormData(response.data);
     } catch (error) {

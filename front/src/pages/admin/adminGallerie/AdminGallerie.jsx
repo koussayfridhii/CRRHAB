@@ -60,7 +60,7 @@ const AdminGallerie = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://server:5000api/media`);
+    const res = await axios.get(`http://localhost:5000api/media`);
     setData(res.data.media);
   };
   useEffect(() => {
@@ -112,7 +112,7 @@ const DataTable = ({ data, setData, headers, language }) => {
 
     try {
       const response = await axios.delete(
-        `http://server:5000api/media/${id}`,
+        `http://localhost:5000api/media/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,
