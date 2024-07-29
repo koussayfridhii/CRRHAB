@@ -40,7 +40,7 @@ const SideBar = () => {
   const [resultsLength, setResultsLength] = useState(0);
   const handleSearch = async () => {
     try {
-      const response = await axios.get("http://crrhab.agrinet.tn/api/search", {
+      const response = await axios.get("https://crrhab.agrinet.tn/api/search", {
         params: {
           query: searchKey,
         },
