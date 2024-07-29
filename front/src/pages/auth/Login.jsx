@@ -40,7 +40,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`https://crrhab-3ofe.vercel.app/api/users/signin`, data)
+      .post(`https://crrhab.agrinet.tn/api/users/signin`, data)
       .then((res) => {
         setLoading(false);
         console.log(res.data);

@@ -76,7 +76,7 @@ const CreateGallery = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/media/${id}`,
+          `https://crrhab.agrinet.tn/api/media/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateGallery = () => {
         );
       } else {
         const res = await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/media",
+          "https://crrhab.agrinet.tn/api/media",
           formData,
           {
             headers: {

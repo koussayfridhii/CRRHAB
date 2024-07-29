@@ -69,7 +69,7 @@ const CreateLaboratoryMembers = () => {
     try {
       if (path === "") {
         await axios.post(
-          "https://crrhab-3ofe.vercel.app/api/laboratory_members",
+          "https://crrhab.agrinet.tn/api/laboratory_members",
           JSON.stringify(formDataToSend),
           {
             headers: {
@@ -80,7 +80,7 @@ const CreateLaboratoryMembers = () => {
         );
       } else {
         await axios.put(
-          `https://crrhab-3ofe.vercel.app/api/laboratory_members/${formData._id}`,
+          `https://crrhab.agrinet.tn/api/laboratory_members/${formData._id}`,
           JSON.stringify(formDataToSend),
           {
             headers: {

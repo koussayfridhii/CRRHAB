@@ -114,7 +114,7 @@ const Conversation = ({ currentConversationId, setCurrentConversationId }) => {
 
   useEffect(() => {
     if (token) {
-      const socket = io("https://crrhab-3ofe.vercel.app", {
+      const socket = io("https://crrhab.agrinet.tn", {
         query: {
           userId,
         },

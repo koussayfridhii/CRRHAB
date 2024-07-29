@@ -131,7 +131,7 @@ const Login = () => {
     if (pathname === "/signup") {
       setLoading(true);
       await axios
-        .post(`https://crrhab-3ofe.vercel.app/api/users/signup`, data)
+        .post(`https://crrhab.agrinet.tn/api/users/signup`, data)
         .then((res) => {
           setLoading(false);
 
@@ -144,7 +144,7 @@ const Login = () => {
       setLoading(true);
       await axios
         .put(
-          `https://crrhab-3ofe.vercel.app/api/users/${user?._id}`,
+          `https://crrhab.agrinet.tn/api/users/${user?._id}`,
           { data },
           {
             headers: {
