@@ -81,7 +81,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab.agrinet.tn/api/opendata/${id}`,
+          `https://crrhab-3ofe.vercel.app/api/opendata/${id}`,
           formData,
           {
             headers: {
@@ -92,7 +92,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab.agrinet.tn/api/opendata",
+          "https://crrhab-3ofe.vercel.app/api/opendata",
           dataToSubmit,
           {
             headers: {

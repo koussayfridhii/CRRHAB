@@ -76,7 +76,7 @@ const CreateResearchTeam = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "https://crrhab.agrinet.tn/api/research_team",
+          "https://crrhab-3ofe.vercel.app/api/research_team",
           JSON.stringify(formData),
           {
             headers: {
@@ -107,7 +107,7 @@ const CreateResearchTeam = () => {
     } else {
       try {
         const response = await axios.put(
-          `https://crrhab.agrinet.tn/api/research_team/${formData._id}`,
+          `https://crrhab-3ofe.vercel.app/api/research_team/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {

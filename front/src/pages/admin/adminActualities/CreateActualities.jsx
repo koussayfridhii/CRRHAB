@@ -77,7 +77,7 @@ const CreateNews = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab.agrinet.tn/api/news/${id}`,
+          `https://crrhab-3ofe.vercel.app/api/news/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateNews = () => {
           }
         );
       } else {
-        await axios.post("https://crrhab.agrinet.tn/api/news", formData, {
+        await axios.post("https://crrhab-3ofe.vercel.app/api/news", formData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

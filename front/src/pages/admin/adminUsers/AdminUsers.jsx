@@ -137,7 +137,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
     const dataToUpdate = { role };
     try {
       const response = await axios.put(
-        `https://crrhab.agrinet.tn/api/users/role/${id}`,
+        `https://crrhab-3ofe.vercel.app/api/users/role/${id}`,
         dataToUpdate,
         {
           headers: {
@@ -174,7 +174,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
       let response;
       if (row.isActive) {
         response = await axios.delete(
-          `https://crrhab.agrinet.tn/api/users/${row._id}`,
+          `https://crrhab-3ofe.vercel.app/api/users/${row._id}`,
           {
             headers: {
               Authorization: `Bearer ${user?.user?.token}`,
@@ -183,7 +183,7 @@ const DataTable = ({ data, setData, headers, language, user, getAllData }) => {
         );
       } else {
         response = await axios.post(
-          `https://crrhab.agrinet.tn/api/users/restore`,
+          `https://crrhab-3ofe.vercel.app/api/users/restore`,
           {
             email: row?.email,
           },

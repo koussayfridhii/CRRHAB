@@ -78,7 +78,7 @@ const CreateEvents = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab.agrinet.tn/api/events/${id}`,
+          `https://crrhab-3ofe.vercel.app/api/events/${id}`,
           dataToSubmit,
           {
             headers: {
@@ -89,7 +89,7 @@ const CreateEvents = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab.agrinet.tn/api/events",
+          "https://crrhab-3ofe.vercel.app/api/events",
           dataToSubmit,
           {
             headers: {

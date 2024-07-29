@@ -76,7 +76,7 @@ const CreateVideo = () => {
     try {
       if (id) {
         await axios.put(
-          `https://crrhab.agrinet.tn/api/videos/${id}`,
+          `https://crrhab-3ofe.vercel.app/api/videos/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateVideo = () => {
         );
       } else {
         await axios.post(
-          "https://crrhab.agrinet.tn/api/videos",
+          "https://crrhab-3ofe.vercel.app/api/videos",
           formData,
           {
             headers: {

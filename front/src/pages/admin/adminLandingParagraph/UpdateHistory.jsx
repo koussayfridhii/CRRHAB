@@ -53,7 +53,7 @@ const CreateParagraphLanding = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "https://crrhab.agrinet.tn/api/histories",
+          "https://crrhab-3ofe.vercel.app/api/histories",
           JSON.stringify(payload),
           {
             headers: {
@@ -84,7 +84,7 @@ const CreateParagraphLanding = () => {
     } else {
       try {
         const response = await axios.put(
-          `https://crrhab.agrinet.tn/api/histories/${formData._id}`,
+          `https://crrhab-3ofe.vercel.app/api/histories/${formData._id}`,
           JSON.stringify(payload),
           {
             headers: {

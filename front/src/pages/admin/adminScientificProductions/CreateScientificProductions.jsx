@@ -100,7 +100,7 @@ const CreateScientificProduction = () => {
       const response =
         path === ""
           ? await axios.post(
-              "https://crrhab.agrinet.tn/api/scientific_productions",
+              "https://crrhab-3ofe.vercel.app/api/scientific_productions",
               JSON.stringify(formData),
               {
                 headers: {
@@ -110,7 +110,7 @@ const CreateScientificProduction = () => {
               }
             )
           : await axios.put(
-              `https://crrhab.agrinet.tn/api/scientific_productions/${formData._id}`,
+              `https://crrhab-3ofe.vercel.app/api/scientific_productions/${formData._id}`,
               JSON.stringify(formData),
               {
                 headers: {
