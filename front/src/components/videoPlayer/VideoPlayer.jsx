@@ -1,6 +1,5 @@
 import React from "react";
 import "./VideoPlayer.scss";
-import { Player } from "video-react";
 const VideoPlayer = ({ id }) => {
   return (
     <iframe
