@@ -43,12 +43,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+const allowedOrigins = ["http://crrhab.agrinet.tn/","https://crrhab.agrinet.tn/","https://crrhab.vercel.app/" ,"http://193.95.21.154", "http://193.95.21.154"];
+app.options('*', cors()); // Handle preflight requests for all routes
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}));
 app.use((req, res, next) => {
   console.log('Request Headers:', req.headers);
   next();
@@ -107,12 +117,4 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server Running on port ${PORT}`);
-});
-app.use((req, res, next) => {
-  if (req.secure) {
-    // Request is already via HTTPS
-    return next();
-  }
-  // Redirect HTTP to HTTPS
-  res.redirect('https://' + req.headers.host + req.url);
 });
