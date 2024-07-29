@@ -44,6 +44,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 const allowedOrigins = ["http://crrhab.agrinet.tn","https://crrhab.agrinet.tn/" ,"http://193.95.21.154", "http://193.95.21.154"];
+app.options('*', cors()); // Handle preflight requests for all routes
 
 app.use(cors({
   origin: function (origin, callback) {
