@@ -94,7 +94,7 @@ const AdminDiplomaCourse = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://crrhab.agrinet.tn/api/diploma_courses`
+      `https://crrhab.agrinet.tn/api/diploma_courses`
     );
     setData(res.data);
   };
@@ -143,7 +143,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       const response = await axios.delete(
-        `http://crrhab.agrinet.tn/api/diploma_courses/${id}`,
+        `https://crrhab.agrinet.tn/api/diploma_courses/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

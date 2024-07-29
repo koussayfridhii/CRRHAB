@@ -53,7 +53,7 @@ const CreateNationalProject = () => {
       console.log("Submitting data:", formData); // Log the data to be sent
       if (path === "") {
         await axios.post(
-          "http://crrhab.agrinet.tn/api/national_projects",
+          "https://crrhab.agrinet.tn/api/national_projects",
           JSON.stringify(formData),
           {
             headers: {
@@ -64,7 +64,7 @@ const CreateNationalProject = () => {
         );
       } else {
         await axios.put(
-          `http://crrhab.agrinet.tn/api/national_projects/${formData._id}`,
+          `https://crrhab.agrinet.tn/api/national_projects/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {
@@ -99,7 +99,7 @@ const CreateNationalProject = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://crrhab.agrinet.tn/api/national_projects/${path}`
+        `https://crrhab.agrinet.tn/api/national_projects/${path}`
       );
       setFormData(response.data);
     } catch (error) {

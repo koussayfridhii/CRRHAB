@@ -76,7 +76,7 @@ const CreateVideo = () => {
     try {
       if (id) {
         await axios.put(
-          `http://crrhab.agrinet.tn/api/videos/${id}`,
+          `https://crrhab.agrinet.tn/api/videos/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateVideo = () => {
         );
       } else {
         await axios.post(
-          "http://crrhab.agrinet.tn/api/videos",
+          "https://crrhab.agrinet.tn/api/videos",
           formData,
           {
             headers: {
@@ -126,7 +126,7 @@ const CreateVideo = () => {
     if (id) {
       // Fetch videos data for edit mode
       axios
-        .get(`http://crrhab.agrinet.tn/api/videos/${id}`, {
+        .get(`https://crrhab.agrinet.tn/api/videos/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,

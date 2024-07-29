@@ -30,7 +30,7 @@ const AdminLandingParagraph = () => {
   ];
 
   const getAllData = async () => {
-    const res = await axios.get(`http://crrhab.agrinet.tn/api/histories`);
+    const res = await axios.get(`https://crrhab.agrinet.tn/api/histories`);
     setData(res.data);
   };
 

@@ -39,7 +39,7 @@ const AdminScientificProductions = () => {
 
   const getAllData = async () => {
     const res = await axios.get(
-      `http://crrhab.agrinet.tn/api/scientific_productions`
+      `https://crrhab.agrinet.tn/api/scientific_productions`
     );
     setData(res.data);
   };
@@ -94,7 +94,7 @@ const DataTable = ({ data, setData, headers, language }) => {
     setData(data.filter((element) => element._id !== id));
     try {
       await axios.delete(
-        `http://crrhab.agrinet.tn/api/scientific_productions/${id}`,
+        `https://crrhab.agrinet.tn/api/scientific_productions/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.user?.token}`,

@@ -77,7 +77,7 @@ const CreateNews = () => {
     try {
       if (id) {
         await axios.put(
-          `http://crrhab.agrinet.tn/api/news/${id}`,
+          `https://crrhab.agrinet.tn/api/news/${id}`,
           formData,
           {
             headers: {
@@ -87,7 +87,7 @@ const CreateNews = () => {
           }
         );
       } else {
-        await axios.post("http://crrhab.agrinet.tn/api/news", formData, {
+        await axios.post("https://crrhab.agrinet.tn/api/news", formData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.user?.token}`,
@@ -123,7 +123,7 @@ const CreateNews = () => {
     if (id) {
       // Fetch news data for edit mode
       axios
-        .get(`http://crrhab.agrinet.tn/api/news/${id}`)
+        .get(`https://crrhab.agrinet.tn/api/news/${id}`)
         .then((response) => setFormData(response.data.news))
         .catch((error) => {
           toast({

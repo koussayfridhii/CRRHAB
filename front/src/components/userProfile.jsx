@@ -28,7 +28,7 @@ const SocialProfileWithImage = () => {
     const data = { ...user, news: !user.news };
     await axios
       .put(
-        `http://crrhab.agrinet.tn/api/users/${user?._id}`,
+        `https://crrhab.agrinet.tn/api/users/${user?._id}`,
         { data },
         {
           headers: {

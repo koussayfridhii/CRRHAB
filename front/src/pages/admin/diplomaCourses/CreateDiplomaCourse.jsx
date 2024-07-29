@@ -54,7 +54,7 @@ const CreateDiplomaCourse = () => {
     if (path === "") {
       try {
         const response = await axios.post(
-          "http://crrhab.agrinet.tn/api/diploma_courses",
+          "https://crrhab.agrinet.tn/api/diploma_courses",
           JSON.stringify(formData),
           {
             headers: {
@@ -85,7 +85,7 @@ const CreateDiplomaCourse = () => {
     } else {
       try {
         const response = await axios.put(
-          `http://crrhab.agrinet.tn/api/diploma_courses/${formData._id}`,
+          `https://crrhab.agrinet.tn/api/diploma_courses/${formData._id}`,
           JSON.stringify(formData),
           {
             headers: {
@@ -122,7 +122,7 @@ const CreateDiplomaCourse = () => {
   const firstApiCall = async (path) => {
     try {
       const response = await axios.get(
-        `http://crrhab.agrinet.tn/api/diploma_courses/${path}`
+        `https://crrhab.agrinet.tn/api/diploma_courses/${path}`
       );
       setFormData(response.data);
     } catch (error) {
