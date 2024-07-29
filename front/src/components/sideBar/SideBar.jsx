@@ -100,7 +100,7 @@ const SideBar = () => {
         mx={"auto"}
         borderColor={"primary"}
       />
-      <CardV2 />
+      {/* <CardV2 /> */}
       <Divider
         _dark={{
           bg: "secondary",
