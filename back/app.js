@@ -108,3 +108,11 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server Running on port ${PORT}`);
 });
+app.use((req, res, next) => {
+  if (req.secure) {
+    // Request is already via HTTPS
+    return next();
+  }
+  // Redirect HTTP to HTTPS
+  res.redirect('https://' + req.headers.host + req.url);
+});
