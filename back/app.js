@@ -43,22 +43,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
-const allowedOrigins = ["http://crrhab.agrinet.tn","https://crrhab.agrinet.tn/","https://crrhab.vercel.app/" ,"http://193.95.21.154", "http://193.95.21.154"];
-app.options('*', cors()); // Handle preflight requests for all routes
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use((req, res, next) => {
   console.log('Request Headers:', req.headers);
   next();
