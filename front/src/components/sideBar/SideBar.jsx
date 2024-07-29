@@ -40,8 +40,10 @@ const SideBar = () => {
   const [resultsLength, setResultsLength] = useState(0);
   const handleSearch = async () => {
     try {
-      const response = await axios.post("http://crrhab.agrinet.tn/api/search", {
-        query: searchKey,
+      const response = await axios.get("http://crrhab.agrinet.tn/api/search", {
+        params: {
+          query: searchKey,
+        },
       });
       setResults(response.data); // assuming the response data contains the search results
       onOpen();
@@ -49,6 +51,7 @@ const SideBar = () => {
       console.error("Error fetching search results", error);
     }
   };
+  
   useEffect(() => {
     setResultsLength(
       results.laboratoryMembers.length ||
