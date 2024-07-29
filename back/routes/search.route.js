@@ -6,6 +6,6 @@ const router = express.Router();
 const { searchAllCollections } = require('../controllers/search.controller');
 
 // Define route for searching all collections
-router.post('/search', searchAllCollections);
+router.get('/search', searchAllCollections);
 
 module.exports = router;
