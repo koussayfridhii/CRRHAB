@@ -185,7 +185,7 @@ const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
           option.published_date[language]
             .toLowerCase()
             .includes(text.toLowerCase())) ||
-        (option.year && option.year.toLowerCase().includes(text.toLowerCase()))
+        (option.year && option.year == (text.toLowerCase()))
       );
     });
     setFiltredData(filteredData);

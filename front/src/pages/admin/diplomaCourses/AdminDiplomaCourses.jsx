@@ -253,7 +253,7 @@ const DataTable = ({ data, setData, headers, language }) => {
               }}
               maxW="fit-content"
             >
-              {course.auteur[language]}
+              {course.annee}
             </chakra.span>
             <chakra.span
               display="flex"
@@ -266,12 +266,26 @@ const DataTable = ({ data, setData, headers, language }) => {
               }}
               maxW="fit-content"
             >
-              {course.annee}
+                {course.type[language]}
             </chakra.span>
             <chakra.span
               display="flex"
               textOverflow="ellipsis"
               alignItems="center"
+              overflow="hidden"
+              whiteSpace="nowrap"
+              _hover={{
+                whiteSpace: "wrap",
+              }}
+              maxW="fit-content"
+            >
+              {course.auteur[language]}
+              
+            </chakra.span>
+            <chakra.span
+              display="flex"
+              alignItems="center"
+              textOverflow="ellipsis"
               overflow="hidden"
               whiteSpace="nowrap"
               _hover={{
@@ -280,19 +294,7 @@ const DataTable = ({ data, setData, headers, language }) => {
               maxW="fit-content"
             >
               {course.titre[language]}
-            </chakra.span>
-            <chakra.span
-              display="flex"
-              alignItems="center"
-              textOverflow="ellipsis"
-              overflow="hidden"
-              whiteSpace="nowrap"
-              _hover={{
-                whiteSpace: "wrap",
-              }}
-              maxW="fit-content"
-            >
-              {course.type[language]}
+              
             </chakra.span>
             <chakra.span
               display="flex"
@@ -318,7 +320,7 @@ const DataTable = ({ data, setData, headers, language }) => {
               }}
               maxW="fit-content"
             >
-              {course.etablissement[language]}
+              {course.directeur[language]}
             </chakra.span>
             <chakra.span
               display="flex"
@@ -332,7 +334,8 @@ const DataTable = ({ data, setData, headers, language }) => {
               maxW="fit-content"
               textAlign={{ md: "end" }}
             >
-              {course.directeur[language]}
+              
+              {course.etablissement[language]}
             </chakra.span>
             <chakra.span
               display="flex"

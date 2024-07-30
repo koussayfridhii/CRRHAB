@@ -49,23 +49,24 @@ app.use(passport.initialize());
 const allowedOrigins = [
   "https://crrhab.agrinet.tn",
   "https://crrhab.vercel.app",
-  "http://193.95.21.154"
+  "http://193.95.21.154",
+  "http://localhost:3000/"
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}));
-
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204
+// }));
+app.use(cors({origin:"*"}))
 app.use((req, res, next) => {
   console.log('Request Headers:', req.headers);
   next();

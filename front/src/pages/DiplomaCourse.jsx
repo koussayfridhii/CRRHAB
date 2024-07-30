@@ -29,9 +29,14 @@ const DiplomaCourse = () => {
   useEffect(() => {
     if (filtredData.length < 1 && data) {
       // Populate filtered data if it's empty and data is available
-      setFiltredData([...data]);
+      setFiltredData([...data.sort((a,b)=>{
+        return b.annee - a.annee;})]);
     }
   }, [data, filtredData.length]); // Dependency array includes data and filtredData.length
+  useEffect(() => {
+    setFiltredData(filtredData.sort((a,b)=>{
+      return b.annee - a.annee;}))
+  }, [filtredData]); // Dependency array includes data and filtredData.length
 
   if (isLoading) {
     return <Spinner />; // Show spinner while loading
@@ -108,7 +113,7 @@ const DiplomaCourse = () => {
           {language === "en"
             ? "Training Qualification"
             : language === "fr"
-            ? "Formation Diplômante"
+            ? "Superision Académique"
             : "تدريب مؤهل"}
         </Heading>
       </Flex>
@@ -296,51 +301,53 @@ const DiplomaCourse = () => {
 };
 
 const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
-  //   const options = ["apple", "appoint", "zap", "cap", "japan"];
-  let filtredData = [];
+  // State variables
   const [text, setText] = useState("");
-  let data = [];
-  options.forEach((option) => {
-    data.push(option.titre?.[language]);
-    data.push(option.specialite?.[language]);
-    data.push(option.annee);
-    data.push(option.auteur?.[language]);
-    data.push(option.etablissement?.[language]);
-    data.push(option.directeur?.[language]);
-  });
-  data = [...new Set(data)];
-  const changInputHandler = (e) => {
-    e.preventDefault();
-    setText(e.target.value);
+
+  // Data processing (optimized with Set and destructuring)
+  const allData = options.flatMap((option) => [
+    option.titre?.[language],
+    option.specialite?.[language],
+    option.annee,
+    option.auteur?.[language],
+    option.etablissement?.[language],
+    option.directeur?.[language],
+  ]).filter(Boolean); // Remove falsy values
+  const uniqueData = [...new Set(allData)]; // Ensure unique values
+
+  // Input change handler
+  const handleChange = (event) => {
+    setText(event.target.value); // Lowercase for case-insensitive search
   };
-  const optionsFilter = () => {
-    filtredData = options.filter((option) => {
+
+  // Filtering function (improved readability and maintainability)
+  const filterOptions = () => {
+    const filteredData = options.filter((option) => {
+      const lowerText = text?.toLowerCase();
+      setFiltredData([])
       return (
-        option.titre?.[language].toLowerCase().includes(text.toLowerCase()) ||
-        option.auteur[language].toLowerCase().includes(text.toLowerCase()) ||
-        option.specialite?.[language]
-          .toLowerCase()
-          .includes(text.toLowerCase()) ||
-        option.etablissement?.[language]
-          .toLowerCase()
-          .includes(text.toLowerCase()) ||
-        option.directeur?.[language]
-          .toLowerCase()
-          .includes(text.toLowerCase()) ||
-        option.annee == text.toLowerCase()
+        option.titre?.[language]?.toLowerCase().includes(lowerText) ||
+        option.auteur?.[language]?.toLowerCase().includes(lowerText) ||
+        option.specialite?.[language]?.toLowerCase().includes(lowerText) ||
+        option.etablissement?.[language]?.toLowerCase().includes(lowerText) ||
+        option.directeur?.[language]?.toLowerCase().includes(lowerText) ||
+        option.annee == lowerText
       );
     });
-    setFiltredData(filtredData);
+    setFiltredData(filteredData);
   };
+
+  // useEffect hook for filtering on text change
   useEffect(() => {
-    optionsFilter();
+    filterOptions();
   }, [text]);
+
   return (
     <>
       <AutoComplete rollNavigation>
         {({ isOpen }) => (
           <>
-            <InputGroup onChange={changInputHandler}>
+            <InputGroup onChange={handleChange}>
               <AutoCompleteInput
                 variant="filled"
                 bg="textHover"
@@ -354,15 +361,13 @@ const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
               </InputRightElement>
             </InputGroup>
             <AutoCompleteList>
-              {data?.map((option, index) => (
+              {uniqueData.map((option, index) => (
                 <AutoCompleteItem
                   key={`option${index}`}
                   value={option}
                   textTransform="capitalize"
                   align="center"
-                  onClick={(e) => {
-                    setText(e.target.innerText);
-                  }}
+                  onClick={() => setText(option)} // Update text on click
                 >
                   {option}
                 </AutoCompleteItem>
@@ -374,5 +379,6 @@ const AutoCompleteMade = ({ options, language = "fr", setFiltredData }) => {
     </>
   );
 };
+
 
 export default DiplomaCourse;
