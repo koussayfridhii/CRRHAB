@@ -67,7 +67,7 @@ const scientificOrganization = [
     title: {
       fr: "Unités d’expérimentation agricole", // French translation
       en: "Agricultural Experimentation Units", // English translation
-      ar: "وحدات التجارب الزراعية", // Arabic translation
+      ar: "وحدات التجارب الفلاحية", // Arabic translation
     },
     color: "#C0504D", // Color associated with this role
   },
