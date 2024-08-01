@@ -95,7 +95,7 @@ const titles= {
               >
                 <ListIcon as={MdCheckCircle} />
                 <chakra.a
-                  href={`./assets/openData/${doc.link}`}
+                  href={`${doc.link}`}
                   target="_blank"
                   _visited={{
                     color: "red.500",
