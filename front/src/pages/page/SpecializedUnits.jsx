@@ -51,7 +51,12 @@ const NationalProjects = () => {
         fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en modes conventionnel et Biologique",
         ar: " زراعة الخضروات و الأشجار المثمرة على النمط العادي و البيولوجي"
       },
-      superficie: "9,5 ha",
+      superficie: {
+        fr:"9,5 ha",
+        en:"9,5 ha",
+        ar:"9,5 هك",
+
+      },
     },
     {
       title: {
@@ -64,7 +69,12 @@ const NationalProjects = () => {
         fr: "Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel",
         ar: " زراعة الخضروات و الأشجار المثمرة على النمط العادي و البيولوجي"
       },
-      superficie: "5,8 ha",
+      superficie: {
+        fr:"5,8 ha",
+        en:"5,8 ha",
+        ar:"5,8 هك",
+  
+      },
     },
     {
       title: {
@@ -77,7 +87,12 @@ const NationalProjects = () => {
         fr: "Cultures maraichères sous abri-serre et en plein champ conduites en mode Conventionnel",
         ar: "زراعة الخضروات المحمية و الحقلية على النمط العادي"
       },
-      superficie: "3,7 ha",
+      superficie: {
+        fr:"3,7 ha",
+        en:"3,7 ha",
+        ar:"3,7 هك",
+  
+      },
     },
   ];
 
@@ -206,7 +221,7 @@ const DataTable = ({ data, language }) => {
               >
                 {getText(row.title, language)}
               </Td>
-              <Td>{row.superficie}</Td>
+              <Td> {getText(row.title, language)}</Td>
               <Td
                 display="flex"
                 alignItems="center"
