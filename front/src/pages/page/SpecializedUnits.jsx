@@ -44,12 +44,12 @@ const NationalProjects = () => {
       title: {
         en: "Unit of Agricultural Experimentation of Chott Mariem, Sousse",
         fr: "Unité d'expérimentation agricole à Chott Mariem, Sousse",
-        ar: "محطة التجارب بشط مريم، سوسة",
+        ar: "محطة التجارب بشط مريم",
       },
       activity: {
         en: "Horticulture: Vegetable Crops and Fruit Tree Cultivation under Conventional and Organic cropping systems",
         fr: "Horticulture : Cultures maraichères et arboriculture fruitière conduites en modes conventionnel et Biologique",
-        ar: "البستنة: محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية والعضوية"
+        ar: " زراعة الخضروات و الأشجار المثمرة على النمط العادي و البيولوجي"
       },
       superficie: "9,5 ha",
     },
@@ -57,12 +57,12 @@ const NationalProjects = () => {
       title: {
         en: "Unit of Agricultural Experimentation of Sahline, Monastir",
         fr: "Unité d'expérimentation agricole à Sahline, Monastir",
-        ar: "محطة التجارب بالساحلين، المنستير",
+        ar: "محطة التجارب بالساحلين",
       },
       activity: {
         en: " Vegetable Crops and Fruit Tree Cultivation under Conventional cropping system",
         fr: "Cultures maraichères et arboriculture fruitière conduites en mode Conventionnel",
-        ar: "محاصيل الخضروات وزراعة الأشجار المثمرة بالطرق التقليدية"
+        ar: " زراعة الخضروات و الأشجار المثمرة على النمط العادي و البيولوجي"
       },
       superficie: "5,8 ha",
     },
@@ -70,12 +70,12 @@ const NationalProjects = () => {
       title: {
         en: "Unit of Agricultural Experimentation of Teboulba, Monastir",
         fr: "Unité d'expérimentation agricole à Teboulba, Monastir",
-        ar: "محطة التجارب بطبلبة، المنستير",
+        ar: "محطة التجارب بطبلبة",
       },
       activity: {
         en: "Greenhouse and open field Vegetable Crops under Conventional cropping system",
         fr: "Cultures maraichères sous abri-serre et en plein champ conduites en mode Conventionnel",
-        ar: "محاصيل الخضروات في البيوت المحمية وفي الحقول المفتوحة"
+        ar: "زراعة الخضروات المحمية و الحقلية على النمط العادي"
       },
       superficie: "3,7 ha",
     },

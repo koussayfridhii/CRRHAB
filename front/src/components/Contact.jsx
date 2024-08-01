@@ -39,205 +39,207 @@ export default function Contact() {
   const { colorMode } = useColorMode();
   return (
     <Flex
-      bg={useColorModeValue("gray.100", "gray.900")}
-      align="center"
-      justify="center"
-      css={{
-        backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
-        backgroundAttachment: "fixed",
-      }}
-      id="contact"
-      dir={language == "ar" ? "rtl" : "ltr"}
-      shadow={"lg"}
+    bg={useColorModeValue("gray.100", "gray.900")}
+    align="center"
+    justify="center"
+    css={{
+      backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
+      backgroundAttachment: "fixed",
+    }}
+    id="contact"
+    dir={language == "ar" ? "rtl" : "ltr"}
+    shadow={"lg"}
+  >
+    <Box
+      borderRadius="lg"
+      m={{ base: 5, md: 16, lg: 10 }}
+      p={{ base: 5, lg: 16 }}
     >
-      <Box
-        borderRadius="lg"
-        m={{ base: 5, md: 16, lg: 10 }}
-        p={{ base: 5, lg: 16 }}
-      >
-        <Box>
-          <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
-            <Heading
-              fontSize={{
-                base: "4xl",
-                md: "5xl",
-              }}
+      <Box>
+        <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
+          <Heading
+            fontSize={{
+              base: "4xl",
+              md: "5xl",
+            }}
+          >
+            {language === "en"
+              ? "Get in Touch"
+              : language === "fr"
+              ? "Contact"
+              : "اتصل بنا"}
+          </Heading>
+
+          <Stack
+            spacing={{ base: 4, md: 8, lg: 20 }}
+            direction={{ base: "column", md: "row" }}
+            gap={0}
+            w={{ base: "95vw", xl: "auto" }}
+          >
+            <Flex align={"center"} shadow={"lg"} mr={{ base: 0, xl: -1 }}>
+              <iframe
+                className={`map ${colorMode}`}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
+                width={500}
+                height={500}
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Flex>
+            <Box
+              bg={useColorModeValue("background", "gray.700")}
+              borderRightRadius={
+                language === "ar" ? "0" : { base: 0, xl: "3xl" }
+              }
+              borderLeftRadius={
+                language === "ar" ? { base: 0, xl: "3xl" } : "0"
+              }
+              p={8}
+              color={useColorModeValue("gray.700", "whiteAlpha.900")}
+              shadow="2xl"
             >
-              {language === "en"
-                ? "Get in Touch"
-                : language === "fr"
-                ? "Contact"
-                : "اتصل بنا"}
-            </Heading>
+              <VStack spacing={5}>
+                <FormControl isRequired>
+                  <FormLabel>
+                    {language === "en"
+                      ? "Name"
+                      : language === "fr"
+                      ? "Nom"
+                      : "الاسم"}
+                  </FormLabel>
 
-            <Stack
-              spacing={{ base: 4, md: 8, lg: 20 }}
-              direction={{ base: "column", md: "row" }}
-              gap={0}
-              w={{ base: "95vw", xl: "auto" }}
-            >
-              <Flex align={"center"} shadow={"lg"} mr={{ base: 0, xl: -1 }}>
-                <iframe
-                  className={`map ${colorMode}`}
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10868.21378614277!2d10.577437722228504!3d35.919090455524504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8976a1b8bb2b%3A0x84edc6b09bdae964!2sCentre%20R%C3%A9gional%20des%20Recherches%20en%20Horticulture%20et%20Agriculture%20Biologique!5e0!3m2!1sfr!2stn!4v1712419781465!5m2!1sfr!2stn"
-                  width={500}
-                  height={500}
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </Flex>
-              <Box
-                bg={useColorModeValue("background", "gray.700")}
-                borderRightRadius={
-                  language === "ar" ? "0" : { base: 0, xl: "3xl" }
-                }
-                borderLeftRadius={
-                  language === "ar" ? { base: 0, xl: "3xl" } : "0"
-                }
-                p={8}
-                color={useColorModeValue("gray.700", "whiteAlpha.900")}
-                shadow="2xl"
-              >
-                <VStack spacing={5}>
-                  <FormControl isRequired>
-                    <FormLabel>
-                      {language === "en"
-                        ? "Name"
-                        : language === "fr"
-                        ? "Nom"
-                        : "الاسم"}
-                    </FormLabel>
-
-                    <InputGroup>
-                      <InputLeftElement>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          width={24}
-                          height={24}
-                          color={"#0fa239"}
-                          fill={"none"}
-                        >
-                          <path
-                            d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                      </InputLeftElement>
-                      <Input
-                        type="text"
-                        name="name"
-                        placeholder={
-                          language === "en"
-                            ? "Your Name"
-                            : language === "fr"
-                            ? "Votre Nom"
-                            : "الاسم"
-                        }
-                      />
-                    </InputGroup>
-                  </FormControl>
-
-                  <FormControl isRequired>
-                    <FormLabel>
-                      {language === "en"
-                        ? "Email"
-                        : language === "fr"
-                        ? "Email"
-                        : "البريد"}
-                    </FormLabel>
-
-                    <InputGroup>
-                      <InputLeftElement>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          width={24}
-                          height={24}
-                          color={"#0fa239"}
-                          fill={"none"}
-                        >
-                          <path
-                            d="M2 6L8.91302 9.91697C11.4616 11.361 12.5384 11.361 15.087 9.91697L22 6"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </InputLeftElement>
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder={
-                          language === "en"
-                            ? "Your Email"
-                            : language === "fr"
-                            ? "Votre Email"
-                            : "البريد"
-                        }
-                      />
-                    </InputGroup>
-                  </FormControl>
-
-                  <FormControl isRequired>
-                    <FormLabel>
-                      {language === "en"
-                        ? "Message"
-                        : language === "fr"
-                        ? "Message"
-                        : "الرسالة"}
-                    </FormLabel>
-
-                    <Textarea
-                      name="message"
+                  <InputGroup>
+                    <InputLeftElement>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width={24}
+                        height={24}
+                        color={"#0fa239"}
+                        fill={"none"}
+                      >
+                        <path
+                          d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                        />
+                      </svg>
+                    </InputLeftElement>
+                    <Input
+                      type="text"
+                      name="name"
                       placeholder={
                         language === "en"
-                          ? "Message"
+                          ? "Your Name"
                           : language === "fr"
-                          ? "Message"
-                          : "الرسالة"
+                          ? "Votre Nom"
+                          : "الاسم"
                       }
-                      rows={6}
-                      resize="none"
                     />
-                  </FormControl>
+                  </InputGroup>
+                </FormControl>
 
+                <FormControl isRequired>
+                  <FormLabel>
+                    {language === "en"
+                      ? "Email"
+                      : language === "fr"
+                      ? "Email"
+                      : "البريد"}
+                  </FormLabel>
+
+                  <InputGroup>
+                    <InputLeftElement>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width={24}
+                        height={24}
+                        color={"#0fa239"}
+                        fill={"none"}
+                      >
+                        <path
+                          d="M2 6L8.91302 9.91697C11.4616 11.361 12.5384 11.361 15.087 9.91697L22 6"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </InputLeftElement>
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder={
+                        language === "en"
+                          ? "Your Email"
+                          : language === "fr"
+                          ? "Votre Email"
+                          : "البريد"
+                      }
+                    />
+                  </InputGroup>
+                </FormControl>
+
+                <FormControl isRequired>
+                  <FormLabel>
+                    {language === "en"
+                      ? "Message"
+                      : language === "fr"
+                      ? "Message"
+                      : "الرسالة"}
+                  </FormLabel>
+
+                  <Textarea
+                    name="message"
+                    placeholder={
+                      language === "en"
+                        ? "Message"
+                        : language === "fr"
+                        ? "Message"
+                        : "الرسالة"
+                    }
+                    rows={6}
+                    resize="none"
+                  />
+                </FormControl>
+
+                <a href="mailto:crrhab@iresa.agrinet.tn" target="_blank">
                   <Button
-                    bg="primary"
+                    colorScheme="green"
+                    bg="green.400"
                     color="white"
                     _hover={{
-                      bg: "primaryHover",
+                      bg: "green.500",
                     }}
-                    width="full"
                   >
                     {language === "en"
                       ? "Send Message"
                       : language === "fr"
-                      ? "Envoyer Message"
-                      : "أرسل "}
+                      ? "Envoyer le message"
+                      : "أرسل الرسالة"}
                   </Button>
-                </VStack>
-              </Box>
-            </Stack>
-          </VStack>
-        </Box>
+                </a>
+              </VStack>
+            </Box>
+          </Stack>
+        </VStack>
       </Box>
-    </Flex>
+    </Box>
+  </Flex>
   );
 }
