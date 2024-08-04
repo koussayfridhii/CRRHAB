@@ -33,14 +33,14 @@ const AdminResearchTeam = () => {
   const headers = [
     {
       title: {
-        fr: "Link", // French title for link
+        fr: "Lien", // French title for link
         en: "Link", // English title for link
         ar: "الرابط", // Arabic title for link
       },
     },
     {
       title: {
-        fr: "Title", // French title for title
+        fr: "Titre", // French title for title
         en: "Title", // English title for title
         ar: "العنوان", // Arabic title for title
       },
@@ -54,7 +54,7 @@ const AdminResearchTeam = () => {
     },
     {
       title: {
-        fr: "Img", // French title for image
+        fr: "Image", // French title for image
         en: "Img", // English title for image
         ar: "الصورة", // Arabic title for image
       },
