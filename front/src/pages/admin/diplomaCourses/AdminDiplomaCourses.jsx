@@ -122,7 +122,7 @@ const AdminDiplomaCourse = () => {
             data={data}
             headers={headers}
             setData={setData}
-            language={"en"}
+            language={"fr"}
           />
         </>
       </Box>

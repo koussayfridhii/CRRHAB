@@ -143,7 +143,7 @@ const AdminLaboratoryExecutiveMembers = () => {
             data={ExecutiveData}
             headers={headers}
             setData={setExecutiveData}
-            language={"en"}
+            language={"fr"}
           />
           <Divider
             my={10}
@@ -170,7 +170,7 @@ const AdminLaboratoryExecutiveMembers = () => {
             data={researchData}
             headers={researchHeaders}
             setData={setResearchData}
-            language={"en"}
+            language={"fr"}
           />
         </>
       </Box>

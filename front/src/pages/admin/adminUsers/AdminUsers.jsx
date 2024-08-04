@@ -111,7 +111,7 @@ const AdminUsers = () => {
           data={data}
           headers={headers}
           setData={setData}
-          language={"en"}
+          language={"fr"}
           user={user}
           getAllData={getAllData}
         />

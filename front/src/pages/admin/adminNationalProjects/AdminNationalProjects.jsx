@@ -90,7 +90,7 @@ const AdminNationalProjects = () => {
         >
           Add
         </Button>
-        <DataTable data={data} headers={headers} language={"en"} />
+        <DataTable data={data} headers={headers} language={"fr"} />
       </Box>
     </Wrap>
   );
