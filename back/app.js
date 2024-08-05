@@ -50,9 +50,9 @@ const allowedOrigins = [
   "https://crrhab.agrinet.tn",
   "https://crrhab.vercel.app",
   "http://193.95.21.154",
-  "http://localhost:3000/"
+  "http://localhost:3000/",
+  
 ];
-
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {

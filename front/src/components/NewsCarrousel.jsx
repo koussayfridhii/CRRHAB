@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Box, Flex, Image, Stack, Text, HStack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
@@ -6,6 +6,7 @@ import Spinner from "./spinner/Spinner";
 import { useCallApi } from "../hooks/useCallApi";
 
 const SLIDE_CHANGE_THRESHOLD = 100; // Seuil pour détecter le changement de diapositive lors du glissement
+const AUTO_SWIPE_INTERVAL = 3000; // Intervalle pour le défilement automatique (5 secondes)
 
 const arrowStyles = {
   cursor: "pointer",
@@ -103,6 +104,16 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
     transition: dragging ? "none" : "all .5s",
     marginLeft: `calc(-${currentSlide * 100}% + ${slideOffset}px)`,
   };
+
+  // Ajouter l'effet de défilement automatique
+  useEffect(() => {
+    const autoSwipe = setInterval(() => {
+      nextSlide();
+    }, AUTO_SWIPE_INTERVAL);
+
+    // Nettoyer l'intervalle lors du démontage du composant
+    return () => clearInterval(autoSwipe);
+  }, [nextSlide]);
 
   if (isLoading) {
     return <Spinner />; // Afficher le spinner pendant le chargement des données
