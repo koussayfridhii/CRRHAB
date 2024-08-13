@@ -66,6 +66,7 @@ app.use(cors({
   preflightContinue: false,
   optionsSuccessStatus: 204
 }));
+// app.use(cors({origin:"*"}))
 app.use((req, res, next) => {
   console.log('Request Headers:', req.headers);
   next();

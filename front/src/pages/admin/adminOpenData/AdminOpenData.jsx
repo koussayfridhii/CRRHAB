@@ -44,14 +44,6 @@ const AdminOpenData = () => {
         ar: "عنوان",
       },
     },
-    {
-      key: "link",
-      title: {
-        fr: "Lien",
-        en: "Link",
-        ar: "رابط",
-      },
-    },
   ];
 
   const getAllData = async () => {

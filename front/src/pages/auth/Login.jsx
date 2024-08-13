@@ -57,7 +57,7 @@ const Login = () => {
           : navigate("/profile");
       })
       .catch((err) => {
-        const msg = err.response.data.message;
+        const msg = err?.response?.data.message;
         setLoading(false);
         toast({
           title: "Erreur de connexion",

@@ -2,14 +2,14 @@ import { storage } from "../firebase";
 import imageCompression from "browser-image-compression";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-// Générer un entier aléatoire
+// Generate a random integer
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 const upload = async (file, storageRef) => {
   if (!file) {
-    throw new Error("Veuillez d'abord télécharger un fichier !");
+    throw new Error("Please upload a file first!");
   }
 
   return new Promise((resolve, reject) => {
@@ -17,21 +17,21 @@ const upload = async (file, storageRef) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // Mises à jour de progression
+        // Progress updates
         const percent = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
       },
       (err) => {
-        reject(err); // Rejet en cas d'erreur
+        reject(err); // Reject on error
       },
       () => {
-        // URL de téléchargement
+        // Download URL
         getDownloadURL(uploadTask.snapshot.ref)
           .then((url) => {
-            resolve(url); // Résoudre avec l'URL de téléchargement
+            resolve(url); // Resolve with download URL
           })
-          .catch(reject); // Rejet en cas d'erreur
+          .catch(reject); // Reject on error
       }
     );
   });
@@ -49,23 +49,25 @@ const compressImage = async (file, storageRef) => {
 
   try {
     const compressedFile = await imageCompression(file, options);
-    console.log("Compression terminée", compressedFile.size / 1024 / 1024);
+    console.log("Compression finished", compressedFile.size / 1024 / 1024);
     return upload(compressedFile, storageRef);
   } catch (error) {
-    throw new Error("La compression de l'image a échoué : " + error.message);
+    throw new Error("Image compression failed: " + error.message);
   }
 };
 
 const useUploadImage = async (uploadFolder, file) => {
+  const fileName = file?.name?.split('.').slice(0, -1).join('.');
+  const fileExtension = file?.name?.split('.').pop();
   const storageRef = ref(
     storage,
-    `/${uploadFolder}/${file?.name}${getRandomInt(10000000000)}`
+    `/${uploadFolder}/${fileName}${getRandomInt(10000000000)}.${fileExtension}`
   );
 
   try {
-    return await compressImage(file, storageRef); // Attendre la fin du téléchargement
+    return await compressImage(file, storageRef); // Wait for the upload to finish
   } catch (error) {
-    throw error; // Propager toutes les erreurs
+    throw error; // Propagate any errors
   }
 };
 

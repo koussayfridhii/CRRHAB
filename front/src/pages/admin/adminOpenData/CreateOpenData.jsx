@@ -138,7 +138,9 @@ const CreateEvents = () => {
             Authorization: `Bearer ${user?.user?.token}`,
           },
         })
-        .then((response) => setFormData(response.data.document))
+        .then((response) => {
+          setFormData(response.data)
+        })
         .catch((error) => {
           toast({
             title: "Erreur lors de la récupération des données.",
