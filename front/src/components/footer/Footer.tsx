@@ -90,7 +90,7 @@ const Footer = () => {
                   Téléphone:
                 </Text>
                 {/* Updated Téléphone */}
-                <Text fontSize="md"> (+ 216) 73 327 543</Text>
+                <Text fontSize="md"> (+ 216) 70 137 700</Text>
               </Box>
               {/* Box to display Fax */}
               <Box display="flex" gap={"10px"}>
@@ -98,7 +98,7 @@ const Footer = () => {
                   Fax:
                 </Text>
                 {/* Updated Fax */}
-                <Text fontSize="md">(+ 216) 73 327 070</Text>
+                <Text fontSize="md">(+ 216) 70 137 701</Text>
               </Box>
               {/* Box to display Email */}
               <Box display="flex" gap={"10px"}>
