@@ -11,8 +11,19 @@ const Actualities = () => {
   const language = useSelector((state) => state.language.language);
   const { pathname } = useLocation();
   const { data, error, isLoading } = useCallApi("news");
-  // useEffect(()=>{
-  // },[data])
+  useEffect(()=>{
+    const actualities = (pathname === "/actualities" )// check type 
+    const dataFiltred = data?.filter(e=>{
+      if(actualities) {return(
+        e.type === "other"
+      )}else{
+        return(
+          e.type === "advertisements"
+        )}
+      
+    })
+    setData(dataFiltred) // update the data state with the filtered data
+  },[data])
   if (isLoading) {
     return <Spinner />;
   }
