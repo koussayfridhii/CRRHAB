@@ -12,19 +12,19 @@ const Actualities = () => {
   const { pathname } = useLocation();
   const { data, error, isLoading } = useCallApi("news");
   let dataFiltred = []
-  useEffect(()=>{
-    const actualities = (pathname === "/actualities" )// check type 
-     dataFiltred = data?.filter(e=>{
-      if(actualities) {return(
-        e.type === "other"
-      )}else{
-        return(
-          e.type === "advertisements"
-        )}
+  // useEffect(()=>{
+  //   const actualities = (pathname === "/actualities" )// check type 
+  //    dataFiltred = data?.filter(e=>{
+  //     if(actualities) {return(
+  //       e.type === "other"
+  //     )}else{
+  //       return(
+  //         e.type === "advertisements"
+  //       )}
       
-    })
-     // update the data state with the filtered data
-  },[data])
+  //   })
+  //    // update the data state with the filtered data
+  // },[data])
   if (isLoading) {
     return <Spinner />;
   }
@@ -86,7 +86,15 @@ const Actualities = () => {
           </chakra.p>
         </Box>
         <List>
-          {dataFiltred?.map((doc, i) => (
+          {data?.filter(e=>{
+      if(actualities) {return(
+        e.type === "other"
+      )}else{
+        return(
+          e.type === "advertisements"
+        )}
+      
+    })?.map((doc, i) => (
             <ListItem key={i} color="primary" _dark={{color:"secondary"}}>
               {/* <Card data={e} language={language} /> */}
               <ListIcon as={MdCheckCircle} />
