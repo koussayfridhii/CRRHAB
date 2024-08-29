@@ -10,6 +10,7 @@ import {
   Flex,
   useToast,
   Textarea,
+  Checkbox,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -21,11 +22,13 @@ const CreateNews = () => {
   const { id } = useParams();
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isAnnonce, setIsAnnonce] = useState(false); // State to manage checkbox
   const [formData, setFormData] = useState({
     link: "",
     title: { fr: "", ar: "", en: "" },
     description: { fr: "", ar: "", en: "" },
     img: "",
+    type: "other",
   });
   const user = useSelector((state) => state.user);
   const toast = useToast();
@@ -120,8 +123,11 @@ const CreateNews = () => {
   }, [url]);
 
   useEffect(() => {
+    setFormData({ ...formData, type: isAnnonce ? "advertisements" : "other" });
+  }, [isAnnonce]);
+
+  useEffect(() => {
     if (id) {
-      // Fetch news data for edit mode
       axios
         .get(`https://crrhab.agrinet.tn/api/news/${id}`)
         .then((response) => setFormData(response.data.news))
@@ -200,6 +206,15 @@ const CreateNews = () => {
             <FormControl>
               <FormLabel>Image</FormLabel>
               <Input type="file" onChange={handleFileChange} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Type</FormLabel>
+              <Checkbox
+                isChecked={isAnnonce}
+                onChange={(e) => setIsAnnonce(e.target.checked)}
+              >
+                Annonces
+              </Checkbox>
             </FormControl>
             <Button
               type="submit"
