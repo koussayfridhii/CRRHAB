@@ -106,6 +106,7 @@ const Actualities = () => {
                 >
                   {doc.title?.[language]}
                 </chakra.a>
+                , {doc?.createdAt}
             </ListItem>
           ))}
         </List>
