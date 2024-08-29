@@ -11,9 +11,10 @@ const Actualities = () => {
   const language = useSelector((state) => state.language.language);
   const { pathname } = useLocation();
   const { data, error, isLoading } = useCallApi("news");
+  let dataFiltred = []
   useEffect(()=>{
     const actualities = (pathname === "/actualities" )// check type 
-    const dataFiltred = data?.filter(e=>{
+     dataFiltred = data?.filter(e=>{
       if(actualities) {return(
         e.type === "other"
       )}else{
@@ -22,7 +23,7 @@ const Actualities = () => {
         )}
       
     })
-    setData(dataFiltred) // update the data state with the filtered data
+     // update the data state with the filtered data
   },[data])
   if (isLoading) {
     return <Spinner />;
@@ -85,7 +86,7 @@ const Actualities = () => {
           </chakra.p>
         </Box>
         <List>
-          {data?.map((doc, i) => (
+          {dataFiltred?.map((doc, i) => (
             <ListItem key={i} color="primary" _dark={{color:"secondary"}}>
               {/* <Card data={e} language={language} /> */}
               <ListIcon as={MdCheckCircle} />
