@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex, chakra, List, ListItem, ListIcon } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Card from "../components/cards/cardV4/Card";
