@@ -87,7 +87,7 @@ const Actualities = () => {
         </Box>
         <List>
           {data?.filter(e=>{
-      if(actualities) {return(
+      if(pathname==="/actualities") {return(
         e.type === "other"
       )}else{
         return(
