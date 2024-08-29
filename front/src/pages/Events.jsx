@@ -76,6 +76,7 @@ const Events = () => {
                   }}
                 >
                   {doc.title?.[language]}
+                  ,{doc?.date?.split("T")?.[0]}
                 </chakra.a>
             </ListItem>
           ))}
