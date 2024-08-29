@@ -99,7 +99,8 @@ const Event = () => {
           letterSpacing="wider"
         >
           {actuality?.description?.[language]}
-          ,{actuality?.date?.split("T")?.[0]}
+          <br />
+          {actuality?.date?.split("T")?.[0]}
         </chakra.p>
         {actuality.link !== "" && (
           <Button as={"a"} href={actuality?.link} target="_blank">
