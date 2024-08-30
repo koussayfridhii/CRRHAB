@@ -109,6 +109,15 @@ const Actuality = () => {
               : "قراءة المزيد"}
           </Button>
         )}
+        {actuality.img?.includes(".pdf") && (
+          <Button as={"a"} href={actuality?.img} target="_blank">
+            {language === "en"
+              ? "Read more"
+              : language === "fr"
+              ? "Lire la suite"
+              : "قراءة المزيد"}
+          </Button>
+        )}
       </Flex>
     </SimpleGrid>
   );
