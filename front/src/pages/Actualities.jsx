@@ -105,7 +105,7 @@ const Actualities = () => {
                   }}
                 >
                   {doc.title?.[language]}
-                  <chakra.span fontSize="sm">
+                  <chakra.span fontSize="xs">
 
                   {
                     language === "fr" ? " publié le " : language === "en" ? " published on : " : " نشر في "
