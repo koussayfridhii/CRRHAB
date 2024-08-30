@@ -105,7 +105,10 @@ const Actualities = () => {
                   }}
                 >
                   {doc.title?.[language]}
-                , {doc?.createdAt?.split("T")?.[0]}
+                  {
+                    language === "fr" ? "publié le" : language === "en" ? "published on :" : "نشر في "
+                  }
+                 {doc?.createdAt?.split("T")?.[0]}
                 </chakra.a>
             </ListItem>
           ))}
