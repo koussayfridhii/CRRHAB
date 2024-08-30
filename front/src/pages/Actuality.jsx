@@ -27,7 +27,7 @@ const Actuality = () => {
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <Flex>
-        <Image
+        {actuality?.img?.includes(".pdf") && (<Image
           src={actuality?.img}
           alt={actuality?.title?.[language]}
           fit="cover"
@@ -38,7 +38,7 @@ const Actuality = () => {
           }}
           bg="gray.100"
           loading="lazy"
-        />
+        />) }
       </Flex>
       <Flex
         direction="column"
