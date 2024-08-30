@@ -27,7 +27,7 @@ const Actuality = () => {
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <Flex>
-        {!actuality?.img?.includes(".pdf") && (<Image
+        {!actuality?.img?.includes(".pdf") ? (<Image
           src={actuality?.img}
           alt={actuality?.title?.[language]}
           fit="cover"
@@ -38,7 +38,18 @@ const Actuality = () => {
           }}
           bg="gray.100"
           loading="lazy"
-        />) }
+        />) :  (<Image
+          src="https://images.unsplash.com/photo-1502772066658-3006ff41449b?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt={actuality?.title?.[language]}
+          fit="cover"
+          w="full"
+          h={{
+            base: 64,
+            md: "full",
+          }}
+          bg="gray.100"
+          loading="lazy"
+        />)}
       </Flex>
       <Flex
         direction="column"
