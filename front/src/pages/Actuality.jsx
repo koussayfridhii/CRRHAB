@@ -27,7 +27,7 @@ const Actuality = () => {
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <Flex>
-        {actuality?.img?.includes(".pdf") && (<Image
+        {!actuality?.img?.includes(".pdf") && (<Image
           src={actuality?.img}
           alt={actuality?.title?.[language]}
           fit="cover"
