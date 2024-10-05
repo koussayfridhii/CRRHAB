@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
   Divider,
   chakra,
@@ -14,7 +14,11 @@ import {
   useDisclosure,
   List,
   ListItem,
+  ListIcon,
+  Text,
 } from "@chakra-ui/react";
+import { MdCheckCircle } from "react-icons/md";
+
 import axios from "axios";
 import "./SideBar.scss";
 import CardV1 from "../cards/cardV1/Card";
@@ -22,6 +26,8 @@ import CardV2 from "../cards/cardV2/Card";
 import CardV3 from "../cards/cardV3/Card";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
+import { useCallApi } from "../../hooks/useCallApi";
 
 const SideBar = () => {
   const language = useSelector((state) => state.language.language);
@@ -51,10 +57,12 @@ const SideBar = () => {
       console.error("Error fetching search results", error);
     }
   };
-  
+  const { data:newsData, error, isLoading } = useCallApi("news");
+
+
   useEffect(() => {
     setResultsLength(
-      results.laboratoryMembers.length ||
+        results.laboratoryMembers.length ||
         results.nationalProject.length ||
         results.diplomaCourse.length ||
         results.events.length ||
@@ -64,6 +72,19 @@ const SideBar = () => {
         results.scientificCouncilMembers.length
     );
   }, [results]);
+  useEffect(() => {
+    console.log(newsData)
+    return () => {
+      
+    };
+  }, [newsData]);
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
   return (
     <chakra.aside className="sideBar" dir={language === "ar" ? "rtl" : "ltr"}>
       <Input
@@ -92,6 +113,43 @@ const SideBar = () => {
         borderColor={"primary"}
       />
       <CardV3 />
+      <Divider
+        _dark={{
+          bg: "secondary",
+          borderColor: "secondary",
+        }}
+        orientation="horizontal"
+        bg={"primary"}
+        w={"80%"}
+        mx={"auto"}
+        borderColor={"primary"}
+      />
+      <List p={2} m={5}>
+        <Text fontSize="lg" fontWeight="bold" color="secondary" mx="auto" textAlign="center" mb={2}>
+        {(language === "fr"
+              ? "Annonces"
+              : language === "en"
+              ? "advertisements"
+              : "إعلانات")}
+        </Text>
+      {
+        newsData?.filter(e=>{
+          return(
+            e.type === "advertisements"
+          )
+        }).map((actuality, i) =>{
+      
+          return (
+            <ListItem key={i} color="primary" _dark={{ color: "secondary" }} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+               <ListIcon as={MdCheckCircle} />
+              <Link to={`/actualities/${actuality._id}`}>
+                {language === "en"? actuality.title.en : language === "fr"? actuality.title.fr : actuality.title.ar}
+              </Link>
+            </ListItem>
+          )
+        })
+      }
+      </List>
       <Divider
         _dark={{
           bg: "secondary",

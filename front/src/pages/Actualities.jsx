@@ -11,7 +11,7 @@ const Actualities = () => {
   const language = useSelector((state) => state.language.language);
   const { pathname } = useLocation();
   const { data, error, isLoading } = useCallApi("news");
-  let dataFiltred = []
+  // let dataFiltred = []
   // useEffect(()=>{
   //   const actualities = (pathname === "/actualities" )// check type 
   //    dataFiltred = data?.filter(e=>{

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchApiData = async (linkSuffix) => {
-  const res = await axios.get(`https://crrhab.agrinet.tn/`);
+   await axios.get(`https://crrhab.agrinet.tn/`);
   const { data } = await axios.get(
     `https://crrhab.agrinet.tn/api/${linkSuffix}`
   );
