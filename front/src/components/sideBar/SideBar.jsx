@@ -16,6 +16,7 @@ import {
   ListItem,
   ListIcon,
   Text,
+  Image,
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
 
@@ -132,7 +133,7 @@ const SideBar = () => {
               ? "advertisements"
               : "إعلانات")}
         </Text>
-      {
+      {/* {
         newsData?.filter(e=>{
           return(
             e.type === "advertisements"
@@ -148,7 +149,11 @@ const SideBar = () => {
             </ListItem>
           )
         })
-      }
+      } */}
+      <Link to="/advertisements">
+
+      <Image src="/assets/images/annoncescrrhab.jpg" />
+      </Link>
       </List>
       <Divider
         _dark={{
