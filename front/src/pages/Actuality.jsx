@@ -39,7 +39,7 @@ const Actuality = () => {
           bg="gray.100"
           loading="lazy"
         />) :  (<Image
-          src="./assets/images/annoncescrrhab.jpg"
+          src="/assets/images/annoncescrrhab.jpg"
           alt={actuality?.title?.[language]}
           fit="cover"
           w="full"
