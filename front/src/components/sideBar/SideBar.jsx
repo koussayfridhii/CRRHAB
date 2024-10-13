@@ -152,7 +152,7 @@ const SideBar = () => {
       } */}
       <Link to="/advertisements">
 
-      <Image src="/assets/images/annoncescrrhab.jpg" />
+      <Image src="/assets/images/annoncescrrhab.jpg" mx="auto"/>
       </Link>
       </List>
       <Divider
