@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Spinner from "../spinner/Spinner";
 import { useCallApi } from "../../hooks/useCallApi";
 
-const SLIDE_CHANGE_THRESHOLD = 100; // Seuil pour détecter le changement de diapositive lors du glissement
+const SLIDE_CHANGE_THRESHOLD = 100;
 
 const arrowStyles = {
   cursor: "pointer",
@@ -32,34 +32,28 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
 
-  const language = useSelector((state) => state.language.language); // Obtenir la langue actuelle de l'état redux
+  const language = useSelector((state) => state.language.language);
 
-  const { data, error, isLoading } = useCallApi("media"); // Récupérer les données d'actualités en utilisant un hook personnalisé
+  const { data, error, isLoading } = useCallApi("media");
 
   const slides = data || [];
 
-  // Ensuite, vous pouvez utiliser `slides` dans votre rendu JSX
-
   const slidesCount = slides.length;
 
-  // Fonction pour passer à la diapositive précédente
   const prevSlide = useCallback(() => {
     setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
   }, [slidesCount]);
 
-  // Fonction pour passer à la diapositive suivante
   const nextSlide = useCallback(() => {
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   }, [slidesCount]);
 
-  // Fonction pour gérer l'évènnement de mousedown pour le glissement
   const handleMouseDown = useCallback((e) => {
     setDragging(true);
     setDragStartX(e.clientX);
     e.preventDefault();
   }, []);
 
-  // Fonction pour gérer l'évènnement de mousemove pour le glissement
   const handleMouseMove = useCallback(
     (e) => {
       if (dragging) {
@@ -71,7 +65,6 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
     [dragging, dragStartX]
   );
 
-  // Fonction pour gérer l'évènnement de mouseup pour le glissement
   const handleMouseUp = useCallback(() => {
     if (dragging) {
       setDragging(false);
@@ -85,7 +78,6 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
     }
   }, [dragging, dragOffset, prevSlide, nextSlide]);
 
-  // Calcul du décalage de la diapositive pour une transition fluide
   const slideOffset =
     currentSlide === 0
       ? Math.min(dragOffset, 0)
@@ -93,19 +85,18 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
       ? Math.max(dragOffset, 0)
       : dragOffset;
 
-  // Style du carrousel pour l'effet de glissement
   const carouselStyle = {
     transition: dragging ? "none" : "all .5s",
     marginLeft: `calc(-${currentSlide * 100}% + ${slideOffset}px)`,
   };
 
   if (isLoading) {
-    return <Spinner />; // Afficher le spinner pendant le chargement des données
+    return <Spinner />;
   }
 
   if (error) {
     console.error("Erreur lors de la récupération des données :", error);
-    return <div>Error fetching data: {error.message}</div>; // Afficher le message d'erreur en cas d'échec de la récupération des données
+    return <div>Error fetching data: {error.message}</div>;
   }
 
   return (
@@ -148,6 +139,21 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
                 boxSize="full"
                 objectFit={title === "accueil" ? "cover" : "contain"}
               />
+              <Flex
+                position="absolute"
+                bottom="0"
+                left="0"
+                width="full"
+                height="full"
+                backgroundColor="rgba(0, 0, 0, 0.5)"
+                color="white"
+                padding="8px"
+                textAlign="center"
+                justify="center"
+                align="center"
+              >
+                <Text fontSize="9xl">{slide.title?.[language]}</Text>
+              </Flex>
             </Box>
           ))}
         </Flex>

@@ -38,7 +38,7 @@ const Event = lazy(() => import("./pages/Event.jsx"));
 const Map = lazy(() => import("./pages/Map.jsx"));
 const History = lazy(() => import("./pages/History.jsx"));
 const Missions = lazy(() => import("./pages/Missions.jsx"));
-const      Conventions = lazy(() => import("./pages/Conventions.jsx"));
+const Conventions = lazy(() => import("./pages/Conventions.jsx"));
 const ScientificOrganization = lazy(() =>
   import("./pages/ScientificOrganization.jsx")
 );
@@ -50,6 +50,7 @@ const SpecializedUnits = lazy(() =>
   import("./pages/page/SpecializedUnits.jsx")
 );
 const UserProfile = lazy(() => import("./components/userProfile.jsx"));
+const VideoGraphy = lazy(() => import("./pages/VideoGraphy.jsx"));
 const Presentation = lazy(() => import("./pages/Presentation.jsx"));
 const ContactPage = lazy(() => import("./pages/Contact.jsx"));
 const OpenData = lazy(() => import("./pages/OpenData.jsx"));
@@ -144,12 +145,12 @@ const AdminDownloads = lazy(() =>
 const CreateDownloads = lazy(() =>
   import("./pages/admin/adminDownloads/CreateDownloads.jsx")
 );
-  const AdminOpenData = lazy(() =>
-    import("./pages/admin/adminOpenData/AdminOpenData.jsx")
-  );
-  const CreateOpenData = lazy(() =>
-    import("./pages/admin/adminOpenData/CreateOpenData.jsx")
-  );
+const AdminOpenData = lazy(() =>
+  import("./pages/admin/adminOpenData/AdminOpenData.jsx")
+);
+const CreateOpenData = lazy(() =>
+  import("./pages/admin/adminOpenData/CreateOpenData.jsx")
+);
 const Layout = () => {
   return (
     <div className="app">
@@ -195,7 +196,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/advertisements",
-        element: <Actualities />
+        element: <Actualities />,
       },
       {
         path: "/events",
@@ -265,8 +266,17 @@ const router = createBrowserRouter([
         element: <SpecializedUnits />,
       },
       {
-        path: "/gallery/imgs",
-        element: <ImageGallery />,
+        path: "/gallery",
+        children: [
+          {
+            path: "/gallery/imgs",
+            element: <ImageGallery />,
+          },
+          {
+            path: "/gallery/videos",
+            element: <VideoGraphy />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -319,7 +329,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/projects/international",
-            children:[
+            children: [
               {
                 path: "/projects/international/closed",
                 element: <Projects />,
@@ -328,11 +338,11 @@ const router = createBrowserRouter([
                 path: "/projects/international/current",
                 element: <Projects />,
               },
-            ]
+            ],
           },
           {
             path: "/projects/national",
-            children:[
+            children: [
               {
                 path: "/projects/national/closed",
                 element: <NationalProjects />,
@@ -341,12 +351,12 @@ const router = createBrowserRouter([
                 path: "/projects/national/current",
                 element: <NationalProjects />,
               },
-            ]
+            ],
           },
         ],
       },
       {
-        path:"/conventions",
+        path: "/conventions",
         children: [
           {
             path: "/conventions/closed",
@@ -356,8 +366,8 @@ const router = createBrowserRouter([
             path: "/conventions/current",
             element: <Conventions />,
           },
-        ]
-      }
+        ],
+      },
     ],
   },
   {

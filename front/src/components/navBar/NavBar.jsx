@@ -874,7 +874,6 @@ const NAV_ITEMS = [
     },
     href: "/specialized_units",
   },
-  
 
   {
     label: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
@@ -908,11 +907,23 @@ const NAV_ITEMS = [
         href: "/gallery/imgs",
       },
       {
-        label: { fr: "Formulaires Administratifs", en: "Administrative forms", ar: "وثائق إدارية" },
+        label: { fr: "Vidéos", en: "Videos", ar: "فيديوهات" },
+        href: "/gallery/videos",
+      },
+      {
+        label: {
+          fr: "Formulaires Administratifs",
+          en: "Administrative forms",
+          ar: "وثائق إدارية",
+        },
         href: "/administrative_forms",
       },
       {
-        label: { fr: "Brochures et Dépliants", en: "Flyers and Booklets", ar: "كتيبات و نشريات" },
+        label: {
+          fr: "Brochures et Dépliants",
+          en: "Flyers and Booklets",
+          ar: "كتيبات و نشريات",
+        },
         href: "flyers",
       },
     ],
