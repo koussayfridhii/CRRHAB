@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from "react";
-import { Box, Flex, Image, Stack, Text, HStack } from "@chakra-ui/react";
+import { useState, useCallback } from "react";
+import { Box, Flex, Image, Text, HStack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../spinner/Spinner";
@@ -36,7 +36,9 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
 
   const { data, error, isLoading } = useCallApi("media");
 
-  const slides = data || [];
+  const slides = (data || []).filter(
+    (image) => image.title.fr !== "accueil" && image.title.fr !== "unit"
+  );
 
   const slidesCount = slides.length;
 
@@ -190,6 +192,7 @@ const CustomNewsCarousel = ({ title = "accueil" }) => {
 
 CustomNewsCarousel.propTypes = {
   language: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default CustomNewsCarousel;

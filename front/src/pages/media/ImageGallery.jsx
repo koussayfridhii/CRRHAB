@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "../../components/slider/Slider";
 import { useSelector } from "react-redux";
 import { Suspense } from "react";
