@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Divider,
   chakra,
@@ -14,11 +14,9 @@ import {
   useDisclosure,
   List,
   ListItem,
-  ListIcon,
   Text,
   Image,
 } from "@chakra-ui/react";
-import { MdCheckCircle } from "react-icons/md";
 
 import axios from "axios";
 import "./SideBar.scss";
@@ -58,12 +56,11 @@ const SideBar = () => {
       console.error("Error fetching search results", error);
     }
   };
-  const { data:newsData, error, isLoading } = useCallApi("news");
-
+  const { data: newsData, error, isLoading } = useCallApi("news");
 
   useEffect(() => {
     setResultsLength(
-        results.laboratoryMembers.length ||
+      results.laboratoryMembers.length ||
         results.nationalProject.length ||
         results.diplomaCourse.length ||
         results.events.length ||
@@ -73,12 +70,7 @@ const SideBar = () => {
         results.scientificCouncilMembers.length
     );
   }, [results]);
-  useEffect(() => {
-    console.log(newsData)
-    return () => {
-      
-    };
-  }, [newsData]);
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -126,14 +118,21 @@ const SideBar = () => {
         borderColor={"primary"}
       />
       <List p={2} m={5}>
-        <Text fontSize="lg" fontWeight="bold" color="secondary" mx="auto" textAlign="center" mb={2}>
-        {(language === "fr"
-              ? "Annonces"
-              : language === "en"
-              ? "advertisements"
-              : "إعلانات")}
+        <Text
+          fontSize="lg"
+          fontWeight="bold"
+          color="secondary"
+          mx="auto"
+          textAlign="center"
+          mb={2}
+        >
+          {language === "fr"
+            ? "Annonces"
+            : language === "en"
+            ? "advertisements"
+            : "إعلانات"}
         </Text>
-      {/* {
+        {/* {
         newsData?.filter(e=>{
           return(
             e.type === "advertisements"
@@ -150,10 +149,9 @@ const SideBar = () => {
           )
         })
       } */}
-      <Link to="/advertisements">
-
-      <Image src="/assets/images/annoncescrrhab.jpg" mx="auto"/>
-      </Link>
+        <Link to="/advertisements">
+          <Image src="/assets/images/annoncescrrhab.jpg" mx="auto" />
+        </Link>
       </List>
       <Divider
         _dark={{
@@ -188,22 +186,38 @@ const SideBar = () => {
           <ModalBody>
             {resultsLength > 0 ? (
               <>
-              {results.news?.length > 0 && (
+                {results.news?.length > 0 && (
                   <List>
                     <chakra.p fontWeight={"bold"}>
-                      {language === "en" ? "News" : language === "fr" ? "Actualités" : "المستجدات"}
+                      {language === "en"
+                        ? "News"
+                        : language === "fr"
+                        ? "Actualités"
+                        : "المستجدات"}
                     </chakra.p>
                     {results.news.map((item) => (
                       <ListItem key={item._id} color="secondary">
                         <Link to={`/actualities/${item._id}`}>
-                        <chakra.p>
-                          <strong>{language === "en" ? "Title: " : language === "fr" ? "Titre: " : "العنوان: "}</strong>
-                          {item.title?.[language]}
-                        </chakra.p>
-                        <chakra.p>
-                          <strong>{language === "en" ? "Description: " : language === "fr" ? "Description: " : "الوصف: "}</strong>
-                          {item.description?.[language]}
-                        </chakra.p>
+                          <chakra.p>
+                            <strong>
+                              {language === "en"
+                                ? "Title: "
+                                : language === "fr"
+                                ? "Titre: "
+                                : "العنوان: "}
+                            </strong>
+                            {item.title?.[language]}
+                          </chakra.p>
+                          <chakra.p>
+                            <strong>
+                              {language === "en"
+                                ? "Description: "
+                                : language === "fr"
+                                ? "Description: "
+                                : "الوصف: "}
+                            </strong>
+                            {item.description?.[language]}
+                          </chakra.p>
                         </Link>
                       </ListItem>
                     ))}
@@ -212,23 +226,45 @@ const SideBar = () => {
                 {results.events?.length > 0 && (
                   <List>
                     <chakra.p fontWeight={"bold"}>
-                      {language === "en" ? "Events" : language === "fr" ? "Évènements" : "الأحداث"}
+                      {language === "en"
+                        ? "Events"
+                        : language === "fr"
+                        ? "Évènements"
+                        : "الأحداث"}
                     </chakra.p>
                     {results.events.map((item) => (
                       <ListItem key={item._id} color="secondary">
                         <Link to={`/events/${item._id}`}>
-                        <chakra.p>
-                          <strong>{language === "en" ? "Title: " : language === "fr" ? "Titre: " : "العنوان: "}</strong>
-                          {item.title?.[language]}
-                        </chakra.p>
-                        <chakra.p>
-                          <strong>{language === "en" ? "Description: " : language === "fr" ? "Description: " : "الوصف: "}</strong>
-                          {item.description?.[language]}
-                        </chakra.p>
-                        <chakra.p>
-                          <strong>{language === "en" ? "Date: " : language === "fr" ? "Date: " : "التاريخ: "}</strong>
-                          {item.date}
-                        </chakra.p>
+                          <chakra.p>
+                            <strong>
+                              {language === "en"
+                                ? "Title: "
+                                : language === "fr"
+                                ? "Titre: "
+                                : "العنوان: "}
+                            </strong>
+                            {item.title?.[language]}
+                          </chakra.p>
+                          <chakra.p>
+                            <strong>
+                              {language === "en"
+                                ? "Description: "
+                                : language === "fr"
+                                ? "Description: "
+                                : "الوصف: "}
+                            </strong>
+                            {item.description?.[language]}
+                          </chakra.p>
+                          <chakra.p>
+                            <strong>
+                              {language === "en"
+                                ? "Date: "
+                                : language === "fr"
+                                ? "Date: "
+                                : "التاريخ: "}
+                            </strong>
+                            {item.date}
+                          </chakra.p>
                         </Link>
                       </ListItem>
                     ))}
@@ -298,54 +334,128 @@ const SideBar = () => {
                     {results.scientificCouncilMembers.map((item) => (
                       <ListItem key={item._id} color="secondary">
                         <chakra.p>
-                          <strong>{language === "en" ? "President: " : language === "fr" ? "Président: " : "الرئيس: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "President: "
+                              : language === "fr"
+                              ? "Président: "
+                              : "الرئيس: "}
+                          </strong>
                           {item.president?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Rapporteur: " : language === "fr" ? "Rapporteur: " : "المقرر: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Rapporteur: "
+                              : language === "fr"
+                              ? "Rapporteur: "
+                              : "المقرر: "}
+                          </strong>
                           {item.rapporteur?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Responsables des structures RDI: " : language === "fr" ? "Responsables des structures RDI: " : "مسؤولو هياكل البحث والتطوير: "}</strong>
-                          {item.Responsables_des_structures_RDI?.map((responsable) => responsable[language]).join(", ")}
+                          <strong>
+                            {language === "en"
+                              ? "Responsables des structures RDI: "
+                              : language === "fr"
+                              ? "Responsables des structures RDI: "
+                              : "مسؤولو هياكل البحث والتطوير: "}
+                          </strong>
+                          {item.Responsables_des_structures_RDI?.map(
+                            (responsable) => responsable[language]
+                          ).join(", ")}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Managers of Specialized Units: " : language === "fr" ? "Gestionnaires des unités spécialisées: " : "مديرو الوحدات المتخصصة: "}</strong>
-                          {item.managersOfSpecializedUnits?.map((manager) => manager[language]).join(", ")}
+                          <strong>
+                            {language === "en"
+                              ? "Managers of Specialized Units: "
+                              : language === "fr"
+                              ? "Gestionnaires des unités spécialisées: "
+                              : "مديرو الوحدات المتخصصة: "}
+                          </strong>
+                          {item.managersOfSpecializedUnits
+                            ?.map((manager) => manager[language])
+                            .join(", ")}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representatives of Researchers: " : language === "fr" ? "Représentants des chercheurs: " : "ممثلون عن الباحثين: "}</strong>
-                          {item.representativesOfResearchers?.map((representative) => representative[language]).join(", ")}
+                          <strong>
+                            {language === "en"
+                              ? "Representatives of Researchers: "
+                              : language === "fr"
+                              ? "Représentants des chercheurs: "
+                              : "ممثلون عن الباحثين: "}
+                          </strong>
+                          {item.representativesOfResearchers
+                            ?.map((representative) => representative[language])
+                            .join(", ")}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representative of Iresa: " : language === "fr" ? "Représentant de l'Iresa: " : "ممثل إيريسا: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Representative of Iresa: "
+                              : language === "fr"
+                              ? "Représentant de l'Iresa: "
+                              : "ممثل إيريسا: "}
+                          </strong>
                           {item.representativeOfIresa?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representatives of Agricultural Research and Higher Education Establishments: " : language === "fr" ? "Représentants des établissements de recherche agricole et d'enseignement supérieur: " : "ممثلون عن مؤسسات البحث الزراعي والتعليم العالي: "}</strong>
-                          {item.representativesOfAgriculturalResearchAndHigherEducationEstablishments?.map((representative) => representative[language]).join(", ")}
+                          <strong>
+                            {language === "en"
+                              ? "Representatives of Agricultural Research and Higher Education Establishments: "
+                              : language === "fr"
+                              ? "Représentants des établissements de recherche agricole et d'enseignement supérieur: "
+                              : "ممثلون عن مؤسسات البحث الزراعي والتعليم العالي: "}
+                          </strong>
+                          {item.representativesOfAgriculturalResearchAndHigherEducationEstablishments
+                            ?.map((representative) => representative[language])
+                            .join(", ")}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representative of Inrat: " : language === "fr" ? "Représentant de l'Inrat: " : "ممثل إنرات: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Representative of Inrat: "
+                              : language === "fr"
+                              ? "Représentant de l'Inrat: "
+                              : "ممثل إنرات: "}
+                          </strong>
                           {item.representativeOfInrat?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representative of INRGREF: " : language === "fr" ? "Représentant de l'INRGREF: " : "ممثل إنرجريف: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Representative of INRGREF: "
+                              : language === "fr"
+                              ? "Représentant de l'INRGREF: "
+                              : "ممثل إنرجريف: "}
+                          </strong>
                           {item.representativeOfINRGREF?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representative of IO: " : language === "fr" ? "Représentant de l'IO: " : "ممثل المنظمة الدولية: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Representative of IO: "
+                              : language === "fr"
+                              ? "Représentant de l'IO: "
+                              : "ممثل المنظمة الدولية: "}
+                          </strong>
                           {item.representativeOfIO?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Representative of Ctab: " : language === "fr" ? "Représentant du Ctab: " : "ممثل سي تاب: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Representative of Ctab: "
+                              : language === "fr"
+                              ? "Représentant du Ctab: "
+                              : "ممثل سي تاب: "}
+                          </strong>
                           {item.representativeOfCtab?.[language]}
                         </chakra.p>
                       </ListItem>
                     ))}
                   </List>
                 )}
-                  {results.nationalProject?.length > 0 && (
+                {results.nationalProject?.length > 0 && (
                   <List>
                     <chakra.p fontWeight={"bold"}>
                       {language === "en"
@@ -357,15 +467,33 @@ const SideBar = () => {
                     {results.nationalProject.map((item) => (
                       <ListItem key={item._id} color="secondary">
                         <chakra.p>
-                          <strong>{language === "en" ? "Title: " : language === "fr" ? "Titre: " : "العنوان: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Title: "
+                              : language === "fr"
+                              ? "Titre: "
+                              : "العنوان: "}
+                          </strong>
                           {item.title?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Coordinator: " : language === "fr" ? "Coordinateur: " : "المنسق: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Coordinator: "
+                              : language === "fr"
+                              ? "Coordinateur: "
+                              : "المنسق: "}
+                          </strong>
                           {item.cordinator?.[language]}
                         </chakra.p>
                         <chakra.p>
-                          <strong>{language === "en" ? "Duration: " : language === "fr" ? "Durée: " : "المدة: "}</strong>
+                          <strong>
+                            {language === "en"
+                              ? "Duration: "
+                              : language === "fr"
+                              ? "Durée: "
+                              : "المدة: "}
+                          </strong>
                           {item.duration}
                         </chakra.p>
                       </ListItem>
@@ -457,21 +585,20 @@ const SideBar = () => {
                         : "الإنتاج العلمي"}
                     </chakra.p>
                     {results.scientificProduction.map((e, i) => {
-            return (
-              <ListItem key={i}>
-                <chakra.a
-                  href={e.journal?.url}
-                  target="_blank"
-                  color="secondary"
-                >
-                  {`${e?.authors?.[language]}, (${e.year}). ${e.title?.[language]}. ${e.journal?.name?.[language]}. ${e?.journal?.volume},${e?.journal?.pages}`}
-                </chakra.a>
-              </ListItem>
-            );
-          })}
+                      return (
+                        <ListItem key={i}>
+                          <chakra.a
+                            href={e.journal?.url}
+                            target="_blank"
+                            color="secondary"
+                          >
+                            {`${e?.authors?.[language]}, (${e.year}). ${e.title?.[language]}. ${e.journal?.name?.[language]}. ${e?.journal?.volume},${e?.journal?.pages}`}
+                          </chakra.a>
+                        </ListItem>
+                      );
+                    })}
                   </List>
                 )}
-                
               </>
             ) : (
               <p>No results found</p>

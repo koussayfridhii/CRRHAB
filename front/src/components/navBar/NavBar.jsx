@@ -892,6 +892,14 @@ const NAV_ITEMS = [
       },
       {
         label: {
+          fr: "Accès à l'information",
+          en: "Information Access",
+          ar: "النفاذ للمعلومة",
+        },
+        href: "/information_access",
+      },
+      {
+        label: {
           fr: "Rapports d'Activités",
           en: "Activity Reports",
           ar: "تقارير أنشطة البحث",

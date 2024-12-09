@@ -80,6 +80,7 @@ const CreateGallery = lazy(() =>
   import("./pages/admin/adminGallerie/CreateGallerie.jsx")
 );
 const Projects = lazy(() => import("./pages/Projects.jsx"));
+const InformationAccess = lazy(() => import("./pages/InformationAccess.jsx"));
 const Library = lazy(() => import("./pages/Library.jsx"));
 const NationalProjects = lazy(() => import("./pages/NationalProjects.jsx"));
 const LaboResearchTeam = lazy(() => import("./pages/LaboResearchMembers.jsx"));
@@ -281,6 +282,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/information_access",
+        element: <InformationAccess />,
       },
       {
         path: "/scientific_organization",
